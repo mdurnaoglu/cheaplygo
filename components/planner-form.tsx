@@ -33,6 +33,7 @@ type AccommodationPreference =
 
 type PlannerState = {
   departures: string[];
+  destination: string;
   tripMode: TripMode;
   travelType: TravelType;
   citizenship: string;
@@ -165,6 +166,7 @@ const stepMeta = [
 
 const initialState: PlannerState = {
   departures: ["Istanbul"],
+  destination: "Everywhere",
   tripMode: "Round trip",
   travelType: "International",
   citizenship: "Turkey",
@@ -203,7 +205,8 @@ function OptionPill({
 
 export function PlannerForm() {
   const [step, setStep] = useState(0);
-  const [search, setSearch] = useState("");
+  const [departureSearch, setDepartureSearch] = useState("");
+  const [destinationSearch, setDestinationSearch] = useState("");
   const [showResults, setShowResults] = useState(false);
   const [isLoadingResults, setIsLoadingResults] = useState(false);
   const [openingDestination, setOpeningDestination] = useState<string | null>(null);
@@ -214,7 +217,7 @@ export function PlannerForm() {
   const progress = ((step + 1) / stepMeta.length) * 100;
 
   const filteredDepartures = useMemo(() => {
-    const normalized = search.trim().toLowerCase();
+    const normalized = departureSearch.trim().toLowerCase();
     if (!normalized) {
       return [];
     }
@@ -226,7 +229,22 @@ export function PlannerForm() {
           .includes(normalized)
       )
       .slice(0, 10);
-  }, [search]);
+  }, [departureSearch]);
+
+  const filteredDestinations = useMemo(() => {
+    const normalized = destinationSearch.trim().toLowerCase();
+    if (!normalized) {
+      return [];
+    }
+
+    return departureOptions
+      .filter((item) =>
+        `${item.label} ${item.code} ${item.country}`
+          .toLowerCase()
+          .includes(normalized)
+      )
+      .slice(0, 10);
+  }, [destinationSearch]);
 
   const canContinue = useMemo(() => {
     if (step === 0) {
@@ -304,7 +322,12 @@ export function PlannerForm() {
       }
     ];
 
-    return base
+    const filteredBase =
+      form.destination === "Everywhere"
+        ? base
+        : base.filter((item) => item.city === form.destination);
+
+    return filteredBase
       .map((item) => {
         let score = item.matchScore;
 
@@ -642,6 +665,9 @@ export function PlannerForm() {
                     <span className="font-semibold text-ink">Trip mode:</span> {form.tripMode}
                   </div>
                   <div>
+                    <span className="font-semibold text-ink">Destination:</span> {form.destination}
+                  </div>
+                  <div>
                     <span className="font-semibold text-ink">Trip type:</span> {form.travelType}
                   </div>
                   <div>
@@ -719,8 +745,8 @@ export function PlannerForm() {
                         <div className="relative">
                           <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
                           <input
-                            value={search}
-                            onChange={(event) => setSearch(event.target.value)}
+                            value={departureSearch}
+                            onChange={(event) => setDepartureSearch(event.target.value)}
                             placeholder="Type a city or airport"
                             className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-4 pl-12 pr-4 text-base text-ink outline-none transition focus:border-chartreuse focus:bg-white"
                           />
@@ -740,7 +766,7 @@ export function PlannerForm() {
                             ))}
                           </div>
                         ) : null}
-                        {search.trim() ? (
+                        {departureSearch.trim() ? (
                           <div className="mt-3 max-h-64 overflow-auto rounded-2xl border border-slate-200 bg-white p-2">
                           {filteredDepartures.length > 0 ? (
                             filteredDepartures.map((item) => {
@@ -751,7 +777,7 @@ export function PlannerForm() {
                                   type="button"
                                   onClick={() => {
                                     toggleDeparture(item.label);
-                                    setSearch("");
+                                    setDepartureSearch("");
                                   }}
                                   className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-sm font-semibold transition ${
                                     active
@@ -778,6 +804,86 @@ export function PlannerForm() {
                         ) : (
                           <p className="mt-3 text-sm text-slate-400">
                             Start typing to search departure cities worldwide.
+                          </p>
+                        )}
+                      </div>
+
+                      <div>
+                        <label className="mb-3 block text-sm font-semibold text-slate-500">
+                          Destination
+                        </label>
+                        <div className="relative">
+                          <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
+                          <input
+                            value={destinationSearch}
+                            onChange={(event) => setDestinationSearch(event.target.value)}
+                            placeholder="Everywhere or type a city"
+                            className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-4 pl-12 pr-4 text-base text-ink outline-none transition focus:border-chartreuse focus:bg-white"
+                          />
+                        </div>
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              updateForm("destination", "Everywhere");
+                              setDestinationSearch("");
+                            }}
+                            className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ${
+                              form.destination === "Everywhere"
+                                ? "bg-chartreuse text-black"
+                                : "border border-slate-200 bg-white text-slate-600"
+                            }`}
+                          >
+                            Everywhere
+                          </button>
+                          {form.destination !== "Everywhere" ? (
+                            <button
+                              type="button"
+                              onClick={() => updateForm("destination", "Everywhere")}
+                              className="inline-flex items-center gap-2 rounded-full bg-chartreuse px-4 py-2 text-sm font-semibold text-black"
+                            >
+                              {form.destination}
+                              <span className="text-base leading-none">×</span>
+                            </button>
+                          ) : null}
+                        </div>
+                        {destinationSearch.trim() ? (
+                          <div className="mt-3 max-h-64 overflow-auto rounded-2xl border border-slate-200 bg-white p-2">
+                            {filteredDestinations.length > 0 ? (
+                              filteredDestinations.map((item) => (
+                                <button
+                                  key={`destination-${item.code}`}
+                                  type="button"
+                                  onClick={() => {
+                                    updateForm("destination", item.label);
+                                    setDestinationSearch("");
+                                  }}
+                                  className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-sm font-semibold transition ${
+                                    form.destination === item.label
+                                      ? "bg-chartreuse text-black"
+                                      : "text-slate-600 hover:bg-slate-50"
+                                  }`}
+                                >
+                                  <span>
+                                    {item.label}
+                                    <span className="ml-2 text-xs font-medium text-slate-400">
+                                      {item.code} · {item.country}
+                                    </span>
+                                  </span>
+                                  {form.destination === item.label ? (
+                                    <Check className="h-4 w-4" />
+                                  ) : null}
+                                </button>
+                              ))
+                            ) : (
+                              <div className="px-4 py-3 text-sm text-slate-400">
+                                No matching destination found.
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          <p className="mt-3 text-sm text-slate-400">
+                            Leave it as Everywhere or search a specific destination.
                           </p>
                         )}
                       </div>
