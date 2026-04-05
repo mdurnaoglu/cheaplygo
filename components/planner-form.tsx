@@ -31,9 +31,18 @@ type AccommodationPreference =
   | "Better experience"
   | "I'll choose my own hotel";
 
+type PlaceOption = {
+  id: string;
+  type: "city" | "airport";
+  code: string;
+  name: string;
+  cityName?: string | null;
+  country: string;
+};
+
 type PlannerState = {
-  departures: string[];
-  destination: string;
+  departures: PlaceOption[];
+  destination: PlaceOption | null;
   tripMode: TripMode;
   travelType: TravelType;
   citizenship: string;
@@ -68,72 +77,6 @@ type LiveFareMap = Record<
   }
 >;
 
-type DepartureOption = {
-  label: string;
-  code: string;
-  country: string;
-};
-
-const departureOptions: DepartureOption[] = [
-  { label: "Istanbul", code: "IST", country: "Turkey" },
-  { label: "Sabiha Gokcen", code: "SAW", country: "Turkey" },
-  { label: "Ankara", code: "ANK", country: "Turkey" },
-  { label: "Izmir", code: "IZM", country: "Turkey" },
-  { label: "Antalya", code: "AYT", country: "Turkey" },
-  { label: "Bodrum", code: "BJV", country: "Turkey" },
-  { label: "Adana", code: "ADA", country: "Turkey" },
-  { label: "Trabzon", code: "TZX", country: "Turkey" },
-  { label: "Kayseri", code: "ASR", country: "Turkey" },
-  { label: "Dalaman", code: "DLM", country: "Turkey" },
-  { label: "Tbilisi", code: "TBS", country: "Georgia" },
-  { label: "Baku", code: "GYD", country: "Azerbaijan" },
-  { label: "Belgrade", code: "BEG", country: "Serbia" },
-  { label: "Budapest", code: "BUD", country: "Hungary" },
-  { label: "Vienna", code: "VIE", country: "Austria" },
-  { label: "Prague", code: "PRG", country: "Czech Republic" },
-  { label: "Rome", code: "ROM", country: "Italy" },
-  { label: "Milan", code: "MIL", country: "Italy" },
-  { label: "Paris", code: "PAR", country: "France" },
-  { label: "Barcelona", code: "BCN", country: "Spain" },
-  { label: "Madrid", code: "MAD", country: "Spain" },
-  { label: "Lisbon", code: "LIS", country: "Portugal" },
-  { label: "Amsterdam", code: "AMS", country: "Netherlands" },
-  { label: "Brussels", code: "BRU", country: "Belgium" },
-  { label: "Berlin", code: "BER", country: "Germany" },
-  { label: "Munich", code: "MUC", country: "Germany" },
-  { label: "Frankfurt", code: "FRA", country: "Germany" },
-  { label: "London", code: "LON", country: "United Kingdom" },
-  { label: "Manchester", code: "MAN", country: "United Kingdom" },
-  { label: "Dublin", code: "DUB", country: "Ireland" },
-  { label: "Athens", code: "ATH", country: "Greece" },
-  { label: "Sofia", code: "SOF", country: "Bulgaria" },
-  { label: "Bucharest", code: "BUH", country: "Romania" },
-  { label: "Warsaw", code: "WAW", country: "Poland" },
-  { label: "Zurich", code: "ZRH", country: "Switzerland" },
-  { label: "Geneva", code: "GVA", country: "Switzerland" },
-  { label: "Dubai", code: "DXB", country: "United Arab Emirates" },
-  { label: "Abu Dhabi", code: "AUH", country: "United Arab Emirates" },
-  { label: "Doha", code: "DOH", country: "Qatar" },
-  { label: "Cairo", code: "CAI", country: "Egypt" },
-  { label: "Casablanca", code: "CAS", country: "Morocco" },
-  { label: "New York", code: "NYC", country: "United States" },
-  { label: "Los Angeles", code: "LAX", country: "United States" },
-  { label: "Chicago", code: "CHI", country: "United States" },
-  { label: "Toronto", code: "YTO", country: "Canada" },
-  { label: "Mexico City", code: "MEX", country: "Mexico" },
-  { label: "Sao Paulo", code: "SAO", country: "Brazil" },
-  { label: "Buenos Aires", code: "BUE", country: "Argentina" },
-  { label: "Bangkok", code: "BKK", country: "Thailand" },
-  { label: "Singapore", code: "SIN", country: "Singapore" },
-  { label: "Kuala Lumpur", code: "KUL", country: "Malaysia" },
-  { label: "Bali", code: "DPS", country: "Indonesia" },
-  { label: "Tokyo", code: "TYO", country: "Japan" },
-  { label: "Seoul", code: "SEL", country: "South Korea" },
-  { label: "Hong Kong", code: "HKG", country: "Hong Kong" },
-  { label: "Delhi", code: "DEL", country: "India" },
-  { label: "Sydney", code: "SYD", country: "Australia" }
-];
-
 const citizenshipOptions = [
   "Turkey",
   "Germany",
@@ -164,9 +107,18 @@ const stepMeta = [
   }
 ] as const;
 
+const defaultDeparture: PlaceOption = {
+  id: "default-istanbul",
+  type: "city",
+  code: "IST",
+  name: "Istanbul",
+  cityName: "Istanbul",
+  country: "Turkiye"
+};
+
 const initialState: PlannerState = {
-  departures: ["Istanbul"],
-  destination: "Everywhere",
+  departures: [defaultDeparture],
+  destination: null,
   tripMode: "Round trip",
   travelType: "International",
   citizenship: "Turkey",
@@ -203,10 +155,22 @@ function OptionPill({
   );
 }
 
+function formatPlaceLabel(place: PlaceOption) {
+  if (place.type === "airport") {
+    return `${place.cityName ?? place.name} (${place.code})`;
+  }
+
+  return place.name;
+}
+
 export function PlannerForm() {
   const [step, setStep] = useState(0);
   const [departureSearch, setDepartureSearch] = useState("");
   const [destinationSearch, setDestinationSearch] = useState("");
+  const [departureResults, setDepartureResults] = useState<PlaceOption[]>([]);
+  const [destinationResults, setDestinationResults] = useState<PlaceOption[]>([]);
+  const [isLoadingDepartureResults, setIsLoadingDepartureResults] = useState(false);
+  const [isLoadingDestinationResults, setIsLoadingDestinationResults] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const [isLoadingResults, setIsLoadingResults] = useState(false);
   const [openingDestination, setOpeningDestination] = useState<string | null>(null);
@@ -215,36 +179,6 @@ export function PlannerForm() {
 
   const current = stepMeta[step];
   const progress = ((step + 1) / stepMeta.length) * 100;
-
-  const filteredDepartures = useMemo(() => {
-    const normalized = departureSearch.trim().toLowerCase();
-    if (!normalized) {
-      return [];
-    }
-
-    return departureOptions
-      .filter((item) =>
-        `${item.label} ${item.code} ${item.country}`
-          .toLowerCase()
-          .includes(normalized)
-      )
-      .slice(0, 10);
-  }, [departureSearch]);
-
-  const filteredDestinations = useMemo(() => {
-    const normalized = destinationSearch.trim().toLowerCase();
-    if (!normalized) {
-      return [];
-    }
-
-    return departureOptions
-      .filter((item) =>
-        `${item.label} ${item.code} ${item.country}`
-          .toLowerCase()
-          .includes(normalized)
-      )
-      .slice(0, 10);
-  }, [destinationSearch]);
 
   const canContinue = useMemo(() => {
     if (step === 0) {
@@ -323,9 +257,12 @@ export function PlannerForm() {
     ];
 
     const filteredBase =
-      form.destination === "Everywhere"
+      form.destination === null
         ? base
-        : base.filter((item) => item.city === form.destination);
+        : base.filter(
+            (item) =>
+              item.city === (form.destination?.cityName ?? form.destination?.name)
+          );
 
     return filteredBase
       .map((item) => {
@@ -382,24 +319,107 @@ export function PlannerForm() {
       .sort((a, b) => b.matchScore - a.matchScore);
   }, [form]);
 
-  const toggleDeparture = (value: string) => {
+  const toggleDeparture = (value: PlaceOption) => {
     setForm((prev) => {
-      const exists = prev.departures.includes(value);
+      const exists = prev.departures.some((item) => item.id === value.id);
       return {
         ...prev,
         departures: exists
-          ? prev.departures.filter((item) => item !== value)
+          ? prev.departures.filter((item) => item.id !== value.id)
           : [...prev.departures, value]
       };
     });
   };
 
   const departureCode = useMemo(() => {
-    const selected = departureOptions.find(
-      (item) => item.label === form.departures[0]
-    );
-    return selected?.code ?? "IST";
+    return form.departures[0]?.code ?? "IST";
   }, [form.departures]);
+
+  useEffect(() => {
+    const term = departureSearch.trim();
+    if (term.length < 2) {
+      setDepartureResults([]);
+      setIsLoadingDepartureResults(false);
+      return;
+    }
+
+    const controller = new AbortController();
+    const timer = window.setTimeout(async () => {
+      try {
+        setIsLoadingDepartureResults(true);
+        const response = await fetch(
+          `/api/places-search?term=${encodeURIComponent(term)}`,
+          { signal: controller.signal }
+        );
+        const payload = (await response.json()) as
+          | { results: PlaceOption[] }
+          | { error: string };
+
+        if (!response.ok || !("results" in payload)) {
+          throw new Error("Autocomplete request failed");
+        }
+
+        setDepartureResults(payload.results);
+      } catch (error) {
+        if (controller.signal.aborted) {
+          return;
+        }
+        setDepartureResults([]);
+      } finally {
+        if (!controller.signal.aborted) {
+          setIsLoadingDepartureResults(false);
+        }
+      }
+    }, 250);
+
+    return () => {
+      controller.abort();
+      window.clearTimeout(timer);
+    };
+  }, [departureSearch]);
+
+  useEffect(() => {
+    const term = destinationSearch.trim();
+    if (term.length < 2) {
+      setDestinationResults([]);
+      setIsLoadingDestinationResults(false);
+      return;
+    }
+
+    const controller = new AbortController();
+    const timer = window.setTimeout(async () => {
+      try {
+        setIsLoadingDestinationResults(true);
+        const response = await fetch(
+          `/api/places-search?term=${encodeURIComponent(term)}`,
+          { signal: controller.signal }
+        );
+        const payload = (await response.json()) as
+          | { results: PlaceOption[] }
+          | { error: string };
+
+        if (!response.ok || !("results" in payload)) {
+          throw new Error("Autocomplete request failed");
+        }
+
+        setDestinationResults(payload.results);
+      } catch (error) {
+        if (controller.signal.aborted) {
+          return;
+        }
+        setDestinationResults([]);
+      } finally {
+        if (!controller.signal.aborted) {
+          setIsLoadingDestinationResults(false);
+        }
+      }
+    }, 250);
+
+    return () => {
+      controller.abort();
+      window.clearTimeout(timer);
+    };
+  }, [destinationSearch]);
 
   const getSearchDateLabel = () => {
     if (form.dateFlexibility === "Exact dates" && form.exactDepartureDate) {
@@ -648,10 +668,10 @@ export function PlannerForm() {
                     {form.departures.length > 0 ? (
                       form.departures.map((item) => (
                         <span
-                          key={item}
+                          key={item.id}
                           className="inline-flex rounded-full bg-chartreuse/80 px-3 py-1 text-xs font-semibold text-black"
                         >
-                          {item}
+                          {formatPlaceLabel(item)}
                         </span>
                       ))
                     ) : (
@@ -665,7 +685,8 @@ export function PlannerForm() {
                     <span className="font-semibold text-ink">Trip mode:</span> {form.tripMode}
                   </div>
                   <div>
-                    <span className="font-semibold text-ink">Destination:</span> {form.destination}
+                    <span className="font-semibold text-ink">Destination:</span>{" "}
+                    {form.destination ? formatPlaceLabel(form.destination) : "Everywhere"}
                   </div>
                   <div>
                     <span className="font-semibold text-ink">Trip type:</span> {form.travelType}
@@ -755,12 +776,12 @@ export function PlannerForm() {
                           <div className="mt-3 flex flex-wrap gap-2">
                             {form.departures.map((item) => (
                               <button
-                                key={item}
+                                key={item.id}
                                 type="button"
                                 onClick={() => toggleDeparture(item)}
                                 className="inline-flex items-center gap-2 rounded-full bg-chartreuse px-4 py-2 text-sm font-semibold text-black"
                               >
-                                {item}
+                                {formatPlaceLabel(item)}
                                 <span className="text-base leading-none">×</span>
                               </button>
                             ))}
@@ -768,15 +789,21 @@ export function PlannerForm() {
                         ) : null}
                         {departureSearch.trim() ? (
                           <div className="mt-3 max-h-64 overflow-auto rounded-2xl border border-slate-200 bg-white p-2">
-                          {filteredDepartures.length > 0 ? (
-                            filteredDepartures.map((item) => {
-                              const active = form.departures.includes(item.label);
+                          {isLoadingDepartureResults ? (
+                            <div className="px-4 py-3 text-sm text-slate-400">
+                              Searching cities and airports...
+                            </div>
+                          ) : departureResults.length > 0 ? (
+                            departureResults.map((item) => {
+                              const active = form.departures.some(
+                                (selected) => selected.id === item.id
+                              );
                               return (
                                 <button
-                                  key={item.code}
+                                  key={item.id}
                                   type="button"
                                   onClick={() => {
-                                    toggleDeparture(item.label);
+                                    toggleDeparture(item);
                                     setDepartureSearch("");
                                   }}
                                   className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-sm font-semibold transition ${
@@ -786,9 +813,9 @@ export function PlannerForm() {
                                   }`}
                                 >
                                   <span>
-                                    {item.label}
+                                    {formatPlaceLabel(item)}
                                     <span className="ml-2 text-xs font-medium text-slate-400">
-                                      {item.code} · {item.country}
+                                      {item.code} · {item.country} · {item.type}
                                     </span>
                                   </span>
                                   {active ? <Check className="h-4 w-4" /> : null}
@@ -797,13 +824,13 @@ export function PlannerForm() {
                             })
                           ) : (
                             <div className="px-4 py-3 text-sm text-slate-400">
-                              No matching city found.
+                              No matching city or airport found.
                             </div>
                           )}
                           </div>
                         ) : (
                           <p className="mt-3 text-sm text-slate-400">
-                            Start typing to search departure cities worldwide.
+                            Start typing to search Aviasales cities and airports worldwide.
                           </p>
                         )}
                       </div>
@@ -825,52 +852,56 @@ export function PlannerForm() {
                           <button
                             type="button"
                             onClick={() => {
-                              updateForm("destination", "Everywhere");
+                              updateForm("destination", null);
                               setDestinationSearch("");
                             }}
                             className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ${
-                              form.destination === "Everywhere"
+                              form.destination === null
                                 ? "bg-chartreuse text-black"
                                 : "border border-slate-200 bg-white text-slate-600"
                             }`}
                           >
                             Everywhere
                           </button>
-                          {form.destination !== "Everywhere" ? (
+                          {form.destination ? (
                             <button
                               type="button"
-                              onClick={() => updateForm("destination", "Everywhere")}
+                              onClick={() => updateForm("destination", null)}
                               className="inline-flex items-center gap-2 rounded-full bg-chartreuse px-4 py-2 text-sm font-semibold text-black"
                             >
-                              {form.destination}
+                              {formatPlaceLabel(form.destination)}
                               <span className="text-base leading-none">×</span>
                             </button>
                           ) : null}
                         </div>
                         {destinationSearch.trim() ? (
                           <div className="mt-3 max-h-64 overflow-auto rounded-2xl border border-slate-200 bg-white p-2">
-                            {filteredDestinations.length > 0 ? (
-                              filteredDestinations.map((item) => (
+                            {isLoadingDestinationResults ? (
+                              <div className="px-4 py-3 text-sm text-slate-400">
+                                Searching cities and airports...
+                              </div>
+                            ) : destinationResults.length > 0 ? (
+                              destinationResults.map((item) => (
                                 <button
-                                  key={`destination-${item.code}`}
+                                  key={item.id}
                                   type="button"
                                   onClick={() => {
-                                    updateForm("destination", item.label);
+                                    updateForm("destination", item);
                                     setDestinationSearch("");
                                   }}
                                   className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-sm font-semibold transition ${
-                                    form.destination === item.label
+                                    form.destination?.id === item.id
                                       ? "bg-chartreuse text-black"
                                       : "text-slate-600 hover:bg-slate-50"
                                   }`}
                                 >
                                   <span>
-                                    {item.label}
+                                    {formatPlaceLabel(item)}
                                     <span className="ml-2 text-xs font-medium text-slate-400">
-                                      {item.code} · {item.country}
+                                      {item.code} · {item.country} · {item.type}
                                     </span>
                                   </span>
-                                  {form.destination === item.label ? (
+                                  {form.destination?.id === item.id ? (
                                     <Check className="h-4 w-4" />
                                   ) : null}
                                 </button>
