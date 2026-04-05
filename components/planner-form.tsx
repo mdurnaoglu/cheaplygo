@@ -23,7 +23,7 @@ import { useLanguage } from "@/components/language-provider";
 
 type TravelType = "Domestic" | "International" | "Both";
 type TripMode = "One way" | "Round trip";
-type VisaStatus = "No visa" | "Schengen visa" | "Other visa";
+type VisaStatus = "No visa" | "E-visa" | "Schengen visa" | "Other visa";
 type DateFlexibility = "Exact dates" | "Flexible dates";
 type FlightPreference = "Cabin bag only" | "Checked baggage";
 type AccommodationPreference =
@@ -62,7 +62,7 @@ type Recommendation = {
   destinationCode: string;
   estimatedCost: number;
   flightDuration: string;
-  visaRequirement: "visa-free" | "visa required";
+  visaRequirement: "visa-free" | "e-visa required" | "visa required";
   experienceMatch: string;
   badge: "Smart Deal" | "Best Match" | "Trending";
   matchScore: number;
@@ -195,6 +195,7 @@ function buildHotelUrl(options: {
 
 const citizenshipOptions = [
   "Turkey",
+  "Russia",
   "Germany",
   "United Kingdom",
   "Netherlands",
@@ -298,9 +299,23 @@ function labelTravelType(value: TravelType, language: "en" | "ru") {
 function labelVisaStatus(value: VisaStatus, language: "en" | "ru") {
   if (language === "ru") {
     if (value === "No visa") return "Без визы";
+    if (value === "E-visa") return "Электронная виза";
     if (value === "Schengen visa") return "Шенген";
     return "Другая виза";
   }
+  return value;
+}
+
+function labelVisaRequirement(
+  value: Recommendation["visaRequirement"],
+  language: "en" | "ru"
+) {
+  if (language === "ru") {
+    if (value === "visa-free") return "без визы";
+    if (value === "e-visa required") return "нужна e-виза";
+    return "нужна виза";
+  }
+
   return value;
 }
 
@@ -406,6 +421,7 @@ export function PlannerForm() {
             "Точный живой тариф недоступен, поэтому мы подобрали ближайшее доступное окно дат.",
           recommendationLead: "Мы рекомендуем",
           visaFree: "без визы",
+          eVisaRequired: "нужна e-виза",
           visaCompatible: "совместимо с вашей текущей визовой ситуацией",
           recommendationTail:
             "соответствует вашему бюджету и даёт лучший общий fit поездки, чем альтернативы с более низким рейтингом.",
@@ -491,6 +507,7 @@ export function PlannerForm() {
             "Exact live fare was unavailable, so we matched the closest live date window instead.",
           recommendationLead: "We recommend",
           visaFree: "visa-free",
+          eVisaRequired: "e-visa required",
           visaCompatible: "compatible with your current visa setup",
           recommendationTail:
             "fits your budget profile, and offers a stronger overall trip fit than lower-ranked alternatives.",
@@ -561,12 +578,12 @@ export function PlannerForm() {
         destinationCode: "GYD",
         estimatedCost: 340,
         flightDuration: "2h 50m",
-        visaRequirement: "visa-free",
+        visaRequirement: "e-visa required",
         experienceMatch: "Best value",
         badge: "Smart Deal",
         matchScore: 89,
         notes:
-          "We recommend Baku because it balances easy access, low total cost, and short-haul convenience from Turkey."
+          "We recommend Baku because it balances easy access, low total cost, and short-haul convenience if you're open to quick e-visa routes."
       },
       {
         city: "Belgrade",
@@ -619,9 +636,11 @@ export function PlannerForm() {
             flightDuration:
               form.travelType === "Domestic" ? "1h 30m" : "3h 10m",
             visaRequirement:
-              form.travelType === "Domestic" || form.visaStatus !== "No visa"
+              form.travelType === "Domestic"
                 ? "visa-free"
-                : "visa required",
+                : form.visaStatus === "No visa"
+                  ? "e-visa required"
+                  : "visa-free",
             experienceMatch:
               form.accommodationPreference === "Better experience"
                 ? "Premium experience"
@@ -652,9 +671,23 @@ export function PlannerForm() {
 
         if (
           form.visaStatus === "No visa" &&
-          item.visaRequirement === "visa required"
+          item.visaRequirement !== "visa-free"
         ) {
           score -= 28;
+        }
+
+        if (
+          form.visaStatus === "E-visa" &&
+          item.visaRequirement === "visa required"
+        ) {
+          score -= 18;
+        }
+
+        if (
+          form.visaStatus === "Schengen visa" &&
+          item.visaRequirement === "e-visa required"
+        ) {
+          score -= 4;
         }
 
         if (form.budget < item.estimatedCost) {
@@ -1390,7 +1423,7 @@ export function PlannerForm() {
                             {copy.visaStatus}
                           </p>
                           <div className="grid gap-3">
-                            {(["No visa", "Schengen visa", "Other visa"] as VisaStatus[]).map(
+                            {(["No visa", "E-visa", "Schengen visa", "Other visa"] as VisaStatus[]).map(
                               (item) => (
                                 <OptionPill
                                   key={item}
@@ -1613,10 +1646,12 @@ export function PlannerForm() {
                               className={`inline-flex rounded-full px-3 py-1 text-xs font-bold ${
                                 item.visaRequirement === "visa-free"
                                   ? "bg-emerald-100 text-emerald-700"
+                                  : item.visaRequirement === "e-visa required"
+                                    ? "bg-sky-100 text-sky-700"
                                   : "bg-amber-100 text-amber-700"
                               }`}
                             >
-                              {item.visaRequirement}
+                              {labelVisaRequirement(item.visaRequirement, language)}
                             </span>
                           </div>
                           <h3 className="mt-4 text-3xl font-extrabold tracking-[-0.05em] text-ink">
@@ -1745,6 +1780,8 @@ export function PlannerForm() {
                         {copy.recommendationLead} {item.city}{" "}
                         {item.visaRequirement === "visa-free"
                           ? copy.visaFree
+                          : item.visaRequirement === "e-visa required"
+                            ? copy.eVisaRequired
                           : copy.visaCompatible}
                         , {copy.recommendationTail}
                       </p>
