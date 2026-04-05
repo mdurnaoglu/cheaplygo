@@ -110,7 +110,24 @@ function getStayNights(options: {
   return diffDays;
 }
 
-function getNightlyHotelBase(preference: AccommodationPreference, city: string) {
+function isRussiaDestination(city: string, country: string) {
+  const normalizedCity = city.toLowerCase();
+  const normalizedCountry = country.toLowerCase();
+
+  return (
+    normalizedCountry.includes("russia") ||
+    normalizedCountry.includes("russian federation") ||
+    ["moscow", "saint petersburg", "st petersburg", "sochi", "kazan", "adler"].some(
+      (item) => normalizedCity.includes(item)
+    )
+  );
+}
+
+function getNightlyHotelBase(
+  preference: AccommodationPreference,
+  city: string,
+  country: string
+) {
   const cityPremium: Record<string, number> = {
     Barcelona: 72,
     Paris: 95,
@@ -121,7 +138,11 @@ function getNightlyHotelBase(preference: AccommodationPreference, city: string) 
     Belgrade: 42
   };
 
-  const base = cityPremium[city] ?? 48;
+  let base = cityPremium[city] ?? 48;
+
+  if (isRussiaDestination(city, country)) {
+    base = Math.round(base * 0.85);
+  }
 
   switch (preference) {
     case "Just sleep (budget)":
@@ -156,6 +177,19 @@ function buildKlookHotelUrl(options: {
   const url = new URL("https://www.klook.com/search/result/");
   url.searchParams.set("query", queryParts.join(" "));
   return url.toString();
+}
+
+function buildHotelUrl(options: {
+  city: string;
+  country: string;
+  checkIn?: string;
+  checkOut?: string | null;
+}) {
+  if (isRussiaDestination(options.city, options.country)) {
+    return "https://manteratravel.ru/hotels";
+  }
+
+  return buildKlookHotelUrl(options);
 }
 
 const citizenshipOptions = [
@@ -595,7 +629,7 @@ export function PlannerForm() {
   };
 
   const openHotels = (city: string, country: string, fare?: LiveFareMap[string]) => {
-    const hotelUrl = buildKlookHotelUrl({
+    const hotelUrl = buildHotelUrl({
       city,
       country,
       checkIn: fare?.departureAt?.slice(0, 10),
@@ -1332,7 +1366,8 @@ export function PlannerForm() {
                       });
                       const hotelStartsFrom = getNightlyHotelBase(
                         form.accommodationPreference,
-                        item.city
+                        item.city,
+                        item.country
                       );
                       const hotelEstimateTotal =
                         form.accommodationPreference === "I'll choose my own hotel"

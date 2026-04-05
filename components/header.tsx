@@ -35,12 +35,29 @@ export function Header() {
         ))}
       </nav>
 
-      <a
-        href="/planner"
-        className="inline-flex items-center rounded-full bg-chartreuse px-5 py-3 text-sm font-bold text-black transition hover:scale-[1.02]"
-      >
-        Plan My Trip
-      </a>
+      <div className="flex items-center gap-3">
+        <div className="hidden items-center rounded-full border border-slate-200 bg-white p-1 sm:flex">
+          <a
+            href="?lang=en"
+            className="rounded-full px-3 py-2 text-xs font-bold text-slateBlue transition hover:bg-slate-50"
+          >
+            EN
+          </a>
+          <a
+            href="?lang=ru"
+            className="rounded-full px-3 py-2 text-xs font-bold text-slateBlue transition hover:bg-slate-50"
+          >
+            RU
+          </a>
+        </div>
+
+        <a
+          href="/planner"
+          className="inline-flex items-center rounded-full bg-chartreuse px-5 py-3 text-sm font-bold text-black transition hover:scale-[1.02]"
+        >
+          Plan My Trip
+        </a>
+      </div>
     </header>
   );
 }
