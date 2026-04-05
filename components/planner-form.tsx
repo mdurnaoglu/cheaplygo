@@ -44,6 +44,7 @@ type PlannerState = {
 type Recommendation = {
   city: string;
   country: string;
+  destinationCode: string;
   estimatedCost: number;
   flightDuration: string;
   visaRequirement: "visa-free" | "visa required";
@@ -53,17 +54,70 @@ type Recommendation = {
   notes: string;
 };
 
-const departureOptions = [
-  "Istanbul",
-  "Sabiha Gokcen",
-  "Ankara",
-  "Izmir",
-  "Antalya",
-  "Bodrum",
-  "Adana",
-  "Trabzon",
-  "Kayseri",
-  "Dalaman"
+type DepartureOption = {
+  label: string;
+  code: string;
+  country: string;
+};
+
+const departureOptions: DepartureOption[] = [
+  { label: "Istanbul", code: "IST", country: "Turkey" },
+  { label: "Sabiha Gokcen", code: "SAW", country: "Turkey" },
+  { label: "Ankara", code: "ANK", country: "Turkey" },
+  { label: "Izmir", code: "IZM", country: "Turkey" },
+  { label: "Antalya", code: "AYT", country: "Turkey" },
+  { label: "Bodrum", code: "BJV", country: "Turkey" },
+  { label: "Adana", code: "ADA", country: "Turkey" },
+  { label: "Trabzon", code: "TZX", country: "Turkey" },
+  { label: "Kayseri", code: "ASR", country: "Turkey" },
+  { label: "Dalaman", code: "DLM", country: "Turkey" },
+  { label: "Tbilisi", code: "TBS", country: "Georgia" },
+  { label: "Baku", code: "GYD", country: "Azerbaijan" },
+  { label: "Belgrade", code: "BEG", country: "Serbia" },
+  { label: "Budapest", code: "BUD", country: "Hungary" },
+  { label: "Vienna", code: "VIE", country: "Austria" },
+  { label: "Prague", code: "PRG", country: "Czech Republic" },
+  { label: "Rome", code: "ROM", country: "Italy" },
+  { label: "Milan", code: "MIL", country: "Italy" },
+  { label: "Paris", code: "PAR", country: "France" },
+  { label: "Barcelona", code: "BCN", country: "Spain" },
+  { label: "Madrid", code: "MAD", country: "Spain" },
+  { label: "Lisbon", code: "LIS", country: "Portugal" },
+  { label: "Amsterdam", code: "AMS", country: "Netherlands" },
+  { label: "Brussels", code: "BRU", country: "Belgium" },
+  { label: "Berlin", code: "BER", country: "Germany" },
+  { label: "Munich", code: "MUC", country: "Germany" },
+  { label: "Frankfurt", code: "FRA", country: "Germany" },
+  { label: "London", code: "LON", country: "United Kingdom" },
+  { label: "Manchester", code: "MAN", country: "United Kingdom" },
+  { label: "Dublin", code: "DUB", country: "Ireland" },
+  { label: "Athens", code: "ATH", country: "Greece" },
+  { label: "Sofia", code: "SOF", country: "Bulgaria" },
+  { label: "Bucharest", code: "BUH", country: "Romania" },
+  { label: "Warsaw", code: "WAW", country: "Poland" },
+  { label: "Zurich", code: "ZRH", country: "Switzerland" },
+  { label: "Geneva", code: "GVA", country: "Switzerland" },
+  { label: "Dubai", code: "DXB", country: "United Arab Emirates" },
+  { label: "Abu Dhabi", code: "AUH", country: "United Arab Emirates" },
+  { label: "Doha", code: "DOH", country: "Qatar" },
+  { label: "Cairo", code: "CAI", country: "Egypt" },
+  { label: "Casablanca", code: "CAS", country: "Morocco" },
+  { label: "New York", code: "NYC", country: "United States" },
+  { label: "Los Angeles", code: "LAX", country: "United States" },
+  { label: "Chicago", code: "CHI", country: "United States" },
+  { label: "Toronto", code: "YTO", country: "Canada" },
+  { label: "Mexico City", code: "MEX", country: "Mexico" },
+  { label: "Sao Paulo", code: "SAO", country: "Brazil" },
+  { label: "Buenos Aires", code: "BUE", country: "Argentina" },
+  { label: "Bangkok", code: "BKK", country: "Thailand" },
+  { label: "Singapore", code: "SIN", country: "Singapore" },
+  { label: "Kuala Lumpur", code: "KUL", country: "Malaysia" },
+  { label: "Bali", code: "DPS", country: "Indonesia" },
+  { label: "Tokyo", code: "TYO", country: "Japan" },
+  { label: "Seoul", code: "SEL", country: "South Korea" },
+  { label: "Hong Kong", code: "HKG", country: "Hong Kong" },
+  { label: "Delhi", code: "DEL", country: "India" },
+  { label: "Sydney", code: "SYD", country: "Australia" }
 ];
 
 const citizenshipOptions = [
@@ -143,10 +197,17 @@ export function PlannerForm() {
 
   const filteredDepartures = useMemo(() => {
     const normalized = search.trim().toLowerCase();
-    const filtered = departureOptions.filter((item) =>
-      item.toLowerCase().includes(normalized)
-    );
-    return normalized ? filtered : departureOptions;
+    if (!normalized) {
+      return [];
+    }
+
+    return departureOptions
+      .filter((item) =>
+        `${item.label} ${item.code} ${item.country}`
+          .toLowerCase()
+          .includes(normalized)
+      )
+      .slice(0, 10);
   }, [search]);
 
   const canContinue = useMemo(() => {
@@ -161,6 +222,7 @@ export function PlannerForm() {
       {
         city: "Tbilisi",
         country: "Georgia",
+        destinationCode: "TBS",
         estimatedCost: 290,
         flightDuration: "2h 15m",
         visaRequirement: "visa-free",
@@ -173,6 +235,7 @@ export function PlannerForm() {
       {
         city: "Baku",
         country: "Azerbaijan",
+        destinationCode: "GYD",
         estimatedCost: 340,
         flightDuration: "2h 50m",
         visaRequirement: "visa-free",
@@ -185,6 +248,7 @@ export function PlannerForm() {
       {
         city: "Belgrade",
         country: "Serbia",
+        destinationCode: "BEG",
         estimatedCost: 390,
         flightDuration: "1h 50m",
         visaRequirement: "visa-free",
@@ -197,6 +261,7 @@ export function PlannerForm() {
       {
         city: "Budapest",
         country: "Hungary",
+        destinationCode: "BUD",
         estimatedCost: 420,
         flightDuration: "2h 05m",
         visaRequirement:
@@ -274,6 +339,29 @@ export function PlannerForm() {
           : [...prev.departures, value]
       };
     });
+  };
+
+  const getDepartureCode = () => {
+    const selected = departureOptions.find(
+      (item) => item.label === form.departures[0]
+    );
+    return selected?.code ?? "IST";
+  };
+
+  const getAviasalesUrl = (destinationCode: string) => {
+    const params = new URLSearchParams({
+      origin_iata: getDepartureCode(),
+      destination_iata: destinationCode,
+      oneway: "1",
+      adults: "1",
+      children: "0",
+      infants: "0",
+      trip_class: "0",
+      currency: "EUR",
+      locale: "en"
+    });
+
+    return `https://search.aviasales.com/flights/?${params.toString()}`;
   };
 
   function updateForm<K extends keyof PlannerState>(
@@ -493,22 +581,46 @@ export function PlannerForm() {
                             className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-4 pl-12 pr-4 text-base text-ink outline-none transition focus:border-chartreuse focus:bg-white"
                           />
                         </div>
-                        <div className="mt-3 max-h-64 overflow-auto rounded-2xl border border-slate-200 bg-white p-2">
+                        {form.departures.length > 0 ? (
+                          <div className="mt-3 flex flex-wrap gap-2">
+                            {form.departures.map((item) => (
+                              <button
+                                key={item}
+                                type="button"
+                                onClick={() => toggleDeparture(item)}
+                                className="inline-flex items-center gap-2 rounded-full bg-chartreuse px-4 py-2 text-sm font-semibold text-black"
+                              >
+                                {item}
+                                <span className="text-base leading-none">×</span>
+                              </button>
+                            ))}
+                          </div>
+                        ) : null}
+                        {search.trim() ? (
+                          <div className="mt-3 max-h-64 overflow-auto rounded-2xl border border-slate-200 bg-white p-2">
                           {filteredDepartures.length > 0 ? (
                             filteredDepartures.map((item) => {
-                              const active = form.departures.includes(item);
+                              const active = form.departures.includes(item.label);
                               return (
                                 <button
-                                  key={item}
+                                  key={item.code}
                                   type="button"
-                                  onClick={() => toggleDeparture(item)}
+                                  onClick={() => {
+                                    toggleDeparture(item.label);
+                                    setSearch("");
+                                  }}
                                   className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-sm font-semibold transition ${
                                     active
                                       ? "bg-chartreuse text-black"
                                       : "text-slate-600 hover:bg-slate-50"
                                   }`}
                                 >
-                                  <span>{item}</span>
+                                  <span>
+                                    {item.label}
+                                    <span className="ml-2 text-xs font-medium text-slate-400">
+                                      {item.code} · {item.country}
+                                    </span>
+                                  </span>
                                   {active ? <Check className="h-4 w-4" /> : null}
                                 </button>
                               );
@@ -518,7 +630,12 @@ export function PlannerForm() {
                               No matching city found.
                             </div>
                           )}
-                        </div>
+                          </div>
+                        ) : (
+                          <p className="mt-3 text-sm text-slate-400">
+                            Start typing to search departure cities worldwide.
+                          </p>
+                        )}
                       </div>
 
                       <div className="grid gap-6 md:grid-cols-3">
@@ -792,13 +909,15 @@ export function PlannerForm() {
                       </p>
 
                       <div className="mt-6">
-                        <button
-                          type="button"
+                        <a
+                          href={getAviasalesUrl(item.destinationCode)}
+                          target="_blank"
+                          rel="noreferrer"
                           className="inline-flex items-center gap-2 rounded-xl bg-chartreuse px-5 py-3 text-sm font-semibold text-black transition hover:scale-[1.02] hover:brightness-95"
                         >
                           View Trip
                           <ArrowRight className="h-4 w-4" />
-                        </button>
+                        </a>
                       </div>
                     </article>
                   ))}
