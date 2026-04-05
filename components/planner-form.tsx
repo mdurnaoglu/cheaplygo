@@ -79,6 +79,85 @@ type LiveFareMap = Record<
   }
 >;
 
+function getStayNights(options: {
+  tripMode: TripMode;
+  exactDepartureDate: string;
+  exactReturnDate: string;
+  fareDepartureAt?: string;
+  fareReturnAt?: string | null;
+}) {
+  if (options.tripMode === "One way") {
+    return 1;
+  }
+
+  const departureSource = options.fareDepartureAt ?? options.exactDepartureDate;
+  const returnSource = options.fareReturnAt ?? options.exactReturnDate;
+
+  if (!departureSource || !returnSource) {
+    return 3;
+  }
+
+  const departure = new Date(departureSource);
+  const returning = new Date(returnSource);
+  const diffDays = Math.round(
+    (returning.getTime() - departure.getTime()) / (1000 * 60 * 60 * 24)
+  );
+
+  if (!Number.isFinite(diffDays) || diffDays <= 0) {
+    return 3;
+  }
+
+  return diffDays;
+}
+
+function getNightlyHotelBase(preference: AccommodationPreference, city: string) {
+  const cityPremium: Record<string, number> = {
+    Barcelona: 72,
+    Paris: 95,
+    Rome: 78,
+    Budapest: 52,
+    Tbilisi: 34,
+    Baku: 39,
+    Belgrade: 42
+  };
+
+  const base = cityPremium[city] ?? 48;
+
+  switch (preference) {
+    case "Just sleep (budget)":
+      return Math.round(base * 0.75);
+    case "Breakfast included":
+      return Math.round(base);
+    case "Better experience":
+      return Math.round(base * 1.45);
+    case "I'll choose my own hotel":
+      return Math.round(base * 0.9);
+    default:
+      return base;
+  }
+}
+
+function buildKlookHotelUrl(options: {
+  city: string;
+  country: string;
+  checkIn?: string;
+  checkOut?: string | null;
+}) {
+  const queryParts = [options.city, options.country, "hotel"];
+
+  if (options.checkIn) {
+    queryParts.push(options.checkIn);
+  }
+
+  if (options.checkOut) {
+    queryParts.push(options.checkOut);
+  }
+
+  const url = new URL("https://www.klook.com/search/result/");
+  url.searchParams.set("query", queryParts.join(" "));
+  return url.toString();
+}
+
 const citizenshipOptions = [
   "Turkey",
   "Germany",
@@ -512,6 +591,20 @@ export function PlannerForm() {
       window.alert("Live Aviasales results could not be loaded for this route.");
     } finally {
       setOpeningDestination(null);
+    }
+  };
+
+  const openHotels = (city: string, country: string, fare?: LiveFareMap[string]) => {
+    const hotelUrl = buildKlookHotelUrl({
+      city,
+      country,
+      checkIn: fare?.departureAt?.slice(0, 10),
+      checkOut: fare?.returnAt?.slice(0, 10) ?? null
+    });
+
+    const popup = window.open(hotelUrl, "_blank");
+    if (!popup) {
+      window.location.assign(hotelUrl);
     }
   };
 
@@ -1230,6 +1323,23 @@ export function PlannerForm() {
                   {recommendations.map((item) => (
                     (() => {
                       const fare = liveFares[item.destinationCode];
+                      const stayNights = getStayNights({
+                        tripMode: form.tripMode,
+                        exactDepartureDate: form.exactDepartureDate,
+                        exactReturnDate: form.exactReturnDate,
+                        fareDepartureAt: fare?.departureAt,
+                        fareReturnAt: fare?.returnAt
+                      });
+                      const hotelStartsFrom = getNightlyHotelBase(
+                        form.accommodationPreference,
+                        item.city
+                      );
+                      const hotelEstimateTotal =
+                        form.accommodationPreference === "I'll choose my own hotel"
+                          ? 0
+                          : hotelStartsFrom * stayNights;
+                      const totalTripEstimate =
+                        (fare?.price ?? item.estimatedCost) + hotelEstimateTotal;
 
                       return (
                     <article
@@ -1258,21 +1368,38 @@ export function PlannerForm() {
                           <p className="mt-1 text-base text-slate-500">{item.country}</p>
                         </div>
 
-                        <div className="rounded-[1.5rem] bg-slateBlue px-5 py-4 text-white">
-                          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
-                            Live flight price
-                          </p>
-                          <p className="mt-2 text-4xl font-black tracking-[-0.05em] text-chartreuse">
-                            {fare?.price
-                              ? `€${fare.price}`
-                              : fare?.error
-                                ? "Unavailable"
-                                : "Loading..."}
-                          </p>
+                        <div className="grid w-full gap-3 sm:max-w-[26rem] sm:grid-cols-2">
+                          <div className="rounded-[1.5rem] bg-slateBlue px-5 py-4 text-white">
+                            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
+                              Live flight price
+                            </p>
+                            <p className="mt-2 text-4xl font-black tracking-[-0.05em] text-chartreuse">
+                              {fare?.price
+                                ? `€${fare.price}`
+                                : fare?.error
+                                  ? "Unavailable"
+                                  : "Loading..."}
+                            </p>
+                          </div>
+                          <div className="rounded-[1.5rem] border border-chartreuse/40 bg-chartreuse/10 px-5 py-4 text-ink">
+                            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                              Hotel price starts from
+                            </p>
+                            <p className="mt-2 text-4xl font-black tracking-[-0.05em] text-slateBlue">
+                              {form.accommodationPreference === "I'll choose my own hotel"
+                                ? "You choose"
+                                : `€${hotelStartsFrom}`}
+                            </p>
+                            <p className="mt-1 text-xs font-medium text-slate-500">
+                              {form.accommodationPreference === "Just sleep (budget)"
+                                ? "Eco mode hotel estimate per night"
+                                : "Estimated hotel starting price per night"}
+                            </p>
+                          </div>
                         </div>
                       </div>
 
-                      <div className="mt-6 grid gap-4 sm:grid-cols-3">
+                      <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
                         <div className="rounded-2xl bg-slate-50 px-4 py-3">
                           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
                             Flight duration
@@ -1305,11 +1432,40 @@ export function PlannerForm() {
                           </p>
                           <p className="mt-2 text-lg font-bold text-ink">{item.matchScore}/100</p>
                         </div>
+                        <div className="rounded-2xl bg-slate-50 px-4 py-3">
+                          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
+                            Stay nights
+                          </p>
+                          <p className="mt-2 text-lg font-bold text-ink">
+                            {form.tripMode === "One way" ? "1 night" : `${stayNights} nights`}
+                          </p>
+                        </div>
                         <div className="rounded-2xl bg-slate-50 px-4 py-3 sm:col-span-4">
                           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
                             Live flight search window
                           </p>
                           <p className="mt-2 text-lg font-bold text-ink">{getSearchDateLabel()}</p>
+                        </div>
+                        <div className="rounded-2xl border border-chartreuse/40 bg-chartreuse/10 px-4 py-3 sm:col-span-2 lg:col-span-5">
+                          <div className="flex flex-wrap items-center justify-between gap-3">
+                            <div>
+                              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                                Total estimated trip
+                              </p>
+                              <p className="mt-2 text-3xl font-black tracking-[-0.05em] text-slateBlue">
+                                €{totalTripEstimate}
+                              </p>
+                            </div>
+                            <div className="text-sm leading-6 text-slate-600">
+                              <div>Flight: {fare?.price ? `€${fare.price}` : `~€${item.estimatedCost}`}</div>
+                              <div>
+                                Hotel:{" "}
+                                {form.accommodationPreference === "I'll choose my own hotel"
+                                  ? "not included"
+                                  : `from €${hotelEstimateTotal} total`}
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
 
@@ -1335,7 +1491,7 @@ export function PlannerForm() {
                         trip fit than lower-ranked alternatives.
                       </p>
 
-                      <div className="mt-6">
+                      <div className="mt-6 flex flex-wrap gap-3">
                         <button
                           type="button"
                           onClick={() => void openLiveFlights(item.destinationCode)}
@@ -1345,6 +1501,14 @@ export function PlannerForm() {
                           {openingDestination === item.destinationCode
                             ? "Loading live flights..."
                             : "See live flights"}
+                          <ArrowRight className="h-4 w-4" />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => openHotels(item.city, item.country, fare)}
+                          className="inline-flex items-center gap-2 rounded-xl border border-slateBlue/15 bg-white px-5 py-3 text-sm font-semibold text-slateBlue transition hover:border-chartreuse hover:text-ink"
+                        >
+                          See hotels
                           <ArrowRight className="h-4 w-4" />
                         </button>
                       </div>
