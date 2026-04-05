@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 
 type TravelType = "Domestic" | "International" | "Both";
+type TripMode = "One way" | "Round trip";
 type VisaStatus = "No visa" | "Schengen visa" | "Other visa";
 type DateFlexibility = "Exact dates" | "Flexible dates";
 type FlightPreference = "Cabin bag only" | "Checked baggage";
@@ -32,6 +33,7 @@ type AccommodationPreference =
 
 type PlannerState = {
   departures: string[];
+  tripMode: TripMode;
   travelType: TravelType;
   citizenship: string;
   visaStatus: VisaStatus;
@@ -154,6 +156,7 @@ const stepMeta = [
 
 const initialState: PlannerState = {
   departures: ["Istanbul"],
+  tripMode: "Round trip",
   travelType: "International",
   citizenship: "Turkey",
   visaStatus: "No visa",
@@ -220,10 +223,19 @@ export function PlannerForm() {
       return form.departures.length > 0;
     }
     if (step === 1 && form.dateFlexibility === "Exact dates") {
-      return Boolean(form.exactDepartureDate);
+      return form.tripMode === "Round trip"
+        ? Boolean(form.exactDepartureDate && form.exactReturnDate)
+        : Boolean(form.exactDepartureDate);
     }
     return true;
-  }, [form.dateFlexibility, form.departures.length, form.exactDepartureDate, step]);
+  }, [
+    form.dateFlexibility,
+    form.departures.length,
+    form.exactDepartureDate,
+    form.exactReturnDate,
+    form.tripMode,
+    step
+  ]);
 
   const recommendations = useMemo<Recommendation[]>(() => {
     const base: Recommendation[] = [
@@ -358,11 +370,16 @@ export function PlannerForm() {
 
   const getSearchDateLabel = () => {
     if (form.dateFlexibility === "Exact dates" && form.exactDepartureDate) {
+      if (form.tripMode === "One way") {
+        return form.exactDepartureDate;
+      }
       return form.exactReturnDate
         ? `${form.exactDepartureDate} to ${form.exactReturnDate}`
         : form.exactDepartureDate;
     }
-    return "Flexible dates mapped to next best live window";
+    return form.tripMode === "One way"
+      ? "Flexible one-way date mapped to next best live fare"
+      : "Flexible round-trip dates mapped to next best live window";
   };
 
   const openLiveFlights = async (destinationCode: string) => {
@@ -371,11 +388,15 @@ export function PlannerForm() {
       const params = new URLSearchParams({
         origin: getDepartureCode(),
         destination: destinationCode,
-        mode: form.dateFlexibility === "Exact dates" ? "exact" : "flexible"
+        mode: form.dateFlexibility === "Exact dates" ? "exact" : "flexible",
+        tripMode: form.tripMode === "One way" ? "oneway" : "roundtrip"
       });
 
       if (form.dateFlexibility === "Exact dates" && form.exactDepartureDate) {
         params.set("date", form.exactDepartureDate);
+        if (form.tripMode === "Round trip" && form.exactReturnDate) {
+          params.set("returnDate", form.exactReturnDate);
+        }
       }
 
       const response = await fetch(`/api/aviasales-link?${params.toString()}`);
@@ -532,6 +553,9 @@ export function PlannerForm() {
 
                 <div className="grid gap-3 sm:grid-cols-2">
                   <div>
+                    <span className="font-semibold text-ink">Trip mode:</span> {form.tripMode}
+                  </div>
+                  <div>
                     <span className="font-semibold text-ink">Trip type:</span> {form.travelType}
                   </div>
                   <div>
@@ -673,6 +697,23 @@ export function PlannerForm() {
                       </div>
 
                       <div className="grid gap-6 md:grid-cols-3">
+                        <div className="md:col-span-1">
+                          <p className="mb-3 text-sm font-semibold text-slate-500">
+                            Trip mode
+                          </p>
+                          <div className="grid gap-3">
+                            {(["One way", "Round trip"] as TripMode[]).map((item) => (
+                              <OptionPill
+                                key={item}
+                                active={form.tripMode === item}
+                                onClick={() => updateForm("tripMode", item)}
+                              >
+                                {item}
+                              </OptionPill>
+                            ))}
+                          </div>
+                        </div>
+
                         <div className="md:col-span-1">
                           <p className="mb-3 text-sm font-semibold text-slate-500">
                             Travel type
@@ -819,19 +860,21 @@ export function PlannerForm() {
                               className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-base text-ink outline-none transition focus:border-chartreuse focus:bg-white"
                             />
                           </div>
-                          <div>
-                            <label className="mb-3 block text-sm font-semibold text-slate-500">
-                              Return date
-                            </label>
-                            <input
-                              type="date"
-                              value={form.exactReturnDate}
-                              onChange={(event) =>
-                                updateForm("exactReturnDate", event.target.value)
-                              }
-                              className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-base text-ink outline-none transition focus:border-chartreuse focus:bg-white"
-                            />
-                          </div>
+                          {form.tripMode === "Round trip" ? (
+                            <div>
+                              <label className="mb-3 block text-sm font-semibold text-slate-500">
+                                Return date
+                              </label>
+                              <input
+                                type="date"
+                                value={form.exactReturnDate}
+                                onChange={(event) =>
+                                  updateForm("exactReturnDate", event.target.value)
+                                }
+                                className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-base text-ink outline-none transition focus:border-chartreuse focus:bg-white"
+                              />
+                            </div>
+                          ) : null}
                         </div>
                       ) : null}
                     </div>

@@ -64,7 +64,9 @@ export async function GET(request: NextRequest) {
   const origin = searchParams.get("origin");
   const destination = searchParams.get("destination");
   const mode = searchParams.get("mode");
+  const tripMode = searchParams.get("tripMode");
   const exactDate = searchParams.get("date");
+  const returnDate = searchParams.get("returnDate");
 
   if (!origin || !destination) {
     return NextResponse.json(
@@ -100,10 +102,26 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    let url = buildAffiliateUrl(best.link);
+
+    if (tripMode === "roundtrip" && mode === "exact" && exactDate && returnDate) {
+      const overrideUrl = new URL(url);
+      overrideUrl.searchParams.set("depart_date", exactDate);
+      overrideUrl.searchParams.set("return_date", returnDate);
+      overrideUrl.searchParams.set("oneway", "0");
+      url = overrideUrl.toString();
+    }
+
+    if (tripMode === "oneway") {
+      const overrideUrl = new URL(url);
+      overrideUrl.searchParams.set("oneway", "1");
+      url = overrideUrl.toString();
+    }
+
     return NextResponse.json({
       price: best.price,
       departureAt: best.departure_at,
-      url: buildAffiliateUrl(best.link)
+      url
     });
   } catch (error) {
     return NextResponse.json(
