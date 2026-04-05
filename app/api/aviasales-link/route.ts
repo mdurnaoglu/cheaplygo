@@ -24,48 +24,6 @@ function buildAffiliateUrl(path: string) {
   return url.toString();
 }
 
-function addDays(dateString: string, days: number) {
-  const date = new Date(`${dateString}T00:00:00Z`);
-  date.setUTCDate(date.getUTCDate() + days);
-  return date.toISOString().slice(0, 10);
-}
-
-function buildSearchResultsUrl({
-  origin,
-  destination,
-  departDate,
-  returnDate,
-  tripMode
-}: {
-  origin: string;
-  destination: string;
-  departDate: string;
-  returnDate?: string;
-  tripMode: "oneway" | "roundtrip";
-}) {
-  const url = new URL("https://www.aviasales.com/flights/");
-  if (MARKER) {
-    url.searchParams.set("marker", MARKER);
-  }
-  url.searchParams.set("adults", "1");
-  url.searchParams.set("children", "0");
-  url.searchParams.set("infants", "0");
-  url.searchParams.set("trip_class", "0");
-  url.searchParams.set("currency", "EUR");
-  url.searchParams.set("locale", "en");
-  url.searchParams.set("segments[0][origin_iata]", origin);
-  url.searchParams.set("segments[0][destination_iata]", destination);
-  url.searchParams.set("segments[0][depart_date]", departDate);
-
-  if (tripMode === "roundtrip" && returnDate) {
-    url.searchParams.set("segments[1][origin_iata]", destination);
-    url.searchParams.set("segments[1][destination_iata]", origin);
-    url.searchParams.set("segments[1][depart_date]", returnDate);
-  }
-
-  return url.toString();
-}
-
 async function fetchGroupedPrice(
   origin: string,
   destination: string,
@@ -106,9 +64,7 @@ export async function GET(request: NextRequest) {
   const origin = searchParams.get("origin");
   const destination = searchParams.get("destination");
   const mode = searchParams.get("mode");
-  const tripMode = searchParams.get("tripMode");
   const exactDate = searchParams.get("date");
-  const returnDate = searchParams.get("returnDate");
 
   if (!origin || !destination) {
     return NextResponse.json(
@@ -144,21 +100,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const bestDepartDate = best.departure_at.slice(0, 10);
-    const safeReturnDate =
-      tripMode === "roundtrip"
-        ? mode === "exact" && returnDate && returnDate >= bestDepartDate
-          ? returnDate
-          : addDays(bestDepartDate, 4)
-        : undefined;
-
-    const url = buildSearchResultsUrl({
-      origin,
-      destination,
-      departDate: mode === "exact" && exactDate ? exactDate : bestDepartDate,
-      returnDate: safeReturnDate,
-      tripMode: tripMode === "oneway" ? "oneway" : "roundtrip"
-    });
+    const url = buildAffiliateUrl(best.link);
 
     return NextResponse.json({
       price: best.price,
