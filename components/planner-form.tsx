@@ -266,7 +266,40 @@ export function PlannerForm() {
               item.city === (form.destination?.cityName ?? form.destination?.name)
           );
 
-    return filteredBase
+    const fallbackRecommendation: Recommendation | null =
+      form.destination === null || filteredBase.length > 0
+        ? null
+        : {
+            city: form.destination.cityName ?? form.destination.name,
+            country: form.destination.country,
+            destinationCode: form.destination.code,
+            estimatedCost:
+              form.travelType === "Domestic"
+                ? Math.max(120, Math.round(form.budget * 0.7))
+                : Math.max(180, Math.round(form.budget * 0.9)),
+            flightDuration:
+              form.travelType === "Domestic" ? "1h 30m" : "3h 10m",
+            visaRequirement:
+              form.travelType === "Domestic" || form.visaStatus !== "No visa"
+                ? "visa-free"
+                : "visa required",
+            experienceMatch:
+              form.accommodationPreference === "Better experience"
+                ? "Premium experience"
+                : "Best value",
+            badge: "Best Match",
+            matchScore: 88,
+            notes: `We included ${form.destination.cityName ?? form.destination.name} because you selected it directly as your target destination.`
+          };
+
+    const effectiveBase =
+      filteredBase.length > 0 || form.destination === null
+        ? filteredBase
+        : fallbackRecommendation
+          ? [fallbackRecommendation]
+          : [];
+
+    return effectiveBase
       .map((item) => {
         let score = item.matchScore;
 
