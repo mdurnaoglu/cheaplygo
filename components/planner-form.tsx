@@ -474,7 +474,7 @@ export function PlannerForm() {
     let popup: Window | null = null;
 
     try {
-      popup = window.open("", "_blank", "noopener,noreferrer");
+      popup = window.open("about:blank", "_blank");
       setOpeningDestination(destinationCode);
       const params = new URLSearchParams({
         origin: departureCode,
@@ -500,9 +500,10 @@ export function PlannerForm() {
       }
 
       if (popup && !popup.closed) {
-        popup.location.href = payload.url;
+        popup.opener = null;
+        popup.location.replace(payload.url);
       } else {
-        window.location.href = payload.url;
+        window.location.assign(payload.url);
       }
     } catch {
       if (popup && !popup.closed) {
