@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -57,6 +57,14 @@ type Recommendation = {
   matchScore: number;
   notes: string;
 };
+
+type LiveFareMap = Record<
+  string,
+  {
+    price: number;
+    departureAt: string;
+  }
+>;
 
 type DepartureOption = {
   label: string;
@@ -198,6 +206,7 @@ export function PlannerForm() {
   const [showResults, setShowResults] = useState(false);
   const [isLoadingResults, setIsLoadingResults] = useState(false);
   const [openingDestination, setOpeningDestination] = useState<string | null>(null);
+  const [liveFares, setLiveFares] = useState<LiveFareMap>({});
   const [form, setForm] = useState<PlannerState>(initialState);
 
   const current = stepMeta[step];
@@ -361,12 +370,12 @@ export function PlannerForm() {
     });
   };
 
-  const getDepartureCode = () => {
+  const departureCode = useMemo(() => {
     const selected = departureOptions.find(
       (item) => item.label === form.departures[0]
     );
     return selected?.code ?? "IST";
-  };
+  }, [form.departures]);
 
   const getSearchDateLabel = () => {
     if (form.dateFlexibility === "Exact dates" && form.exactDepartureDate) {
@@ -386,7 +395,7 @@ export function PlannerForm() {
     try {
       setOpeningDestination(destinationCode);
       const params = new URLSearchParams({
-        origin: getDepartureCode(),
+        origin: departureCode,
         destination: destinationCode,
         mode: form.dateFlexibility === "Exact dates" ? "exact" : "flexible",
         tripMode: form.tripMode === "One way" ? "oneway" : "roundtrip"
@@ -415,6 +424,81 @@ export function PlannerForm() {
       setOpeningDestination(null);
     }
   };
+
+  useEffect(() => {
+    if (!showResults) {
+      return;
+    }
+
+    let cancelled = false;
+
+    const fetchFares = async () => {
+      const entries = await Promise.all(
+        recommendations.map(async (item) => {
+          try {
+            const params = new URLSearchParams({
+              origin: departureCode,
+              destination: item.destinationCode,
+              mode: form.dateFlexibility === "Exact dates" ? "exact" : "flexible",
+              tripMode: form.tripMode === "One way" ? "oneway" : "roundtrip"
+            });
+
+            if (form.dateFlexibility === "Exact dates" && form.exactDepartureDate) {
+              params.set("date", form.exactDepartureDate);
+              if (form.tripMode === "Round trip" && form.exactReturnDate) {
+                params.set("returnDate", form.exactReturnDate);
+              }
+            }
+
+            const response = await fetch(`/api/aviasales-link?${params.toString()}`);
+            const payload = (await response.json()) as
+              | { price: number; departureAt: string }
+              | { error: string };
+
+            if (!response.ok || !("price" in payload)) {
+              return [item.destinationCode, null] as const;
+            }
+
+            return [
+              item.destinationCode,
+              {
+                price: payload.price,
+                departureAt: payload.departureAt
+              }
+            ] as const;
+          } catch {
+            return [item.destinationCode, null] as const;
+          }
+        })
+      );
+
+      if (cancelled) {
+        return;
+      }
+
+      const nextState: LiveFareMap = {};
+      for (const [code, value] of entries) {
+        if (value) {
+          nextState[code] = value;
+        }
+      }
+      setLiveFares(nextState);
+    };
+
+    void fetchFares();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [
+    form.dateFlexibility,
+    form.exactDepartureDate,
+    form.exactReturnDate,
+    form.tripMode,
+    departureCode,
+    recommendations,
+    showResults
+  ]);
 
   function updateForm<K extends keyof PlannerState>(
     key: K,
@@ -975,10 +1059,12 @@ export function PlannerForm() {
 
                         <div className="rounded-[1.5rem] bg-slateBlue px-5 py-4 text-white">
                           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
-                            Estimated total cost
+                            Live flight price
                           </p>
                           <p className="mt-2 text-4xl font-black tracking-[-0.05em] text-chartreuse">
-                            €{item.estimatedCost}
+                            {liveFares[item.destinationCode]
+                              ? `€${liveFares[item.destinationCode].price}`
+                              : "Loading..."}
                           </p>
                         </div>
                       </div>
@@ -992,6 +1078,16 @@ export function PlannerForm() {
                         </div>
                         <div className="rounded-2xl bg-slate-50 px-4 py-3">
                           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
+                            Live fare date
+                          </p>
+                          <p className="mt-2 text-lg font-bold text-ink">
+                            {liveFares[item.destinationCode]?.departureAt
+                              ? liveFares[item.destinationCode].departureAt.slice(0, 10)
+                              : "Loading..."}
+                          </p>
+                        </div>
+                        <div className="rounded-2xl bg-slate-50 px-4 py-3">
+                          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
                             Experience match
                           </p>
                           <p className="mt-2 text-lg font-bold text-ink">{item.experienceMatch}</p>
@@ -1002,7 +1098,7 @@ export function PlannerForm() {
                           </p>
                           <p className="mt-2 text-lg font-bold text-ink">{item.matchScore}/100</p>
                         </div>
-                        <div className="rounded-2xl bg-slate-50 px-4 py-3 sm:col-span-3">
+                        <div className="rounded-2xl bg-slate-50 px-4 py-3 sm:col-span-4">
                           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
                             Live flight search window
                           </p>
