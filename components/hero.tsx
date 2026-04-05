@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { BadgeCheck, CircleDollarSign, ShieldCheck } from "lucide-react";
 import { SearchCard } from "@/components/search-card";
 
@@ -44,6 +45,21 @@ export function Hero() {
               Discover hidden flight deals from your city and travel more for
               less.
             </p>
+
+            <div className="mt-6 flex flex-col items-start gap-3">
+              <Link
+                href="/planner"
+                className="inline-flex items-center justify-center rounded-lg bg-chartreuse px-6 py-3 text-base font-semibold text-black transition duration-200 hover:scale-[1.02] hover:brightness-95"
+              >
+                Plan My Trip
+              </Link>
+              <a
+                href="#deals"
+                className="text-sm font-medium text-white/72 transition hover:text-white"
+              >
+                Or explore deals manually
+              </a>
+            </div>
 
             <div className="mt-9 flex flex-wrap gap-5">
               {features.map(({ icon: Icon, label }) => (
