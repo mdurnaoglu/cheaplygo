@@ -386,7 +386,7 @@ export function PlannerForm() {
       locale: "en"
     });
 
-    return `https://search.aviasales.com/flights/?${params.toString()}`;
+    return `https://www.aviasales.com/searches/new?${params.toString()}`;
   };
 
   const getSearchDateLabel = () => {
