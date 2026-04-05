@@ -1,26 +1,26 @@
-import { BellRing, Map, Route, Search } from "lucide-react";
+import { BrainCircuit, CalendarRange, Search, Wallet } from "lucide-react";
 
 const items = [
   {
-    icon: Route,
-    title: "We scan hundreds of routes",
-    description: "Real-time prices from full-service and low-cost airlines."
+    icon: Wallet,
+    title: "Tell us your budget and limits",
+    description: "Share departure cities, visa status, travel style, and how flexible you can be."
   },
   {
-    icon: Map,
-    title: "Find hidden deals",
-    description: "Spot cheaper destinations from Istanbul before everyone else."
+    icon: BrainCircuit,
+    title: "We rank full trip options",
+    description: "cheaplygo weighs live flight logic, stay expectations, and trip fit together."
   },
   {
-    icon: BellRing,
-    title: "Get alerted & book",
-    description: "Track price shifts and jump on the right fare at the right time."
+    icon: CalendarRange,
+    title: "Decide faster, book smarter",
+    description: "Open flights and hotels separately once the trip itself already makes sense."
   }
 ];
 
 export function Features() {
   return (
-    <section className="px-4 pb-16 sm:px-6 lg:px-8">
+    <section id="how-it-works" className="px-4 pb-16 sm:px-6 lg:px-8">
       <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[1.35fr_0.65fr]">
         <div className="grid gap-4 rounded-[2rem] bg-white p-6 shadow-card sm:grid-cols-3 sm:p-8">
           {items.map(({ icon: Icon, title, description }) => (
@@ -48,12 +48,15 @@ export function Features() {
               CheaplyGo
             </p>
             <h3 className="mt-4 max-w-[12ch] text-3xl font-extrabold tracking-[-0.05em]">
-              Start exploring cheap flights now
+              Start with a trip decision, not a blank search
             </h3>
-            <button className="mt-8 inline-flex items-center gap-2 rounded-full bg-chartreuse px-5 py-3 font-extrabold text-black transition hover:brightness-95">
+            <a
+              href="/planner"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-chartreuse px-5 py-3 font-extrabold text-black transition hover:brightness-95"
+            >
               <Search className="h-4 w-4" />
-              Search Deals
-            </button>
+              Open Trip Planner
+            </a>
           </div>
         </aside>
       </div>

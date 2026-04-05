@@ -1,4 +1,4 @@
-const navItems = ["Discover", "Deals", "Destinations", "Inspiration"];
+const navItems = ["Trip Planner", "Smart Trips", "How It Works", "Inspiration"];
 
 export function Header() {
   return (
@@ -12,7 +12,15 @@ export function Header() {
         {navItems.map((item, index) => (
           <a
             key={item}
-            href={`#${item.toLowerCase()}`}
+            href={
+              item === "Trip Planner"
+                ? "/planner"
+                : item === "Smart Trips"
+                  ? "#smart-trips"
+                  : item === "How It Works"
+                    ? "#how-it-works"
+                    : "#inspiration"
+            }
             className={`transition hover:text-ink ${
               index === 0 ? "text-ink" : ""
             }`}
@@ -28,10 +36,10 @@ export function Header() {
       </nav>
 
       <a
-        href="#search"
+        href="/planner"
         className="inline-flex items-center rounded-full bg-chartreuse px-5 py-3 text-sm font-bold text-black transition hover:scale-[1.02]"
       >
-        Find Deals
+        Plan My Trip
       </a>
     </header>
   );

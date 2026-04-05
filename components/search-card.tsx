@@ -1,12 +1,14 @@
 import {
+  BadgeCheck,
   CalendarDays,
   ChevronDown,
-  Globe2,
+  CheckCircle2,
   MapPinned,
-  Plane,
-  Search,
+  ShieldCheck,
+  Sparkles,
   UsersRound
 } from "lucide-react";
+import Link from "next/link";
 
 const fieldRows = [
   {
@@ -16,13 +18,13 @@ const fieldRows = [
   },
   {
     icon: CalendarDays,
-    label: "Departure",
-    value: "Flexible dates"
+    label: "Travel mode",
+    value: "Flexible, visa-aware"
   },
   {
     icon: UsersRound,
-    label: "Travelers",
-    value: "1 Traveler, Economy"
+    label: "Output",
+    value: "3 best-fit trip options"
   }
 ];
 
@@ -32,15 +34,17 @@ export function SearchCard() {
       id="search"
       className="relative z-20 w-full max-w-[24rem] rounded-[2rem] bg-white p-4 shadow-floating sm:p-5"
     >
-      <div className="mb-4 grid grid-cols-2 gap-2 rounded-full bg-slate-100 p-1 text-sm font-semibold text-ink/70">
-        <button className="flex items-center justify-center gap-2 rounded-full bg-slateBlue px-4 py-3 text-white">
-          <Plane className="h-4 w-4" />
-          Flights
-        </button>
-        <button className="flex items-center justify-center gap-2 rounded-full px-4 py-3">
-          <Globe2 className="h-4 w-4" />
-          Explore Map
-        </button>
+      <div className="mb-4 rounded-[1.5rem] bg-slateBlue px-4 py-4 text-white">
+        <div className="flex items-center gap-2 text-sm font-semibold text-chartreuse">
+          <Sparkles className="h-4 w-4" />
+          AI planner preview
+        </div>
+        <h3 className="mt-3 text-xl font-extrabold tracking-[-0.04em]">
+          Your next trip, narrowed down.
+        </h3>
+        <p className="mt-2 text-sm leading-6 text-white/72">
+          We combine flights, stay style, timing, and travel rules before you click out.
+        </p>
       </div>
 
       <div className="space-y-3">
@@ -65,10 +69,27 @@ export function SearchCard() {
         ))}
       </div>
 
-      <button className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-chartreuse px-5 py-4 text-base font-extrabold text-black transition hover:brightness-95">
-        <Search className="h-5 w-5" />
-        Find Cheapest Flights
-      </button>
+      <div className="mt-4 grid gap-3 rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4">
+        {[
+          { icon: CheckCircle2, label: "Budget-fit routes" },
+          { icon: ShieldCheck, label: "Visa-aware filtering" },
+          { icon: BadgeCheck, label: "Flight + hotel split" }
+        ].map(({ icon: Icon, label }) => (
+          <div key={label} className="flex items-center gap-3 text-sm font-semibold text-slateBlue">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-chartreuse/70 text-black">
+              <Icon className="h-4 w-4" />
+            </div>
+            {label}
+          </div>
+        ))}
+      </div>
+
+      <Link
+        href="/planner"
+        className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-chartreuse px-5 py-4 text-base font-extrabold text-black transition hover:brightness-95"
+      >
+        Build My Trip Plan
+      </Link>
     </div>
   );
 }

@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { BadgeCheck, CircleDollarSign, ShieldCheck } from "lucide-react";
+import { BadgeCheck, BrainCircuit, ShieldCheck, Sparkles } from "lucide-react";
 import { SearchCard } from "@/components/search-card";
 
 const features = [
-  { icon: CircleDollarSign, label: "Real-time prices" },
-  { icon: ShieldCheck, label: "All airlines" },
-  { icon: BadgeCheck, label: "Best deals found" }
+  { icon: BrainCircuit, label: "AI trip engine" },
+  { icon: ShieldCheck, label: "Visa-aware planning" },
+  { icon: BadgeCheck, label: "Flight + stay logic" }
 ];
 
 export function Hero() {
@@ -14,10 +14,15 @@ export function Hero() {
       <div className="mx-auto grid max-w-7xl gap-10 overflow-hidden rounded-[2.25rem] bg-slateBlue bg-hero-noise px-7 py-8 text-white shadow-card sm:px-10 sm:py-12 lg:grid-cols-[1.05fr_0.95fr] lg:px-14 lg:py-16">
         <div className="relative z-10 flex flex-col justify-center">
           <div className="max-w-2xl">
-            <h1 className="text-balance text-5xl font-extrabold leading-[0.95] tracking-[-0.06em] text-white sm:text-6xl lg:text-[5.4rem]">
-              Find the cheapest flights.
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/14 bg-white/10 px-4 py-2 text-sm font-semibold text-white/88 backdrop-blur">
+              <Sparkles className="h-4 w-4 text-chartreuse" />
+              Next-generation vacation planner
+            </div>
+
+            <h1 className="mt-6 text-balance text-5xl font-extrabold leading-[0.95] tracking-[-0.06em] text-white sm:text-6xl lg:text-[5.2rem]">
+              Plan your next trip.
               <span className="relative mt-2 block w-fit">
-                Anywhere.
+                Smarter.
                 <svg
                   viewBox="0 0 290 24"
                   className="absolute -bottom-4 left-0 h-5 w-[17rem] text-chartreuse sm:w-[19rem]"
@@ -42,8 +47,8 @@ export function Hero() {
             </h1>
 
             <p className="mt-10 max-w-xl text-lg leading-8 text-white/76 sm:text-xl">
-              Discover hidden flight deals from your city and travel more for
-              less.
+              cheaplygo analyzes your budget, visa status, travel style, flights,
+              and stays to build best-fit trip options in seconds.
             </p>
 
             <div className="mt-6 flex flex-col items-start gap-3">
@@ -54,11 +59,31 @@ export function Hero() {
                 Plan My Trip
               </Link>
               <a
-                href="#deals"
+                href="#smart-trips"
                 className="text-sm font-medium text-white/72 transition hover:text-white"
               >
-                Or explore deals manually
+                Or explore trips manually
               </a>
+            </div>
+
+            <div className="mt-8 grid max-w-xl gap-3 sm:grid-cols-3">
+              {[
+                "Tell us your travel rules",
+                "We rank routes + stays",
+                "Get your best-fit plan"
+              ].map((step, index) => (
+                <div
+                  key={step}
+                  className="rounded-2xl border border-white/12 bg-white/8 px-4 py-4 backdrop-blur"
+                >
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-chartreuse/90">
+                    0{index + 1}
+                  </p>
+                  <p className="mt-2 text-sm font-semibold leading-6 text-white/88">
+                    {step}
+                  </p>
+                </div>
+              ))}
             </div>
 
             <div className="mt-9 flex flex-wrap gap-5">

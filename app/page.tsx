@@ -53,7 +53,7 @@ export default function Home() {
       <Header />
       <Hero />
 
-      <section id="deals" className="px-4 py-6 sm:px-6 lg:px-8">
+      <section id="smart-trips" className="px-4 py-6 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3">
@@ -62,19 +62,23 @@ export default function Home() {
               </div>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-                  Top picks
+                  Planner inspiration
                 </p>
                 <h2 className="text-3xl font-extrabold tracking-[-0.05em] text-ink sm:text-4xl">
-                  Top Cheap Deals from Istanbul
+                  Popular trip ideas your planner can discover
                 </h2>
+                <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">
+                  These are examples of budget-smart city breaks. The planner goes further by
+                  adapting timing, visa access, and stay style to each traveler.
+                </p>
               </div>
             </div>
 
             <a
-              href="#discover"
+              href="/planner"
               className="inline-flex items-center gap-2 self-start rounded-full border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-ink shadow-sm transition hover:border-chartreuse hover:text-slateBlue"
             >
-              View all deals
+              Open trip planner
               <MoveRight className="h-4 w-4" />
             </a>
           </div>
