@@ -194,6 +194,7 @@ export function PlannerForm() {
   const [search, setSearch] = useState("");
   const [showResults, setShowResults] = useState(false);
   const [isLoadingResults, setIsLoadingResults] = useState(false);
+  const [openingDestination, setOpeningDestination] = useState<string | null>(null);
   const [form, setForm] = useState<PlannerState>(initialState);
 
   const current = stepMeta[step];
@@ -355,40 +356,6 @@ export function PlannerForm() {
     return selected?.code ?? "IST";
   };
 
-  const getAviasalesUrl = (destinationCode: string) => {
-    const today = new Date();
-    const fallbackDeparture = new Date(today);
-    fallbackDeparture.setDate(today.getDate() + 21);
-    const fallbackReturn = new Date(fallbackDeparture);
-    fallbackReturn.setDate(fallbackDeparture.getDate() + 4);
-
-    const formatDate = (value: Date) => value.toISOString().slice(0, 10);
-    const departDate =
-      form.dateFlexibility === "Exact dates" && form.exactDepartureDate
-        ? form.exactDepartureDate
-        : formatDate(fallbackDeparture);
-    const returnDate =
-      form.dateFlexibility === "Exact dates" && form.exactReturnDate
-        ? form.exactReturnDate
-        : formatDate(fallbackReturn);
-
-    const params = new URLSearchParams({
-      origin_iata: getDepartureCode(),
-      destination_iata: destinationCode,
-      depart_date: departDate,
-      return_date: returnDate,
-      oneway: "0",
-      adults: "1",
-      children: "0",
-      infants: "0",
-      trip_class: "0",
-      currency: "EUR",
-      locale: "en"
-    });
-
-    return `https://www.aviasales.com/searches/new?${params.toString()}`;
-  };
-
   const getSearchDateLabel = () => {
     if (form.dateFlexibility === "Exact dates" && form.exactDepartureDate) {
       return form.exactReturnDate
@@ -396,6 +363,36 @@ export function PlannerForm() {
         : form.exactDepartureDate;
     }
     return "Flexible dates mapped to next best live window";
+  };
+
+  const openLiveFlights = async (destinationCode: string) => {
+    try {
+      setOpeningDestination(destinationCode);
+      const params = new URLSearchParams({
+        origin: getDepartureCode(),
+        destination: destinationCode,
+        mode: form.dateFlexibility === "Exact dates" ? "exact" : "flexible"
+      });
+
+      if (form.dateFlexibility === "Exact dates" && form.exactDepartureDate) {
+        params.set("date", form.exactDepartureDate);
+      }
+
+      const response = await fetch(`/api/aviasales-link?${params.toString()}`);
+      const payload = (await response.json()) as
+        | { url: string }
+        | { error: string };
+
+      if (!response.ok || !("url" in payload)) {
+        throw new Error("Could not create live Aviasales link");
+      }
+
+      window.open(payload.url, "_blank", "noopener,noreferrer");
+    } catch {
+      window.alert("Live Aviasales results could not be loaded for this route.");
+    } finally {
+      setOpeningDestination(null);
+    }
   };
 
   function updateForm<K extends keyof PlannerState>(
@@ -983,15 +980,16 @@ export function PlannerForm() {
                       </p>
 
                       <div className="mt-6">
-                        <a
-                          href={getAviasalesUrl(item.destinationCode)}
-                          target="_blank"
-                          rel="noreferrer"
+                        <button
+                          type="button"
+                          onClick={() => void openLiveFlights(item.destinationCode)}
                           className="inline-flex items-center gap-2 rounded-xl bg-chartreuse px-5 py-3 text-sm font-semibold text-black transition hover:scale-[1.02] hover:brightness-95"
                         >
-                          See live flights
+                          {openingDestination === item.destinationCode
+                            ? "Loading live flights..."
+                            : "See live flights"}
                           <ArrowRight className="h-4 w-4" />
-                        </a>
+                        </button>
                       </div>
                     </article>
                   ))}
