@@ -10,6 +10,95 @@ type GroupedPrice = {
   link: string;
 };
 
+function toDate(value?: string) {
+  if (!value) {
+    return null;
+  }
+
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
+function getTripDurationDays(departureAt?: string, returnAt?: string) {
+  const departure = toDate(departureAt);
+  const returning = toDate(returnAt);
+
+  if (!departure || !returning) {
+    return null;
+  }
+
+  return Math.round(
+    (returning.getTime() - departure.getTime()) / (1000 * 60 * 60 * 24)
+  );
+}
+
+function rankPrices(
+  prices: GroupedPrice[],
+  options?: {
+    targetDepartureAt?: string | null;
+    targetReturnAt?: string | null;
+  }
+) {
+  const targetDeparture = toDate(options?.targetDepartureAt ?? undefined);
+  const targetReturn = toDate(options?.targetReturnAt ?? undefined);
+  const targetDuration = getTripDurationDays(
+    options?.targetDepartureAt ?? undefined,
+    options?.targetReturnAt ?? undefined
+  );
+
+  return [...prices].sort((left, right) => {
+    const leftDeparture = toDate(left.departure_at);
+    const rightDeparture = toDate(right.departure_at);
+    const leftReturn = toDate(left.return_at);
+    const rightReturn = toDate(right.return_at);
+
+    const leftDepartureDistance = targetDeparture && leftDeparture
+      ? Math.abs(leftDeparture.getTime() - targetDeparture.getTime())
+      : 0;
+    const rightDepartureDistance = targetDeparture && rightDeparture
+      ? Math.abs(rightDeparture.getTime() - targetDeparture.getTime())
+      : 0;
+
+    if (leftDepartureDistance !== rightDepartureDistance) {
+      return leftDepartureDistance - rightDepartureDistance;
+    }
+
+    const leftDurationDistance =
+      targetDuration !== null
+        ? Math.abs(
+            (getTripDurationDays(left.departure_at, left.return_at) ?? targetDuration) -
+              targetDuration
+          )
+        : 0;
+    const rightDurationDistance =
+      targetDuration !== null
+        ? Math.abs(
+            (getTripDurationDays(right.departure_at, right.return_at) ?? targetDuration) -
+              targetDuration
+          )
+        : 0;
+
+    if (leftDurationDistance !== rightDurationDistance) {
+      return leftDurationDistance - rightDurationDistance;
+    }
+
+    const leftReturnDistance =
+      targetReturn && leftReturn
+        ? Math.abs(leftReturn.getTime() - targetReturn.getTime())
+        : 0;
+    const rightReturnDistance =
+      targetReturn && rightReturn
+        ? Math.abs(rightReturn.getTime() - targetReturn.getTime())
+        : 0;
+
+    if (leftReturnDistance !== rightReturnDistance) {
+      return leftReturnDistance - rightReturnDistance;
+    }
+
+    return left.price - right.price;
+  });
+}
+
 function monthOffset(offset: number) {
   const date = new Date();
   date.setUTCDate(1);
@@ -95,12 +184,29 @@ export async function GET(request: NextRequest) {
 
   try {
     let prices: GroupedPrice[] = [];
+    let fallbackUsed = false;
 
     if (tripMode === "roundtrip") {
       if (mode === "exact" && exactDate && returnDate) {
         prices = await fetchGroupedPrice(origin, destination, exactDate, {
           returnAt: returnDate
         });
+
+        if (prices.length === 0) {
+          const exactDepartureMonth = exactDate.slice(0, 7);
+          const exactReturnMonth = returnDate.slice(0, 7);
+          const targetDuration = Math.max(
+            1,
+            getTripDurationDays(exactDate, returnDate) ?? 3
+          );
+
+          prices = await fetchGroupedPrice(origin, destination, exactDepartureMonth, {
+            returnAt: exactReturnMonth,
+            minTripDuration: String(Math.max(1, targetDuration - 1)),
+            maxTripDuration: String(targetDuration + 1)
+          });
+          fallbackUsed = prices.length > 0;
+        }
       } else {
         const monthlyResults = await Promise.all(
           Array.from({ length: 6 }, (_, index) =>
@@ -115,6 +221,10 @@ export async function GET(request: NextRequest) {
       }
     } else if (mode === "exact" && exactDate) {
       prices = await fetchGroupedPrice(origin, destination, exactDate);
+      if (prices.length === 0) {
+        prices = await fetchGroupedPrice(origin, destination, exactDate.slice(0, 7));
+        fallbackUsed = prices.length > 0;
+      }
     } else {
       const monthlyResults = await Promise.all(
         Array.from({ length: 6 }, (_, index) =>
@@ -125,10 +235,12 @@ export async function GET(request: NextRequest) {
     }
 
     const valid = prices
-      .filter((item) => item.link && item.departure_at && Number.isFinite(item.price))
-      .sort((a, b) => a.price - b.price);
+      .filter((item) => item.link && item.departure_at && Number.isFinite(item.price));
 
-    const best = valid[0];
+    const best = rankPrices(valid, {
+      targetDepartureAt: exactDate,
+      targetReturnAt: returnDate
+    })[0];
 
     if (!best) {
       return NextResponse.json(
@@ -143,7 +255,8 @@ export async function GET(request: NextRequest) {
       price: best.price,
       departureAt: best.departure_at,
       returnAt: best.return_at ?? null,
-      url
+      url,
+      fallbackUsed
     });
   } catch (error) {
     return NextResponse.json(

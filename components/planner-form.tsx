@@ -71,9 +71,11 @@ type Recommendation = {
 type LiveFareMap = Record<
   string,
   {
-    price: number;
-    departureAt: string;
+    price?: number;
+    departureAt?: string;
     returnAt?: string | null;
+    fallbackUsed?: boolean;
+    error?: string;
   }
 >;
 
@@ -496,11 +498,19 @@ export function PlannerForm() {
 
             const response = await fetch(`/api/aviasales-link?${params.toString()}`);
             const payload = (await response.json()) as
-              | { price: number; departureAt: string; returnAt?: string | null }
+              | {
+                  price: number;
+                  departureAt: string;
+                  returnAt?: string | null;
+                  fallbackUsed?: boolean;
+                }
               | { error: string };
 
             if (!response.ok || !("price" in payload)) {
-              return [item.destinationCode, null] as const;
+              return [
+                item.destinationCode,
+                { error: "Live fare unavailable for this route right now." }
+              ] as const;
             }
 
             return [
@@ -508,11 +518,15 @@ export function PlannerForm() {
               {
                 price: payload.price,
                 departureAt: payload.departureAt,
-                returnAt: payload.returnAt ?? null
+                returnAt: payload.returnAt ?? null,
+                fallbackUsed: payload.fallbackUsed ?? false
               }
             ] as const;
           } catch {
-            return [item.destinationCode, null] as const;
+            return [
+              item.destinationCode,
+              { error: "Live fare unavailable for this route right now." }
+            ] as const;
           }
         })
       );
@@ -1170,6 +1184,10 @@ export function PlannerForm() {
 
                 <div className="mt-8 grid gap-4">
                   {recommendations.map((item) => (
+                    (() => {
+                      const fare = liveFares[item.destinationCode];
+
+                      return (
                     <article
                       key={item.city}
                       className="rounded-[1.75rem] border border-slate-200 bg-white p-5 transition hover:border-chartreuse/80 hover:shadow-card sm:p-6"
@@ -1201,9 +1219,11 @@ export function PlannerForm() {
                             Live flight price
                           </p>
                           <p className="mt-2 text-4xl font-black tracking-[-0.05em] text-chartreuse">
-                            {liveFares[item.destinationCode]
-                              ? `€${liveFares[item.destinationCode].price}`
-                              : "Loading..."}
+                            {fare?.price
+                              ? `€${fare.price}`
+                              : fare?.error
+                                ? "Unavailable"
+                                : "Loading..."}
                           </p>
                         </div>
                       </div>
@@ -1220,11 +1240,13 @@ export function PlannerForm() {
                             Live fare date
                           </p>
                           <p className="mt-2 text-lg font-bold text-ink">
-                            {liveFares[item.destinationCode]?.departureAt
-                              ? liveFares[item.destinationCode].returnAt
-                                ? `${liveFares[item.destinationCode].departureAt.slice(0, 10)} to ${liveFares[item.destinationCode].returnAt?.slice(0, 10)}`
-                                : liveFares[item.destinationCode].departureAt.slice(0, 10)
-                              : "Loading..."}
+                            {fare?.departureAt
+                              ? fare.returnAt
+                                ? `${fare.departureAt.slice(0, 10)} to ${fare.returnAt.slice(0, 10)}`
+                                : fare.departureAt.slice(0, 10)
+                              : fare?.error
+                                ? "No live fare found"
+                                : "Loading..."}
                           </p>
                         </div>
                         <div className="rounded-2xl bg-slate-50 px-4 py-3">
@@ -1250,6 +1272,16 @@ export function PlannerForm() {
                       <p className="mt-5 max-w-3xl text-sm leading-7 text-slate-500">
                         {item.notes}
                       </p>
+                      {fare?.fallbackUsed ? (
+                        <p className="mt-3 rounded-2xl bg-amber-50 px-4 py-3 text-sm leading-7 text-amber-700">
+                          Exact live fare was unavailable, so we matched the closest live date window instead.
+                        </p>
+                      ) : null}
+                      {fare?.error ? (
+                        <p className="mt-3 rounded-2xl bg-slate-50 px-4 py-3 text-sm leading-7 text-slate-500">
+                          {fare.error}
+                        </p>
+                      ) : null}
                       <p className="mt-3 text-sm font-medium leading-7 text-slate-600">
                         We recommend {item.city} because it&apos;s{" "}
                         {item.visaRequirement === "visa-free"
@@ -1263,6 +1295,7 @@ export function PlannerForm() {
                         <button
                           type="button"
                           onClick={() => void openLiveFlights(item.destinationCode)}
+                          disabled={Boolean(fare?.error)}
                           className="inline-flex items-center gap-2 rounded-xl bg-chartreuse px-5 py-3 text-sm font-semibold text-black transition hover:scale-[1.02] hover:brightness-95"
                         >
                           {openingDestination === item.destinationCode
@@ -1272,6 +1305,8 @@ export function PlannerForm() {
                         </button>
                       </div>
                     </article>
+                      );
+                    })()
                   ))}
                 </div>
               </>
