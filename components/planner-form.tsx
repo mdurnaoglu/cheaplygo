@@ -19,6 +19,7 @@ import {
   Ticket,
   Wallet
 } from "lucide-react";
+import { useLanguage } from "@/components/language-provider";
 
 type TravelType = "Domestic" | "International" | "Both";
 type TripMode = "One way" | "Round trip";
@@ -278,7 +279,232 @@ function formatPlaceLabel(place: PlaceOption) {
   return place.name;
 }
 
+function labelTripMode(value: TripMode, language: "en" | "ru") {
+  if (language === "ru") {
+    return value === "One way" ? "В одну сторону" : "Туда-обратно";
+  }
+  return value;
+}
+
+function labelTravelType(value: TravelType, language: "en" | "ru") {
+  if (language === "ru") {
+    if (value === "Domestic") return "Внутри страны";
+    if (value === "International") return "Международные";
+    return "Оба";
+  }
+  return value;
+}
+
+function labelVisaStatus(value: VisaStatus, language: "en" | "ru") {
+  if (language === "ru") {
+    if (value === "No visa") return "Без визы";
+    if (value === "Schengen visa") return "Шенген";
+    return "Другая виза";
+  }
+  return value;
+}
+
+function labelDateFlexibility(value: DateFlexibility, language: "en" | "ru") {
+  if (language === "ru") {
+    return value === "Exact dates" ? "Точные даты" : "Гибкие даты";
+  }
+  return value;
+}
+
+function labelFlightPreference(value: FlightPreference, language: "en" | "ru") {
+  if (language === "ru") {
+    return value === "Cabin bag only" ? "Только ручная кладь" : "С багажом";
+  }
+  return value;
+}
+
+function labelAccommodationPreference(
+  value: AccommodationPreference,
+  language: "en" | "ru"
+) {
+  if (language === "ru") {
+    if (value === "Just sleep (budget)") return "Только переночевать";
+    if (value === "Breakfast included") return "С завтраком";
+    if (value === "Better experience") return "Лучший опыт";
+    return "Отель выберу сам";
+  }
+  return value;
+}
+
 export function PlannerForm() {
+  const { language } = useLanguage();
+  const copy =
+    language === "ru"
+      ? {
+          backHome: "Назад на главную",
+          engine: "Система рекомендаций",
+          decisionEngine: "Decision Engine",
+          heroTitle: "Спланируйте поездку",
+          heroDescription:
+            "Это не обычный поиск билетов. Мы используем ваши документы, бюджет и стиль поездки, чтобы рекомендовать более подходящие варианты.",
+          plannerSteps: "Шаги планировщика",
+          snapshot: "Снимок плана",
+          departures: "Города вылета",
+          selectCity: "Выберите хотя бы один город",
+          tripMode: "Формат поездки",
+          destination: "Направление",
+          everywhere: "Куда угодно",
+          tripType: "Тип поездки",
+          citizenship: "Гражданство",
+          visa: "Виза",
+          budget: "Бюджет",
+          dates: "Даты",
+          baggage: "Багаж",
+          stay: "Проживание",
+          aviasalesAligned: "Рекомендации по перелётам синхронизированы с интеграцией Aviasales.",
+          loadingTitle: "Подбираем лучшие поездки для вас...",
+          loadingDescription:
+            "Мы сопоставляем бюджет, визовый статус, гибкость и стиль поездки, чтобы собрать более сильные рекомендации.",
+          departurePlaceholder: "Введите город или аэропорт",
+          destinationPlaceholder: "Куда угодно или введите город",
+          searchingPlaces: "Ищем города и аэропорты...",
+          noCityFound: "Ничего не найдено по городу или аэропорту.",
+          noDestinationFound: "Подходящее направление не найдено.",
+          searchWorldwide: "Начните вводить, чтобы искать города и аэропорты Aviasales по всему миру.",
+          searchDestinationHint: "Оставьте 'Куда угодно' или выберите конкретный город.",
+          travelType: "Тип путешествия",
+          visaStatus: "Визовый статус",
+          totalFlightBudget: "Общий бюджет на перелёт",
+          aviasalesLogic: "Логика перелётов на базе Aviasales",
+          dateFlexibility: "Гибкость дат",
+          flightPreferences: "Предпочтения по перелёту",
+          departureDate: "Дата вылета",
+          returnDate: "Дата возврата",
+          accommodationPreference: "Предпочтение по проживанию",
+          stayCopyOwn: "Сначала мы оптимизируем перелёт и fit поездки, а проживание вы выберете сами.",
+          stayCopyMixed: "Мы учитываем общий опыт поездки, совмещая стоимость перелёта и стиль проживания.",
+          recommendations: "Рекомендации",
+          resultsTitle: "Лучшие направления для вашей поездки",
+          resultsDescription:
+            "Они ранжируются по общему соответствию вашим документам, бюджету, гибкости и стилю поездки, а не только по самой низкой цене.",
+          analyzed:
+            "Мы проанализировали ваши предпочтения и нашли лучшие направления под ваш бюджет, визовый статус и стиль путешествия.",
+          editAnswers: "Изменить ответы",
+          liveFlightPrice: "Живая цена перелёта",
+          unavailable: "Недоступно",
+          hotelStartsFrom: "Отель от",
+          youChoose: "Вы выбираете",
+          ecoNight: "Eco-оценка отеля за ночь",
+          hotelNight: "Оценка стартовой цены отеля за ночь",
+          flightDuration: "Длительность перелёта",
+          liveFareDate: "Дата живого тарифа",
+          noFareFound: "Живой тариф не найден",
+          experienceMatch: "Соответствие ожиданиям",
+          matchScore: "Индекс соответствия",
+          stayNights: "Ночей",
+          liveWindow: "Окно живого поиска перелёта",
+          totalTrip: "Общая оценка поездки",
+          flight: "Перелёт",
+          hotel: "Отель",
+          hotelNotIncluded: "не включён",
+          fallbackNotice:
+            "Точный живой тариф недоступен, поэтому мы подобрали ближайшее доступное окно дат.",
+          recommendationLead: "Мы рекомендуем",
+          visaFree: "без визы",
+          visaCompatible: "совместимо с вашей текущей визовой ситуацией",
+          recommendationTail:
+            "соответствует вашему бюджету и даёт лучший общий fit поездки, чем альтернативы с более низким рейтингом.",
+          loadingFlights: "Загружаем перелёты...",
+          seeFlights: "Смотреть перелёты",
+          seeHotels: "Смотреть отели",
+          previous: "Назад",
+          stop: "Стоп",
+          continue: "Продолжить",
+          seeTripOptions: "Показать варианты поездки",
+          building: "Собираем рекомендации...",
+          sorted: "Результаты отсортированы по лучшему соответствию",
+          backToForm: "Вернуться к форме"
+        }
+      : {
+          backHome: "Back to home",
+          engine: "Recommendation engine",
+          decisionEngine: "Decision Engine",
+          heroTitle: "Plan Your Trip",
+          heroDescription:
+            "This is not a raw flight search. We use your documents, budget, and travel style to recommend better-fit trips.",
+          plannerSteps: "Planner steps",
+          snapshot: "Planner snapshot",
+          departures: "Departure locations",
+          selectCity: "Select at least one city",
+          tripMode: "Trip mode",
+          destination: "Destination",
+          everywhere: "Everywhere",
+          tripType: "Trip type",
+          citizenship: "Citizenship",
+          visa: "Visa",
+          budget: "Budget",
+          dates: "Dates",
+          baggage: "Baggage",
+          stay: "Stay",
+          aviasalesAligned: "Flight recommendations currently align with your Aviasales flight integration.",
+          loadingTitle: "Finding the best trips for you...",
+          loadingDescription:
+            "We are matching your budget, visa status, flexibility, and travel style into stronger trip recommendations.",
+          departurePlaceholder: "Type a city or airport",
+          destinationPlaceholder: "Everywhere or type a city",
+          searchingPlaces: "Searching cities and airports...",
+          noCityFound: "No matching city or airport found.",
+          noDestinationFound: "No matching destination found.",
+          searchWorldwide: "Start typing to search Aviasales cities and airports worldwide.",
+          searchDestinationHint: "Leave it as Everywhere or search a specific destination.",
+          travelType: "Travel type",
+          visaStatus: "Visa status",
+          totalFlightBudget: "Total flight budget",
+          aviasalesLogic: "Aviasales-powered flight logic",
+          dateFlexibility: "Date flexibility",
+          flightPreferences: "Flight preferences",
+          departureDate: "Departure date",
+          returnDate: "Return date",
+          accommodationPreference: "Accommodation preference",
+          stayCopyOwn: "We will optimize around flights and trip fit first, then let you handle the stay separately.",
+          stayCopyMixed: "We will weigh the total trip experience using both flight cost and accommodation style.",
+          recommendations: "Recommendations",
+          resultsTitle: "Best destinations for your trip",
+          resultsDescription:
+            "These are ranked by overall fit for your documents, budget, flexibility, and travel style, not just by the lowest fare.",
+          analyzed:
+            "We analyzed your preferences and found the best destinations for your budget, visa status, and travel style.",
+          editAnswers: "Edit answers",
+          liveFlightPrice: "Live flight price",
+          unavailable: "Unavailable",
+          hotelStartsFrom: "Hotel price starts from",
+          youChoose: "You choose",
+          ecoNight: "Eco mode hotel estimate per night",
+          hotelNight: "Estimated hotel starting price per night",
+          flightDuration: "Flight duration",
+          liveFareDate: "Live fare date",
+          noFareFound: "No live fare found",
+          experienceMatch: "Experience match",
+          matchScore: "Best match score",
+          stayNights: "Stay nights",
+          liveWindow: "Live flight search window",
+          totalTrip: "Total estimated trip",
+          flight: "Flight",
+          hotel: "Hotel",
+          hotelNotIncluded: "not included",
+          fallbackNotice:
+            "Exact live fare was unavailable, so we matched the closest live date window instead.",
+          recommendationLead: "We recommend",
+          visaFree: "visa-free",
+          visaCompatible: "compatible with your current visa setup",
+          recommendationTail:
+            "fits your budget profile, and offers a stronger overall trip fit than lower-ranked alternatives.",
+          loadingFlights: "Loading live flights...",
+          seeFlights: "See live flights",
+          seeHotels: "See hotels",
+          previous: "Previous",
+          stop: "Stop",
+          continue: "Continue",
+          seeTripOptions: "See my trip options",
+          building: "Building recommendations...",
+          sorted: "Results sorted by best match",
+          backToForm: "Back to form"
+        };
   const [step, setStep] = useState(0);
   const [departureSearch, setDepartureSearch] = useState("");
   const [destinationSearch, setDestinationSearch] = useState("");
@@ -754,12 +980,12 @@ export function PlannerForm() {
             className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slateBlue shadow-sm transition hover:border-chartreuse"
           >
             <ArrowLeft className="h-4 w-4" />
-            Back to home
+            {copy.backHome}
           </Link>
 
           <div className="inline-flex items-center gap-2 rounded-full bg-slateBlue px-4 py-2 text-sm font-semibold text-white">
             <Gauge className="h-4 w-4 text-chartreuse" />
-            Recommendation engine
+            {copy.engine}
           </div>
         </div>
 
@@ -767,14 +993,13 @@ export function PlannerForm() {
           <div className="flex flex-wrap items-center justify-between gap-6">
             <div className="max-w-2xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-chartreuse/90">
-                Decision Engine
+                {copy.decisionEngine}
               </p>
               <h1 className="mt-4 text-4xl font-extrabold tracking-[-0.05em] sm:text-5xl">
-                Plan Your Trip
+                {copy.heroTitle}
               </h1>
               <p className="mt-4 text-lg leading-8 text-white/76">
-                This is not a raw flight search. We use your documents, budget,
-                and travel style to recommend better-fit trips.
+                {copy.heroDescription}
               </p>
             </div>
 
@@ -798,7 +1023,7 @@ export function PlannerForm() {
         <section className="mt-6 grid gap-6 lg:grid-cols-[0.72fr_1.28fr]">
           <aside className="rounded-[2rem] bg-white p-5 shadow-card sm:p-6">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-              Planner steps
+              {copy.plannerSteps}
             </p>
             <div className="mt-4 space-y-3">
               {stepMeta.map(({ title, icon: Icon }, index) => {
@@ -844,11 +1069,11 @@ export function PlannerForm() {
             <div className="mt-6 rounded-[1.75rem] bg-slate-50 p-5">
               <div className="flex items-center gap-2 text-sm font-semibold text-slateBlue">
                 <Briefcase className="h-4 w-4 text-chartreuse" />
-                Planner snapshot
+                {copy.snapshot}
               </div>
               <div className="mt-4 space-y-4 text-sm text-slate-600">
                 <div>
-                  <p className="font-semibold text-ink">Departure locations</p>
+                  <p className="font-semibold text-ink">{copy.departures}</p>
                   <div className="mt-2 flex flex-wrap gap-2">
                     {form.departures.length > 0 ? (
                       form.departures.map((item) => (
@@ -860,47 +1085,47 @@ export function PlannerForm() {
                         </span>
                       ))
                     ) : (
-                      <span className="text-slate-400">Select at least one city</span>
+                      <span className="text-slate-400">{copy.selectCity}</span>
                     )}
                   </div>
                 </div>
 
                 <div className="grid gap-3 sm:grid-cols-2">
                   <div>
-                    <span className="font-semibold text-ink">Trip mode:</span> {form.tripMode}
+                    <span className="font-semibold text-ink">{copy.tripMode}:</span> {labelTripMode(form.tripMode, language)}
                   </div>
                   <div>
-                    <span className="font-semibold text-ink">Destination:</span>{" "}
-                    {form.destination ? formatPlaceLabel(form.destination) : "Everywhere"}
+                    <span className="font-semibold text-ink">{copy.destination}:</span>{" "}
+                    {form.destination ? formatPlaceLabel(form.destination) : copy.everywhere}
                   </div>
                   <div>
-                    <span className="font-semibold text-ink">Trip type:</span> {form.travelType}
+                    <span className="font-semibold text-ink">{copy.tripType}:</span> {labelTravelType(form.travelType, language)}
                   </div>
                   <div>
-                    <span className="font-semibold text-ink">Citizenship:</span> {form.citizenship}
+                    <span className="font-semibold text-ink">{copy.citizenship}:</span> {form.citizenship}
                   </div>
                   <div>
-                    <span className="font-semibold text-ink">Visa:</span> {form.visaStatus}
+                    <span className="font-semibold text-ink">{copy.visa}:</span> {labelVisaStatus(form.visaStatus, language)}
                   </div>
                   <div>
-                    <span className="font-semibold text-ink">Budget:</span> €{form.budget}
+                    <span className="font-semibold text-ink">{copy.budget}:</span> €{form.budget}
                   </div>
                   <div>
-                    <span className="font-semibold text-ink">Dates:</span> {form.dateFlexibility}
+                    <span className="font-semibold text-ink">{copy.dates}:</span> {labelDateFlexibility(form.dateFlexibility, language)}
                     {form.dateFlexibility === "Exact dates" && form.exactDepartureDate ? (
                       <span> · {getSearchDateLabel()}</span>
                     ) : null}
                   </div>
                   <div>
-                    <span className="font-semibold text-ink">Baggage:</span> {form.flightPreference}
+                    <span className="font-semibold text-ink">{copy.baggage}:</span> {labelFlightPreference(form.flightPreference, language)}
                   </div>
                   <div className="sm:col-span-2">
-                    <span className="font-semibold text-ink">Stay:</span> {form.accommodationPreference}
+                    <span className="font-semibold text-ink">{copy.stay}:</span> {labelAccommodationPreference(form.accommodationPreference, language)}
                   </div>
                 </div>
 
                 <div className="rounded-2xl bg-white px-4 py-3 text-xs leading-6 text-slate-500">
-                  Flight recommendations currently align with your Aviasales flight integration.
+                  {copy.aviasalesAligned}
                 </div>
               </div>
             </div>
@@ -933,11 +1158,10 @@ export function PlannerForm() {
                         <Globe2 className="h-7 w-7 animate-pulse" />
                       </div>
                       <h3 className="mt-6 text-2xl font-extrabold tracking-[-0.04em] text-ink">
-                        Finding the best trips for you...
+                        {copy.loadingTitle}
                       </h3>
                       <p className="mt-3 max-w-xl text-base leading-7 text-slate-500">
-                        We are matching your budget, visa status, flexibility, and
-                        travel style into stronger trip recommendations.
+                        {copy.loadingDescription}
                       </p>
                     </div>
                   ) : null}
@@ -946,14 +1170,14 @@ export function PlannerForm() {
                     <div className="space-y-6">
                       <div>
                         <label className="mb-3 block text-sm font-semibold text-slate-500">
-                          Departure locations
+                          {copy.departures}
                         </label>
                         <div className="relative">
                           <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
                           <input
                             value={departureSearch}
                             onChange={(event) => setDepartureSearch(event.target.value)}
-                            placeholder="Type a city or airport"
+                            placeholder={copy.departurePlaceholder}
                             className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-4 pl-12 pr-4 text-base text-ink outline-none transition focus:border-chartreuse focus:bg-white"
                           />
                         </div>
@@ -976,7 +1200,7 @@ export function PlannerForm() {
                           <div className="mt-3 max-h-64 overflow-auto rounded-2xl border border-slate-200 bg-white p-2">
                           {isLoadingDepartureResults ? (
                             <div className="px-4 py-3 text-sm text-slate-400">
-                              Searching cities and airports...
+                              {copy.searchingPlaces}
                             </div>
                           ) : departureResults.length > 0 ? (
                             departureResults.map((item) => {
@@ -1009,27 +1233,27 @@ export function PlannerForm() {
                             })
                           ) : (
                             <div className="px-4 py-3 text-sm text-slate-400">
-                              No matching city or airport found.
+                              {copy.noCityFound}
                             </div>
                           )}
                           </div>
                         ) : (
                           <p className="mt-3 text-sm text-slate-400">
-                            Start typing to search Aviasales cities and airports worldwide.
+                            {copy.searchWorldwide}
                           </p>
                         )}
                       </div>
 
                       <div>
                         <label className="mb-3 block text-sm font-semibold text-slate-500">
-                          Destination
+                          {copy.destination}
                         </label>
                         <div className="relative">
                           <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
                           <input
                             value={destinationSearch}
                             onChange={(event) => setDestinationSearch(event.target.value)}
-                            placeholder="Everywhere or type a city"
+                            placeholder={copy.destinationPlaceholder}
                             className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-4 pl-12 pr-4 text-base text-ink outline-none transition focus:border-chartreuse focus:bg-white"
                           />
                         </div>
@@ -1046,7 +1270,7 @@ export function PlannerForm() {
                                 : "border border-slate-200 bg-white text-slate-600"
                             }`}
                           >
-                            Everywhere
+                            {copy.everywhere}
                           </button>
                           {form.destination ? (
                             <button
@@ -1063,7 +1287,7 @@ export function PlannerForm() {
                           <div className="mt-3 max-h-64 overflow-auto rounded-2xl border border-slate-200 bg-white p-2">
                             {isLoadingDestinationResults ? (
                               <div className="px-4 py-3 text-sm text-slate-400">
-                                Searching cities and airports...
+                                {copy.searchingPlaces}
                               </div>
                             ) : destinationResults.length > 0 ? (
                               destinationResults.map((item) => (
@@ -1093,13 +1317,13 @@ export function PlannerForm() {
                               ))
                             ) : (
                               <div className="px-4 py-3 text-sm text-slate-400">
-                                No matching destination found.
+                                {copy.noDestinationFound}
                               </div>
                             )}
                           </div>
                         ) : (
                           <p className="mt-3 text-sm text-slate-400">
-                            Leave it as Everywhere or search a specific destination.
+                            {copy.searchDestinationHint}
                           </p>
                         )}
                       </div>
@@ -1107,41 +1331,41 @@ export function PlannerForm() {
                       <div className="grid gap-6 md:grid-cols-3">
                         <div className="md:col-span-1">
                           <p className="mb-3 text-sm font-semibold text-slate-500">
-                            Trip mode
+                            {copy.tripMode}
                           </p>
                           <div className="grid gap-3">
                             {(["One way", "Round trip"] as TripMode[]).map((item) => (
-                              <OptionPill
-                                key={item}
-                                active={form.tripMode === item}
-                                onClick={() => updateForm("tripMode", item)}
-                              >
-                                {item}
-                              </OptionPill>
+                                <OptionPill
+                                  key={item}
+                                  active={form.tripMode === item}
+                                  onClick={() => updateForm("tripMode", item)}
+                                >
+                                {labelTripMode(item, language)}
+                                </OptionPill>
                             ))}
                           </div>
                         </div>
 
                         <div className="md:col-span-1">
                           <p className="mb-3 text-sm font-semibold text-slate-500">
-                            Travel type
+                            {copy.travelType}
                           </p>
                           <div className="grid gap-3">
                             {(["Domestic", "International", "Both"] as TravelType[]).map((item) => (
-                              <OptionPill
-                                key={item}
-                                active={form.travelType === item}
-                                onClick={() => updateForm("travelType", item)}
-                              >
-                                {item}
-                              </OptionPill>
+                                <OptionPill
+                                  key={item}
+                                  active={form.travelType === item}
+                                  onClick={() => updateForm("travelType", item)}
+                                >
+                                {labelTravelType(item, language)}
+                                </OptionPill>
                             ))}
                           </div>
                         </div>
 
                         <div className="md:col-span-1">
                           <label className="mb-3 block text-sm font-semibold text-slate-500">
-                            Citizenship
+                            {copy.citizenship}
                           </label>
                           <div className="relative">
                             <select
@@ -1163,7 +1387,7 @@ export function PlannerForm() {
 
                         <div className="md:col-span-1">
                           <p className="mb-3 text-sm font-semibold text-slate-500">
-                            Visa status
+                            {copy.visaStatus}
                           </p>
                           <div className="grid gap-3">
                             {(["No visa", "Schengen visa", "Other visa"] as VisaStatus[]).map(
@@ -1173,7 +1397,7 @@ export function PlannerForm() {
                                   active={form.visaStatus === item}
                                   onClick={() => updateForm("visaStatus", item)}
                                 >
-                                  {item}
+                                  {labelVisaStatus(item, language)}
                                 </OptionPill>
                               )
                             )}
@@ -1189,7 +1413,7 @@ export function PlannerForm() {
                         <div className="flex flex-wrap items-center justify-between gap-4">
                           <div>
                             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-slate-400">
-                              Total flight budget
+                              {copy.totalFlightBudget}
                             </p>
                             <div className="mt-2 flex items-center gap-2 text-4xl font-black tracking-[-0.05em] text-slateBlue">
                               <Euro className="h-8 w-8 text-chartreuse" />
@@ -1197,7 +1421,7 @@ export function PlannerForm() {
                             </div>
                           </div>
                           <div className="rounded-2xl bg-slate-50 px-4 py-3 text-sm font-medium text-slate-500">
-                            Aviasales-powered flight logic
+                            {copy.aviasalesLogic}
                           </div>
                         </div>
                         <input
@@ -1216,7 +1440,7 @@ export function PlannerForm() {
                       <div className="grid gap-6 md:grid-cols-2">
                         <div>
                           <p className="mb-3 text-sm font-semibold text-slate-500">
-                            Date flexibility
+                            {copy.dateFlexibility}
                           </p>
                           <div className="grid gap-3">
                             {(["Exact dates", "Flexible dates"] as DateFlexibility[]).map(
@@ -1226,7 +1450,7 @@ export function PlannerForm() {
                                   active={form.dateFlexibility === item}
                                   onClick={() => updateForm("dateFlexibility", item)}
                                 >
-                                  {item}
+                                  {labelDateFlexibility(item, language)}
                                 </OptionPill>
                               )
                             )}
@@ -1235,7 +1459,7 @@ export function PlannerForm() {
 
                         <div>
                           <p className="mb-3 text-sm font-semibold text-slate-500">
-                            Flight preferences
+                            {copy.flightPreferences}
                           </p>
                           <div className="grid gap-3">
                             {(["Cabin bag only", "Checked baggage"] as FlightPreference[]).map(
@@ -1245,7 +1469,7 @@ export function PlannerForm() {
                                   active={form.flightPreference === item}
                                   onClick={() => updateForm("flightPreference", item)}
                                 >
-                                  {item}
+                                  {labelFlightPreference(item, language)}
                                 </OptionPill>
                               )
                             )}
@@ -1257,7 +1481,7 @@ export function PlannerForm() {
                         <div className="grid gap-6 md:grid-cols-2">
                           <div>
                             <label className="mb-3 block text-sm font-semibold text-slate-500">
-                              Departure date
+                              {copy.departureDate}
                             </label>
                             <input
                               type="date"
@@ -1271,7 +1495,7 @@ export function PlannerForm() {
                           {form.tripMode === "Round trip" ? (
                             <div>
                               <label className="mb-3 block text-sm font-semibold text-slate-500">
-                                Return date
+                                {copy.returnDate}
                               </label>
                               <input
                                 type="date"
@@ -1292,7 +1516,7 @@ export function PlannerForm() {
                     <div className="space-y-6">
                       <div>
                         <p className="mb-3 text-sm font-semibold text-slate-500">
-                          Accommodation preference
+                          {copy.accommodationPreference}
                         </p>
                         <div className="grid gap-3 sm:grid-cols-2">
                           {(
@@ -1310,7 +1534,7 @@ export function PlannerForm() {
                                 updateForm("accommodationPreference", item)
                               }
                             >
-                              {item}
+                              {labelAccommodationPreference(item, language)}
                             </OptionPill>
                           ))}
                         </div>
@@ -1318,8 +1542,8 @@ export function PlannerForm() {
 
                       <div className="rounded-[1.75rem] bg-slate-50 p-5 text-sm leading-7 text-slate-600">
                         {form.accommodationPreference === "I'll choose my own hotel"
-                          ? "We will optimize around flights and trip fit first, then let you handle the stay separately."
-                          : "We will weigh the total trip experience using both flight cost and accommodation style."}
+                          ? copy.stayCopyOwn
+                          : copy.stayCopyMixed}
                       </div>
                     </div>
                   ) : null}
@@ -1330,18 +1554,16 @@ export function PlannerForm() {
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-                      Recommendations
+                      {copy.recommendations}
                     </p>
                     <h2 className="mt-1 text-3xl font-extrabold tracking-[-0.05em] text-ink">
-                      Best destinations for your trip
+                      {copy.resultsTitle}
                     </h2>
                     <p className="mt-3 max-w-2xl text-base leading-7 text-slate-500">
-                      These are ranked by overall fit for your documents, budget,
-                      flexibility, and travel style, not just by the lowest fare.
+                      {copy.resultsDescription}
                     </p>
                     <p className="mt-4 max-w-3xl rounded-2xl bg-slate-50 px-4 py-3 text-sm leading-7 text-slate-600">
-                      We analyzed your preferences and found the best destinations for
-                      your budget, visa status, and travel style.
+                      {copy.analyzed}
                     </p>
                   </div>
                   <button
@@ -1349,7 +1571,7 @@ export function PlannerForm() {
                     onClick={() => setShowResults(false)}
                     className="rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-600 transition hover:border-slateBlue/30 hover:text-ink"
                   >
-                    Edit answers
+                    {copy.editAnswers}
                   </button>
                 </div>
 
@@ -1406,29 +1628,29 @@ export function PlannerForm() {
                         <div className="grid w-full gap-3 sm:max-w-[26rem] sm:grid-cols-2">
                           <div className="rounded-[1.5rem] bg-slateBlue px-5 py-4 text-white">
                             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
-                              Live flight price
+                              {copy.liveFlightPrice}
                             </p>
                             <p className="mt-2 text-4xl font-black tracking-[-0.05em] text-chartreuse">
                               {fare?.price
                                 ? `€${fare.price}`
                                 : fare?.error
-                                  ? "Unavailable"
-                                  : "Loading..."}
+                                  ? copy.unavailable
+                                  : language === "ru" ? "Загрузка..." : "Loading..."}
                             </p>
                           </div>
                           <div className="rounded-[1.5rem] border border-chartreuse/40 bg-chartreuse/10 px-5 py-4 text-ink">
                             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-                              Hotel price starts from
+                              {copy.hotelStartsFrom}
                             </p>
                             <p className="mt-2 text-4xl font-black tracking-[-0.05em] text-slateBlue">
                               {form.accommodationPreference === "I'll choose my own hotel"
-                                ? "You choose"
+                                ? copy.youChoose
                                 : `€${hotelStartsFrom}`}
                             </p>
                             <p className="mt-1 text-xs font-medium text-slate-500">
                               {form.accommodationPreference === "Just sleep (budget)"
-                                ? "Eco mode hotel estimate per night"
-                                : "Estimated hotel starting price per night"}
+                                ? copy.ecoNight
+                                : copy.hotelNight}
                             </p>
                           </div>
                         </div>
@@ -1437,13 +1659,13 @@ export function PlannerForm() {
                       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
                         <div className="rounded-2xl bg-slate-50 px-4 py-3">
                           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
-                            Flight duration
+                            {copy.flightDuration}
                           </p>
                           <p className="mt-2 text-lg font-bold text-ink">{item.flightDuration}</p>
                         </div>
                         <div className="rounded-2xl bg-slate-50 px-4 py-3">
                           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
-                            Live fare date
+                            {copy.liveFareDate}
                           </p>
                           <p className="mt-2 text-lg font-bold text-ink">
                             {fare?.departureAt
@@ -1451,33 +1673,33 @@ export function PlannerForm() {
                                 ? `${fare.departureAt.slice(0, 10)} to ${fare.returnAt.slice(0, 10)}`
                                 : fare.departureAt.slice(0, 10)
                               : fare?.error
-                                ? "No live fare found"
-                                : "Loading..."}
+                                ? copy.noFareFound
+                                : language === "ru" ? "Загрузка..." : "Loading..."}
                           </p>
                         </div>
                         <div className="rounded-2xl bg-slate-50 px-4 py-3">
                           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
-                            Experience match
+                            {copy.experienceMatch}
                           </p>
                           <p className="mt-2 text-lg font-bold text-ink">{item.experienceMatch}</p>
                         </div>
                         <div className="rounded-2xl bg-slate-50 px-4 py-3">
                           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
-                            Best match score
+                            {copy.matchScore}
                           </p>
                           <p className="mt-2 text-lg font-bold text-ink">{item.matchScore}/100</p>
                         </div>
                         <div className="rounded-2xl bg-slate-50 px-4 py-3">
                           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
-                            Stay nights
+                            {copy.stayNights}
                           </p>
                           <p className="mt-2 text-lg font-bold text-ink">
-                            {form.tripMode === "One way" ? "1 night" : `${stayNights} nights`}
+                            {form.tripMode === "One way" ? `1 ${language === "ru" ? "ночь" : "night"}` : `${stayNights} ${language === "ru" ? "ночей" : "nights"}`}
                           </p>
                         </div>
                         <div className="rounded-2xl bg-slate-50 px-4 py-3 sm:col-span-4">
                           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
-                            Live flight search window
+                            {copy.liveWindow}
                           </p>
                           <p className="mt-2 text-lg font-bold text-ink">{getSearchDateLabel()}</p>
                         </div>
@@ -1485,19 +1707,21 @@ export function PlannerForm() {
                           <div className="flex flex-wrap items-center justify-between gap-3">
                             <div>
                               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-                                Total estimated trip
+                                {copy.totalTrip}
                               </p>
                               <p className="mt-2 text-3xl font-black tracking-[-0.05em] text-slateBlue">
                                 €{totalTripEstimate}
                               </p>
                             </div>
                             <div className="text-sm leading-6 text-slate-600">
-                              <div>Flight: {fare?.price ? `€${fare.price}` : `~€${item.estimatedCost}`}</div>
+                              <div>{copy.flight}: {fare?.price ? `€${fare.price}` : `~€${item.estimatedCost}`}</div>
                               <div>
-                                Hotel:{" "}
+                                {copy.hotel}:{" "}
                                 {form.accommodationPreference === "I'll choose my own hotel"
-                                  ? "not included"
-                                  : `from €${hotelEstimateTotal} total`}
+                                  ? copy.hotelNotIncluded
+                                  : language === "ru"
+                                    ? `от €${hotelEstimateTotal} всего`
+                                    : `from €${hotelEstimateTotal} total`}
                               </div>
                             </div>
                           </div>
@@ -1509,7 +1733,7 @@ export function PlannerForm() {
                       </p>
                       {fare?.fallbackUsed ? (
                         <p className="mt-3 rounded-2xl bg-amber-50 px-4 py-3 text-sm leading-7 text-amber-700">
-                          Exact live fare was unavailable, so we matched the closest live date window instead.
+                          {copy.fallbackNotice}
                         </p>
                       ) : null}
                       {fare?.error ? (
@@ -1518,12 +1742,11 @@ export function PlannerForm() {
                         </p>
                       ) : null}
                       <p className="mt-3 text-sm font-medium leading-7 text-slate-600">
-                        We recommend {item.city} because it&apos;s{" "}
+                        {copy.recommendationLead} {item.city}{" "}
                         {item.visaRequirement === "visa-free"
-                          ? "visa-free"
-                          : "compatible with your current visa setup"}
-                        , fits your budget profile, and offers a stronger overall
-                        trip fit than lower-ranked alternatives.
+                          ? copy.visaFree
+                          : copy.visaCompatible}
+                        , {copy.recommendationTail}
                       </p>
 
                       <div className="mt-6 flex flex-wrap gap-3">
@@ -1534,8 +1757,8 @@ export function PlannerForm() {
                           className="inline-flex items-center gap-2 rounded-xl bg-chartreuse px-5 py-3 text-sm font-semibold text-black transition hover:scale-[1.02] hover:brightness-95"
                         >
                           {openingDestination === item.destinationCode
-                            ? "Loading live flights..."
-                            : "See live flights"}
+                            ? copy.loadingFlights
+                            : copy.seeFlights}
                           <ArrowRight className="h-4 w-4" />
                         </button>
                         <button
@@ -1543,7 +1766,7 @@ export function PlannerForm() {
                           onClick={() => openHotels(item.city, item.country, fare)}
                           className="inline-flex items-center gap-2 rounded-xl border border-slateBlue/15 bg-white px-5 py-3 text-sm font-semibold text-slateBlue transition hover:border-chartreuse hover:text-ink"
                         >
-                          See hotels
+                          {copy.seeHotels}
                           <ArrowRight className="h-4 w-4" />
                         </button>
                       </div>
@@ -1574,7 +1797,7 @@ export function PlannerForm() {
                 className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-500 transition hover:border-slateBlue/30 hover:text-ink disabled:cursor-not-allowed disabled:opacity-40"
               >
                 <ArrowLeft className="h-4 w-4" />
-                {showResults ? "Back to form" : isLoadingResults ? "Stop" : "Previous"}
+                {showResults ? copy.backToForm : isLoadingResults ? copy.stop : copy.previous}
               </button>
 
               {!showResults && !isLoadingResults && step < stepMeta.length - 1 ? (
@@ -1584,7 +1807,7 @@ export function PlannerForm() {
                   disabled={!canContinue}
                   className="inline-flex items-center gap-2 rounded-xl bg-chartreuse px-6 py-3 text-sm font-semibold text-black transition hover:scale-[1.02] hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  Continue
+                  {copy.continue}
                   <ArrowRight className="h-4 w-4" />
                 </button>
               ) : !showResults && !isLoadingResults ? (
@@ -1593,16 +1816,16 @@ export function PlannerForm() {
                   onClick={startResultsFlow}
                   className="inline-flex items-center gap-2 rounded-xl bg-chartreuse px-6 py-3 text-sm font-semibold text-black transition hover:scale-[1.02] hover:brightness-95"
                 >
-                  See my trip options
+                  {copy.seeTripOptions}
                   <ArrowRight className="h-4 w-4" />
                 </button>
               ) : isLoadingResults ? (
                 <div className="rounded-xl bg-slateBlue px-5 py-3 text-sm font-semibold text-white">
-                  Building recommendations...
+                  {copy.building}
                 </div>
               ) : (
                 <div className="rounded-xl bg-slateBlue px-5 py-3 text-sm font-semibold text-white">
-                  Results sorted by best match
+                  {copy.sorted}
                 </div>
               )}
             </div>

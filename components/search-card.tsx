@@ -1,3 +1,5 @@
+"use client";
+
 import {
   BadgeCheck,
   CalendarDays,
@@ -9,6 +11,7 @@ import {
   UsersRound
 } from "lucide-react";
 import Link from "next/link";
+import { useLanguage } from "@/components/language-provider";
 
 const fieldRows = [
   {
@@ -29,6 +32,30 @@ const fieldRows = [
 ];
 
 export function SearchCard() {
+  const { language } = useLanguage();
+  const copy =
+    language === "ru"
+      ? {
+          preview: "AI-превью планировщика",
+          title: "Ваше следующее путешествие уже narrowed down.",
+          description:
+            "Мы объединяем перелёты, стиль проживания, тайминг и правила поездки ещё до перехода к партнёру.",
+          fields: ["Откуда", "Режим поездки", "Результат"],
+          values: ["Стамбул (IST)", "Гибко, с учетом визы", "3 лучших варианта поездки"],
+          bullets: ["Маршруты под бюджет", "Фильтрация по визе", "Разделение перелёта и отеля"],
+          cta: "Построить план поездки"
+        }
+      : {
+          preview: "AI planner preview",
+          title: "Your next trip, narrowed down.",
+          description:
+            "We combine flights, stay style, timing, and travel rules before you click out.",
+          fields: ["From", "Travel mode", "Output"],
+          values: ["Istanbul (IST)", "Flexible, visa-aware", "3 best-fit trip options"],
+          bullets: ["Budget-fit routes", "Visa-aware filtering", "Flight + hotel split"],
+          cta: "Build My Trip Plan"
+        };
+
   return (
     <div
       id="search"
@@ -37,20 +64,20 @@ export function SearchCard() {
       <div className="mb-4 rounded-[1.5rem] bg-slateBlue px-4 py-4 text-white">
         <div className="flex items-center gap-2 text-sm font-semibold text-chartreuse">
           <Sparkles className="h-4 w-4" />
-          AI planner preview
+          {copy.preview}
         </div>
         <h3 className="mt-3 text-xl font-extrabold tracking-[-0.04em]">
-          Your next trip, narrowed down.
+          {copy.title}
         </h3>
         <p className="mt-2 text-sm leading-6 text-white/72">
-          We combine flights, stay style, timing, and travel rules before you click out.
+          {copy.description}
         </p>
       </div>
 
       <div className="space-y-3">
-        {fieldRows.map(({ icon: Icon, label, value }) => (
+        {fieldRows.map(({ icon: Icon }, index) => (
           <div
-            key={label}
+            key={copy.fields[index]}
             className="flex items-center justify-between rounded-2xl border border-slate-200 px-4 py-3.5"
           >
             <div className="flex items-center gap-3">
@@ -59,9 +86,9 @@ export function SearchCard() {
               </div>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">
-                  {label}
+                  {copy.fields[index]}
                 </p>
-                <p className="text-sm font-semibold text-ink">{value}</p>
+                <p className="text-sm font-semibold text-ink">{copy.values[index]}</p>
               </div>
             </div>
             <ChevronDown className="h-5 w-5 text-slate-400" />
@@ -70,16 +97,12 @@ export function SearchCard() {
       </div>
 
       <div className="mt-4 grid gap-3 rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4">
-        {[
-          { icon: CheckCircle2, label: "Budget-fit routes" },
-          { icon: ShieldCheck, label: "Visa-aware filtering" },
-          { icon: BadgeCheck, label: "Flight + hotel split" }
-        ].map(({ icon: Icon, label }) => (
-          <div key={label} className="flex items-center gap-3 text-sm font-semibold text-slateBlue">
+        {[CheckCircle2, ShieldCheck, BadgeCheck].map((Icon, index) => (
+          <div key={copy.bullets[index]} className="flex items-center gap-3 text-sm font-semibold text-slateBlue">
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-chartreuse/70 text-black">
               <Icon className="h-4 w-4" />
             </div>
-            {label}
+            {copy.bullets[index]}
           </div>
         ))}
       </div>
@@ -88,7 +111,7 @@ export function SearchCard() {
         href="/planner"
         className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-chartreuse px-5 py-4 text-base font-extrabold text-black transition hover:brightness-95"
       >
-        Build My Trip Plan
+        {copy.cta}
       </Link>
     </div>
   );

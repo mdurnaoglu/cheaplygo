@@ -1,8 +1,11 @@
+"use client";
+
 import { Flame, MoveRight } from "lucide-react";
 import { DealCard } from "@/components/deal-card";
 import { Features } from "@/components/features";
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
+import { useLanguage } from "@/components/language-provider";
 
 const deals = [
   {
@@ -48,6 +51,24 @@ const deals = [
 ];
 
 export default function Home() {
+  const { language } = useLanguage();
+  const copy =
+    language === "ru"
+      ? {
+          sectionLabel: "Вдохновение для планировщика",
+          title: "Популярные идеи поездок, которые может подобрать планировщик",
+          description:
+            "Это примеры умных city-break вариантов. Сам планировщик идёт дальше и учитывает тайминг, визовый доступ и стиль проживания для каждого путешественника.",
+          cta: "Открыть планировщик"
+        }
+      : {
+          sectionLabel: "Planner inspiration",
+          title: "Popular trip ideas your planner can discover",
+          description:
+            "These are examples of budget-smart city breaks. The planner goes further by adapting timing, visa access, and stay style to each traveler.",
+          cta: "Open trip planner"
+        };
+
   return (
     <main className="pb-10">
       <Header />
@@ -62,14 +83,13 @@ export default function Home() {
               </div>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-                  Planner inspiration
+                  {copy.sectionLabel}
                 </p>
                 <h2 className="text-3xl font-extrabold tracking-[-0.05em] text-ink sm:text-4xl">
-                  Popular trip ideas your planner can discover
+                  {copy.title}
                 </h2>
                 <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">
-                  These are examples of budget-smart city breaks. The planner goes further by
-                  adapting timing, visa access, and stay style to each traveler.
+                  {copy.description}
                 </p>
               </div>
             </div>
@@ -78,7 +98,7 @@ export default function Home() {
               href="/planner"
               className="inline-flex items-center gap-2 self-start rounded-full border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-ink shadow-sm transition hover:border-chartreuse hover:text-slateBlue"
             >
-              Open trip planner
+              {copy.cta}
               <MoveRight className="h-4 w-4" />
             </a>
           </div>

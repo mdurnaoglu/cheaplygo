@@ -1,6 +1,22 @@
+"use client";
+
+import { useLanguage } from "@/components/language-provider";
+
 const navItems = ["Trip Planner", "Smart Trips", "How It Works", "Inspiration"];
 
 export function Header() {
+  const { language, setLanguage } = useLanguage();
+  const labels =
+    language === "ru"
+      ? {
+          nav: ["Планировщик", "Умные поездки", "Как это работает", "Вдохновение"],
+          cta: "Спланировать поездку"
+        }
+      : {
+          nav: navItems,
+          cta: "Plan My Trip"
+        };
+
   return (
     <header className="mx-auto flex w-full max-w-7xl items-center justify-between gap-8 px-6 py-6 lg:px-8">
       <div className="flex items-center text-[1.75rem] font-extrabold tracking-[-0.05em] text-slateBlue">
@@ -26,7 +42,7 @@ export function Header() {
             }`}
           >
             <span className="relative">
-              {item}
+              {labels.nav[index]}
               {index === 0 ? (
                 <span className="absolute -bottom-3 left-0 h-[3px] w-full rounded-full bg-chartreuse" />
               ) : null}
@@ -37,25 +53,31 @@ export function Header() {
 
       <div className="flex items-center gap-3">
         <div className="hidden items-center rounded-full border border-slate-200 bg-white p-1 sm:flex">
-          <a
-            href="?lang=en"
-            className="rounded-full px-3 py-2 text-xs font-bold text-slateBlue transition hover:bg-slate-50"
+          <button
+            type="button"
+            onClick={() => setLanguage("en")}
+            className={`rounded-full px-3 py-2 text-xs font-bold transition hover:bg-slate-50 ${
+              language === "en" ? "bg-slateBlue text-white" : "text-slateBlue"
+            }`}
           >
             EN
-          </a>
-          <a
-            href="?lang=ru"
-            className="rounded-full px-3 py-2 text-xs font-bold text-slateBlue transition hover:bg-slate-50"
+          </button>
+          <button
+            type="button"
+            onClick={() => setLanguage("ru")}
+            className={`rounded-full px-3 py-2 text-xs font-bold transition hover:bg-slate-50 ${
+              language === "ru" ? "bg-slateBlue text-white" : "text-slateBlue"
+            }`}
           >
             RU
-          </a>
+          </button>
         </div>
 
         <a
           href="/planner"
           className="inline-flex items-center rounded-full bg-chartreuse px-5 py-3 text-sm font-bold text-black transition hover:scale-[1.02]"
         >
-          Plan My Trip
+          {labels.cta}
         </a>
       </div>
     </header>

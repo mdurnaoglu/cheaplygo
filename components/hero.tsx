@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { BadgeCheck, BrainCircuit, ShieldCheck, Sparkles } from "lucide-react";
+import { useLanguage } from "@/components/language-provider";
 import { SearchCard } from "@/components/search-card";
 
 const features = [
@@ -9,6 +12,40 @@ const features = [
 ];
 
 export function Hero() {
+  const { language } = useLanguage();
+  const copy =
+    language === "ru"
+      ? {
+          badge: "Планировщик путешествий нового поколения",
+          titleTop: "Планируйте путешествие.",
+          titleBottom: "Умнее.",
+          description:
+            "cheaplygo анализирует ваш бюджет, визовый статус, стиль поездки, перелёты и проживание, чтобы за секунды собрать лучшие варианты отпуска.",
+          primaryCta: "Спланировать поездку",
+          secondaryCta: "Или изучить варианты вручную",
+          steps: [
+            "Расскажите о своих правилах поездки",
+            "Мы ранжируем маршруты и проживание",
+            "Получите лучший план поездки"
+          ],
+          features: ["AI-планировщик", "Планирование с учетом визы", "Логика перелёта и проживания"]
+        }
+      : {
+          badge: "Next-generation vacation planner",
+          titleTop: "Plan your next trip.",
+          titleBottom: "Smarter.",
+          description:
+            "cheaplygo analyzes your budget, visa status, travel style, flights, and stays to build best-fit trip options in seconds.",
+          primaryCta: "Plan My Trip",
+          secondaryCta: "Or explore trips manually",
+          steps: [
+            "Tell us your travel rules",
+            "We rank routes + stays",
+            "Get your best-fit plan"
+          ],
+          features: ["AI trip engine", "Visa-aware planning", "Flight + stay logic"]
+        };
+
   return (
     <section className="px-4 pb-8 pt-2 sm:px-6 lg:px-8">
       <div className="mx-auto grid max-w-7xl gap-10 overflow-hidden rounded-[2.25rem] bg-slateBlue bg-hero-noise px-7 py-8 text-white shadow-card sm:px-10 sm:py-12 lg:grid-cols-[1.05fr_0.95fr] lg:px-14 lg:py-16">
@@ -16,13 +53,13 @@ export function Hero() {
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/14 bg-white/10 px-4 py-2 text-sm font-semibold text-white/88 backdrop-blur">
               <Sparkles className="h-4 w-4 text-chartreuse" />
-              Next-generation vacation planner
+              {copy.badge}
             </div>
 
             <h1 className="mt-6 text-balance text-5xl font-extrabold leading-[0.95] tracking-[-0.06em] text-white sm:text-6xl lg:text-[5.2rem]">
-              Plan your next trip.
+              {copy.titleTop}
               <span className="relative mt-2 block w-fit">
-                Smarter.
+                {copy.titleBottom}
                 <svg
                   viewBox="0 0 290 24"
                   className="absolute -bottom-4 left-0 h-5 w-[17rem] text-chartreuse sm:w-[19rem]"
@@ -47,8 +84,7 @@ export function Hero() {
             </h1>
 
             <p className="mt-10 max-w-xl text-lg leading-8 text-white/76 sm:text-xl">
-              cheaplygo analyzes your budget, visa status, travel style, flights,
-              and stays to build best-fit trip options in seconds.
+              {copy.description}
             </p>
 
             <div className="mt-6 flex flex-col items-start gap-3">
@@ -56,22 +92,18 @@ export function Hero() {
                 href="/planner"
                 className="inline-flex items-center justify-center rounded-lg bg-chartreuse px-6 py-3 text-base font-semibold text-black transition duration-200 hover:scale-[1.02] hover:brightness-95"
               >
-                Plan My Trip
+                {copy.primaryCta}
               </Link>
               <a
                 href="#smart-trips"
                 className="text-sm font-medium text-white/72 transition hover:text-white"
               >
-                Or explore trips manually
+                {copy.secondaryCta}
               </a>
             </div>
 
             <div className="mt-8 grid max-w-xl gap-3 sm:grid-cols-3">
-              {[
-                "Tell us your travel rules",
-                "We rank routes + stays",
-                "Get your best-fit plan"
-              ].map((step, index) => (
+              {copy.steps.map((step, index) => (
                 <div
                   key={step}
                   className="rounded-2xl border border-white/12 bg-white/8 px-4 py-4 backdrop-blur"
@@ -87,12 +119,12 @@ export function Hero() {
             </div>
 
             <div className="mt-9 flex flex-wrap gap-5">
-              {features.map(({ icon: Icon, label }) => (
-                <div key={label} className="flex items-center gap-3 text-sm font-semibold text-white/90">
+              {features.map(({ icon: Icon }, index) => (
+                <div key={copy.features[index]} className="flex items-center gap-3 text-sm font-semibold text-white/90">
                   <div className="flex h-9 w-9 items-center justify-center rounded-full bg-chartreuse text-ink">
                     <Icon className="h-4.5 w-4.5" />
                   </div>
-                  {label}
+                  {copy.features[index]}
                 </div>
               ))}
             </div>
