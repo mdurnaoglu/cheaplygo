@@ -24,6 +24,48 @@ function buildAffiliateUrl(path: string) {
   return url.toString();
 }
 
+function addDays(dateString: string, days: number) {
+  const date = new Date(`${dateString}T00:00:00Z`);
+  date.setUTCDate(date.getUTCDate() + days);
+  return date.toISOString().slice(0, 10);
+}
+
+function buildSearchResultsUrl({
+  origin,
+  destination,
+  departDate,
+  returnDate,
+  tripMode
+}: {
+  origin: string;
+  destination: string;
+  departDate: string;
+  returnDate?: string;
+  tripMode: "oneway" | "roundtrip";
+}) {
+  const url = new URL("https://www.aviasales.com/flights/");
+  if (MARKER) {
+    url.searchParams.set("marker", MARKER);
+  }
+  url.searchParams.set("adults", "1");
+  url.searchParams.set("children", "0");
+  url.searchParams.set("infants", "0");
+  url.searchParams.set("trip_class", "0");
+  url.searchParams.set("currency", "EUR");
+  url.searchParams.set("locale", "en");
+  url.searchParams.set("segments[0][origin_iata]", origin);
+  url.searchParams.set("segments[0][destination_iata]", destination);
+  url.searchParams.set("segments[0][depart_date]", departDate);
+
+  if (tripMode === "roundtrip" && returnDate) {
+    url.searchParams.set("segments[1][origin_iata]", destination);
+    url.searchParams.set("segments[1][destination_iata]", origin);
+    url.searchParams.set("segments[1][depart_date]", returnDate);
+  }
+
+  return url.toString();
+}
+
 async function fetchGroupedPrice(
   origin: string,
   destination: string,
@@ -102,21 +144,21 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    let url = buildAffiliateUrl(best.link);
+    const bestDepartDate = best.departure_at.slice(0, 10);
+    const safeReturnDate =
+      tripMode === "roundtrip"
+        ? mode === "exact" && returnDate && returnDate >= bestDepartDate
+          ? returnDate
+          : addDays(bestDepartDate, 4)
+        : undefined;
 
-    if (tripMode === "roundtrip" && mode === "exact" && exactDate && returnDate) {
-      const overrideUrl = new URL(url);
-      overrideUrl.searchParams.set("depart_date", exactDate);
-      overrideUrl.searchParams.set("return_date", returnDate);
-      overrideUrl.searchParams.set("oneway", "0");
-      url = overrideUrl.toString();
-    }
-
-    if (tripMode === "oneway") {
-      const overrideUrl = new URL(url);
-      overrideUrl.searchParams.set("oneway", "1");
-      url = overrideUrl.toString();
-    }
+    const url = buildSearchResultsUrl({
+      origin,
+      destination,
+      departDate: mode === "exact" && exactDate ? exactDate : bestDepartDate,
+      returnDate: safeReturnDate,
+      tripMode: tripMode === "oneway" ? "oneway" : "roundtrip"
+    });
 
     return NextResponse.json({
       price: best.price,
