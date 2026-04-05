@@ -37,6 +37,8 @@ type PlannerState = {
   visaStatus: VisaStatus;
   budget: number;
   dateFlexibility: DateFlexibility;
+  exactDepartureDate: string;
+  exactReturnDate: string;
   flightPreference: FlightPreference;
   accommodationPreference: AccommodationPreference;
 };
@@ -157,6 +159,8 @@ const initialState: PlannerState = {
   visaStatus: "No visa",
   budget: 350,
   dateFlexibility: "Flexible dates",
+  exactDepartureDate: "",
+  exactReturnDate: "",
   flightPreference: "Cabin bag only",
   accommodationPreference: "Breakfast included"
 };
@@ -214,8 +218,11 @@ export function PlannerForm() {
     if (step === 0) {
       return form.departures.length > 0;
     }
+    if (step === 1 && form.dateFlexibility === "Exact dates") {
+      return Boolean(form.exactDepartureDate);
+    }
     return true;
-  }, [form.departures.length, step]);
+  }, [form.dateFlexibility, form.departures.length, form.exactDepartureDate, step]);
 
   const recommendations = useMemo<Recommendation[]>(() => {
     const base: Recommendation[] = [
@@ -349,10 +356,28 @@ export function PlannerForm() {
   };
 
   const getAviasalesUrl = (destinationCode: string) => {
+    const today = new Date();
+    const fallbackDeparture = new Date(today);
+    fallbackDeparture.setDate(today.getDate() + 21);
+    const fallbackReturn = new Date(fallbackDeparture);
+    fallbackReturn.setDate(fallbackDeparture.getDate() + 4);
+
+    const formatDate = (value: Date) => value.toISOString().slice(0, 10);
+    const departDate =
+      form.dateFlexibility === "Exact dates" && form.exactDepartureDate
+        ? form.exactDepartureDate
+        : formatDate(fallbackDeparture);
+    const returnDate =
+      form.dateFlexibility === "Exact dates" && form.exactReturnDate
+        ? form.exactReturnDate
+        : formatDate(fallbackReturn);
+
     const params = new URLSearchParams({
       origin_iata: getDepartureCode(),
       destination_iata: destinationCode,
-      oneway: "1",
+      depart_date: departDate,
+      return_date: returnDate,
+      oneway: "0",
       adults: "1",
       children: "0",
       infants: "0",
@@ -362,6 +387,15 @@ export function PlannerForm() {
     });
 
     return `https://search.aviasales.com/flights/?${params.toString()}`;
+  };
+
+  const getSearchDateLabel = () => {
+    if (form.dateFlexibility === "Exact dates" && form.exactDepartureDate) {
+      return form.exactReturnDate
+        ? `${form.exactDepartureDate} to ${form.exactReturnDate}`
+        : form.exactDepartureDate;
+    }
+    return "Flexible dates mapped to next best live window";
   };
 
   function updateForm<K extends keyof PlannerState>(
@@ -514,6 +548,9 @@ export function PlannerForm() {
                   </div>
                   <div>
                     <span className="font-semibold text-ink">Dates:</span> {form.dateFlexibility}
+                    {form.dateFlexibility === "Exact dates" && form.exactDepartureDate ? (
+                      <span> · {getSearchDateLabel()}</span>
+                    ) : null}
                   </div>
                   <div>
                     <span className="font-semibold text-ink">Baggage:</span> {form.flightPreference}
@@ -769,6 +806,37 @@ export function PlannerForm() {
                           </div>
                         </div>
                       </div>
+
+                      {form.dateFlexibility === "Exact dates" ? (
+                        <div className="grid gap-6 md:grid-cols-2">
+                          <div>
+                            <label className="mb-3 block text-sm font-semibold text-slate-500">
+                              Departure date
+                            </label>
+                            <input
+                              type="date"
+                              value={form.exactDepartureDate}
+                              onChange={(event) =>
+                                updateForm("exactDepartureDate", event.target.value)
+                              }
+                              className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-base text-ink outline-none transition focus:border-chartreuse focus:bg-white"
+                            />
+                          </div>
+                          <div>
+                            <label className="mb-3 block text-sm font-semibold text-slate-500">
+                              Return date
+                            </label>
+                            <input
+                              type="date"
+                              value={form.exactReturnDate}
+                              onChange={(event) =>
+                                updateForm("exactReturnDate", event.target.value)
+                              }
+                              className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-base text-ink outline-none transition focus:border-chartreuse focus:bg-white"
+                            />
+                          </div>
+                        </div>
+                      ) : null}
                     </div>
                   ) : null}
 
@@ -894,6 +962,12 @@ export function PlannerForm() {
                           </p>
                           <p className="mt-2 text-lg font-bold text-ink">{item.matchScore}/100</p>
                         </div>
+                        <div className="rounded-2xl bg-slate-50 px-4 py-3 sm:col-span-3">
+                          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
+                            Live flight search window
+                          </p>
+                          <p className="mt-2 text-lg font-bold text-ink">{getSearchDateLabel()}</p>
+                        </div>
                       </div>
 
                       <p className="mt-5 max-w-3xl text-sm leading-7 text-slate-500">
@@ -915,7 +989,7 @@ export function PlannerForm() {
                           rel="noreferrer"
                           className="inline-flex items-center gap-2 rounded-xl bg-chartreuse px-5 py-3 text-sm font-semibold text-black transition hover:scale-[1.02] hover:brightness-95"
                         >
-                          View Trip
+                          See live flights
                           <ArrowRight className="h-4 w-4" />
                         </a>
                       </div>
