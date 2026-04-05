@@ -471,7 +471,10 @@ export function PlannerForm() {
   };
 
   const openLiveFlights = async (destinationCode: string) => {
+    let popup: Window | null = null;
+
     try {
+      popup = window.open("", "_blank", "noopener,noreferrer");
       setOpeningDestination(destinationCode);
       const params = new URLSearchParams({
         origin: departureCode,
@@ -496,8 +499,15 @@ export function PlannerForm() {
         throw new Error("Could not create live Aviasales link");
       }
 
-      window.open(payload.url, "_blank", "noopener,noreferrer");
+      if (popup && !popup.closed) {
+        popup.location.href = payload.url;
+      } else {
+        window.location.href = payload.url;
+      }
     } catch {
+      if (popup && !popup.closed) {
+        popup.close();
+      }
       window.alert("Live Aviasales results could not be loaded for this route.");
     } finally {
       setOpeningDestination(null);
