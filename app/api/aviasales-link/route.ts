@@ -6,6 +6,7 @@ const MARKER = process.env.NEXT_PUBLIC_TRAVELPAYOUTS_MARKER;
 type GroupedPrice = {
   price: number;
   departure_at: string;
+  return_at?: string;
   link: string;
 };
 
@@ -27,7 +28,12 @@ function buildAffiliateUrl(path: string) {
 async function fetchGroupedPrice(
   origin: string,
   destination: string,
-  departureAt: string
+  departureAt: string,
+  options?: {
+    returnAt?: string;
+    minTripDuration?: string;
+    maxTripDuration?: string;
+  }
 ) {
   if (!TOKEN) {
     throw new Error("Missing TRAVELPAYOUTS_TOKEN");
@@ -42,6 +48,18 @@ async function fetchGroupedPrice(
     locale: "en",
     token: TOKEN
   });
+
+  if (options?.returnAt) {
+    params.set("return_at", options.returnAt);
+  }
+
+  if (options?.minTripDuration) {
+    params.set("min_trip_duration", options.minTripDuration);
+  }
+
+  if (options?.maxTripDuration) {
+    params.set("max_trip_duration", options.maxTripDuration);
+  }
 
   const response = await fetch(
     `https://api.travelpayouts.com/aviasales/v3/grouped_prices?${params.toString()}`,
@@ -64,7 +82,9 @@ export async function GET(request: NextRequest) {
   const origin = searchParams.get("origin");
   const destination = searchParams.get("destination");
   const mode = searchParams.get("mode");
+  const tripMode = searchParams.get("tripMode");
   const exactDate = searchParams.get("date");
+  const returnDate = searchParams.get("returnDate");
 
   if (!origin || !destination) {
     return NextResponse.json(
@@ -76,7 +96,24 @@ export async function GET(request: NextRequest) {
   try {
     let prices: GroupedPrice[] = [];
 
-    if (mode === "exact" && exactDate) {
+    if (tripMode === "roundtrip") {
+      if (mode === "exact" && exactDate && returnDate) {
+        prices = await fetchGroupedPrice(origin, destination, exactDate, {
+          returnAt: returnDate
+        });
+      } else {
+        const monthlyResults = await Promise.all(
+          Array.from({ length: 6 }, (_, index) =>
+            fetchGroupedPrice(origin, destination, monthOffset(index), {
+              returnAt: monthOffset(index + 1),
+              minTripDuration: "3",
+              maxTripDuration: "7"
+            })
+          )
+        );
+        prices = monthlyResults.flat();
+      }
+    } else if (mode === "exact" && exactDate) {
       prices = await fetchGroupedPrice(origin, destination, exactDate);
     } else {
       const monthlyResults = await Promise.all(
@@ -105,6 +142,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       price: best.price,
       departureAt: best.departure_at,
+      returnAt: best.return_at ?? null,
       url
     });
   } catch (error) {

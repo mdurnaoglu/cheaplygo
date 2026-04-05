@@ -63,6 +63,7 @@ type LiveFareMap = Record<
   {
     price: number;
     departureAt: string;
+    returnAt?: string | null;
   }
 >;
 
@@ -452,7 +453,7 @@ export function PlannerForm() {
 
             const response = await fetch(`/api/aviasales-link?${params.toString()}`);
             const payload = (await response.json()) as
-              | { price: number; departureAt: string }
+              | { price: number; departureAt: string; returnAt?: string | null }
               | { error: string };
 
             if (!response.ok || !("price" in payload)) {
@@ -463,7 +464,8 @@ export function PlannerForm() {
               item.destinationCode,
               {
                 price: payload.price,
-                departureAt: payload.departureAt
+                departureAt: payload.departureAt,
+                returnAt: payload.returnAt ?? null
               }
             ] as const;
           } catch {
@@ -1082,7 +1084,9 @@ export function PlannerForm() {
                           </p>
                           <p className="mt-2 text-lg font-bold text-ink">
                             {liveFares[item.destinationCode]?.departureAt
-                              ? liveFares[item.destinationCode].departureAt.slice(0, 10)
+                              ? liveFares[item.destinationCode].returnAt
+                                ? `${liveFares[item.destinationCode].departureAt.slice(0, 10)} to ${liveFares[item.destinationCode].returnAt?.slice(0, 10)}`
+                                : liveFares[item.destinationCode].departureAt.slice(0, 10)
                               : "Loading..."}
                           </p>
                         </div>
