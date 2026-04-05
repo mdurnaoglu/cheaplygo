@@ -5,15 +5,15 @@ import Link from "next/link";
 import {
   ArrowLeft,
   ArrowRight,
+  BedDouble,
   Briefcase,
-  Building2,
   CalendarRange,
   Check,
   ChevronDown,
-  Earth,
   Euro,
   Gauge,
   Globe2,
+  MapPinned,
   Search,
   ShieldCheck,
   Ticket,
@@ -27,7 +27,8 @@ type FlightPreference = "Cabin bag only" | "Checked baggage";
 type AccommodationPreference =
   | "Just sleep (budget)"
   | "Breakfast included"
-  | "Better experience";
+  | "Better experience"
+  | "I'll choose my own hotel";
 
 type PlannerState = {
   departures: string[];
@@ -54,13 +55,15 @@ type Recommendation = {
 
 const departureOptions = [
   "Istanbul",
+  "Sabiha Gokcen",
   "Ankara",
   "Izmir",
   "Antalya",
   "Bodrum",
   "Adana",
   "Trabzon",
-  "Kayseri"
+  "Kayseri",
+  "Dalaman"
 ];
 
 const citizenshipOptions = [
@@ -74,44 +77,22 @@ const citizenshipOptions = [
 
 const stepMeta = [
   {
-    title: "Departure locations",
-    caption: "Choose one or more airports or cities you can fly from.",
-    icon: Search
-  },
-  {
-    title: "Travel type",
-    caption: "Tell the engine how wide it should search.",
-    icon: Globe2
-  },
-  {
-    title: "Citizenship",
-    caption: "We use this to narrow destinations and entry rules.",
-    icon: Earth
-  },
-  {
-    title: "Visa status",
-    caption: "Your documents change which deals are actually useful.",
-    icon: ShieldCheck
-  },
-  {
-    title: "Budget",
-    caption: "Set the total flight budget you want the engine to respect.",
-    icon: Wallet
-  },
-  {
-    title: "Date flexibility",
-    caption: "Flexible dates unlock cheaper combinations.",
-    icon: CalendarRange
+    title: "Trip basics",
+    caption:
+      "Start with departure cities, trip scope, citizenship, and visa access.",
+    icon: MapPinned
   },
   {
     title: "Flight preferences",
-    caption: "Pick the baggage profile that matches your trip style.",
+    caption:
+      "Shape the recommendation engine with budget, date flexibility, and baggage style.",
     icon: Ticket
   },
   {
-    title: "Accommodation preference",
-    caption: "We can steer recommendations by comfort level.",
-    icon: Building2
+    title: "Stay style",
+    caption:
+      "Tell us how much accommodation should influence the recommendation.",
+    icon: BedDouble
   }
 ] as const;
 
@@ -162,21 +143,18 @@ export function PlannerForm() {
 
   const filteredDepartures = useMemo(() => {
     const normalized = search.trim().toLowerCase();
-    return departureOptions.filter((item) =>
+    const filtered = departureOptions.filter((item) =>
       item.toLowerCase().includes(normalized)
     );
+    return normalized ? filtered : departureOptions;
   }, [search]);
 
   const canContinue = useMemo(() => {
-    switch (step) {
-      case 0:
-        return form.departures.length > 0;
-      case 4:
-        return form.budget >= 100;
-      default:
-        return true;
+    if (step === 0) {
+      return form.departures.length > 0;
     }
-  }, [form.budget, form.departures.length, step]);
+    return true;
+  }, [form.departures.length, step]);
 
   const recommendations = useMemo<Recommendation[]>(() => {
     const base: Recommendation[] = [
@@ -189,7 +167,32 @@ export function PlannerForm() {
         experienceMatch: "Best value",
         badge: "Best Match",
         matchScore: 94,
-        notes: "Short flight, flexible budget fit, and easy entry from Turkey."
+        notes:
+          "We recommend Tbilisi because it's visa-free, within your budget, and works exceptionally well for flexible city breaks."
+      },
+      {
+        city: "Baku",
+        country: "Azerbaijan",
+        estimatedCost: 340,
+        flightDuration: "2h 50m",
+        visaRequirement: "visa-free",
+        experienceMatch: "Best value",
+        badge: "Smart Deal",
+        matchScore: 89,
+        notes:
+          "We recommend Baku because it balances easy access, low total cost, and short-haul convenience from Turkey."
+      },
+      {
+        city: "Belgrade",
+        country: "Serbia",
+        estimatedCost: 390,
+        flightDuration: "1h 50m",
+        visaRequirement: "visa-free",
+        experienceMatch: "Best value",
+        badge: "Trending",
+        matchScore: 87,
+        notes:
+          "We recommend Belgrade because it's visa-free, within your budget, and offers better value than many European alternatives."
       },
       {
         city: "Budapest",
@@ -200,30 +203,9 @@ export function PlannerForm() {
           form.visaStatus === "Schengen visa" ? "visa-free" : "visa required",
         experienceMatch: "Premium experience",
         badge: "Trending",
-        matchScore: 86,
-        notes: "Strong city-break value with a better hotel and food scene."
-      },
-      {
-        city: "Baku",
-        country: "Azerbaijan",
-        estimatedCost: 340,
-        flightDuration: "2h 50m",
-        visaRequirement: "visa-free",
-        experienceMatch: "Best value",
-        badge: "Smart Deal",
-        matchScore: 88,
-        notes: "Balanced mix of low airfare and simple weekend logistics."
-      },
-      {
-        city: "Dubai",
-        country: "UAE",
-        estimatedCost: 760,
-        flightDuration: "4h 55m",
-        visaRequirement: "visa-free",
-        experienceMatch: "Premium experience",
-        badge: "Trending",
-        matchScore: 74,
-        notes: "Higher spend, but strong comfort match and frequent flights."
+        matchScore: 82,
+        notes:
+          "We recommend Budapest when you want a stronger accommodation and food scene with a still-manageable total budget."
       }
     ];
 
@@ -232,16 +214,23 @@ export function PlannerForm() {
         let score = item.matchScore;
 
         if (form.travelType === "Domestic") {
-          score -= 18;
+          score -= 22;
         }
 
-        if (form.visaStatus === "No visa" && item.visaRequirement === "visa required") {
+        if (form.travelType === "Both") {
+          score += 2;
+        }
+
+        if (
+          form.visaStatus === "No visa" &&
+          item.visaRequirement === "visa required"
+        ) {
           score -= 28;
         }
 
         if (form.budget < item.estimatedCost) {
-          score -= 16;
-        } else if (form.budget >= item.estimatedCost + 120) {
+          score -= 18;
+        } else if (form.budget >= item.estimatedCost + 150) {
           score += 4;
         }
 
@@ -249,19 +238,23 @@ export function PlannerForm() {
           form.accommodationPreference === "Better experience" &&
           item.experienceMatch === "Premium experience"
         ) {
-          score += 8;
+          score += 10;
         }
 
         if (
           form.accommodationPreference === "Just sleep (budget)" &&
           item.experienceMatch === "Best value"
         ) {
-          score += 8;
+          score += 10;
+        }
+
+        if (form.accommodationPreference === "I'll choose my own hotel") {
+          score += 4;
         }
 
         if (
           form.dateFlexibility === "Flexible dates" &&
-          (item.badge === "Smart Deal" || item.badge === "Best Match")
+          item.badge !== "Trending"
         ) {
           score += 5;
         }
@@ -270,21 +263,6 @@ export function PlannerForm() {
       })
       .sort((a, b) => b.matchScore - a.matchScore);
   }, [form]);
-
-  const startResultsFlow = () => {
-    setIsLoadingResults(true);
-    window.setTimeout(() => {
-      setIsLoadingResults(false);
-      setShowResults(true);
-    }, 900);
-  };
-
-  function updateForm<K extends keyof PlannerState>(
-    key: K,
-    value: PlannerState[K]
-  ) {
-    setForm((prev) => ({ ...prev, [key]: value }));
-  }
 
   const toggleDeparture = (value: string) => {
     setForm((prev) => {
@@ -296,6 +274,21 @@ export function PlannerForm() {
           : [...prev.departures, value]
       };
     });
+  };
+
+  function updateForm<K extends keyof PlannerState>(
+    key: K,
+    value: PlannerState[K]
+  ) {
+    setForm((prev) => ({ ...prev, [key]: value }));
+  }
+
+  const startResultsFlow = () => {
+    setIsLoadingResults(true);
+    window.setTimeout(() => {
+      setIsLoadingResults(false);
+      setShowResults(true);
+    }, 900);
   };
 
   return (
@@ -312,7 +305,7 @@ export function PlannerForm() {
 
           <div className="inline-flex items-center gap-2 rounded-full bg-slateBlue px-4 py-2 text-sm font-semibold text-white">
             <Gauge className="h-4 w-4 text-chartreuse" />
-            Guided trip planner
+            Recommendation engine
           </div>
         </div>
 
@@ -326,8 +319,8 @@ export function PlannerForm() {
                 Plan Your Trip
               </h1>
               <p className="mt-4 text-lg leading-8 text-white/76">
-                Answer a few smart questions and we will shape better routes,
-                budgets, and destination ideas around your actual travel constraints.
+                This is not a raw flight search. We use your documents, budget,
+                and travel style to recommend better-fit trips.
               </p>
             </div>
 
@@ -361,7 +354,11 @@ export function PlannerForm() {
                   <button
                     key={title}
                     type="button"
-                    onClick={() => setStep(index)}
+                    onClick={() => {
+                      setShowResults(false);
+                      setIsLoadingResults(false);
+                      setStep(index);
+                    }}
                     className={`flex w-full items-center gap-4 rounded-2xl px-4 py-3 text-left transition ${
                       active
                         ? "bg-slateBlue text-white"
@@ -377,11 +374,7 @@ export function PlannerForm() {
                             : "bg-white text-slate-400"
                       }`}
                     >
-                      {completed ? (
-                        <Check className="h-5 w-5" />
-                      ) : (
-                        <Icon className="h-5 w-5" />
-                      )}
+                      {completed ? <Check className="h-5 w-5" /> : <Icon className="h-5 w-5" />}
                     </div>
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-[0.18em] opacity-60">
@@ -392,6 +385,60 @@ export function PlannerForm() {
                   </button>
                 );
               })}
+            </div>
+
+            <div className="mt-6 rounded-[1.75rem] bg-slate-50 p-5">
+              <div className="flex items-center gap-2 text-sm font-semibold text-slateBlue">
+                <Briefcase className="h-4 w-4 text-chartreuse" />
+                Planner snapshot
+              </div>
+              <div className="mt-4 space-y-4 text-sm text-slate-600">
+                <div>
+                  <p className="font-semibold text-ink">Departure locations</p>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {form.departures.length > 0 ? (
+                      form.departures.map((item) => (
+                        <span
+                          key={item}
+                          className="inline-flex rounded-full bg-chartreuse/80 px-3 py-1 text-xs font-semibold text-black"
+                        >
+                          {item}
+                        </span>
+                      ))
+                    ) : (
+                      <span className="text-slate-400">Select at least one city</span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <div>
+                    <span className="font-semibold text-ink">Trip type:</span> {form.travelType}
+                  </div>
+                  <div>
+                    <span className="font-semibold text-ink">Citizenship:</span> {form.citizenship}
+                  </div>
+                  <div>
+                    <span className="font-semibold text-ink">Visa:</span> {form.visaStatus}
+                  </div>
+                  <div>
+                    <span className="font-semibold text-ink">Budget:</span> €{form.budget}
+                  </div>
+                  <div>
+                    <span className="font-semibold text-ink">Dates:</span> {form.dateFlexibility}
+                  </div>
+                  <div>
+                    <span className="font-semibold text-ink">Baggage:</span> {form.flightPreference}
+                  </div>
+                  <div className="sm:col-span-2">
+                    <span className="font-semibold text-ink">Stay:</span> {form.accommodationPreference}
+                  </div>
+                </div>
+
+                <div className="rounded-2xl bg-white px-4 py-3 text-xs leading-6 text-slate-500">
+                  Flight recommendations currently align with your Aviasales flight integration.
+                </div>
+              </div>
             </div>
           </aside>
 
@@ -425,194 +472,222 @@ export function PlannerForm() {
                         Finding the best trips for you...
                       </h3>
                       <p className="mt-3 max-w-xl text-base leading-7 text-slate-500">
-                        We are matching your budget, visa status, flexibility,
-                        and comfort preferences to trip recommendations.
+                        We are matching your budget, visa status, flexibility, and
+                        travel style into stronger trip recommendations.
                       </p>
                     </div>
                   ) : null}
 
                   {!isLoadingResults && step === 0 ? (
-                    <div className="space-y-5">
-                      <div className="relative">
-                        <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
-                        <input
-                          value={search}
-                          onChange={(event) => setSearch(event.target.value)}
-                          placeholder="Search departure cities"
-                          className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-4 pl-12 pr-4 text-base text-ink outline-none transition focus:border-chartreuse focus:bg-white"
-                        />
+                    <div className="space-y-6">
+                      <div>
+                        <label className="mb-3 block text-sm font-semibold text-slate-500">
+                          Departure locations
+                        </label>
+                        <div className="relative">
+                          <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
+                          <input
+                            value={search}
+                            onChange={(event) => setSearch(event.target.value)}
+                            placeholder="Type a city or airport"
+                            className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-4 pl-12 pr-4 text-base text-ink outline-none transition focus:border-chartreuse focus:bg-white"
+                          />
+                        </div>
+                        <div className="mt-3 max-h-64 overflow-auto rounded-2xl border border-slate-200 bg-white p-2">
+                          {filteredDepartures.length > 0 ? (
+                            filteredDepartures.map((item) => {
+                              const active = form.departures.includes(item);
+                              return (
+                                <button
+                                  key={item}
+                                  type="button"
+                                  onClick={() => toggleDeparture(item)}
+                                  className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-sm font-semibold transition ${
+                                    active
+                                      ? "bg-chartreuse text-black"
+                                      : "text-slate-600 hover:bg-slate-50"
+                                  }`}
+                                >
+                                  <span>{item}</span>
+                                  {active ? <Check className="h-4 w-4" /> : null}
+                                </button>
+                              );
+                            })
+                          ) : (
+                            <div className="px-4 py-3 text-sm text-slate-400">
+                              No matching city found.
+                            </div>
+                          )}
+                        </div>
                       </div>
 
-                      <div className="flex flex-wrap gap-3">
-                        {form.departures.map((item) => (
-                          <button
-                            key={item}
-                            type="button"
-                            onClick={() => toggleDeparture(item)}
-                            className="inline-flex items-center gap-2 rounded-full bg-chartreuse px-4 py-2 text-sm font-semibold text-black"
-                          >
-                            {item}
-                            <span className="text-base leading-none">×</span>
-                          </button>
-                        ))}
-                      </div>
+                      <div className="grid gap-6 md:grid-cols-3">
+                        <div className="md:col-span-1">
+                          <p className="mb-3 text-sm font-semibold text-slate-500">
+                            Travel type
+                          </p>
+                          <div className="grid gap-3">
+                            {(["Domestic", "International", "Both"] as TravelType[]).map((item) => (
+                              <OptionPill
+                                key={item}
+                                active={form.travelType === item}
+                                onClick={() => updateForm("travelType", item)}
+                              >
+                                {item}
+                              </OptionPill>
+                            ))}
+                          </div>
+                        </div>
 
-                      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-                        {filteredDepartures.map((item) => {
-                          const active = form.departures.includes(item);
-                          return (
-                            <OptionPill
-                              key={item}
-                              active={active}
-                              onClick={() => toggleDeparture(item)}
+                        <div className="md:col-span-1">
+                          <label className="mb-3 block text-sm font-semibold text-slate-500">
+                            Citizenship
+                          </label>
+                          <div className="relative">
+                            <select
+                              value={form.citizenship}
+                              onChange={(event) =>
+                                updateForm("citizenship", event.target.value)
+                              }
+                              className="w-full appearance-none rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-base text-ink outline-none transition focus:border-chartreuse focus:bg-white"
                             >
-                              {item}
-                            </OptionPill>
-                          );
-                        })}
+                              {citizenshipOptions.map((item) => (
+                                <option key={item} value={item}>
+                                  {item}
+                                </option>
+                              ))}
+                            </select>
+                            <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
+                          </div>
+                        </div>
+
+                        <div className="md:col-span-1">
+                          <p className="mb-3 text-sm font-semibold text-slate-500">
+                            Visa status
+                          </p>
+                          <div className="grid gap-3">
+                            {(["No visa", "Schengen visa", "Other visa"] as VisaStatus[]).map(
+                              (item) => (
+                                <OptionPill
+                                  key={item}
+                                  active={form.visaStatus === item}
+                                  onClick={() => updateForm("visaStatus", item)}
+                                >
+                                  {item}
+                                </OptionPill>
+                              )
+                            )}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   ) : null}
 
                   {!isLoadingResults && step === 1 ? (
-                    <div className="grid gap-3 sm:grid-cols-3">
-                      {(["Domestic", "International", "Both"] as TravelType[]).map(
-                        (item) => (
-                          <OptionPill
-                            key={item}
-                            active={form.travelType === item}
-                            onClick={() => updateForm("travelType", item)}
-                          >
-                            {item}
-                          </OptionPill>
-                        )
-                      )}
+                    <div className="space-y-8">
+                      <div>
+                        <div className="flex flex-wrap items-center justify-between gap-4">
+                          <div>
+                            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-slate-400">
+                              Total flight budget
+                            </p>
+                            <div className="mt-2 flex items-center gap-2 text-4xl font-black tracking-[-0.05em] text-slateBlue">
+                              <Euro className="h-8 w-8 text-chartreuse" />
+                              {form.budget}
+                            </div>
+                          </div>
+                          <div className="rounded-2xl bg-slate-50 px-4 py-3 text-sm font-medium text-slate-500">
+                            Aviasales-powered flight logic
+                          </div>
+                        </div>
+                        <input
+                          type="range"
+                          min={100}
+                          max={1000}
+                          step={25}
+                          value={form.budget}
+                          onChange={(event) =>
+                            updateForm("budget", Number(event.target.value))
+                          }
+                          className="mt-6 h-3 w-full cursor-pointer appearance-none rounded-full bg-slate-200 accent-chartreuse"
+                        />
+                      </div>
+
+                      <div className="grid gap-6 md:grid-cols-2">
+                        <div>
+                          <p className="mb-3 text-sm font-semibold text-slate-500">
+                            Date flexibility
+                          </p>
+                          <div className="grid gap-3">
+                            {(["Exact dates", "Flexible dates"] as DateFlexibility[]).map(
+                              (item) => (
+                                <OptionPill
+                                  key={item}
+                                  active={form.dateFlexibility === item}
+                                  onClick={() => updateForm("dateFlexibility", item)}
+                                >
+                                  {item}
+                                </OptionPill>
+                              )
+                            )}
+                          </div>
+                        </div>
+
+                        <div>
+                          <p className="mb-3 text-sm font-semibold text-slate-500">
+                            Flight preferences
+                          </p>
+                          <div className="grid gap-3">
+                            {(["Cabin bag only", "Checked baggage"] as FlightPreference[]).map(
+                              (item) => (
+                                <OptionPill
+                                  key={item}
+                                  active={form.flightPreference === item}
+                                  onClick={() => updateForm("flightPreference", item)}
+                                >
+                                  {item}
+                                </OptionPill>
+                              )
+                            )}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   ) : null}
 
                   {!isLoadingResults && step === 2 ? (
-                    <div className="max-w-md">
-                      <label className="mb-3 block text-sm font-semibold text-slate-500">
-                        Citizenship
-                      </label>
-                      <div className="relative">
-                        <select
-                          value={form.citizenship}
-                          onChange={(event) =>
-                            updateForm("citizenship", event.target.value)
-                          }
-                          className="w-full appearance-none rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-base text-ink outline-none transition focus:border-chartreuse focus:bg-white"
-                        >
-                          {citizenshipOptions.map((item) => (
-                            <option key={item} value={item}>
+                    <div className="space-y-6">
+                      <div>
+                        <p className="mb-3 text-sm font-semibold text-slate-500">
+                          Accommodation preference
+                        </p>
+                        <div className="grid gap-3 sm:grid-cols-2">
+                          {(
+                            [
+                              "Just sleep (budget)",
+                              "Breakfast included",
+                              "Better experience",
+                              "I'll choose my own hotel"
+                            ] as AccommodationPreference[]
+                          ).map((item) => (
+                            <OptionPill
+                              key={item}
+                              active={form.accommodationPreference === item}
+                              onClick={() =>
+                                updateForm("accommodationPreference", item)
+                              }
+                            >
                               {item}
-                            </option>
+                            </OptionPill>
                           ))}
-                        </select>
-                        <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
-                      </div>
-                    </div>
-                  ) : null}
-
-                  {!isLoadingResults && step === 3 ? (
-                    <div className="grid gap-3 sm:grid-cols-3">
-                      {(
-                        ["No visa", "Schengen visa", "Other visa"] as VisaStatus[]
-                      ).map((item) => (
-                        <OptionPill
-                          key={item}
-                          active={form.visaStatus === item}
-                          onClick={() => updateForm("visaStatus", item)}
-                        >
-                          {item}
-                        </OptionPill>
-                      ))}
-                    </div>
-                  ) : null}
-
-                  {!isLoadingResults && step === 4 ? (
-                    <div className="max-w-2xl">
-                      <div className="flex flex-wrap items-center justify-between gap-4">
-                        <div>
-                          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-slate-400">
-                            Total flight budget
-                          </p>
-                          <div className="mt-2 flex items-center gap-2 text-4xl font-black tracking-[-0.05em] text-slateBlue">
-                            <Euro className="h-8 w-8 text-chartreuse" />
-                            {form.budget}
-                          </div>
-                        </div>
-
-                        <div className="rounded-2xl bg-slate-50 px-4 py-3 text-sm font-medium text-slate-500">
-                          Range: €100 to €1000
                         </div>
                       </div>
 
-                      <input
-                        type="range"
-                        min={100}
-                        max={1000}
-                        step={25}
-                        value={form.budget}
-                        onChange={(event) =>
-                          updateForm("budget", Number(event.target.value))
-                        }
-                        className="mt-6 h-3 w-full cursor-pointer appearance-none rounded-full bg-slate-200 accent-chartreuse"
-                      />
-                    </div>
-                  ) : null}
-
-                  {!isLoadingResults && step === 5 ? (
-                    <div className="grid gap-3 sm:grid-cols-2">
-                      {(["Exact dates", "Flexible dates"] as DateFlexibility[]).map(
-                        (item) => (
-                          <OptionPill
-                            key={item}
-                            active={form.dateFlexibility === item}
-                            onClick={() => updateForm("dateFlexibility", item)}
-                          >
-                            {item}
-                          </OptionPill>
-                        )
-                      )}
-                    </div>
-                  ) : null}
-
-                  {!isLoadingResults && step === 6 ? (
-                    <div className="grid gap-3 sm:grid-cols-2">
-                      {(
-                        ["Cabin bag only", "Checked baggage"] as FlightPreference[]
-                      ).map((item) => (
-                        <OptionPill
-                          key={item}
-                          active={form.flightPreference === item}
-                          onClick={() => updateForm("flightPreference", item)}
-                        >
-                          {item}
-                        </OptionPill>
-                      ))}
-                    </div>
-                  ) : null}
-
-                  {!isLoadingResults && step === 7 ? (
-                    <div className="grid gap-3 sm:grid-cols-3">
-                      {(
-                        [
-                          "Just sleep (budget)",
-                          "Breakfast included",
-                          "Better experience"
-                        ] as AccommodationPreference[]
-                      ).map((item) => (
-                        <OptionPill
-                          key={item}
-                          active={form.accommodationPreference === item}
-                          onClick={() =>
-                            updateForm("accommodationPreference", item)
-                          }
-                        >
-                          {item}
-                        </OptionPill>
-                      ))}
+                      <div className="rounded-[1.75rem] bg-slate-50 p-5 text-sm leading-7 text-slate-600">
+                        {form.accommodationPreference === "I'll choose my own hotel"
+                          ? "We will optimize around flights and trip fit first, then let you handle the stay separately."
+                          : "We will weigh the total trip experience using both flight cost and accommodation style."}
+                      </div>
                     </div>
                   ) : null}
                 </div>
@@ -629,7 +704,7 @@ export function PlannerForm() {
                     </h2>
                     <p className="mt-3 max-w-2xl text-base leading-7 text-slate-500">
                       These are ranked by overall fit for your documents, budget,
-                      flexibility, and trip style, not just by the lowest fare.
+                      flexibility, and travel style, not just by the lowest fare.
                     </p>
                     <p className="mt-4 max-w-3xl rounded-2xl bg-slate-50 px-4 py-3 text-sm leading-7 text-slate-600">
                       We analyzed your preferences and found the best destinations for
@@ -675,7 +750,7 @@ export function PlannerForm() {
 
                         <div className="rounded-[1.5rem] bg-slateBlue px-5 py-4 text-white">
                           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
-                            Estimated total
+                            Estimated total cost
                           </p>
                           <p className="mt-2 text-4xl font-black tracking-[-0.05em] text-chartreuse">
                             €{item.estimatedCost}
@@ -711,9 +786,9 @@ export function PlannerForm() {
                         We recommend {item.city} because it&apos;s{" "}
                         {item.visaRequirement === "visa-free"
                           ? "visa-free"
-                          : "aligned with your current visa access"}
+                          : "compatible with your current visa setup"}
                         , fits your budget profile, and offers a stronger overall
-                        match than lower-fit alternatives.
+                        trip fit than lower-ranked alternatives.
                       </p>
 
                       <div className="mt-6">
@@ -730,47 +805,6 @@ export function PlannerForm() {
                 </div>
               </>
             )}
-
-            <div className="mt-10 rounded-[1.75rem] bg-slate-50 p-5">
-              <div className="flex items-center gap-2 text-sm font-semibold text-slateBlue">
-                <Briefcase className="h-4 w-4 text-chartreuse" />
-                Planner snapshot
-              </div>
-              <div className="mt-4 grid gap-3 text-sm text-slate-600 sm:grid-cols-2">
-                <div>
-                  <span className="font-semibold text-ink">From:</span>{" "}
-                  {form.departures.join(", ")}
-                </div>
-                <div>
-                  <span className="font-semibold text-ink">Trip type:</span>{" "}
-                  {form.travelType}
-                </div>
-                <div>
-                  <span className="font-semibold text-ink">Citizenship:</span>{" "}
-                  {form.citizenship}
-                </div>
-                <div>
-                  <span className="font-semibold text-ink">Visa:</span>{" "}
-                  {form.visaStatus}
-                </div>
-                <div>
-                  <span className="font-semibold text-ink">Budget:</span> €
-                  {form.budget}
-                </div>
-                <div>
-                  <span className="font-semibold text-ink">Dates:</span>{" "}
-                  {form.dateFlexibility}
-                </div>
-                <div>
-                  <span className="font-semibold text-ink">Baggage:</span>{" "}
-                  {form.flightPreference}
-                </div>
-                <div>
-                  <span className="font-semibold text-ink">Stay:</span>{" "}
-                  {form.accommodationPreference}
-                </div>
-              </div>
-            </div>
 
             <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
               <button
