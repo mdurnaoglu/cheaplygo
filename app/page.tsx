@@ -71,7 +71,7 @@ export default function Home() {
 
   return (
     <main className="pb-10">
-      <div className="relative px-4 pt-0 sm:px-6 lg:px-8">
+      <div className="relative">
         <Header />
         <Hero />
       </div>
