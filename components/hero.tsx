@@ -16,14 +16,18 @@ export function Hero() {
           eyebrowAccent: "для вашего бюджета",
           title: "Планируйте своё следующее путешествие умнее",
           cta: "Спланировать поездку",
-          secondaryCta: "или мгновенно забронировать билет"
+          secondaryCta: "или мгновенно забронировать билет",
+          trustPrefix: "Без входа. Без карты.",
+          trustEmphasis: "Просто начните."
         }
       : {
           eyebrowPrefix: "Next Generation",
           eyebrowAccent: "Trip Planner",
           title: "Plan your next Trip Smarter",
           cta: "Plan my trip",
-          secondaryCta: "or Book your Ticket Instantly"
+          secondaryCta: "or Book your Ticket Instantly",
+          trustPrefix: "No login. No credit card.",
+          trustEmphasis: "Just Start."
         };
 
   return (
@@ -53,7 +57,15 @@ export function Hero() {
               {copy.title}
             </h1>
 
-            <div className="mt-10">
+            <p
+              className="mt-8 text-base text-white/88 sm:text-lg"
+              style={{ fontFamily: appleFontStack }}
+            >
+              <span>{copy.trustPrefix} </span>
+              <strong className="font-semibold text-white">{copy.trustEmphasis}</strong>
+            </p>
+
+            <div className="mt-8">
               <Link
                 href="/planner"
                 className="inline-flex items-center gap-2 rounded-2xl bg-chartreuse px-8 py-4 text-lg font-semibold text-black shadow-[0_16px_40px_rgba(201,255,5,0.24)] transition duration-200 hover:scale-[1.02] hover:bg-[#b9eb04]"
