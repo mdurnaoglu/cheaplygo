@@ -19,7 +19,7 @@ import {
   Ticket,
   Wallet
 } from "lucide-react";
-import { useLanguage } from "@/components/language-provider";
+import { useLanguage, type Language } from "@/components/language-provider";
 
 type TravelType = "Domestic" | "International" | "Both";
 type TripMode = "One way" | "Round trip";
@@ -205,21 +205,15 @@ const citizenshipOptions = [
 
 const stepMeta = [
   {
-    title: "Trip basics",
-    caption:
-      "Start with departure cities, trip scope, citizenship, and visa access.",
+    key: "basics",
     icon: MapPinned
   },
   {
-    title: "Flight preferences",
-    caption:
-      "Shape the recommendation engine with budget, date flexibility, and baggage style.",
+    key: "flightPreferences",
     icon: Ticket
   },
   {
-    title: "Stay style",
-    caption:
-      "Tell us how much accommodation should influence the recommendation.",
+    key: "stayStyle",
     icon: BedDouble
   }
 ] as const;
@@ -280,68 +274,99 @@ function formatPlaceLabel(place: PlaceOption) {
   return place.name;
 }
 
-function labelTripMode(value: TripMode, language: "en" | "ru") {
+function labelTripMode(value: TripMode, language: Language) {
   if (language === "ru") {
     return value === "One way" ? "В одну сторону" : "Туда-обратно";
+  }
+  if (language === "tr") {
+    return value === "One way" ? "Tek yön" : "Gidiş-dönüş";
   }
   return value;
 }
 
-function labelTravelType(value: TravelType, language: "en" | "ru") {
+function labelTravelType(value: TravelType, language: Language) {
   if (language === "ru") {
     if (value === "Domestic") return "Внутри страны";
     if (value === "International") return "Международные";
     return "Оба";
   }
+  if (language === "tr") {
+    if (value === "Domestic") return "Yurt içi";
+    if (value === "International") return "Yurt dışı";
+    return "İkisi de";
+  }
   return value;
 }
 
-function labelVisaStatus(value: VisaStatus, language: "en" | "ru") {
+function labelVisaStatus(value: VisaStatus, language: Language) {
   if (language === "ru") {
     if (value === "No visa") return "Без визы";
     if (value === "E-visa") return "Электронная виза";
     if (value === "Schengen visa") return "Шенген";
     return "Другая виза";
   }
+  if (language === "tr") {
+    if (value === "No visa") return "Vizesiz";
+    if (value === "E-visa") return "E-vize";
+    if (value === "Schengen visa") return "Schengen vizesi";
+    return "Diğer vize";
+  }
   return value;
 }
 
 function labelVisaRequirement(
   value: Recommendation["visaRequirement"],
-  language: "en" | "ru"
+  language: Language
 ) {
   if (language === "ru") {
     if (value === "visa-free") return "без визы";
     if (value === "e-visa required") return "нужна e-виза";
     return "нужна виза";
   }
+  if (language === "tr") {
+    if (value === "visa-free") return "vizesiz";
+    if (value === "e-visa required") return "e-vize gerekli";
+    return "vize gerekli";
+  }
 
   return value;
 }
 
-function labelDateFlexibility(value: DateFlexibility, language: "en" | "ru") {
+function labelDateFlexibility(value: DateFlexibility, language: Language) {
   if (language === "ru") {
     return value === "Exact dates" ? "Точные даты" : "Гибкие даты";
+  }
+  if (language === "tr") {
+    return value === "Exact dates" ? "Net tarihler" : "Esnek tarihler";
   }
   return value;
 }
 
-function labelFlightPreference(value: FlightPreference, language: "en" | "ru") {
+function labelFlightPreference(value: FlightPreference, language: Language) {
   if (language === "ru") {
     return value === "Cabin bag only" ? "Только ручная кладь" : "С багажом";
+  }
+  if (language === "tr") {
+    return value === "Cabin bag only" ? "Sadece kabin bagajı" : "Check-in bagajı";
   }
   return value;
 }
 
 function labelAccommodationPreference(
   value: AccommodationPreference,
-  language: "en" | "ru"
+  language: Language
 ) {
   if (language === "ru") {
     if (value === "Just sleep (budget)") return "Только переночевать";
     if (value === "Breakfast included") return "С завтраком";
     if (value === "Better experience") return "Лучший опыт";
     return "Отель выберу сам";
+  }
+  if (language === "tr") {
+    if (value === "Just sleep (budget)") return "Sadece uyu (ekonomik)";
+    if (value === "Breakfast included") return "Kahvaltı dahil";
+    if (value === "Better experience") return "Daha iyi deneyim";
+    return "Oteli kendim seçeceğim";
   }
   return value;
 }
@@ -434,8 +459,123 @@ export function PlannerForm() {
           seeTripOptions: "Показать варианты поездки",
           building: "Собираем рекомендации...",
           sorted: "Результаты отсортированы по лучшему соответствию",
-          backToForm: "Вернуться к форме"
+          backToForm: "Вернуться к форме",
+          stepOf: "Шаг",
+          basicsTitle: "Основы поездки",
+          basicsCaption:
+            "Начните с городов вылета, формата поездки, гражданства и визового доступа.",
+          flightPreferencesTitle: "Предпочтения по перелёту",
+          flightPreferencesCaption:
+            "Настройте движок рекомендаций через бюджет, гибкость дат и тип багажа.",
+          stayStyleTitle: "Стиль проживания",
+          stayStyleCaption:
+            "Подскажите, насколько проживание должно влиять на рекомендацию.",
+          loadingShort: "Загрузка...",
+          nightSingle: "ночь",
+          nightPlural: "ночей",
+          fromTotal: "от €{amount} всего"
         }
+      : language === "tr"
+        ? {
+            backHome: "Anasayfaya dön",
+            engine: "Öneri motoru",
+            decisionEngine: "Decision Engine",
+            heroTitle: "Trip’ini Planla",
+            heroDescription:
+              "Bu normal bir uçuş araması değil. Belgelerini, bütçeni ve seyahat stilini kullanarak daha iyi uyan trip’ler öneriyoruz.",
+            plannerSteps: "Planner adımları",
+            snapshot: "Planner özeti",
+            departures: "Kalkış noktaları",
+            selectCity: "En az bir şehir seç",
+            tripMode: "Trip modu",
+            destination: "Varış noktası",
+            everywhere: "Her yer",
+            tripType: "Trip tipi",
+            citizenship: "Vatandaşlık",
+            visa: "Vize",
+            budget: "Bütçe",
+            dates: "Tarihler",
+            baggage: "Bagaj",
+            stay: "Konaklama",
+            aviasalesAligned: "Uçuş önerileri şu an Aviasales entegrasyonunla uyumlu çalışıyor.",
+            loadingTitle: "Senin için en iyi tripleri buluyoruz...",
+            loadingDescription:
+              "Bütçeni, vize durumunu, esnekliğini ve seyahat stilini daha güçlü trip önerilerine dönüştürüyoruz.",
+            departurePlaceholder: "Bir şehir veya havalimanı yaz",
+            destinationPlaceholder: "Her yer veya bir şehir yaz",
+            searchingPlaces: "Şehirler ve havalimanları aranıyor...",
+            noCityFound: "Eşleşen şehir veya havalimanı bulunamadı.",
+            noDestinationFound: "Eşleşen varış noktası bulunamadı.",
+            searchWorldwide: "Dünya genelinde Aviasales şehir ve havalimanlarını aramak için yazmaya başla.",
+            searchDestinationHint: "Her yer olarak bırakabilir ya da spesifik bir destinasyon seçebilirsin.",
+            travelType: "Seyahat tipi",
+            visaStatus: "Vize durumu",
+            totalFlightBudget: "Toplam uçuş bütçesi",
+            aviasalesLogic: "Aviasales destekli uçuş mantığı",
+            dateFlexibility: "Tarih esnekliği",
+            flightPreferences: "Uçuş tercihleri",
+            departureDate: "Gidiş tarihi",
+            returnDate: "Dönüş tarihi",
+            accommodationPreference: "Konaklama tercihi",
+            stayCopyOwn: "Önce uçuşu ve trip uyumunu optimize ederiz, konaklamayı sen ayrıca seçersin.",
+            stayCopyMixed: "Uçuş maliyeti ve konaklama stilini birlikte tartarak toplam trip deneyimini değerlendiririz.",
+            recommendations: "Öneriler",
+            resultsTitle: "Trip’in için en iyi destinasyonlar",
+            resultsDescription:
+              "Bunlar sadece en ucuz bilete göre değil; belgelerin, bütçen, esnekliğin ve seyahat stiline göre sıralanır.",
+            analyzed:
+              "Tercihlerini analiz ettik ve bütçene, vize durumuna ve seyahat stiline uygun en iyi destinasyonları bulduk.",
+            editAnswers: "Cevapları düzenle",
+            liveFlightPrice: "Canlı uçuş fiyatı",
+            unavailable: "Yok",
+            hotelStartsFrom: "Otel fiyatı şu seviyeden başlar",
+            youChoose: "Sen seçersin",
+            ecoNight: "Gece başı eco otel tahmini",
+            hotelNight: "Gece başı tahmini otel başlangıç fiyatı",
+            flightDuration: "Uçuş süresi",
+            liveFareDate: "Canlı fiyat tarihi",
+            noFareFound: "Canlı fiyat bulunamadı",
+            experienceMatch: "Deneyim uyumu",
+            matchScore: "Uyum skoru",
+            stayNights: "Konaklama gecesi",
+            liveWindow: "Canlı uçuş arama penceresi",
+            totalTrip: "Toplam tahmini trip",
+            flight: "Uçuş",
+            hotel: "Otel",
+            hotelNotIncluded: "dahil değil",
+            fallbackNotice:
+              "Tam canlı fiyat yoktu, bu yüzden en yakın canlı tarih penceresini eşleştirdik.",
+            recommendationLead: "Şunu öneriyoruz:",
+            visaFree: "vizesiz",
+            eVisaRequired: "e-vize gerekli",
+            visaCompatible: "mevcut vize durumunla uyumlu",
+            recommendationTail:
+              "bütçene uyuyor ve daha alt sıralı alternatiflere göre daha güçlü bir genel trip uyumu sunuyor.",
+            loadingFlights: "Canlı uçuşlar yükleniyor...",
+            seeFlights: "Canlı uçuşları gör",
+            seeHotels: "Otelleri gör",
+            previous: "Geri",
+            stop: "Dur",
+            continue: "Devam et",
+            seeTripOptions: "Trip seçeneklerimi gör",
+            building: "Öneriler hazırlanıyor...",
+            sorted: "Sonuçlar en iyi uyuma göre sıralandı",
+            backToForm: "Forma dön",
+            stepOf: "Adım",
+            basicsTitle: "Trip temelleri",
+            basicsCaption:
+              "Kalkış şehirleri, trip kapsamı, vatandaşlık ve vize erişimiyle başla.",
+            flightPreferencesTitle: "Uçuş tercihleri",
+            flightPreferencesCaption:
+              "Bütçe, tarih esnekliği ve bagaj stiliyle recommendation engine’i şekillendir.",
+            stayStyleTitle: "Konaklama stili",
+            stayStyleCaption:
+              "Konaklamanın öneriyi ne kadar etkilemesi gerektiğini bize söyle.",
+            loadingShort: "Yükleniyor...",
+            nightSingle: "gece",
+            nightPlural: "gece",
+            fromTotal: "toplam €{amount} seviyesinden"
+          }
       : {
           backHome: "Back to home",
           engine: "Recommendation engine",
@@ -520,7 +660,21 @@ export function PlannerForm() {
           seeTripOptions: "See my trip options",
           building: "Building recommendations...",
           sorted: "Results sorted by best match",
-          backToForm: "Back to form"
+          backToForm: "Back to form",
+          stepOf: "Step",
+          basicsTitle: "Trip basics",
+          basicsCaption:
+            "Start with departure cities, trip scope, citizenship, and visa access.",
+          flightPreferencesTitle: "Flight preferences",
+          flightPreferencesCaption:
+            "Shape the recommendation engine with budget, date flexibility, and baggage style.",
+          stayStyleTitle: "Stay style",
+          stayStyleCaption:
+            "Tell us how much accommodation should influence the recommendation.",
+          loadingShort: "Loading...",
+          nightSingle: "night",
+          nightPlural: "nights",
+          fromTotal: "from €{amount} total"
         };
   const [step, setStep] = useState(0);
   const [departureSearch, setDepartureSearch] = useState("");
@@ -535,7 +689,27 @@ export function PlannerForm() {
   const [liveFares, setLiveFares] = useState<LiveFareMap>({});
   const [form, setForm] = useState<PlannerState>(initialState);
 
-  const current = stepMeta[step];
+  const localizedStepMeta = useMemo(
+    () =>
+      stepMeta.map((item) => ({
+        ...item,
+        title:
+          item.key === "basics"
+            ? copy.basicsTitle
+            : item.key === "flightPreferences"
+              ? copy.flightPreferencesTitle
+              : copy.stayStyleTitle,
+        caption:
+          item.key === "basics"
+            ? copy.basicsCaption
+            : item.key === "flightPreferences"
+              ? copy.flightPreferencesCaption
+              : copy.stayStyleCaption
+      })),
+    [copy]
+  );
+
+  const current = localizedStepMeta[step];
   const progress = ((step + 1) / stepMeta.length) * 100;
 
   const canContinue = useMemo(() => {
@@ -570,7 +744,11 @@ export function PlannerForm() {
         badge: "Best Match",
         matchScore: 94,
         notes:
-          "We recommend Tbilisi because it's visa-free, within your budget, and works exceptionally well for flexible city breaks."
+          language === "ru"
+            ? "Мы рекомендуем Тбилиси, потому что это безвизовое направление, оно укладывается в ваш бюджет и отлично подходит для гибких city-break поездок."
+            : language === "tr"
+              ? "Tiflis’i öneriyoruz çünkü vizesiz, bütçene uyuyor ve esnek city break planları için çok güçlü bir seçenek."
+              : "We recommend Tbilisi because it's visa-free, within your budget, and works exceptionally well for flexible city breaks."
       },
       {
         city: "Baku",
@@ -583,7 +761,11 @@ export function PlannerForm() {
         badge: "Smart Deal",
         matchScore: 89,
         notes:
-          "We recommend Baku because it balances easy access, low total cost, and short-haul convenience if you're open to quick e-visa routes."
+          language === "ru"
+            ? "Мы рекомендуем Баку, потому что он сочетает простой доступ, низкую общую стоимость и удобство короткого перелёта, если вам подходит быстрый маршрут с e-визой."
+            : language === "tr"
+              ? "Bakü’yü öneriyoruz çünkü kolay erişim, düşük toplam maliyet ve kısa uçuş rahatlığını bir araya getiriyor; özellikle hızlı e-vize rotalarına açıksan."
+              : "We recommend Baku because it balances easy access, low total cost, and short-haul convenience if you're open to quick e-visa routes."
       },
       {
         city: "Belgrade",
@@ -596,7 +778,11 @@ export function PlannerForm() {
         badge: "Trending",
         matchScore: 87,
         notes:
-          "We recommend Belgrade because it's visa-free, within your budget, and offers better value than many European alternatives."
+          language === "ru"
+            ? "Мы рекомендуем Белград, потому что это безвизовое направление, оно укладывается в ваш бюджет и предлагает более сильную ценность, чем многие европейские альтернативы."
+            : language === "tr"
+              ? "Belgrad’ı öneriyoruz çünkü vizesiz, bütçene uyuyor ve birçok Avrupa alternatifine göre daha iyi değer sunuyor."
+              : "We recommend Belgrade because it's visa-free, within your budget, and offers better value than many European alternatives."
       },
       {
         city: "Budapest",
@@ -610,7 +796,11 @@ export function PlannerForm() {
         badge: "Trending",
         matchScore: 82,
         notes:
-          "We recommend Budapest when you want a stronger accommodation and food scene with a still-manageable total budget."
+          language === "ru"
+            ? "Мы рекомендуем Будапешт, если вы хотите более сильный опыт по проживанию и гастрономии, сохраняя при этом управляемый общий бюджет."
+            : language === "tr"
+              ? "Budapeşte’yi, konaklama ve yeme-içme tarafında daha güçlü bir deneyim isterken toplam bütçeyi hâlâ yönetilebilir tutmak istediğinde öneriyoruz."
+              : "We recommend Budapest when you want a stronger accommodation and food scene with a still-manageable total budget."
       }
     ];
 
@@ -647,7 +837,12 @@ export function PlannerForm() {
                 : "Best value",
             badge: "Best Match",
             matchScore: 88,
-            notes: `We included ${form.destination.cityName ?? form.destination.name} because you selected it directly as your target destination.`
+            notes:
+              language === "ru"
+                ? `${form.destination.cityName ?? form.destination.name} добавлен, потому что вы выбрали его как целевое направление напрямую.`
+                : language === "tr"
+                  ? `${form.destination.cityName ?? form.destination.name} destinasyonunu doğrudan seçtiğin için onu da önerilere dahil ettik.`
+                  : `We included ${form.destination.cityName ?? form.destination.name} because you selected it directly as your target destination.`
           };
 
     const effectiveBase =
@@ -724,7 +919,7 @@ export function PlannerForm() {
         return { ...item, matchScore: score };
       })
       .sort((a, b) => b.matchScore - a.matchScore);
-  }, [form]);
+  }, [form, language]);
 
   const toggleDeparture = (value: PlaceOption) => {
     setForm((prev) => {
@@ -1038,7 +1233,7 @@ export function PlannerForm() {
 
             <div className="min-w-[16rem] rounded-[1.75rem] bg-white/10 p-5 backdrop-blur">
               <p className="text-sm font-semibold text-white/70">
-                Step {step + 1} of {stepMeta.length}
+                {copy.stepOf} {step + 1} / {stepMeta.length}
               </p>
               <div className="mt-4 h-3 overflow-hidden rounded-full bg-black/20">
                 <div
@@ -1059,7 +1254,7 @@ export function PlannerForm() {
               {copy.plannerSteps}
             </p>
             <div className="mt-4 space-y-3">
-              {stepMeta.map(({ title, icon: Icon }, index) => {
+              {localizedStepMeta.map(({ title, icon: Icon }, index) => {
                 const active = index === step;
                 const completed = index < step;
                 return (
@@ -1090,7 +1285,7 @@ export function PlannerForm() {
                     </div>
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-[0.18em] opacity-60">
-                        Step {index + 1}
+                        {copy.stepOf} {index + 1}
                       </p>
                       <p className="text-sm font-semibold">{title}</p>
                     </div>
@@ -1173,7 +1368,7 @@ export function PlannerForm() {
                   </div>
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-                      Step {step + 1}
+                      {copy.stepOf} {step + 1}
                     </p>
                     <h2 className="mt-1 text-3xl font-extrabold tracking-[-0.05em] text-ink">
                       {current.title}
@@ -1670,7 +1865,7 @@ export function PlannerForm() {
                                 ? `€${fare.price}`
                                 : fare?.error
                                   ? copy.unavailable
-                                  : language === "ru" ? "Загрузка..." : "Loading..."}
+                                  : copy.loadingShort}
                             </p>
                           </div>
                           <div className="rounded-[1.5rem] border border-chartreuse/40 bg-chartreuse/10 px-5 py-4 text-ink">
@@ -1709,7 +1904,7 @@ export function PlannerForm() {
                                 : fare.departureAt.slice(0, 10)
                               : fare?.error
                                 ? copy.noFareFound
-                                : language === "ru" ? "Загрузка..." : "Loading..."}
+                                : copy.loadingShort}
                           </p>
                         </div>
                         <div className="rounded-2xl bg-slate-50 px-4 py-3">
@@ -1729,7 +1924,9 @@ export function PlannerForm() {
                             {copy.stayNights}
                           </p>
                           <p className="mt-2 text-lg font-bold text-ink">
-                            {form.tripMode === "One way" ? `1 ${language === "ru" ? "ночь" : "night"}` : `${stayNights} ${language === "ru" ? "ночей" : "nights"}`}
+                            {form.tripMode === "One way"
+                              ? `1 ${copy.nightSingle}`
+                              : `${stayNights} ${copy.nightPlural}`}
                           </p>
                         </div>
                         <div className="rounded-2xl bg-slate-50 px-4 py-3 sm:col-span-4">
@@ -1754,9 +1951,7 @@ export function PlannerForm() {
                                 {copy.hotel}:{" "}
                                 {form.accommodationPreference === "I'll choose my own hotel"
                                   ? copy.hotelNotIncluded
-                                  : language === "ru"
-                                    ? `от €${hotelEstimateTotal} всего`
-                                    : `from €${hotelEstimateTotal} total`}
+                                  : copy.fromTotal.replace("{amount}", String(hotelEstimateTotal))}
                               </div>
                             </div>
                           </div>

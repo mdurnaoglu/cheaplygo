@@ -45,6 +45,17 @@ export function SearchCard() {
           bullets: ["Маршруты под бюджет", "Фильтрация по визе", "Разделение перелёта и отеля"],
           cta: "Построить план поездки"
         }
+      : language === "tr"
+        ? {
+            preview: "AI planner önizlemesi",
+            title: "Sıradaki tripin, daraltılmış halde.",
+            description:
+              "Partner sayfasına geçmeden önce uçuşu, konaklama stilini, zamanlamayı ve seyahat kurallarını birlikte değerlendiriyoruz.",
+            fields: ["Nereden", "Seyahat modu", "Çıktı"],
+            values: ["İstanbul (IST)", "Esnek, vize duyarlı", "En uygun 3 trip seçeneği"],
+            bullets: ["Bütçeye uygun rotalar", "Vize duyarlı filtreleme", "Uçuş + otel ayrımı"],
+            cta: "Trip Planımı Oluştur"
+          }
       : {
           preview: "AI planner preview",
           title: "Your next trip, narrowed down.",

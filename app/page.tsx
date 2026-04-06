@@ -61,6 +61,14 @@ export default function Home() {
             "Это примеры умных city-break вариантов. Сам планировщик идёт дальше и учитывает тайминг, визовый доступ и стиль проживания для каждого путешественника.",
           cta: "Открыть планировщик"
         }
+      : language === "tr"
+        ? {
+            sectionLabel: "Planner ilhamı",
+            title: "Planner’ın keşfedebileceği popüler trip fikirleri",
+            description:
+              "Bunlar bütçe odaklı city break örnekleri. Planner ise bunun ötesine geçip zamanlama, vize erişimi ve konaklama stilini her yolcuya göre uyarlar.",
+            cta: "Trip planner’ı aç"
+          }
       : {
           sectionLabel: "Planner inspiration",
           title: "Popular trip ideas your planner can discover",
@@ -78,9 +86,9 @@ export default function Home() {
 
       <section id="smart-trips" className="px-4 py-6 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#fff4eb] text-[#ff6a00]">
+          <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+            <div className="flex items-start gap-3">
+              <div className="mt-7 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-chartreuse text-black">
                 <Flame className="h-5 w-5" />
               </div>
               <div>

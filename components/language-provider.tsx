@@ -9,7 +9,7 @@ import {
 } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
-export type Language = "en" | "ru";
+export type Language = "en" | "ru" | "tr";
 
 type LanguageContextValue = {
   language: Language;
@@ -30,14 +30,14 @@ export function LanguageProvider({
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
     const queryLanguage = searchParams.get("lang");
-    if (queryLanguage === "en" || queryLanguage === "ru") {
+    if (queryLanguage === "en" || queryLanguage === "ru" || queryLanguage === "tr") {
       setLanguageState(queryLanguage);
       window.localStorage.setItem("cheaplygo-language", queryLanguage);
       return;
     }
 
     const storedLanguage = window.localStorage.getItem("cheaplygo-language");
-    if (storedLanguage === "en" || storedLanguage === "ru") {
+    if (storedLanguage === "en" || storedLanguage === "ru" || storedLanguage === "tr") {
       setLanguageState(storedLanguage);
       const nextParams = new URLSearchParams(window.location.search);
       nextParams.set("lang", storedLanguage);

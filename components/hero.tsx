@@ -21,6 +21,17 @@ export function Hero() {
           trustPrefix: "Без входа. Без карты.",
           trustEmphasis: "Просто начните."
         }
+      : language === "tr"
+        ? {
+            eyebrowPrefix: "Yeni Nesil",
+            eyebrowAccent: "Trip Planner",
+            titleTop: "Bir Sonraki",
+            titleBottom: "Tripini Akıllıca Planla",
+            cta: "Tripimi planla",
+            secondaryCta: "veya Biletini Anında Al",
+            trustPrefix: "Login yok. Kredi kartı yok.",
+            trustEmphasis: "Just Start."
+          }
       : {
           eyebrowPrefix: "Next Generation",
           eyebrowAccent: "Trip Planner",

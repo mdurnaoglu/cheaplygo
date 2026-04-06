@@ -31,6 +31,29 @@ export function Features() {
           title: "Начните с решения о поездке, а не с пустого поиска",
           cta: "Открыть планировщик"
         }
+      : language === "tr"
+        ? {
+            items: [
+              {
+                title: "Bütçeni ve sınırlarını söyle",
+                description:
+                  "Kalkış şehirlerini, vize durumunu, seyahat stilini ve ne kadar esnek olabileceğini paylaş."
+              },
+              {
+                title: "Biz tüm trip seçeneklerini sıralayalım",
+                description:
+                  "cheaplygo canlı uçuş mantığını, konaklama beklentisini ve trip uyumunu birlikte değerlendirir."
+              },
+              {
+                title: "Daha hızlı karar ver, daha akıllı rezervasyon yap",
+                description:
+                  "Trip mantıklı hale geldikten sonra uçuş ve otelleri ayrı ayrı aç."
+              }
+            ],
+            brand: "CheaplyGo",
+            title: "Boş bir aramayla değil, trip kararıyla başla",
+            cta: "Trip Planner’ı Aç"
+          }
       : {
           items: [
             {
