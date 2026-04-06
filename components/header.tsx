@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import { ChevronDown } from "lucide-react";
@@ -9,7 +10,7 @@ import {
   type Language
 } from "@/components/language-provider";
 
-const navItems = ["Trip Planner", "Smart Trips", "How It Works", "Inspiration"];
+const navItems = ["Trip Planner", "Deal Flights", "How It Works", "Inspiration"];
 
 const languageOptions: Array<{ value: Language; label: string }> = [
   { value: "en", label: "EN" },
@@ -26,7 +27,7 @@ const currencyOptions: Array<{ value: Currency; label: string }> = [
 type HeaderProps = {
   theme?: "dark" | "light";
   context?: "home" | "blog";
-  activeNav?: "planner" | "smart-trips" | "how-it-works" | "blog" | null;
+  activeNav?: "planner" | "deal-flights" | "how-it-works" | "blog" | null;
 };
 
 export function Header({
@@ -43,12 +44,12 @@ export function Header({
   const labels =
     language === "ru"
       ? {
-          nav: ["Планировщик", "Умные поездки", "Как это работает", "Вдохновение"],
+          nav: ["Планировщик", "Выгодные перелёты", "Как это работает", "Вдохновение"],
           cta: "Спланировать поездку"
         }
       : language === "tr"
         ? {
-            nav: ["Seyahat Planlayıcı", "Akıllı Rotalar", "Nasıl Çalışır", "İlham"],
+            nav: ["Seyahat Planlayıcı", "Fırsat Uçuşlar", "Nasıl Çalışır", "İlham"],
             cta: "Seyahatimi Planla"
           }
         : {
@@ -72,15 +73,16 @@ export function Header({
 
   const navLinks =
     context === "blog"
-      ? ["/planner", "/#smart-trips", "/#how-it-works", "/blog"]
-      : ["/planner", "#smart-trips", "#how-it-works", "#inspiration"];
+      ? ["/planner", "/firsat-ucuslar", "/#how-it-works", "/blog"]
+      : ["/planner", "/firsat-ucuslar", "#how-it-works", "#inspiration"];
 
-  const navKeys = ["planner", "smart-trips", "how-it-works", "blog"] as const;
+  const navKeys = ["planner", "deal-flights", "how-it-works", "blog"] as const;
 
   return (
     <header className="absolute inset-x-0 top-0 z-30">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-8 px-6 py-6 lg:px-8">
-        <div
+        <Link
+          href="/"
           className={clsx(
             "flex items-center text-[1.75rem] font-extrabold tracking-[-0.05em]",
             isDarkTheme ? "text-white" : "text-ink"
@@ -88,7 +90,7 @@ export function Header({
         >
           cheaplygo
           <span className="ml-1 inline-block h-3 w-3 rounded-full bg-chartreuse" />
-        </div>
+        </Link>
 
         <nav
           className={clsx(

@@ -3,8 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/components/language-provider";
-
-type MarketKey = "turkey" | "russia" | "germany";
+import { DEAL_MARKETS, DEAL_MARKET_ORDER, type MarketKey } from "@/lib/flight-deals";
 
 type DealItem = {
   id: string;
@@ -42,32 +41,48 @@ const destinationImages: Record<string, string> = {
   LIS: "https://images.unsplash.com/photo-1513735492246-483525079686?auto=format&fit=crop&w=900&q=80"
 };
 
-export function FlightDealsStrip() {
+type FlightDealsStripProps = {
+  initialMarket?: MarketKey;
+  syncMarketWithLanguage?: boolean;
+  headingMode?: "generic" | "market";
+};
+
+export function FlightDealsStrip({
+  initialMarket = "turkey",
+  syncMarketWithLanguage = true,
+  headingMode = "generic"
+}: FlightDealsStripProps) {
   const { language, currency } = useLanguage();
-  const [market, setMarket] = useState<MarketKey>("turkey");
+  const [market, setMarket] = useState<MarketKey>(initialMarket);
   const [deals, setDeals] = useState<DealItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
 
+  useEffect(() => {
+    setMarket(initialMarket);
+  }, [initialMarket]);
+
   const copy = useMemo(
-    () =>
-      language === "ru"
+    () => {
+      const currentMarket = DEAL_MARKETS[market];
+
+      return language === "ru"
         ? {
             label: "Актуальные перелёты",
-            title: "Дешёвые перелёты, которые можно открыть сразу",
+            title:
+              headingMode === "market"
+                ? `${currentMarket.displayName.ru} выгодные авиабилеты`
+                : "Дешёвые перелёты, которые можно открыть сразу",
             description:
-              "Мы кэшируем самые дешёвые найденные тарифы по готовым направлениям и обновляем их для каждой стартовой страны.",
+              headingMode === "market"
+                ? currentMarket.summary.ru
+                : "Мы кэшируем самые дешёвые найденные тарифы по готовым направлениям и обновляем их для каждой стартовой страны.",
             loading: "Подбираем дешёвые перелёты...",
             error: "Сейчас не удалось загрузить дешёвые перелёты.",
             cta: "Открыть перелёт",
             from: "Из",
             dealsFrom: "дешёвые перелёты из",
-            countries: {
-              turkey: "Турция",
-              russia: "Россия",
-              germany: "Германия"
-            },
             visaTags: {
               schengen: "Schengen",
               "visa-free": "Без визы",
@@ -77,19 +92,19 @@ export function FlightDealsStrip() {
         : language === "tr"
           ? {
               label: "Fırsat uçak biletleri",
-              title: "Fırsat uçak biletleri",
+              title:
+                headingMode === "market"
+                  ? `${currentMarket.displayName.tr} Fırsat Uçak Biletleri`
+                  : "Fırsat uçak biletleri",
               description:
-                "Sizin için seçtiğimiz Türkiye kalkışlı en uygun yurtdışı uçuşlarına göz atın.",
+                headingMode === "market"
+                  ? currentMarket.summary.tr
+                  : "Sizin için seçtiğimiz Türkiye kalkışlı en uygun yurtdışı uçuşlarına göz atın.",
               loading: "Fırsat uçuşlar yükleniyor...",
               error: "Fırsat uçuşlar şu an yüklenemedi.",
               cta: "Uçuşu aç",
               from: "Kalkış",
               dealsFrom: "çıkışlı fırsat uçuşlar",
-              countries: {
-                turkey: "Türkiye",
-                russia: "Rusya",
-                germany: "Almanya"
-              },
               visaTags: {
                 schengen: "Schengen",
                 "visa-free": "Vizesiz",
@@ -98,29 +113,34 @@ export function FlightDealsStrip() {
             }
           : {
               label: "Deal flights",
-              title: "Cheapest flights you can open instantly",
+              title:
+                headingMode === "market"
+                  ? `${currentMarket.displayName.en} Flight Deals`
+                  : "Cheapest flights you can open instantly",
               description:
-                "We cache the lowest live fares across ready-made destinations and refresh them per departure country.",
+                headingMode === "market"
+                  ? currentMarket.summary.en
+                  : "We cache the lowest live fares across ready-made destinations and refresh them per departure country.",
               loading: "Loading cheapest flights...",
               error: "Cheapest flights could not be loaded right now.",
               cta: "Open flight",
               from: "From",
               dealsFrom: "cheap flights from",
-              countries: {
-                turkey: "Turkey",
-                russia: "Russia",
-                germany: "Germany"
-              },
               visaTags: {
                 schengen: "Schengen",
                 "visa-free": "Visa-free",
                 "e-visa": "E-visa"
               }
-            },
-    [language]
+            };
+    },
+    [headingMode, language, market]
   );
 
   useEffect(() => {
+    if (!syncMarketWithLanguage) {
+      return;
+    }
+
     if (language === "ru") {
       setMarket("russia");
     } else if (language === "tr") {
@@ -128,7 +148,7 @@ export function FlightDealsStrip() {
     } else {
       setMarket("germany");
     }
-  }, [language]);
+  }, [language, syncMarketWithLanguage]);
 
   useEffect(() => {
     let cancelled = false;
@@ -202,7 +222,7 @@ export function FlightDealsStrip() {
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
-          {(Object.keys(copy.countries) as MarketKey[]).map((item) => (
+          {DEAL_MARKET_ORDER.map((item) => (
             <button
               key={item}
               type="button"
@@ -213,7 +233,7 @@ export function FlightDealsStrip() {
                   : "border border-slate-200 bg-white text-slateBlue hover:border-chartreuse/40"
               }`}
             >
-              {copy.countries[item]}
+              {DEAL_MARKETS[item].displayName[language]}
             </button>
           ))}
         </div>
@@ -221,7 +241,7 @@ export function FlightDealsStrip() {
 
       <div className="mt-6 flex items-center justify-between gap-4">
         <p className="text-sm font-semibold text-slate-500">
-          {copy.countries[market]} {copy.dealsFrom}
+          {DEAL_MARKETS[market].displayName[language]} {copy.dealsFrom}
         </p>
         <div className="flex items-center gap-2">
           <button

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { DEAL_MARKETS, isMarketKey, type MarketKey } from "@/lib/flight-deals";
 
 const TOKEN = process.env.TRAVELPAYOUTS_TOKEN;
 const MARKER = process.env.NEXT_PUBLIC_TRAVELPAYOUTS_MARKER;
@@ -9,77 +10,6 @@ type GroupedPrice = {
   price: number;
   departure_at: string;
   link: string;
-};
-
-type DestinationSeed = {
-  code: string;
-  city: string;
-  country: string;
-  visaTag: "schengen" | "visa-free" | "e-visa";
-};
-
-type MarketKey = "turkey" | "russia" | "germany";
-
-const DEAL_MARKETS: Record<
-  MarketKey,
-  {
-    originCode: string;
-    originCity: string;
-    originCountry: string;
-    destinations: DestinationSeed[];
-  }
-> = {
-  turkey: {
-    originCode: "IST",
-    originCity: "Istanbul",
-    originCountry: "Turkey",
-    destinations: [
-      { code: "BER", city: "Berlin", country: "Germany", visaTag: "schengen" },
-      { code: "BEG", city: "Belgrade", country: "Serbia", visaTag: "visa-free" },
-      { code: "TBS", city: "Tbilisi", country: "Georgia", visaTag: "visa-free" },
-      { code: "BCN", city: "Barcelona", country: "Spain", visaTag: "schengen" },
-      { code: "BUD", city: "Budapest", country: "Hungary", visaTag: "schengen" },
-      { code: "FCO", city: "Rome", country: "Italy", visaTag: "schengen" },
-      { code: "PAR", city: "Paris", country: "France", visaTag: "schengen" },
-      { code: "VIE", city: "Vienna", country: "Austria", visaTag: "schengen" },
-      { code: "ATH", city: "Athens", country: "Greece", visaTag: "schengen" },
-      { code: "PRG", city: "Prague", country: "Czechia", visaTag: "schengen" }
-    ]
-  },
-  russia: {
-    originCode: "MOW",
-    originCity: "Moscow",
-    originCountry: "Russia",
-    destinations: [
-      { code: "AER", city: "Sochi", country: "Russia", visaTag: "visa-free" },
-      { code: "LED", city: "Saint Petersburg", country: "Russia", visaTag: "visa-free" },
-      { code: "KGD", city: "Kaliningrad", country: "Russia", visaTag: "visa-free" },
-      { code: "KZN", city: "Kazan", country: "Russia", visaTag: "visa-free" },
-      { code: "DXB", city: "Dubai", country: "UAE", visaTag: "visa-free" },
-      { code: "IST", city: "Istanbul", country: "Turkey", visaTag: "visa-free" },
-      { code: "TBS", city: "Tbilisi", country: "Georgia", visaTag: "visa-free" },
-      { code: "EVN", city: "Yerevan", country: "Armenia", visaTag: "visa-free" },
-      { code: "BEG", city: "Belgrade", country: "Serbia", visaTag: "visa-free" },
-      { code: "BAK", city: "Baku", country: "Azerbaijan", visaTag: "e-visa" }
-    ]
-  },
-  germany: {
-    originCode: "BER",
-    originCity: "Berlin",
-    originCountry: "Germany",
-    destinations: [
-      { code: "BCN", city: "Barcelona", country: "Spain", visaTag: "visa-free" },
-      { code: "BEG", city: "Belgrade", country: "Serbia", visaTag: "visa-free" },
-      { code: "BUD", city: "Budapest", country: "Hungary", visaTag: "visa-free" },
-      { code: "TBS", city: "Tbilisi", country: "Georgia", visaTag: "visa-free" },
-      { code: "IST", city: "Istanbul", country: "Turkey", visaTag: "visa-free" },
-      { code: "FCO", city: "Rome", country: "Italy", visaTag: "visa-free" },
-      { code: "ATH", city: "Athens", country: "Greece", visaTag: "visa-free" },
-      { code: "LIS", city: "Lisbon", country: "Portugal", visaTag: "visa-free" },
-      { code: "PRG", city: "Prague", country: "Czechia", visaTag: "visa-free" },
-      { code: "VIE", city: "Vienna", country: "Austria", visaTag: "visa-free" }
-    ]
-  }
 };
 
 function monthOffset(offset: number) {
@@ -143,7 +73,7 @@ async function fetchGroupedPrices(
 
 export async function GET(request: NextRequest) {
   const marketParam = request.nextUrl.searchParams.get("market") as MarketKey | null;
-  const market = marketParam && marketParam in DEAL_MARKETS ? marketParam : "turkey";
+  const market = marketParam && isMarketKey(marketParam) ? marketParam : "turkey";
   const selectedMarket = DEAL_MARKETS[market];
   const currency = request.nextUrl.searchParams.get("currency")?.toLowerCase() ?? "eur";
   const locale = request.nextUrl.searchParams.get("locale")?.toLowerCase() ?? "en";
