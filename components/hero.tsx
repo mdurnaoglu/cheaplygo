@@ -14,7 +14,8 @@ export function Hero() {
       ? {
           eyebrowPrefix: "Планировщик путешествий нового поколения",
           eyebrowAccent: "для вашего бюджета",
-          title: "Планируйте своё следующее путешествие умнее",
+          titleTop: "Планируйте",
+          titleBottom: "следующее путешествие умнее",
           cta: "Спланировать поездку",
           secondaryCta: "или мгновенно забронировать билет",
           trustPrefix: "Без входа. Без карты.",
@@ -23,7 +24,8 @@ export function Hero() {
       : {
           eyebrowPrefix: "Next Generation",
           eyebrowAccent: "Trip Planner",
-          title: "Plan your next Trip Smarter",
+          titleTop: "Plan your",
+          titleBottom: "Next Trip Smarter",
           cta: "Plan my trip",
           secondaryCta: "or Book your Ticket Instantly",
           trustPrefix: "No login. No credit card.",
@@ -54,7 +56,8 @@ export function Hero() {
               className="mx-auto mt-6 max-w-[10.5ch] text-5xl font-semibold leading-[0.94] tracking-[-0.055em] text-white sm:text-[5.4rem] lg:text-[6.35rem]"
               style={{ fontFamily: appleFontStack }}
             >
-              {copy.title}
+              <span className="block">{copy.titleTop}</span>
+              <span className="block">{copy.titleBottom}</span>
             </h1>
 
             <p
