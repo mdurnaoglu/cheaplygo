@@ -37,7 +37,7 @@ export function Hero() {
         <div className="relative flex min-h-[82vh] items-center justify-center sm:min-h-[92vh]">
           <div className="w-full px-6 py-24 text-center sm:px-10 sm:py-28 lg:max-w-[72rem] lg:px-14 lg:py-32">
             <p
-              className="text-sm font-medium uppercase tracking-[0.34em] text-white sm:text-base"
+              className="text-sm font-medium uppercase tracking-[0.28em] text-white sm:text-[0.95rem]"
               style={{ fontFamily: appleFontStack }}
             >
               <span className="text-white">{copy.eyebrowPrefix} </span>
@@ -45,7 +45,7 @@ export function Hero() {
             </p>
 
             <h1
-              className="mx-auto mt-5 max-w-[10ch] text-6xl font-semibold leading-[0.92] tracking-[-0.08em] text-white sm:text-7xl lg:text-[7.25rem]"
+              className="mx-auto mt-6 max-w-[10.5ch] text-5xl font-semibold leading-[0.94] tracking-[-0.055em] text-white sm:text-[5.4rem] lg:text-[6.35rem]"
               style={{ fontFamily: appleFontStack }}
             >
               {copy.title}
@@ -61,9 +61,9 @@ export function Hero() {
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
-            </div>
           </div>
         </div>
+      </div>
     </section>
   );
 }
