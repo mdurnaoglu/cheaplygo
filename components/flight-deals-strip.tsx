@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, PlaneTakeoff } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/components/language-provider";
 
 type MarketKey = "turkey" | "russia" | "germany";
@@ -13,6 +13,7 @@ type DealItem = {
   destinationCode: string;
   destinationCity: string;
   destinationCountry: string;
+  visaTag: "schengen" | "visa-free" | "e-visa";
   price: number;
   currency: string;
   departureAt: string;
@@ -66,14 +67,19 @@ export function FlightDealsStrip() {
               turkey: "Турция",
               russia: "Россия",
               germany: "Германия"
+            },
+            visaTags: {
+              schengen: "Schengen",
+              "visa-free": "Без визы",
+              "e-visa": "E-виза"
             }
           }
         : language === "tr"
           ? {
-              label: "Fırsat uçuşlar",
-              title: "Hemen açabileceğin en ucuz uçuşlar",
+              label: "Fırsat uçak biletleri",
+              title: "Fırsat uçak biletleri",
               description:
-                "Hazır destinasyon listeleri için en düşük canlı ücretleri cache’liyoruz ve her çıkış ülkesi için güncelliyoruz.",
+                "Sizin için seçtiğimiz Türkiye kalkışlı en uygun yurtdışı uçuşlarına göz atın.",
               loading: "Fırsat uçuşlar yükleniyor...",
               error: "Fırsat uçuşlar şu an yüklenemedi.",
               cta: "Uçuşu aç",
@@ -83,6 +89,11 @@ export function FlightDealsStrip() {
                 turkey: "Türkiye",
                 russia: "Rusya",
                 germany: "Almanya"
+              },
+              visaTags: {
+                schengen: "Schengen",
+                "visa-free": "Vizesiz",
+                "e-visa": "E-vize"
               }
             }
           : {
@@ -99,6 +110,11 @@ export function FlightDealsStrip() {
                 turkey: "Turkey",
                 russia: "Russia",
                 germany: "Germany"
+              },
+              visaTags: {
+                schengen: "Schengen",
+                "visa-free": "Visa-free",
+                "e-visa": "E-visa"
               }
             },
     [language]
@@ -256,8 +272,10 @@ export function FlightDealsStrip() {
                   <div className="h-full w-full bg-[linear-gradient(135deg,#dbeafe_0%,#f8fafc_50%,#e2e8f0_100%)]" />
                 )}
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.02)_0%,rgba(15,23,42,0.16)_100%)]" />
-                <div className="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full bg-chartreuse text-black shadow-sm">
-                  <PlaneTakeoff className="h-5 w-5" />
+                <div className="absolute right-5 top-5">
+                  <span className="inline-flex rounded-full bg-chartreuse px-3 py-1.5 text-xs font-extrabold uppercase tracking-[0.12em] text-black shadow-sm">
+                    {copy.visaTags[deal.visaTag]}
+                  </span>
                 </div>
               </div>
 

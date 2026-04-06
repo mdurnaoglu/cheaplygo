@@ -15,6 +15,7 @@ type DestinationSeed = {
   code: string;
   city: string;
   country: string;
+  visaTag: "schengen" | "visa-free" | "e-visa";
 };
 
 type MarketKey = "turkey" | "russia" | "germany";
@@ -33,16 +34,16 @@ const DEAL_MARKETS: Record<
     originCity: "Istanbul",
     originCountry: "Turkey",
     destinations: [
-      { code: "BER", city: "Berlin", country: "Germany" },
-      { code: "BEG", city: "Belgrade", country: "Serbia" },
-      { code: "TBS", city: "Tbilisi", country: "Georgia" },
-      { code: "BCN", city: "Barcelona", country: "Spain" },
-      { code: "BUD", city: "Budapest", country: "Hungary" },
-      { code: "FCO", city: "Rome", country: "Italy" },
-      { code: "PAR", city: "Paris", country: "France" },
-      { code: "VIE", city: "Vienna", country: "Austria" },
-      { code: "ATH", city: "Athens", country: "Greece" },
-      { code: "PRG", city: "Prague", country: "Czechia" }
+      { code: "BER", city: "Berlin", country: "Germany", visaTag: "schengen" },
+      { code: "BEG", city: "Belgrade", country: "Serbia", visaTag: "visa-free" },
+      { code: "TBS", city: "Tbilisi", country: "Georgia", visaTag: "visa-free" },
+      { code: "BCN", city: "Barcelona", country: "Spain", visaTag: "schengen" },
+      { code: "BUD", city: "Budapest", country: "Hungary", visaTag: "schengen" },
+      { code: "FCO", city: "Rome", country: "Italy", visaTag: "schengen" },
+      { code: "PAR", city: "Paris", country: "France", visaTag: "schengen" },
+      { code: "VIE", city: "Vienna", country: "Austria", visaTag: "schengen" },
+      { code: "ATH", city: "Athens", country: "Greece", visaTag: "schengen" },
+      { code: "PRG", city: "Prague", country: "Czechia", visaTag: "schengen" }
     ]
   },
   russia: {
@@ -50,16 +51,16 @@ const DEAL_MARKETS: Record<
     originCity: "Moscow",
     originCountry: "Russia",
     destinations: [
-      { code: "AER", city: "Sochi", country: "Russia" },
-      { code: "LED", city: "Saint Petersburg", country: "Russia" },
-      { code: "KGD", city: "Kaliningrad", country: "Russia" },
-      { code: "KZN", city: "Kazan", country: "Russia" },
-      { code: "DXB", city: "Dubai", country: "UAE" },
-      { code: "IST", city: "Istanbul", country: "Turkey" },
-      { code: "TBS", city: "Tbilisi", country: "Georgia" },
-      { code: "EVN", city: "Yerevan", country: "Armenia" },
-      { code: "BEG", city: "Belgrade", country: "Serbia" },
-      { code: "BAK", city: "Baku", country: "Azerbaijan" }
+      { code: "AER", city: "Sochi", country: "Russia", visaTag: "visa-free" },
+      { code: "LED", city: "Saint Petersburg", country: "Russia", visaTag: "visa-free" },
+      { code: "KGD", city: "Kaliningrad", country: "Russia", visaTag: "visa-free" },
+      { code: "KZN", city: "Kazan", country: "Russia", visaTag: "visa-free" },
+      { code: "DXB", city: "Dubai", country: "UAE", visaTag: "visa-free" },
+      { code: "IST", city: "Istanbul", country: "Turkey", visaTag: "visa-free" },
+      { code: "TBS", city: "Tbilisi", country: "Georgia", visaTag: "visa-free" },
+      { code: "EVN", city: "Yerevan", country: "Armenia", visaTag: "visa-free" },
+      { code: "BEG", city: "Belgrade", country: "Serbia", visaTag: "visa-free" },
+      { code: "BAK", city: "Baku", country: "Azerbaijan", visaTag: "e-visa" }
     ]
   },
   germany: {
@@ -67,16 +68,16 @@ const DEAL_MARKETS: Record<
     originCity: "Berlin",
     originCountry: "Germany",
     destinations: [
-      { code: "BCN", city: "Barcelona", country: "Spain" },
-      { code: "BEG", city: "Belgrade", country: "Serbia" },
-      { code: "BUD", city: "Budapest", country: "Hungary" },
-      { code: "TBS", city: "Tbilisi", country: "Georgia" },
-      { code: "IST", city: "Istanbul", country: "Turkey" },
-      { code: "FCO", city: "Rome", country: "Italy" },
-      { code: "ATH", city: "Athens", country: "Greece" },
-      { code: "LIS", city: "Lisbon", country: "Portugal" },
-      { code: "PRG", city: "Prague", country: "Czechia" },
-      { code: "VIE", city: "Vienna", country: "Austria" }
+      { code: "BCN", city: "Barcelona", country: "Spain", visaTag: "visa-free" },
+      { code: "BEG", city: "Belgrade", country: "Serbia", visaTag: "visa-free" },
+      { code: "BUD", city: "Budapest", country: "Hungary", visaTag: "visa-free" },
+      { code: "TBS", city: "Tbilisi", country: "Georgia", visaTag: "visa-free" },
+      { code: "IST", city: "Istanbul", country: "Turkey", visaTag: "visa-free" },
+      { code: "FCO", city: "Rome", country: "Italy", visaTag: "visa-free" },
+      { code: "ATH", city: "Athens", country: "Greece", visaTag: "visa-free" },
+      { code: "LIS", city: "Lisbon", country: "Portugal", visaTag: "visa-free" },
+      { code: "PRG", city: "Prague", country: "Czechia", visaTag: "visa-free" },
+      { code: "VIE", city: "Vienna", country: "Austria", visaTag: "visa-free" }
     ]
   }
 };
@@ -175,6 +176,7 @@ export async function GET(request: NextRequest) {
           destinationCode: destination.code,
           destinationCity: destination.city,
           destinationCountry: destination.country,
+          visaTag: destination.visaTag,
           price: cheapest.price,
           currency,
           departureAt: cheapest.departure_at,
