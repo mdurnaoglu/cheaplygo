@@ -13,16 +13,33 @@ type DealItem = {
   destinationCode: string;
   destinationCity: string;
   destinationCountry: string;
-  priceEur: number;
+  price: number;
+  currency: string;
   departureAt: string;
   url: string;
 };
 
-const currencyConfig = {
-  USD: { locale: "en-US", currency: "USD", rateFromEur: 1.09 },
-  RUB: { locale: "ru-RU", currency: "RUB", rateFromEur: 101.5 },
-  TRY: { locale: "tr-TR", currency: "TRY", rateFromEur: 41.2 }
-} as const;
+const destinationImages: Record<string, string> = {
+  BER: "https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=900&q=80",
+  BEG: "https://images.unsplash.com/photo-1577083165633-14ebcdb0f658?auto=format&fit=crop&w=900&q=80",
+  TBS: "https://images.unsplash.com/photo-1565008576549-57569a49371d?auto=format&fit=crop&w=900&q=80",
+  BCN: "https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=900&q=80",
+  BUD: "https://images.unsplash.com/photo-1549877452-9c387954fbc2?auto=format&fit=crop&w=900&q=80",
+  FCO: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=900&q=80",
+  PAR: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=900&q=80",
+  VIE: "https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=900&q=80",
+  ATH: "https://images.unsplash.com/photo-1503152394-c571994fd383?auto=format&fit=crop&w=900&q=80",
+  PRG: "https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&w=900&q=80",
+  AER: "https://images.unsplash.com/photo-1612798287286-6be6f9d2f8d5?auto=format&fit=crop&w=900&q=80",
+  LED: "https://images.unsplash.com/photo-1556610961-2fecc5927173?auto=format&fit=crop&w=900&q=80",
+  KGD: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=900&q=80",
+  KZN: "https://images.unsplash.com/photo-1579783483458-83d02161294e?auto=format&fit=crop&w=900&q=80",
+  DXB: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=80",
+  IST: "https://images.unsplash.com/photo-1527838832700-5059252407fa?auto=format&fit=crop&w=900&q=80",
+  EVN: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=900&q=80",
+  BAK: "https://images.unsplash.com/photo-1597484661643-2f5fef640dd1?auto=format&fit=crop&w=900&q=80",
+  LIS: "https://images.unsplash.com/photo-1513735492246-483525079686?auto=format&fit=crop&w=900&q=80"
+};
 
 export function FlightDealsStrip() {
   const { language, currency } = useLanguage();
@@ -104,7 +121,9 @@ export function FlightDealsStrip() {
       try {
         setIsLoading(true);
         setError(null);
-        const response = await fetch(`/api/flight-deals?market=${market}`);
+        const response = await fetch(
+          `/api/flight-deals?market=${market}&currency=${currency.toLowerCase()}&locale=${language}`
+        );
         const payload = (await response.json()) as { deals?: DealItem[]; error?: string };
 
         if (!response.ok || !payload.deals) {
@@ -130,15 +149,16 @@ export function FlightDealsStrip() {
     return () => {
       cancelled = true;
     };
-  }, [market]);
+  }, [currency, language, market]);
 
-  const formatPrice = (basePriceEur: number) => {
-    const current = currencyConfig[currency];
-    return new Intl.NumberFormat(current.locale, {
+  const formatPrice = (amount: number) => {
+    const locale =
+      currency === "TRY" ? "tr-TR" : currency === "RUB" ? "ru-RU" : "en-US";
+    return new Intl.NumberFormat(locale, {
       style: "currency",
-      currency: current.currency,
+      currency,
       maximumFractionDigits: 0
-    }).format(basePriceEur * current.rateFromEur);
+    }).format(amount);
   };
 
   const scrollTrack = (direction: "left" | "right") => {
@@ -221,39 +241,56 @@ export function FlightDealsStrip() {
           {deals.map((deal) => (
             <article
               key={deal.id}
-              className="min-w-[18rem] flex-1 snap-start rounded-[1.6rem] border border-slate-200 bg-slate-50 p-5 md:min-w-[15rem] lg:min-w-[calc((100%-3rem)/4)]"
+              className="group min-w-[18rem] flex-1 snap-start overflow-hidden rounded-[1.6rem] border border-slate-200 bg-slate-50 md:min-w-[15rem] lg:min-w-[calc((100%-3rem)/4)]"
             >
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
-                    {copy.from}
-                  </p>
-                  <h4 className="mt-2 text-2xl font-extrabold tracking-[-0.05em] text-ink">
-                    {deal.originCity} - {deal.destinationCity}
-                  </h4>
-                  <p className="mt-1 text-sm text-slate-500">{deal.destinationCountry}</p>
-                </div>
-                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-chartreuse text-black">
+              <div className="relative h-40 overflow-hidden">
+                {destinationImages[deal.destinationCode] ? (
+                  <img
+                    src={destinationImages[deal.destinationCode]}
+                    alt={deal.destinationCity}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="h-full w-full bg-[linear-gradient(135deg,#dbeafe_0%,#f8fafc_50%,#e2e8f0_100%)]" />
+                )}
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.02)_0%,rgba(15,23,42,0.16)_100%)]" />
+                <div className="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full bg-chartreuse text-black shadow-sm">
                   <PlaneTakeoff className="h-5 w-5" />
                 </div>
               </div>
 
-              <div className="mt-5">
-                <p className="text-4xl font-black tracking-[-0.05em] text-slateBlue">
-                  {formatPrice(deal.priceEur)}
-                </p>
-                <p className="mt-2 text-sm text-slate-500">{deal.departureAt.slice(0, 10)}</p>
-              </div>
+              <div className="p-5">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
+                      {copy.from}
+                    </p>
+                    <h4 className="mt-2 text-2xl font-extrabold tracking-[-0.05em] text-ink">
+                      {deal.originCity} - {deal.destinationCity}
+                    </h4>
+                    <p className="mt-1 text-sm text-slate-500">{deal.destinationCountry}</p>
+                  </div>
+                </div>
 
-              <a
-                href={deal.url}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-5 inline-flex items-center gap-2 rounded-full bg-chartreuse px-4 py-3 text-sm font-bold text-black transition hover:brightness-95"
-              >
-                {copy.cta}
-                <ChevronRight className="h-4 w-4" />
-              </a>
+                <div className="mt-5">
+                  <p className="text-4xl font-black tracking-[-0.05em] text-slateBlue">
+                    {formatPrice(deal.price)}
+                  </p>
+                  <p className="mt-2 text-sm text-slate-500">{deal.departureAt.slice(0, 10)}</p>
+                </div>
+
+                <a
+                  href={deal.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-5 inline-flex items-center gap-2 rounded-full bg-chartreuse px-4 py-3 text-sm font-bold text-black transition hover:brightness-95"
+                >
+                  {copy.cta}
+                  <ChevronRight className="h-4 w-4" />
+                </a>
+              </div>
             </article>
           ))}
         </div>

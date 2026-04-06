@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 
 const TOKEN = process.env.TRAVELPAYOUTS_TOKEN;
 const MARKER = process.env.NEXT_PUBLIC_TRAVELPAYOUTS_MARKER;
+const allowedCurrencies = new Set(["usd", "eur", "rub", "try"]);
+const allowedLocales = new Set(["en", "ru", "tr"]);
 
 type GroupedPrice = {
   price: number;
@@ -106,10 +108,16 @@ function monthOffset(offset: number) {
   return date.toISOString().slice(0, 7);
 }
 
-function buildAffiliateUrl(path: string) {
+function buildAffiliateUrl(path: string, options?: { currency?: string; locale?: string }) {
   const url = new URL(`https://www.aviasales.com${path}`);
   if (MARKER) {
     url.searchParams.set("marker", MARKER);
+  }
+  if (options?.currency && allowedCurrencies.has(options.currency)) {
+    url.searchParams.set("currency", options.currency);
+  }
+  if (options?.locale && allowedLocales.has(options.locale)) {
+    url.searchParams.set("locale", options.locale);
   }
   return url.toString();
 }
@@ -122,6 +130,8 @@ async function fetchGroupedPrice(
     returnAt?: string;
     minTripDuration?: string;
     maxTripDuration?: string;
+    currency?: string;
+    locale?: string;
   }
 ) {
   if (!TOKEN) {
@@ -133,8 +143,8 @@ async function fetchGroupedPrice(
     destination,
     departure_at: departureAt,
     group_by: "departure_at",
-    currency: "eur",
-    locale: "en",
+    currency: options?.currency && allowedCurrencies.has(options.currency) ? options.currency : "eur",
+    locale: options?.locale && allowedLocales.has(options.locale) ? options.locale : "en",
     token: TOKEN
   });
 
@@ -174,6 +184,8 @@ export async function GET(request: NextRequest) {
   const tripMode = searchParams.get("tripMode");
   const exactDate = searchParams.get("date");
   const returnDate = searchParams.get("returnDate");
+  const currency = searchParams.get("currency")?.toLowerCase() ?? "eur";
+  const locale = searchParams.get("locale")?.toLowerCase() ?? "en";
 
   if (!origin || !destination) {
     return NextResponse.json(
@@ -189,7 +201,9 @@ export async function GET(request: NextRequest) {
     if (tripMode === "roundtrip") {
       if (mode === "exact" && exactDate && returnDate) {
         prices = await fetchGroupedPrice(origin, destination, exactDate, {
-          returnAt: returnDate
+          returnAt: returnDate,
+          currency,
+          locale
         });
 
         if (prices.length === 0) {
@@ -203,7 +217,9 @@ export async function GET(request: NextRequest) {
           prices = await fetchGroupedPrice(origin, destination, exactDepartureMonth, {
             returnAt: exactReturnMonth,
             minTripDuration: String(Math.max(1, targetDuration - 1)),
-            maxTripDuration: String(targetDuration + 1)
+            maxTripDuration: String(targetDuration + 1),
+            currency,
+            locale
           });
           fallbackUsed = prices.length > 0;
         }
@@ -213,22 +229,33 @@ export async function GET(request: NextRequest) {
             fetchGroupedPrice(origin, destination, monthOffset(index), {
               returnAt: monthOffset(index + 1),
               minTripDuration: "3",
-              maxTripDuration: "7"
+              maxTripDuration: "7",
+              currency,
+              locale
             })
           )
         );
         prices = monthlyResults.flat();
       }
     } else if (mode === "exact" && exactDate) {
-      prices = await fetchGroupedPrice(origin, destination, exactDate);
+      prices = await fetchGroupedPrice(origin, destination, exactDate, {
+        currency,
+        locale
+      });
       if (prices.length === 0) {
-        prices = await fetchGroupedPrice(origin, destination, exactDate.slice(0, 7));
+        prices = await fetchGroupedPrice(origin, destination, exactDate.slice(0, 7), {
+          currency,
+          locale
+        });
         fallbackUsed = prices.length > 0;
       }
     } else {
       const monthlyResults = await Promise.all(
         Array.from({ length: 6 }, (_, index) =>
-          fetchGroupedPrice(origin, destination, monthOffset(index))
+          fetchGroupedPrice(origin, destination, monthOffset(index), {
+            currency,
+            locale
+          })
         )
       );
       prices = monthlyResults.flat();
@@ -249,10 +276,11 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const url = buildAffiliateUrl(best.link);
+    const url = buildAffiliateUrl(best.link, { currency, locale });
 
     return NextResponse.json({
       price: best.price,
+      currency,
       departureAt: best.departure_at,
       returnAt: best.return_at ?? null,
       url,

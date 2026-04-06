@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 
 const TOKEN = process.env.TRAVELPAYOUTS_TOKEN;
 const MARKER = process.env.NEXT_PUBLIC_TRAVELPAYOUTS_MARKER;
+const allowedCurrencies = new Set(["usd", "eur", "rub", "try"]);
+const allowedLocales = new Set(["en", "ru", "tr"]);
 
 type GroupedPrice = {
   price: number;
@@ -86,15 +88,26 @@ function monthOffset(offset: number) {
   return date.toISOString().slice(0, 7);
 }
 
-function buildAffiliateUrl(path: string) {
+function buildAffiliateUrl(path: string, options?: { currency?: string; locale?: string }) {
   const url = new URL(`https://www.aviasales.com${path}`);
   if (MARKER) {
     url.searchParams.set("marker", MARKER);
   }
+  if (options?.currency && allowedCurrencies.has(options.currency)) {
+    url.searchParams.set("currency", options.currency);
+  }
+  if (options?.locale && allowedLocales.has(options.locale)) {
+    url.searchParams.set("locale", options.locale);
+  }
   return url.toString();
 }
 
-async function fetchGroupedPrices(origin: string, destination: string, departureAt: string) {
+async function fetchGroupedPrices(
+  origin: string,
+  destination: string,
+  departureAt: string,
+  options?: { currency?: string; locale?: string }
+) {
   if (!TOKEN) {
     throw new Error("Missing TRAVELPAYOUTS_TOKEN");
   }
@@ -104,8 +117,8 @@ async function fetchGroupedPrices(origin: string, destination: string, departure
     destination,
     departure_at: departureAt,
     group_by: "departure_at",
-    currency: "eur",
-    locale: "en",
+    currency: options?.currency && allowedCurrencies.has(options.currency) ? options.currency : "eur",
+    locale: options?.locale && allowedLocales.has(options.locale) ? options.locale : "en",
     token: TOKEN
   });
 
@@ -131,13 +144,18 @@ export async function GET(request: NextRequest) {
   const marketParam = request.nextUrl.searchParams.get("market") as MarketKey | null;
   const market = marketParam && marketParam in DEAL_MARKETS ? marketParam : "turkey";
   const selectedMarket = DEAL_MARKETS[market];
+  const currency = request.nextUrl.searchParams.get("currency")?.toLowerCase() ?? "eur";
+  const locale = request.nextUrl.searchParams.get("locale")?.toLowerCase() ?? "en";
 
   try {
     const deals = await Promise.all(
       selectedMarket.destinations.map(async (destination) => {
         const monthlyResults = await Promise.all(
           Array.from({ length: 4 }, (_, index) =>
-            fetchGroupedPrices(selectedMarket.originCode, destination.code, monthOffset(index))
+            fetchGroupedPrices(selectedMarket.originCode, destination.code, monthOffset(index), {
+              currency,
+              locale
+            })
           )
         );
 
@@ -157,9 +175,10 @@ export async function GET(request: NextRequest) {
           destinationCode: destination.code,
           destinationCity: destination.city,
           destinationCountry: destination.country,
-          priceEur: cheapest.price,
+          price: cheapest.price,
+          currency,
           departureAt: cheapest.departure_at,
-          url: buildAffiliateUrl(cheapest.link)
+          url: buildAffiliateUrl(cheapest.link, { currency, locale })
         };
       })
     );

@@ -19,7 +19,11 @@ import {
   Ticket,
   Wallet
 } from "lucide-react";
-import { useLanguage, type Language } from "@/components/language-provider";
+import {
+  useLanguage,
+  type Currency,
+  type Language
+} from "@/components/language-provider";
 
 type TravelType = "Domestic" | "International" | "Both";
 type TripMode = "One way" | "Round trip";
@@ -73,12 +77,24 @@ type LiveFareMap = Record<
   string,
   {
     price?: number;
+    currency?: string;
     departureAt?: string;
     returnAt?: string | null;
     fallbackUsed?: boolean;
     error?: string;
   }
 >;
+
+function formatMoney(value: number, currency: Currency) {
+  const locale =
+    currency === "TRY" ? "tr-TR" : currency === "RUB" ? "ru-RU" : "en-US";
+
+  return new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency,
+    maximumFractionDigits: 0
+  }).format(value);
+}
 
 function getStayNights(options: {
   tripMode: TripMode;
@@ -372,7 +388,7 @@ function labelAccommodationPreference(
 }
 
 export function PlannerForm() {
-  const { language } = useLanguage();
+  const { language, currency } = useLanguage();
   const copy =
     language === "ru"
       ? {
@@ -473,7 +489,7 @@ export function PlannerForm() {
           loadingShort: "Загрузка...",
           nightSingle: "ночь",
           nightPlural: "ночей",
-          fromTotal: "от €{amount} всего"
+          fromTotal: "от {amount} всего"
         }
       : language === "tr"
         ? {
@@ -574,7 +590,7 @@ export function PlannerForm() {
             loadingShort: "Yükleniyor...",
             nightSingle: "gece",
             nightPlural: "gece",
-            fromTotal: "toplam €{amount} seviyesinden"
+            fromTotal: "toplam {amount} seviyesinden"
           }
       : {
           backHome: "Back to home",
@@ -674,7 +690,7 @@ export function PlannerForm() {
           loadingShort: "Loading...",
           nightSingle: "night",
           nightPlural: "nights",
-          fromTotal: "from €{amount} total"
+          fromTotal: "from {amount} total"
         };
   const [step, setStep] = useState(0);
   const [departureSearch, setDepartureSearch] = useState("");
@@ -1047,7 +1063,9 @@ export function PlannerForm() {
         origin: departureCode,
         destination: destinationCode,
         mode: form.dateFlexibility === "Exact dates" ? "exact" : "flexible",
-        tripMode: form.tripMode === "One way" ? "oneway" : "roundtrip"
+        tripMode: form.tripMode === "One way" ? "oneway" : "roundtrip",
+        currency: currency.toLowerCase(),
+        locale: language
       });
 
       if (form.dateFlexibility === "Exact dates" && form.exactDepartureDate) {
@@ -1111,7 +1129,9 @@ export function PlannerForm() {
               origin: departureCode,
               destination: item.destinationCode,
               mode: form.dateFlexibility === "Exact dates" ? "exact" : "flexible",
-              tripMode: form.tripMode === "One way" ? "oneway" : "roundtrip"
+              tripMode: form.tripMode === "One way" ? "oneway" : "roundtrip",
+              currency: currency.toLowerCase(),
+              locale: language
             });
 
             if (form.dateFlexibility === "Exact dates" && form.exactDepartureDate) {
@@ -1125,6 +1145,7 @@ export function PlannerForm() {
             const payload = (await response.json()) as
               | {
                   price: number;
+                  currency?: string;
                   departureAt: string;
                   returnAt?: string | null;
                   fallbackUsed?: boolean;
@@ -1142,6 +1163,7 @@ export function PlannerForm() {
               item.destinationCode,
               {
                 price: payload.price,
+                currency: payload.currency,
                 departureAt: payload.departureAt,
                 returnAt: payload.returnAt ?? null,
                 fallbackUsed: payload.fallbackUsed ?? false
@@ -1180,6 +1202,8 @@ export function PlannerForm() {
     form.exactReturnDate,
     form.tripMode,
     departureCode,
+    currency,
+    language,
     recommendations,
     showResults
   ]);
@@ -1862,7 +1886,7 @@ export function PlannerForm() {
                             </p>
                             <p className="mt-2 text-4xl font-black tracking-[-0.05em] text-chartreuse">
                               {fare?.price
-                                ? `€${fare.price}`
+                                ? formatMoney(fare.price, currency)
                                 : fare?.error
                                   ? copy.unavailable
                                   : copy.loadingShort}
@@ -1875,7 +1899,7 @@ export function PlannerForm() {
                             <p className="mt-2 text-4xl font-black tracking-[-0.05em] text-slateBlue">
                               {form.accommodationPreference === "I'll choose my own hotel"
                                 ? copy.youChoose
-                                : `€${hotelStartsFrom}`}
+                                : formatMoney(hotelStartsFrom, currency)}
                             </p>
                             <p className="mt-1 text-xs font-medium text-slate-500">
                               {form.accommodationPreference === "Just sleep (budget)"
@@ -1942,16 +1966,24 @@ export function PlannerForm() {
                                 {copy.totalTrip}
                               </p>
                               <p className="mt-2 text-3xl font-black tracking-[-0.05em] text-slateBlue">
-                                €{totalTripEstimate}
+                                {formatMoney(totalTripEstimate, currency)}
                               </p>
                             </div>
                             <div className="text-sm leading-6 text-slate-600">
-                              <div>{copy.flight}: {fare?.price ? `€${fare.price}` : `~€${item.estimatedCost}`}</div>
+                              <div>
+                                {copy.flight}:{" "}
+                                {fare?.price
+                                  ? formatMoney(fare.price, currency)
+                                  : `~${formatMoney(item.estimatedCost, currency)}`}
+                              </div>
                               <div>
                                 {copy.hotel}:{" "}
                                 {form.accommodationPreference === "I'll choose my own hotel"
                                   ? copy.hotelNotIncluded
-                                  : copy.fromTotal.replace("{amount}", String(hotelEstimateTotal))}
+                                  : copy.fromTotal.replace(
+                                      "{amount}",
+                                      formatMoney(hotelEstimateTotal, currency)
+                                    )}
                               </div>
                             </div>
                           </div>
