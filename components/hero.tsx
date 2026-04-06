@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useLanguage } from "@/components/language-provider";
 
 const appleFontStack =
@@ -67,11 +67,11 @@ export function Hero() {
             <div className="mt-5 flex justify-center">
               <Link
                 href="#smart-trips"
-                className="group relative inline-flex items-center gap-3 pb-2 text-xl font-medium text-chartreuse transition hover:text-[#d8ff4a]"
+                className="group relative inline-flex items-center gap-2.5 pb-2 text-lg font-medium text-chartreuse transition hover:text-[#d8ff4a]"
                 style={{ fontFamily: appleFontStack }}
               >
                 <span>{copy.secondaryCta}</span>
-                <ArrowRight className="h-5 w-5 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <ArrowUpRight className="h-4.5 w-4.5 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 <span className="absolute inset-x-0 bottom-0 h-px bg-chartreuse/95" />
               </Link>
             </div>
