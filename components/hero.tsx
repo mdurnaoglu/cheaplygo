@@ -15,13 +15,15 @@ export function Hero() {
           eyebrowPrefix: "Планировщик путешествий нового поколения",
           eyebrowAccent: "для вашего бюджета",
           title: "Планируйте своё следующее путешествие умнее",
-          cta: "Спланировать поездку"
+          cta: "Спланировать поездку",
+          secondaryCta: "или мгновенно забронировать билет"
         }
       : {
           eyebrowPrefix: "Next Generation",
           eyebrowAccent: "Trip Planner",
           title: "Plan your next Trip Smarter",
-          cta: "Plan my trip"
+          cta: "Plan my trip",
+          secondaryCta: "or Book your Ticket Instantly"
         };
 
   return (
@@ -59,6 +61,18 @@ export function Hero() {
               >
                 {copy.cta}
                 <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+
+            <div className="mt-5 flex justify-center">
+              <Link
+                href="#smart-trips"
+                className="group relative inline-flex items-center gap-3 pb-2 text-xl font-medium text-chartreuse transition hover:text-[#d8ff4a]"
+                style={{ fontFamily: appleFontStack }}
+              >
+                <span>{copy.secondaryCta}</span>
+                <ArrowRight className="h-5 w-5 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <span className="absolute inset-x-0 bottom-0 h-px bg-chartreuse/95" />
               </Link>
             </div>
           </div>
