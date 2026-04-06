@@ -86,7 +86,16 @@ export function Hero() {
                 style={{ fontFamily: appleFontStack }}
               >
                 <span>{copy.secondaryCta}</span>
-                <ArrowUpRight className="h-4.5 w-4.5 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <span className="relative flex h-5 w-5 items-center justify-center">
+                  <svg
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                    className="h-5 w-5 fill-current transition group-hover:scale-75 group-hover:opacity-0"
+                  >
+                    <path d="M11.16 1.76a.75.75 0 0 0-1.34-.14L4.63 9.4a.75.75 0 0 0 .63 1.17h3.18l-1.1 7.33a.75.75 0 0 0 1.37.49l6.66-9.96a.75.75 0 0 0-.62-1.17h-3.12l-.47-5.5Z" />
+                  </svg>
+                  <ArrowUpRight className="absolute h-4.5 w-4.5 translate-y-0.5 opacity-0 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
+                </span>
                 <span className="absolute inset-x-0 bottom-0 h-px bg-chartreuse/95" />
               </Link>
             </div>
