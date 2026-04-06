@@ -14,7 +14,7 @@ const deals = [
     flag: "🇮🇹",
     badge: "Smart Deal",
     duration: "2h 15m",
-    price: "€39",
+    basePriceEur: 39,
     image:
       "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=900&q=80"
   },
@@ -24,7 +24,7 @@ const deals = [
     flag: "🇭🇺",
     badge: "Hot",
     duration: "2h 10m",
-    price: "€49",
+    basePriceEur: 49,
     image:
       "https://images.unsplash.com/photo-1549877452-9c387954fbc2?auto=format&fit=crop&w=900&q=80"
   },
@@ -34,9 +34,9 @@ const deals = [
     flag: "🇫🇷",
     badge: "Weekend Deal",
     duration: "3h 20m",
-    price: "€59",
+    basePriceEur: 59,
     image:
-      "https://images.unsplash.com/photo-1502602898536-47ad22581b52?auto=format&fit=crop&w=900&q=80"
+      "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=900&q=80"
   },
   {
     city: "Dubai",
@@ -44,14 +44,29 @@ const deals = [
     flag: "🇦🇪",
     badge: "Trending",
     duration: "5h 15m",
-    price: "€129",
+    basePriceEur: 129,
     image:
       "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=80"
   }
 ];
 
+const currencyConfig = {
+  USD: { locale: "en-US", currency: "USD", rateFromEur: 1.09 },
+  RUB: { locale: "ru-RU", currency: "RUB", rateFromEur: 101.5 },
+  TRY: { locale: "tr-TR", currency: "TRY", rateFromEur: 41.2 }
+} as const;
+
 export default function Home() {
-  const { language } = useLanguage();
+  const { language, currency } = useLanguage();
+  const formatPrice = (basePriceEur: number) => {
+    const current = currencyConfig[currency];
+    return new Intl.NumberFormat(current.locale, {
+      style: "currency",
+      currency: current.currency,
+      maximumFractionDigits: 0
+    }).format(basePriceEur * current.rateFromEur);
+  };
+
   const copy =
     language === "ru"
       ? {
@@ -64,10 +79,10 @@ export default function Home() {
       : language === "tr"
         ? {
             sectionLabel: "Planner ilhamı",
-            title: "Planner’ın keşfedebileceği popüler trip fikirleri",
+            title: "Planlayıcının keşfedebileceği popüler seyahat fikirleri",
             description:
-              "Bunlar bütçe odaklı city break örnekleri. Planner ise bunun ötesine geçip zamanlama, vize erişimi ve konaklama stilini her yolcuya göre uyarlar.",
-            cta: "Trip planner’ı aç"
+              "Bunlar bütçe odaklı şehir kaçamağı örnekleri. Planlayıcı ise bunun ötesine geçip zamanlama, vize erişimi ve konaklama stilini her yolcuya göre uyarlar.",
+            cta: "Seyahat planlayıcıyı aç"
           }
       : {
           sectionLabel: "Planner inspiration",
@@ -114,8 +129,12 @@ export default function Home() {
           </div>
 
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {deals.map((deal) => (
-              <DealCard key={deal.city} {...deal} />
+            {deals.map(({ basePriceEur, ...deal }) => (
+              <DealCard
+                key={deal.city}
+                {...deal}
+                price={formatPrice(basePriceEur)}
+              />
             ))}
           </div>
         </div>

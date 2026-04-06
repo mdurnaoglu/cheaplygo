@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { useLanguage } from "@/components/language-provider";
 
 type DealCardProps = {
   city: string;
@@ -19,6 +20,14 @@ export function DealCard({
   price,
   image
 }: DealCardProps) {
+  const { language } = useLanguage();
+  const priceLabel =
+    language === "ru"
+      ? "цены от"
+      : language === "tr"
+        ? "başlayan fiyatlarla"
+        : "starting from";
+
   return (
     <article className="group overflow-hidden rounded-3xl border border-transparent bg-white shadow-card transition duration-300 hover:-translate-y-1.5 hover:border-chartreuse/80 hover:shadow-[0_28px_60px_rgba(50,98,115,0.16)]">
       <div className="relative h-48 overflow-hidden">
@@ -50,7 +59,7 @@ export function DealCard({
             <div className="text-4xl font-black tracking-[-0.05em] text-[#9CCE00]">
               {price}
             </div>
-            <p className="mt-1 text-sm text-slate-400">one-way</p>
+            <p className="mt-1 text-sm text-slate-400">{priceLabel}</p>
           </div>
         </div>
       </div>

@@ -40,19 +40,19 @@ export function Features() {
                   "Kalkış şehirlerini, vize durumunu, seyahat stilini ve ne kadar esnek olabileceğini paylaş."
               },
               {
-                title: "Biz tüm trip seçeneklerini sıralayalım",
+                title: "Biz tüm seyahat seçeneklerini sıralayalım",
                 description:
-                  "cheaplygo canlı uçuş mantığını, konaklama beklentisini ve trip uyumunu birlikte değerlendirir."
+                  "cheaplygo canlı uçuş mantığını, konaklama beklentisini ve seyahat uyumunu birlikte değerlendirir."
               },
               {
                 title: "Daha hızlı karar ver, daha akıllı rezervasyon yap",
                 description:
-                  "Trip mantıklı hale geldikten sonra uçuş ve otelleri ayrı ayrı aç."
+                  "Seyahat mantıklı hale geldikten sonra uçuş ve otelleri ayrı ayrı aç."
               }
             ],
             brand: "CheaplyGo",
-            title: "Boş bir aramayla değil, trip kararıyla başla",
-            cta: "Trip Planner’ı Aç"
+            title: "Boş bir aramayla değil, seyahat kararıyla başla",
+            cta: "Seyahat Planlayıcıyı Aç"
           }
       : {
           items: [

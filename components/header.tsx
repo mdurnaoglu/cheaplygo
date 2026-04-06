@@ -2,7 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { useLanguage, type Language } from "@/components/language-provider";
+import {
+  useLanguage,
+  type Currency,
+  type Language
+} from "@/components/language-provider";
 
 const navItems = ["Trip Planner", "Smart Trips", "How It Works", "Inspiration"];
 
@@ -12,10 +16,18 @@ const languageOptions: Array<{ value: Language; label: string }> = [
   { value: "tr", label: "TR" }
 ];
 
+const currencyOptions: Array<{ value: Currency; label: string }> = [
+  { value: "USD", label: "USD" },
+  { value: "RUB", label: "RUB" },
+  { value: "TRY", label: "TRY" }
+];
+
 export function Header() {
-  const { language, setLanguage } = useLanguage();
-  const [menuOpen, setMenuOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement | null>(null);
+  const { language, setLanguage, currency, setCurrency } = useLanguage();
+  const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
+  const [currencyMenuOpen, setCurrencyMenuOpen] = useState(false);
+  const languageMenuRef = useRef<HTMLDivElement | null>(null);
+  const currencyMenuRef = useRef<HTMLDivElement | null>(null);
   const labels =
     language === "ru"
       ? {
@@ -24,8 +36,8 @@ export function Header() {
         }
       : language === "tr"
         ? {
-            nav: ["Trip Planner", "Akıllı Tripler", "Nasıl Çalışır", "İlham"],
-            cta: "Tripimi Planla"
+            nav: ["Seyahat Planlayıcı", "Akıllı Rotalar", "Nasıl Çalışır", "İlham"],
+            cta: "Seyahatimi Planla"
           }
         : {
             nav: navItems,
@@ -34,8 +46,11 @@ export function Header() {
 
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
-      if (!menuRef.current?.contains(event.target as Node)) {
-        setMenuOpen(false);
+      if (!languageMenuRef.current?.contains(event.target as Node)) {
+        setLanguageMenuOpen(false);
+      }
+      if (!currencyMenuRef.current?.contains(event.target as Node)) {
+        setCurrencyMenuOpen(false);
       }
     };
 
@@ -77,19 +92,22 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <div ref={menuRef} className="relative hidden sm:block">
+          <div ref={languageMenuRef} className="relative hidden sm:block">
             <button
               type="button"
-              onClick={() => setMenuOpen((open) => !open)}
+              onClick={() => {
+                setCurrencyMenuOpen(false);
+                setLanguageMenuOpen((open) => !open);
+              }}
               className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs font-bold text-white backdrop-blur-md transition hover:bg-white/14"
             >
               {language.toUpperCase()}
               <ChevronDown
-                className={`h-4 w-4 transition ${menuOpen ? "rotate-180" : ""}`}
+                className={`h-4 w-4 transition ${languageMenuOpen ? "rotate-180" : ""}`}
               />
             </button>
 
-            {menuOpen ? (
+            {languageMenuOpen ? (
               <div className="absolute right-0 mt-2 min-w-[7rem] rounded-2xl border border-white/15 bg-slateBlue/70 p-1.5 text-white shadow-xl backdrop-blur-xl">
                 {languageOptions.map((option) => (
                   <button
@@ -97,7 +115,7 @@ export function Header() {
                     type="button"
                     onClick={() => {
                       setLanguage(option.value);
-                      setMenuOpen(false);
+                      setLanguageMenuOpen(false);
                     }}
                     className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-xs font-bold transition ${
                       language === option.value
@@ -107,6 +125,45 @@ export function Header() {
                   >
                     <span>{option.label}</span>
                     {language === option.value ? <span>•</span> : null}
+                  </button>
+                ))}
+              </div>
+            ) : null}
+          </div>
+
+          <div ref={currencyMenuRef} className="relative hidden sm:block">
+            <button
+              type="button"
+              onClick={() => {
+                setLanguageMenuOpen(false);
+                setCurrencyMenuOpen((open) => !open);
+              }}
+              className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs font-bold text-white backdrop-blur-md transition hover:bg-white/14"
+            >
+              {currency}
+              <ChevronDown
+                className={`h-4 w-4 transition ${currencyMenuOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+
+            {currencyMenuOpen ? (
+              <div className="absolute right-0 mt-2 min-w-[7rem] rounded-2xl border border-white/15 bg-slateBlue/70 p-1.5 text-white shadow-xl backdrop-blur-xl">
+                {currencyOptions.map((option) => (
+                  <button
+                    key={option.value}
+                    type="button"
+                    onClick={() => {
+                      setCurrency(option.value);
+                      setCurrencyMenuOpen(false);
+                    }}
+                    className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-xs font-bold transition ${
+                      currency === option.value
+                        ? "bg-white text-slateBlue"
+                        : "text-white/88 hover:bg-white/10 hover:text-white"
+                    }`}
+                  >
+                    <span>{option.label}</span>
+                    {currency === option.value ? <span>•</span> : null}
                   </button>
                 ))}
               </div>

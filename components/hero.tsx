@@ -24,13 +24,13 @@ export function Hero() {
       : language === "tr"
         ? {
             eyebrowPrefix: "Yeni Nesil",
-            eyebrowAccent: "Trip Planner",
-            titleTop: "Bir Sonraki",
-            titleBottom: "Tripini Akıllıca Planla",
-            cta: "Tripimi planla",
+            eyebrowAccent: "Seyahat Planlayıcı",
+            titleTop: "Sonraki Seyahatini",
+            titleBottom: "Akıllıca Planla",
+            cta: "Seyahatimi planla",
             secondaryCta: "veya Biletini Anında Al",
             trustPrefix: "Login yok. Kredi kartı yok.",
-            trustEmphasis: "Just Start."
+            trustEmphasis: "Hemen Başla."
           }
       : {
           eyebrowPrefix: "Next Generation",
@@ -64,7 +64,11 @@ export function Hero() {
             </p>
 
             <h1
-              className="mx-auto mt-6 max-w-[11.5ch] text-[3.6rem] font-semibold leading-[0.94] tracking-[-0.05em] text-white sm:text-[5rem] lg:text-[5.9rem]"
+              className={`mx-auto mt-6 font-semibold leading-[0.94] tracking-[-0.05em] text-white ${
+                language === "tr"
+                  ? "max-w-[12.5ch] text-[3.15rem] sm:text-[4.45rem] lg:text-[5.2rem]"
+                  : "max-w-[11.5ch] text-[3.6rem] sm:text-[5rem] lg:text-[5.9rem]"
+              }`}
               style={{ fontFamily: appleFontStack }}
             >
               <span className="block">{copy.titleTop}</span>
