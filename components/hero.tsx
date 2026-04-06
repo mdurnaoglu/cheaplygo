@@ -53,7 +53,7 @@ export function Hero() {
             </p>
 
             <h1
-              className="mx-auto mt-6 max-w-[10.5ch] text-5xl font-semibold leading-[0.94] tracking-[-0.055em] text-white sm:text-[5.4rem] lg:text-[6.35rem]"
+              className="mx-auto mt-6 max-w-[11.5ch] text-[3.6rem] font-semibold leading-[0.94] tracking-[-0.05em] text-white sm:text-[5rem] lg:text-[5.9rem]"
               style={{ fontFamily: appleFontStack }}
             >
               <span className="block">{copy.titleTop}</span>
@@ -61,11 +61,11 @@ export function Hero() {
             </h1>
 
             <p
-              className="mt-8 text-base text-white/88 sm:text-lg"
+              className="mt-8 text-base text-white sm:text-lg"
               style={{ fontFamily: appleFontStack }}
             >
               <span>{copy.trustPrefix} </span>
-              <strong className="font-semibold text-white">{copy.trustEmphasis}</strong>
+              <strong className="font-semibold text-chartreuse">{copy.trustEmphasis}</strong>
             </p>
 
             <div className="mt-8">
