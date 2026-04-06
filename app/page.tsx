@@ -2,6 +2,7 @@
 
 import { Flame, MoveRight } from "lucide-react";
 import { DealCard } from "@/components/deal-card";
+import { FlightDealsStrip } from "@/components/flight-deals-strip";
 import { Features } from "@/components/features";
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
@@ -101,6 +102,8 @@ export default function Home() {
 
       <section id="smart-trips" className="px-4 py-6 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
+          <FlightDealsStrip />
+
           <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
             <div className="flex items-start gap-3">
               <div className="mt-7 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-chartreuse text-black">
