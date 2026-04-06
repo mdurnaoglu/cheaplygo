@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import clsx from "clsx";
 import { ChevronDown } from "lucide-react";
 import {
   useLanguage,
@@ -22,12 +23,23 @@ const currencyOptions: Array<{ value: Currency; label: string }> = [
   { value: "TRY", label: "TRY" }
 ];
 
-export function Header() {
+type HeaderProps = {
+  theme?: "dark" | "light";
+  context?: "home" | "blog";
+  activeNav?: "planner" | "smart-trips" | "how-it-works" | "blog" | null;
+};
+
+export function Header({
+  theme = "dark",
+  context = "home",
+  activeNav = "planner"
+}: HeaderProps) {
   const { language, setLanguage, currency, setCurrency } = useLanguage();
   const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
   const [currencyMenuOpen, setCurrencyMenuOpen] = useState(false);
   const languageMenuRef = useRef<HTMLDivElement | null>(null);
   const currencyMenuRef = useRef<HTMLDivElement | null>(null);
+  const isDarkTheme = theme === "dark";
   const labels =
     language === "ru"
       ? {
@@ -58,32 +70,44 @@ export function Header() {
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
+  const navLinks =
+    context === "blog"
+      ? ["/planner", "/#smart-trips", "/#how-it-works", "/blog"]
+      : ["/planner", "#smart-trips", "#how-it-works", "#inspiration"];
+
+  const navKeys = ["planner", "smart-trips", "how-it-works", "blog"] as const;
+
   return (
     <header className="absolute inset-x-0 top-0 z-30">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-8 px-6 py-6 lg:px-8">
-        <div className="flex items-center text-[1.75rem] font-extrabold tracking-[-0.05em] text-white">
+        <div
+          className={clsx(
+            "flex items-center text-[1.75rem] font-extrabold tracking-[-0.05em]",
+            isDarkTheme ? "text-white" : "text-ink"
+          )}
+        >
           cheaplygo
           <span className="ml-1 inline-block h-3 w-3 rounded-full bg-chartreuse" />
         </div>
 
-        <nav className="hidden items-center gap-10 text-sm font-semibold text-white lg:flex">
+        <nav
+          className={clsx(
+            "hidden items-center gap-10 text-sm font-semibold lg:flex",
+            isDarkTheme ? "text-white" : "text-ink"
+          )}
+        >
           {navItems.map((item, index) => (
             <a
               key={item}
-              href={
-                item === "Trip Planner"
-                  ? "/planner"
-                  : item === "Smart Trips"
-                    ? "#smart-trips"
-                    : item === "How It Works"
-                      ? "#how-it-works"
-                      : "#inspiration"
-              }
-              className="text-white/95 transition hover:text-white"
+              href={navLinks[index]}
+              className={clsx(
+                "transition",
+                isDarkTheme ? "text-white/95 hover:text-white" : "text-slate-600 hover:text-ink"
+              )}
             >
               <span className="relative">
                 {labels.nav[index]}
-                {index === 0 ? (
+                {activeNav === navKeys[index] ? (
                   <span className="absolute -bottom-3 left-0 h-[3px] w-full rounded-full bg-chartreuse" />
                 ) : null}
               </span>
@@ -99,7 +123,12 @@ export function Header() {
                 setCurrencyMenuOpen(false);
                 setLanguageMenuOpen((open) => !open);
               }}
-              className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs font-bold text-white backdrop-blur-md transition hover:bg-white/14"
+              className={clsx(
+                "inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold transition",
+                isDarkTheme
+                  ? "border border-white/25 bg-white/10 text-white backdrop-blur-md hover:bg-white/14"
+                  : "border border-slate-200 bg-white text-ink shadow-sm hover:border-slate-300"
+              )}
             >
               {language.toUpperCase()}
               <ChevronDown
@@ -108,7 +137,14 @@ export function Header() {
             </button>
 
             {languageMenuOpen ? (
-              <div className="absolute right-0 mt-2 min-w-[7rem] rounded-2xl border border-white/15 bg-slateBlue/70 p-1.5 text-white shadow-xl backdrop-blur-xl">
+              <div
+                className={clsx(
+                  "absolute right-0 mt-2 min-w-[7rem] rounded-2xl p-1.5 shadow-xl",
+                  isDarkTheme
+                    ? "border border-white/15 bg-slateBlue/70 text-white backdrop-blur-xl"
+                    : "border border-slate-200 bg-white text-ink"
+                )}
+              >
                 {languageOptions.map((option) => (
                   <button
                     key={option.value}
@@ -119,8 +155,12 @@ export function Header() {
                     }}
                     className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-xs font-bold transition ${
                       language === option.value
-                        ? "bg-white text-slateBlue"
-                        : "text-white/88 hover:bg-white/10 hover:text-white"
+                        ? isDarkTheme
+                          ? "bg-white text-slateBlue"
+                          : "bg-slateBlue text-white"
+                        : isDarkTheme
+                          ? "text-white/88 hover:bg-white/10 hover:text-white"
+                          : "text-slate-600 hover:bg-slate-50 hover:text-ink"
                     }`}
                   >
                     <span>{option.label}</span>
@@ -138,7 +178,12 @@ export function Header() {
                 setLanguageMenuOpen(false);
                 setCurrencyMenuOpen((open) => !open);
               }}
-              className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs font-bold text-white backdrop-blur-md transition hover:bg-white/14"
+              className={clsx(
+                "inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold transition",
+                isDarkTheme
+                  ? "border border-white/25 bg-white/10 text-white backdrop-blur-md hover:bg-white/14"
+                  : "border border-slate-200 bg-white text-ink shadow-sm hover:border-slate-300"
+              )}
             >
               {currency}
               <ChevronDown
@@ -147,7 +192,14 @@ export function Header() {
             </button>
 
             {currencyMenuOpen ? (
-              <div className="absolute right-0 mt-2 min-w-[7rem] rounded-2xl border border-white/15 bg-slateBlue/70 p-1.5 text-white shadow-xl backdrop-blur-xl">
+              <div
+                className={clsx(
+                  "absolute right-0 mt-2 min-w-[7rem] rounded-2xl p-1.5 shadow-xl",
+                  isDarkTheme
+                    ? "border border-white/15 bg-slateBlue/70 text-white backdrop-blur-xl"
+                    : "border border-slate-200 bg-white text-ink"
+                )}
+              >
                 {currencyOptions.map((option) => (
                   <button
                     key={option.value}
@@ -158,8 +210,12 @@ export function Header() {
                     }}
                     className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-xs font-bold transition ${
                       currency === option.value
-                        ? "bg-white text-slateBlue"
-                        : "text-white/88 hover:bg-white/10 hover:text-white"
+                        ? isDarkTheme
+                          ? "bg-white text-slateBlue"
+                          : "bg-slateBlue text-white"
+                        : isDarkTheme
+                          ? "text-white/88 hover:bg-white/10 hover:text-white"
+                          : "text-slate-600 hover:bg-slate-50 hover:text-ink"
                     }`}
                   >
                     <span>{option.label}</span>

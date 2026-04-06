@@ -27,6 +27,41 @@ body {
   text-wrap: balance;
 }
 
+.blog-body {
+  color: #334155;
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.blog-body h2,
+.blog-body h3 {
+  margin-top: 2rem;
+  color: #0f172a;
+  font-size: 1.875rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.blog-body p {
+  margin-top: 1rem;
+}
+
+.blog-body ul,
+.blog-body ol {
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+}
+
+.blog-body li + li {
+  margin-top: 0.5rem;
+}
+
+.blog-body a {
+  color: #326273;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
 @keyframes fadeUp {
   from {
     opacity: 0;
