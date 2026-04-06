@@ -71,8 +71,10 @@ export default function Home() {
 
   return (
     <main className="pb-10">
-      <Header />
-      <Hero />
+      <div className="relative px-4 pt-0 sm:px-6 lg:px-8">
+        <Header />
+        <Hero />
+      </div>
 
       <section id="smart-trips" className="px-4 py-6 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">

@@ -18,13 +18,14 @@ export function Header() {
         };
 
   return (
-    <header className="mx-auto flex w-full max-w-7xl items-center justify-between gap-8 px-6 py-6 lg:px-8">
-      <div className="flex items-center text-[1.75rem] font-extrabold tracking-[-0.05em] text-slateBlue">
+    <header className="absolute inset-x-0 top-0 z-30">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-8 px-6 py-6 lg:px-8">
+      <div className="flex items-center text-[1.75rem] font-extrabold tracking-[-0.05em] text-white">
         cheaplygo
         <span className="ml-1 inline-block h-3 w-3 rounded-full bg-chartreuse" />
       </div>
 
-      <nav className="hidden items-center gap-10 text-sm font-semibold text-ink/80 lg:flex">
+      <nav className="hidden items-center gap-10 text-sm font-semibold text-white/82 lg:flex">
         {navItems.map((item, index) => (
           <a
             key={item}
@@ -37,8 +38,8 @@ export function Header() {
                     ? "#how-it-works"
                     : "#inspiration"
             }
-            className={`transition hover:text-ink ${
-              index === 0 ? "text-ink" : ""
+            className={`transition hover:text-white ${
+              index === 0 ? "text-white" : ""
             }`}
           >
             <span className="relative">
@@ -52,12 +53,12 @@ export function Header() {
       </nav>
 
       <div className="flex items-center gap-3">
-        <div className="hidden items-center rounded-full border border-slate-200 bg-white p-1 sm:flex">
+        <div className="hidden items-center rounded-full border border-white/25 bg-white/10 p-1 backdrop-blur-md sm:flex">
           <button
             type="button"
             onClick={() => setLanguage("en")}
-            className={`rounded-full px-3 py-2 text-xs font-bold transition hover:bg-slate-50 ${
-              language === "en" ? "bg-slateBlue text-white" : "text-slateBlue"
+            className={`rounded-full px-3 py-2 text-xs font-bold transition ${
+              language === "en" ? "bg-white text-slateBlue" : "text-white/88"
             }`}
           >
             EN
@@ -65,8 +66,8 @@ export function Header() {
           <button
             type="button"
             onClick={() => setLanguage("ru")}
-            className={`rounded-full px-3 py-2 text-xs font-bold transition hover:bg-slate-50 ${
-              language === "ru" ? "bg-slateBlue text-white" : "text-slateBlue"
+            className={`rounded-full px-3 py-2 text-xs font-bold transition ${
+              language === "ru" ? "bg-white text-slateBlue" : "text-white/88"
             }`}
           >
             RU
@@ -79,6 +80,7 @@ export function Header() {
         >
           {labels.cta}
         </a>
+      </div>
       </div>
     </header>
   );
