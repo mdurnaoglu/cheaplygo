@@ -12,12 +12,14 @@ export function Hero() {
   const copy =
     language === "ru"
       ? {
-          eyebrow: "Trip planner нового поколения под ваш бюджет",
+          eyebrowPrefix: "Планировщик путешествий нового поколения",
+          eyebrowAccent: "для вашего бюджета",
           title: "Планируйте своё следующее путешествие умнее",
           cta: "Спланировать поездку"
         }
       : {
-          eyebrow: "Next Generation Trip Planner for your Budget",
+          eyebrowPrefix: "Next Generation",
+          eyebrowAccent: "Trip Planner",
           title: "Plan your next Trip Smarter",
           cta: "Plan my trip"
         };
@@ -33,17 +35,18 @@ export function Hero() {
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,15,28,0.58)_0%,rgba(8,15,28,0.34)_36%,rgba(8,15,28,0.14)_62%,rgba(8,15,28,0.08)_100%)]" />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,20,34,0.18)_0%,rgba(12,20,34,0.06)_34%,rgba(12,20,34,0.26)_100%)]" />
 
-          <div className="relative flex min-h-[72vh] items-end sm:min-h-[78vh]">
-            <div className="w-full px-6 pb-10 pt-20 sm:px-10 sm:pb-14 lg:max-w-[48rem] lg:px-14 lg:pb-16">
+          <div className="relative flex min-h-[72vh] items-center justify-center sm:min-h-[78vh]">
+            <div className="w-full px-6 py-16 text-center sm:px-10 lg:max-w-[56rem] lg:px-14">
               <p
-                className="text-xs font-medium uppercase tracking-[0.28em] text-white/78 sm:text-sm"
+                className="text-xs font-medium uppercase tracking-[0.28em] text-white sm:text-sm"
                 style={{ fontFamily: appleFontStack }}
               >
-                {copy.eyebrow}
+                <span className="text-white">{copy.eyebrowPrefix} </span>
+                <span className="text-chartreuse">{copy.eyebrowAccent}</span>
               </p>
 
               <h1
-                className="mt-4 max-w-[11ch] text-5xl font-semibold tracking-[-0.07em] text-white sm:text-6xl lg:text-7xl"
+                className="mx-auto mt-4 max-w-[11ch] text-5xl font-semibold tracking-[-0.07em] text-white sm:text-6xl lg:text-7xl"
                 style={{ fontFamily: appleFontStack }}
               >
                 {copy.title}
