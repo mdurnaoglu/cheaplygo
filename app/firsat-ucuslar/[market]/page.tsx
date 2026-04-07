@@ -46,7 +46,7 @@ export default async function MarketFlightDealsPage({ params }: MarketPageProps)
 
   return (
     <main className="min-h-screen bg-page">
-      <Header theme="light" activeNav="deal-flights" />
+      <Header theme="light" activeNav="discover" />
 
       <section className="px-4 pb-16 pt-36 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">

@@ -15,7 +15,7 @@ export default async function BlogIndexPage() {
   return (
     <main className="min-h-screen bg-page">
       <section className="relative border-b border-slate-200 bg-white pb-12 pt-32">
-        <Header theme="light" context="blog" activeNav="blog" />
+        <Header theme="light" activeNav="discover" />
 
         <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
           <div className="max-w-3xl">

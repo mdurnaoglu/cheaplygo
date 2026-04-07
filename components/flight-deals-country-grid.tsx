@@ -36,34 +36,36 @@ export function FlightDealsCountryGrid() {
               <Link
                 key={market}
                 href={`/firsat-ucuslar/${item.slug}`}
-                className="group overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-card transition duration-300 hover:-translate-y-1.5 hover:border-chartreuse/70 hover:shadow-[0_30px_70px_rgba(50,98,115,0.14)]"
+                className="group flex h-full overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-card transition duration-300 hover:-translate-y-1.5 hover:border-chartreuse/70 hover:shadow-[0_30px_70px_rgba(50,98,115,0.14)]"
               >
-                <div className="relative h-56 overflow-hidden">
-                  <img
-                    src={countryImages[market]}
-                    alt={item.displayName.tr}
-                    className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.08)_0%,rgba(15,23,42,0.48)_100%)]" />
-                  <div className="absolute right-5 top-5 flex h-12 w-12 items-center justify-center rounded-full bg-chartreuse text-black">
-                    <PlaneTakeoff className="h-5 w-5" />
+                <div className="flex min-h-full w-full flex-col">
+                  <div className="relative h-56 overflow-hidden">
+                    <img
+                      src={countryImages[market]}
+                      alt={item.displayName.tr}
+                      className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.08)_0%,rgba(15,23,42,0.48)_100%)]" />
+                    <div className="absolute right-5 top-5 flex h-12 w-12 items-center justify-center rounded-full bg-chartreuse text-black">
+                      <PlaneTakeoff className="h-5 w-5" />
+                    </div>
                   </div>
-                </div>
 
-                <div className="p-6">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-                    {item.originCity} kalkışlı
-                  </p>
-                  <h2 className="mt-3 text-3xl font-extrabold tracking-[-0.05em] text-ink">
-                    {item.displayName.tr} fırsat uçak biletleri
-                  </h2>
-                  <p className="mt-4 text-sm leading-6 text-slate-500">
-                    {item.summary.tr}
-                  </p>
-                  <span className="mt-6 inline-flex items-center gap-2 rounded-full bg-chartreuse px-4 py-3 text-sm font-bold text-black transition group-hover:brightness-95">
-                    Sayfayı aç
-                    <ArrowRight className="h-4 w-4" />
-                  </span>
+                  <div className="flex flex-1 flex-col p-6">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+                      {item.originCity} kalkışlı
+                    </p>
+                    <h2 className="mt-3 min-h-[4.75rem] text-3xl font-extrabold tracking-[-0.05em] text-ink">
+                      {item.displayName.tr} fırsat uçak biletleri
+                    </h2>
+                    <p className="mt-4 min-h-[4.5rem] text-sm leading-6 text-slate-500">
+                      {item.summary.tr}
+                    </p>
+                    <span className="mt-auto inline-flex items-center gap-2 rounded-full bg-chartreuse px-4 py-3 text-sm font-bold text-black transition group-hover:brightness-95">
+                      Sayfayı aç
+                      <ArrowRight className="h-4 w-4" />
+                    </span>
+                  </div>
                 </div>
               </Link>
             );

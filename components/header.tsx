@@ -1,16 +1,29 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import clsx from "clsx";
-import { ChevronDown } from "lucide-react";
+import {
+  BookOpenText,
+  ChevronDown,
+  Compass,
+  Globe,
+  Map,
+  PlaneTakeoff
+} from "lucide-react";
+import {
+  buildStaySearchLink,
+  getPopularRouteLinks,
+  getPreferredMarket
+} from "@/lib/explore";
+import { getStayDealsForMarket } from "@/lib/explore";
 import {
   useLanguage,
   type Currency,
   type Language
 } from "@/components/language-provider";
 
-const navItems = ["Trip Planner", "Deal Flights", "How It Works", "Inspiration"];
+const navItems = ["Trip Planner", "Smart Trips", "How It Works", "Discover"];
 
 const languageOptions: Array<{ value: Language; label: string }> = [
   { value: "en", label: "EN" },
@@ -26,36 +39,80 @@ const currencyOptions: Array<{ value: Currency; label: string }> = [
 
 type HeaderProps = {
   theme?: "dark" | "light";
-  context?: "home" | "blog";
-  activeNav?: "planner" | "deal-flights" | "how-it-works" | "blog" | null;
+  activeNav?: "planner" | "smart-trips" | "how-it-works" | "discover" | null;
 };
 
 export function Header({
   theme = "dark",
-  context = "home",
   activeNav = "planner"
 }: HeaderProps) {
   const { language, setLanguage, currency, setCurrency } = useLanguage();
   const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
   const [currencyMenuOpen, setCurrencyMenuOpen] = useState(false);
+  const [discoverOpen, setDiscoverOpen] = useState(false);
   const languageMenuRef = useRef<HTMLDivElement | null>(null);
   const currencyMenuRef = useRef<HTMLDivElement | null>(null);
+  const discoverMenuRef = useRef<HTMLDivElement | null>(null);
   const isDarkTheme = theme === "dark";
+
   const labels =
     language === "ru"
       ? {
-          nav: ["Планировщик", "Выгодные перелёты", "Как это работает", "Вдохновение"],
-          cta: "Спланировать поездку"
+          nav: ["Планировщик", "Умные поездки", "Как это работает", "Исследовать"],
+          cta: "Спланировать поездку",
+          offers: "Предложения",
+          discover: "Открыть",
+          domestic: "Популярные маршруты по стране",
+          international: "Популярные зарубежные маршруты",
+          flightDeals: "Выгодные перелёты",
+          stayDeals: "Выгодные отели",
+          blog: "Cheaplygo Blog",
+          visa: "Визовый гид",
+          idEntry: "Страны по ID",
+          cheapStay: "Недорогие отели",
+          flightMap: "Карта рейсов",
+          open: "Открыть"
         }
       : language === "tr"
         ? {
-            nav: ["Seyahat Planlayıcı", "Fırsat Uçuşlar", "Nasıl Çalışır", "İlham"],
-            cta: "Seyahatimi Planla"
+            nav: ["Seyahat Planlayıcı", "Akıllı Rotalar", "Nasıl Çalışır", "Keşfet"],
+            cta: "Seyahatimi Planla",
+            offers: "Fırsatlar",
+            discover: "Keşfet",
+            domestic: "Yurt İçi Popüler Destinasyonlar",
+            international: "Yurt Dışı Popüler Destinasyonlar",
+            flightDeals: "Fırsat Uçuşlar",
+            stayDeals: "Fırsat Konaklamalar",
+            blog: "Cheaplygo Blog",
+            visa: "Vize Rehberi",
+            idEntry: "Kimlikle Girilen Ülkeler",
+            cheapStay: "Ucuz Konaklamalı Ülkeler",
+            flightMap: "Uçuş Haritası",
+            open: "Aç"
           }
-        : {
-            nav: navItems,
-            cta: "Plan My Trip"
-          };
+      : {
+          nav: navItems,
+          cta: "Plan My Trip",
+          offers: "Offers",
+          discover: "Explore",
+          domestic: "Popular Domestic Destinations",
+          international: "Popular International Destinations",
+          flightDeals: "Deal Flights",
+          stayDeals: "Deal Stays",
+          blog: "Cheaplygo Blog",
+          visa: "Visa Guide",
+          idEntry: "ID Entry Countries",
+          cheapStay: "Affordable Stay Countries",
+          flightMap: "Flight Map",
+          open: "Open"
+        };
+
+  const routeGroups = useMemo(
+    () => getPopularRouteLinks(language, currency),
+    [currency, language]
+  );
+  const preferredMarket = getPreferredMarket(language);
+  const featuredStay = getStayDealsForMarket(preferredMarket)[0];
 
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
@@ -65,21 +122,20 @@ export function Header({
       if (!currencyMenuRef.current?.contains(event.target as Node)) {
         setCurrencyMenuOpen(false);
       }
+      if (!discoverMenuRef.current?.contains(event.target as Node)) {
+        setDiscoverOpen(false);
+      }
     };
 
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
-  const navLinks =
-    context === "blog"
-      ? ["/planner", "/firsat-ucuslar", "/#how-it-works", "/blog"]
-      : ["/planner", "/firsat-ucuslar", "#how-it-works", "#inspiration"];
-
-  const navKeys = ["planner", "deal-flights", "how-it-works", "blog"] as const;
+  const navLinks = ["/planner", "/#smart-trips", "/#how-it-works"] as const;
+  const navKeys = ["planner", "smart-trips", "how-it-works", "discover"] as const;
 
   return (
-    <header className="absolute inset-x-0 top-0 z-30">
+    <header className="absolute inset-x-0 top-0 z-40">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-8 px-6 py-6 lg:px-8">
         <Link
           href="/"
@@ -98,7 +154,7 @@ export function Header({
             isDarkTheme ? "text-white" : "text-ink"
           )}
         >
-          {navItems.map((item, index) => (
+          {navItems.slice(0, 3).map((item, index) => (
             <a
               key={item}
               href={navLinks[index]}
@@ -115,6 +171,157 @@ export function Header({
               </span>
             </a>
           ))}
+
+          <div
+            ref={discoverMenuRef}
+            className="relative"
+            onMouseEnter={() => setDiscoverOpen(true)}
+            onMouseLeave={() => setDiscoverOpen(false)}
+          >
+            <button
+              type="button"
+              onClick={() => setDiscoverOpen((current) => !current)}
+              className={clsx(
+                "inline-flex items-center gap-2 transition",
+                isDarkTheme ? "text-white/95 hover:text-white" : "text-slate-600 hover:text-ink"
+              )}
+            >
+              <span className="relative">
+                {labels.nav[3]}
+                {activeNav === "discover" ? (
+                  <span className="absolute -bottom-3 left-0 h-[3px] w-full rounded-full bg-chartreuse" />
+                ) : null}
+              </span>
+              <ChevronDown className={clsx("h-4 w-4 transition", discoverOpen && "rotate-180")} />
+            </button>
+
+            {discoverOpen ? (
+              <div className="absolute left-1/2 top-full z-50 mt-5 w-[min(1120px,calc(100vw-80px))] -translate-x-1/2 overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_32px_70px_rgba(15,23,42,0.18)]">
+                <div className="grid grid-cols-4">
+                  <div className="border-r border-slate-200 p-8">
+                    <div className="flex items-center gap-3 text-lg font-bold text-ink">
+                      <Compass className="h-5 w-5 text-chartreuse" />
+                      {labels.offers}
+                    </div>
+                    <div className="mt-8 space-y-5">
+                      <Link href="/firsat-ucuslar" className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue">
+                        {labels.flightDeals}
+                      </Link>
+                      <Link href="/firsat-konaklamalar" className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue">
+                        {labels.stayDeals}
+                      </Link>
+                    </div>
+
+                    <a
+                      href={buildStaySearchLink({
+                        city: featuredStay.city,
+                        country: featuredStay.country
+                      })}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-8 block overflow-hidden rounded-[1.5rem] border border-chartreuse/50 bg-[#fffbea]"
+                    >
+                      <img
+                        src={featuredStay.image}
+                        alt={featuredStay.city}
+                        className="h-32 w-full object-cover"
+                      />
+                      <div className="p-4">
+                        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+                          {labels.stayDeals}
+                        </p>
+                        <p className="mt-2 text-lg font-bold text-ink">
+                          {featuredStay.city} {featuredStay.nightlyFrom}
+                        </p>
+                        <p className="mt-2 text-sm leading-6 text-slate-600">
+                          {featuredStay.highlight}
+                        </p>
+                      </div>
+                    </a>
+                  </div>
+
+                  <div className="border-r border-slate-200 p-8">
+                    <div className="flex items-center gap-3 text-lg font-bold text-ink">
+                      <BookOpenText className="h-5 w-5 text-chartreuse" />
+                      {labels.discover}
+                    </div>
+                    <div className="mt-8 space-y-5">
+                      <Link href="/blog" className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue">
+                        {labels.blog}
+                      </Link>
+                      <Link href="/vize-rehberi" className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue">
+                        {labels.visa}
+                      </Link>
+                      <Link href="/kimlikle-gidilen-ulkeler" className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue">
+                        {labels.idEntry}
+                      </Link>
+                      <Link href="/ucuz-konaklamali-ulkeler" className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue">
+                        {labels.cheapStay}
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="border-r border-slate-200 p-8">
+                    <div className="flex items-center gap-3 text-lg font-bold text-ink">
+                      <Map className="h-5 w-5 text-chartreuse" />
+                      {labels.domestic}
+                    </div>
+                    <a
+                      href={routeGroups.domestic[0].href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-8 flex items-center justify-between rounded-[1.25rem] border border-chartreuse/60 bg-[#fffbea] px-5 py-4 font-bold text-slateBlue"
+                    >
+                      {labels.flightMap}
+                      <PlaneTakeoff className="h-5 w-5" />
+                    </a>
+                    <div className="mt-6 space-y-4">
+                      {routeGroups.domestic.map((route) => (
+                        <a
+                          key={route.label}
+                          href={route.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue"
+                        >
+                          {route.label}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="p-8">
+                    <div className="flex items-center gap-3 text-lg font-bold text-ink">
+                      <Globe className="h-5 w-5 text-chartreuse" />
+                      {labels.international}
+                    </div>
+                    <a
+                      href={routeGroups.international[0].href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-8 flex items-center justify-between rounded-[1.25rem] border border-chartreuse/60 bg-[#fffbea] px-5 py-4 font-bold text-slateBlue"
+                    >
+                      {labels.flightMap}
+                      <PlaneTakeoff className="h-5 w-5" />
+                    </a>
+                    <div className="mt-6 space-y-4">
+                      {routeGroups.international.map((route) => (
+                        <a
+                          key={route.label}
+                          href={route.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue"
+                        >
+                          {route.label}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : null}
+          </div>
         </nav>
 
         <div className="flex items-center gap-3">
@@ -123,6 +330,7 @@ export function Header({
               type="button"
               onClick={() => {
                 setCurrencyMenuOpen(false);
+                setDiscoverOpen(false);
                 setLanguageMenuOpen((open) => !open);
               }}
               className={clsx(
@@ -178,6 +386,7 @@ export function Header({
               type="button"
               onClick={() => {
                 setLanguageMenuOpen(false);
+                setDiscoverOpen(false);
                 setCurrencyMenuOpen((open) => !open);
               }}
               className={clsx(

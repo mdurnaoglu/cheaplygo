@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function FlightDealsHubPage() {
   return (
     <main className="min-h-screen bg-page">
-      <Header theme="light" activeNav="deal-flights" />
+      <Header theme="light" activeNav="discover" />
       <FlightDealsCountryGrid />
     </main>
   );

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { CalendarDays, ChevronLeft, Clock3 } from "lucide-react";
+import { CalendarDays, Clock3 } from "lucide-react";
+import { BlogBackLink } from "@/components/blog-back-link";
 import { Header } from "@/components/header";
 import { getAllBlogPosts, getBlogPostBySlug } from "@/lib/blogs";
 
@@ -45,16 +46,10 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
   return (
     <main className="min-h-screen bg-page">
       <section className="relative border-b border-slate-200 bg-white pb-12 pt-32">
-        <Header theme="light" context="blog" activeNav="blog" />
+        <Header theme="light" activeNav="discover" />
 
         <div className="relative mx-auto flex max-w-5xl flex-col gap-8 px-6 sm:px-8 lg:px-10">
-          <a
-            href="/blog"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 transition hover:text-ink"
-          >
-            <ChevronLeft className="h-4 w-4" />
-            Blog listesine don
-          </a>
+          <BlogBackLink />
 
           <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
             <div>
