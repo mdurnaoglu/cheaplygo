@@ -7,17 +7,10 @@ import { Features } from "@/components/features";
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import { useLanguage } from "@/components/language-provider";
+import type { BlogPost } from "@/lib/blogs";
 
 type HomePageProps = {
-  featuredBlog: {
-    slug: string;
-    title: string;
-    description: string;
-    excerpt: string;
-    image: string;
-    imageAlt: string;
-    readTime: string;
-  };
+  featuredBlog: BlogPost;
 };
 
 const deals = [
@@ -84,38 +77,37 @@ export function HomePage({ featuredBlog }: HomePageProps) {
     language === "ru"
       ? {
           sectionLabel: "Вдохновение для планировщика",
-          heroHeadline: "Умные планы поездок и выгодные авиабилеты",
           title: "Популярные идеи поездок, которые может подобрать планировщик",
           description:
             "Это примеры умных city-break вариантов. Сам планировщик идёт дальше и учитывает тайминг, визовый доступ и стиль проживания для каждого путешественника.",
           cta: "Открыть планировщик",
           blogLabel: "Блог",
-          blogTitle: "Блог merkezi için seçilmiş giriş kartı",
-          blogCta: "Tüm yazıları aç"
+          blogTitle: "Новые материалы о выборе направлений, бюджета и логики поездки",
+          blogCta: "Открыть все статьи"
         }
       : language === "tr"
         ? {
             sectionLabel: "Planner ilhamı",
-            heroHeadline: "Akıllı seyahat planları ve fırsat uçak biletleri",
             title: "Planlayıcının keşfedebileceği popüler seyahat fikirleri",
             description:
               "Bunlar bütçe odaklı şehir kaçamağı örnekleri. Planlayıcı ise bunun ötesine geçip zamanlama, vize erişimi ve konaklama stilini her yolcuya göre uyarlar.",
             cta: "Seyahat planlayıcıyı aç",
             blogLabel: "Blog",
-            blogTitle: "Buradan blog ana sayfasina gecis yap",
-            blogCta: "Tum bloglari gor"
+            blogTitle: "Rota seçimi, bütçe dengesi ve seyahat kararı üzerine yeni yazılar",
+            blogCta: "Tüm blog yazılarını aç"
           }
       : {
           sectionLabel: "Planner inspiration",
-          heroHeadline: "Smart trip plans and flight deals",
           title: "Popular trip ideas your planner can discover",
           description:
             "These are examples of budget-smart city breaks. The planner goes further by adapting timing, visa access, and stay style to each traveler.",
           cta: "Open trip planner",
           blogLabel: "Blog",
-          blogTitle: "Use this entry card to open the full blog hub",
+          blogTitle: "Fresh reading on route selection, budget fit, and smarter trip decisions",
           blogCta: "See all blog posts"
         };
+
+  const featured = featuredBlog.locales[language];
 
   return (
     <main className="pb-10">
@@ -171,7 +163,7 @@ export function HomePage({ featuredBlog }: HomePageProps) {
                 <div
                   className="min-h-[280px] bg-cover bg-center"
                   style={{ backgroundImage: `url('${featuredBlog.image}')` }}
-                  aria-label={featuredBlog.imageAlt}
+                  aria-label={featured.imageAlt}
                 />
                 <div className="flex flex-col justify-between p-6 sm:p-8">
                   <div>
@@ -182,13 +174,13 @@ export function HomePage({ featuredBlog }: HomePageProps) {
                       {copy.blogTitle}
                     </h3>
                     <h4 className="mt-5 text-2xl font-bold tracking-[-0.04em] text-slateBlue">
-                      {featuredBlog.title}
+                      {featured.title}
                     </h4>
                     <p className="mt-3 text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
-                      {featuredBlog.readTime}
+                      {featured.readTime}
                     </p>
                     <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-600">
-                      {featuredBlog.excerpt}
+                      {featured.excerpt}
                     </p>
                   </div>
 
