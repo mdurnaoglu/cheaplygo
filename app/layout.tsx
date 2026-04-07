@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { AnalyticsTracker } from "@/components/analytics-tracker";
 import { LanguageProvider } from "@/components/language-provider";
+import { GOOGLE_MEASUREMENT_ID } from "@/lib/analytics";
 import "./globals.css";
 
 const inter = Inter({
@@ -23,14 +25,14 @@ export default function RootLayout({
       <head>
         <script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=G-GRRNV5R8D3"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_MEASUREMENT_ID}`}
         />
         <script
           dangerouslySetInnerHTML={{
             __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-GRRNV5R8D3');`
+gtag('config', '${GOOGLE_MEASUREMENT_ID}');`
           }}
         />
         <script
@@ -54,6 +56,7 @@ gtag('config', 'G-GRRNV5R8D3');`
       </head>
       <body className={`${inter.className} bg-page text-ink antialiased`}>
         <LanguageProvider>{children}</LanguageProvider>
+        <AnalyticsTracker />
       </body>
     </html>
   );
