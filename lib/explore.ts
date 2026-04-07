@@ -123,18 +123,18 @@ export const popularRoutes: Record<
   russia: {
     domestic: [
       { city: "Soçi", destinationIata: "AER" },
-      { city: "St. Petersburg", destinationIata: "LED" },
-      { city: "Kazan", destinationIata: "KZN" },
-      { city: "Kaliningrad", destinationIata: "KGD" },
-      { city: "Yekaterinburg", destinationIata: "SVX" }
+      { city: "Санкт-Петербург", destinationIata: "LED" },
+      { city: "Казань", destinationIata: "KZN" },
+      { city: "Калининград", destinationIata: "KGD" },
+      { city: "Екатеринбург", destinationIata: "SVX" }
     ],
     international: [
-      { city: "Istanbul", destinationIata: "IST" },
-      { city: "Dubai", destinationIata: "DXB" },
-      { city: "Tiflis", destinationIata: "TBS" },
-      { city: "Bakü", destinationIata: "BAK" },
-      { city: "Belgrad", destinationIata: "BEG" },
-      { city: "Erivan", destinationIata: "EVN" }
+      { city: "Стамбул", destinationIata: "IST" },
+      { city: "Дубай", destinationIata: "DXB" },
+      { city: "Тбилиси", destinationIata: "TBS" },
+      { city: "Баку", destinationIata: "BAK" },
+      { city: "Белград", destinationIata: "BEG" },
+      { city: "Ереван", destinationIata: "EVN" }
     ]
   },
   germany: {
@@ -185,26 +185,29 @@ export const stayDealsByMarket: Record<MarketKey, StayDeal[]> = {
   ],
   russia: [
     {
-      city: "Istanbul",
+      city: "Стамбул",
       country: "Turkey",
       nightlyFrom: "€49",
-      highlight: "Rusya çıkışlı en kolay açılan şehirlerden biri ve çok geniş otel stoğu var.",
+      highlight:
+        "Одно из самых удобных направлений для поездки из России, с очень большим выбором отелей.",
       image:
         "https://images.unsplash.com/photo-1527838832700-5059252407fa?auto=format&fit=crop&w=1200&q=80"
     },
     {
-      city: "Tiflis",
+      city: "Тбилиси",
       country: "Georgia",
       nightlyFrom: "€35",
-      highlight: "Şehir merkezi odaklı, kompakt ve bütçe dostu konaklama dengesi sunuyor.",
+      highlight:
+        "Компактный центр города и хороший баланс между удобством, расположением и бюджетом.",
       image:
         "https://images.unsplash.com/photo-1565008576549-57569a49371d?auto=format&fit=crop&w=1200&q=80"
     },
     {
-      city: "Erivan",
+      city: "Ереван",
       country: "Armenia",
       nightlyFrom: "€33",
-      highlight: "Kısa şehir tatili için düşük giriş maliyeti ve merkezi oteller öne çıkıyor.",
+      highlight:
+        "Для короткой поездки сюда хорошо подходят низкий порог входа и удобные центральные отели.",
       image:
         "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=1200&q=80"
     }
@@ -456,8 +459,11 @@ export function getStayDealsForMarket(market: MarketKey) {
 export function getPopularRouteLinks(language: AppLanguage, currency: AppCurrency) {
   const market = getPreferredMarket(language);
   const origin = DEAL_MARKETS[market];
+  const routeSuffix =
+    language === "ru" ? "Авиабилеты" : language === "tr" ? "Uçak Bileti" : "Flights";
   const buildRoute = (route: PopularRoute) => ({
-    label: `${route.city} Uçak Bileti`,
+    label:
+      language === "en" ? `${route.city} ${routeSuffix}` : `${route.city} ${routeSuffix}`,
     href: buildAviasalesSearchLink({
       originIata: origin.originCode,
       destinationIata: route.destinationIata,

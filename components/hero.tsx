@@ -14,8 +14,8 @@ export function Hero() {
       ? {
           eyebrowPrefix: "Планировщик путешествий нового поколения",
           eyebrowAccent: "для вашего бюджета",
-          titleTop: "Планируйте",
-          titleBottom: "следующее путешествие умнее",
+          titleTop: "Планируйте путешествия",
+          titleBottom: "умнее",
           cta: "Спланировать поездку",
           secondaryCta: "или мгновенно забронировать билет",
           trustPrefix: "Без входа. Без карты.",
@@ -65,7 +65,9 @@ export function Hero() {
 
             <div
               className={`mx-auto mt-6 font-semibold leading-[0.94] tracking-[-0.05em] text-white ${
-                language === "tr"
+                language === "ru"
+                  ? "max-w-[12.5ch] text-[3.65rem] sm:max-w-[13.5ch] sm:text-[5rem] lg:max-w-[15ch] lg:text-[6rem]"
+                  : language === "tr"
                   ? "max-w-[12.5ch] text-[3.15rem] sm:text-[4.45rem] lg:text-[5.2rem]"
                   : "max-w-[11.5ch] text-[3.6rem] sm:text-[5rem] lg:text-[5.9rem]"
               }`}
