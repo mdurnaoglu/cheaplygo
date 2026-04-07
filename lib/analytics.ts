@@ -1,4 +1,5 @@
 export const GOOGLE_MEASUREMENT_ID = "G-GRRNV5R8D3";
+export const GOOGLE_ADSENSE_CLIENT_ID = "ca-pub-7635259663086747";
 
 declare global {
   interface Window {

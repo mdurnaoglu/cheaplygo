@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { AnalyticsTracker } from "@/components/analytics-tracker";
 import { LanguageProvider } from "@/components/language-provider";
-import { GOOGLE_MEASUREMENT_ID } from "@/lib/analytics";
+import {
+  GOOGLE_ADSENSE_CLIENT_ID,
+  GOOGLE_MEASUREMENT_ID
+} from "@/lib/analytics";
 import { getSiteOrigin } from "@/lib/site";
 import "./globals.css";
 
@@ -50,6 +53,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${GOOGLE_ADSENSE_CLIENT_ID}`}
+          crossOrigin="anonymous"
+        />
         <script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_MEASUREMENT_ID}`}
