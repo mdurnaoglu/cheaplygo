@@ -127,7 +127,7 @@ export function HomePage({ featuredBlog }: HomePageProps) {
         <Hero />
       </div>
 
-      <section className="relative -mt-2 px-4 sm:px-6 lg:px-8">
+      <section className="relative px-4 pt-3 sm:px-6 sm:pt-5 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="relative overflow-hidden rounded-[2rem] border border-white/60 bg-white/95 px-6 py-7 shadow-[0_22px_60px_rgba(15,23,42,0.12)] backdrop-blur sm:px-8 sm:py-8">
             <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,#c9ff05_0%,#dfff66_35%,#326273_100%)]" />
