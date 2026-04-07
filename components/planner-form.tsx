@@ -16,9 +16,11 @@ import {
   MapPinned,
   Search,
   ShieldCheck,
+  Sparkles,
   Ticket,
   Wallet
 } from "lucide-react";
+import { getDailySpendForecast } from "@/lib/daily-spend";
 import {
   useLanguage,
   type Currency,
@@ -30,6 +32,10 @@ type TripMode = "One way" | "Round trip";
 type VisaStatus = "No visa" | "E-visa" | "Schengen visa" | "Other visa";
 type DateFlexibility = "Exact dates" | "Flexible dates";
 type FlightPreference = "Cabin bag only" | "Checked baggage";
+type ConnectionPreference =
+  | "Non-stop only"
+  | "Connecting flights only"
+  | "Either is fine";
 type AccommodationPreference =
   | "Just sleep (budget)"
   | "Breakfast included"
@@ -57,6 +63,7 @@ type PlannerState = {
   exactDepartureDate: string;
   exactReturnDate: string;
   flightPreference: FlightPreference;
+  connectionPreference: ConnectionPreference;
   accommodationPreference: AccommodationPreference;
 };
 
@@ -255,6 +262,7 @@ const initialState: PlannerState = {
   exactDepartureDate: "",
   exactReturnDate: "",
   flightPreference: "Cabin bag only",
+  connectionPreference: "Either is fine",
   accommodationPreference: "Breakfast included"
 };
 
@@ -368,6 +376,20 @@ function labelFlightPreference(value: FlightPreference, language: Language) {
   return value;
 }
 
+function labelConnectionPreference(value: ConnectionPreference, language: Language) {
+  if (language === "ru") {
+    if (value === "Non-stop only") return "Только прямые";
+    if (value === "Connecting flights only") return "Только с пересадкой";
+    return "Не имеет значения";
+  }
+  if (language === "tr") {
+    if (value === "Non-stop only") return "Sadece aktarmasız";
+    if (value === "Connecting flights only") return "Sadece aktarmalı";
+    return "Fark etmez";
+  }
+  return value;
+}
+
 function labelAccommodationPreference(
   value: AccommodationPreference,
   language: Language
@@ -411,6 +433,7 @@ export function PlannerForm() {
           budget: "Бюджет",
           dates: "Даты",
           baggage: "Багаж",
+          connections: "Пересадки",
           stay: "Проживание",
           aviasalesAligned: "Рекомендации по перелётам синхронизированы с интеграцией Aviasales.",
           loadingTitle: "Подбираем лучшие поездки для вас...",
@@ -429,6 +452,7 @@ export function PlannerForm() {
           aviasalesLogic: "Логика перелётов на базе Aviasales",
           dateFlexibility: "Гибкость дат",
           flightPreferences: "Предпочтения по перелёту",
+          connectionPreference: "Предпочтение по пересадкам",
           departureDate: "Дата вылета",
           returnDate: "Дата возврата",
           accommodationPreference: "Предпочтение по проживанию",
@@ -466,6 +490,12 @@ export function PlannerForm() {
           visaCompatible: "совместимо с вашей текущей визовой ситуацией",
           recommendationTail:
             "соответствует вашему бюджету и даёт лучший общий fit поездки, чем альтернативы с более низким рейтингом.",
+          dailySpendTitle: "Прогноз ежедневных расходов",
+          dailySpendLead: "Прогноз трат в день:",
+          backpackerHoliday: "Backpacker holiday",
+          balancedHoliday: "Balanced holiday",
+          luxuryHoliday: "Luxury holiday",
+          perDay: "/ день",
           loadingFlights: "Загружаем перелёты...",
           seeFlights: "Смотреть перелёты",
           seeHotels: "Смотреть отели",
@@ -508,11 +538,12 @@ export function PlannerForm() {
             everywhere: "Her yer",
             tripType: "Trip tipi",
             citizenship: "Vatandaşlık",
-            visa: "Vize",
-            budget: "Bütçe",
-            dates: "Tarihler",
-            baggage: "Bagaj",
-            stay: "Konaklama",
+          visa: "Vize",
+          budget: "Bütçe",
+          dates: "Tarihler",
+          baggage: "Bagaj",
+          connections: "Aktarma",
+          stay: "Konaklama",
             aviasalesAligned: "Uçuş önerileri şu an Aviasales entegrasyonunla uyumlu çalışıyor.",
             loadingTitle: "Senin için en iyi tripleri buluyoruz...",
             loadingDescription:
@@ -527,10 +558,11 @@ export function PlannerForm() {
             travelType: "Seyahat tipi",
             visaStatus: "Vize durumu",
             totalFlightBudget: "Toplam uçuş bütçesi",
-            aviasalesLogic: "Aviasales destekli uçuş mantığı",
-            dateFlexibility: "Tarih esnekliği",
-            flightPreferences: "Uçuş tercihleri",
-            departureDate: "Gidiş tarihi",
+          aviasalesLogic: "Aviasales destekli uçuş mantığı",
+          dateFlexibility: "Tarih esnekliği",
+          flightPreferences: "Uçuş tercihleri",
+          connectionPreference: "Aktarma tercihi",
+          departureDate: "Gidiş tarihi",
             returnDate: "Dönüş tarihi",
             accommodationPreference: "Konaklama tercihi",
             stayCopyOwn: "Önce uçuşu ve trip uyumunu optimize ederiz, konaklamayı sen ayrıca seçersin.",
@@ -565,9 +597,15 @@ export function PlannerForm() {
             visaFree: "vizesiz",
             eVisaRequired: "e-vize gerekli",
             visaCompatible: "mevcut vize durumunla uyumlu",
-            recommendationTail:
-              "bütçene uyuyor ve daha alt sıralı alternatiflere göre daha güçlü bir genel trip uyumu sunuyor.",
-            loadingFlights: "Canlı uçuşlar yükleniyor...",
+          recommendationTail:
+            "bütçene uyuyor ve daha alt sıralı alternatiflere göre daha güçlü bir genel trip uyumu sunuyor.",
+          dailySpendTitle: "Günlük harcama öngörüleri",
+          dailySpendLead: "Günlük tahmini harcama:",
+          backpackerHoliday: "Backpacker holiday",
+          balancedHoliday: "Balanced holiday",
+          luxuryHoliday: "Luxury holiday",
+          perDay: "/ gün",
+          loadingFlights: "Canlı uçuşlar yükleniyor...",
             seeFlights: "Canlı uçuşları gör",
             seeHotels: "Otelleri gör",
             previous: "Geri",
@@ -612,6 +650,7 @@ export function PlannerForm() {
           budget: "Budget",
           dates: "Dates",
           baggage: "Baggage",
+          connections: "Connections",
           stay: "Stay",
           aviasalesAligned: "Flight recommendations currently align with your Aviasales flight integration.",
           loadingTitle: "Finding the best trips for you...",
@@ -630,6 +669,7 @@ export function PlannerForm() {
           aviasalesLogic: "Aviasales-powered flight logic",
           dateFlexibility: "Date flexibility",
           flightPreferences: "Flight preferences",
+          connectionPreference: "Connection preference",
           departureDate: "Departure date",
           returnDate: "Return date",
           accommodationPreference: "Accommodation preference",
@@ -667,6 +707,12 @@ export function PlannerForm() {
           visaCompatible: "compatible with your current visa setup",
           recommendationTail:
             "fits your budget profile, and offers a stronger overall trip fit than lower-ranked alternatives.",
+          dailySpendTitle: "Daily spending forecasts",
+          dailySpendLead: "Estimated daily travel spend:",
+          backpackerHoliday: "Backpacker holiday",
+          balancedHoliday: "Balanced holiday",
+          luxuryHoliday: "Luxury holiday",
+          perDay: "/ day",
           loadingFlights: "Loading live flights...",
           seeFlights: "See live flights",
           seeHotels: "See hotels",
@@ -1064,6 +1110,12 @@ export function PlannerForm() {
         destination: destinationCode,
         mode: form.dateFlexibility === "Exact dates" ? "exact" : "flexible",
         tripMode: form.tripMode === "One way" ? "oneway" : "roundtrip",
+        connectionPreference:
+          form.connectionPreference === "Non-stop only"
+            ? "nonstop-only"
+            : form.connectionPreference === "Connecting flights only"
+              ? "connecting-only"
+              : "either",
         currency: currency.toLowerCase(),
         locale: language
       });
@@ -1130,6 +1182,12 @@ export function PlannerForm() {
               destination: item.destinationCode,
               mode: form.dateFlexibility === "Exact dates" ? "exact" : "flexible",
               tripMode: form.tripMode === "One way" ? "oneway" : "roundtrip",
+              connectionPreference:
+                form.connectionPreference === "Non-stop only"
+                  ? "nonstop-only"
+                  : form.connectionPreference === "Connecting flights only"
+                    ? "connecting-only"
+                    : "either",
               currency: currency.toLowerCase(),
               locale: language
             });
@@ -1197,6 +1255,7 @@ export function PlannerForm() {
       cancelled = true;
     };
   }, [
+    form.connectionPreference,
     form.dateFlexibility,
     form.exactDepartureDate,
     form.exactReturnDate,
@@ -1370,6 +1429,10 @@ export function PlannerForm() {
                   </div>
                   <div>
                     <span className="font-semibold text-ink">{copy.baggage}:</span> {labelFlightPreference(form.flightPreference, language)}
+                  </div>
+                  <div>
+                    <span className="font-semibold text-ink">{copy.connections}:</span>{" "}
+                    {labelConnectionPreference(form.connectionPreference, language)}
                   </div>
                   <div className="sm:col-span-2">
                     <span className="font-semibold text-ink">{copy.stay}:</span> {labelAccommodationPreference(form.accommodationPreference, language)}
@@ -1729,6 +1792,29 @@ export function PlannerForm() {
                         </div>
                       </div>
 
+                      <div>
+                        <p className="mb-3 text-sm font-semibold text-slate-500">
+                          {copy.connectionPreference}
+                        </p>
+                        <div className="grid gap-3 md:grid-cols-3">
+                          {(
+                            [
+                              "Non-stop only",
+                              "Connecting flights only",
+                              "Either is fine"
+                            ] as ConnectionPreference[]
+                          ).map((item) => (
+                            <OptionPill
+                              key={item}
+                              active={form.connectionPreference === item}
+                              onClick={() => updateForm("connectionPreference", item)}
+                            >
+                              {labelConnectionPreference(item, language)}
+                            </OptionPill>
+                          ))}
+                        </div>
+                      </div>
+
                       {form.dateFlexibility === "Exact dates" ? (
                         <div className="grid gap-6 md:grid-cols-2">
                           <div>
@@ -1831,6 +1917,7 @@ export function PlannerForm() {
                   {recommendations.map((item) => (
                     (() => {
                       const fare = liveFares[item.destinationCode];
+                      const dailySpend = getDailySpendForecast(item.city, item.country);
                       const stayNights = getStayNights({
                         tripMode: form.tripMode,
                         exactDepartureDate: form.exactDepartureDate,
@@ -2012,6 +2099,46 @@ export function PlannerForm() {
                           : copy.visaCompatible}
                         , {copy.recommendationTail}
                       </p>
+
+                      {dailySpend ? (
+                        <div className="mt-5 rounded-[1.5rem] border border-slate-200 bg-slate-50 px-5 py-5">
+                          <div className="flex items-center gap-2 text-slateBlue">
+                            <Sparkles className="h-4 w-4 text-chartreuse" />
+                            <p className="text-sm font-semibold uppercase tracking-[0.16em]">
+                              {copy.dailySpendTitle}
+                            </p>
+                          </div>
+                          <p className="mt-3 text-sm font-medium text-slate-600">
+                            {copy.dailySpendLead} {dailySpend.city}, {dailySpend.country}
+                          </p>
+                          <div className="mt-4 grid gap-3 md:grid-cols-3">
+                            <div className="rounded-2xl bg-white px-4 py-4">
+                              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">
+                                {copy.backpackerHoliday}
+                              </p>
+                              <p className="mt-2 text-xl font-black text-ink">
+                                {formatMoney(dailySpend.tiers.backpacker, currency)} {copy.perDay}
+                              </p>
+                            </div>
+                            <div className="rounded-2xl bg-white px-4 py-4">
+                              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">
+                                {copy.balancedHoliday}
+                              </p>
+                              <p className="mt-2 text-xl font-black text-ink">
+                                {formatMoney(dailySpend.tiers.balanced, currency)} {copy.perDay}
+                              </p>
+                            </div>
+                            <div className="rounded-2xl bg-white px-4 py-4">
+                              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">
+                                {copy.luxuryHoliday}
+                              </p>
+                              <p className="mt-2 text-xl font-black text-ink">
+                                {formatMoney(dailySpend.tiers.luxury, currency)}+ {copy.perDay}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      ) : null}
 
                       <div className="mt-6 flex flex-wrap gap-3">
                         <button

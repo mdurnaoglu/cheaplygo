@@ -10,6 +10,8 @@ type GroupedPrice = {
   departure_at: string;
   return_at?: string;
   link: string;
+  transfers?: number;
+  return_transfers?: number;
 };
 
 function toDate(value?: string) {
@@ -130,6 +132,7 @@ async function fetchGroupedPrice(
     returnAt?: string;
     minTripDuration?: string;
     maxTripDuration?: string;
+    direct?: boolean;
     currency?: string;
     locale?: string;
   }
@@ -143,6 +146,7 @@ async function fetchGroupedPrice(
     destination,
     departure_at: departureAt,
     group_by: "departure_at",
+    direct: options?.direct ? "true" : "false",
     currency: options?.currency && allowedCurrencies.has(options.currency) ? options.currency : "eur",
     locale: options?.locale && allowedLocales.has(options.locale) ? options.locale : "en",
     token: TOKEN
@@ -176,6 +180,25 @@ async function fetchGroupedPrice(
   return Object.values(payload.data ?? {});
 }
 
+function filterPricesByConnection(
+  prices: GroupedPrice[],
+  preference: string | null
+) {
+  if (preference === "nonstop-only") {
+    return prices.filter(
+      (item) => (item.transfers ?? 0) === 0 && (item.return_transfers ?? 0) === 0
+    );
+  }
+
+  if (preference === "connecting-only") {
+    return prices.filter(
+      (item) => (item.transfers ?? 0) > 0 || (item.return_transfers ?? 0) > 0
+    );
+  }
+
+  return prices;
+}
+
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const origin = searchParams.get("origin");
@@ -184,8 +207,10 @@ export async function GET(request: NextRequest) {
   const tripMode = searchParams.get("tripMode");
   const exactDate = searchParams.get("date");
   const returnDate = searchParams.get("returnDate");
+  const connectionPreference = searchParams.get("connectionPreference");
   const currency = searchParams.get("currency")?.toLowerCase() ?? "eur";
   const locale = searchParams.get("locale")?.toLowerCase() ?? "en";
+  const directOnly = connectionPreference === "nonstop-only";
 
   if (!origin || !destination) {
     return NextResponse.json(
@@ -202,6 +227,7 @@ export async function GET(request: NextRequest) {
       if (mode === "exact" && exactDate && returnDate) {
         prices = await fetchGroupedPrice(origin, destination, exactDate, {
           returnAt: returnDate,
+          direct: directOnly,
           currency,
           locale
         });
@@ -218,6 +244,7 @@ export async function GET(request: NextRequest) {
             returnAt: exactReturnMonth,
             minTripDuration: String(Math.max(1, targetDuration - 1)),
             maxTripDuration: String(targetDuration + 1),
+            direct: directOnly,
             currency,
             locale
           });
@@ -230,6 +257,7 @@ export async function GET(request: NextRequest) {
               returnAt: monthOffset(index + 1),
               minTripDuration: "3",
               maxTripDuration: "7",
+              direct: directOnly,
               currency,
               locale
             })
@@ -239,11 +267,13 @@ export async function GET(request: NextRequest) {
       }
     } else if (mode === "exact" && exactDate) {
       prices = await fetchGroupedPrice(origin, destination, exactDate, {
+        direct: directOnly,
         currency,
         locale
       });
       if (prices.length === 0) {
         prices = await fetchGroupedPrice(origin, destination, exactDate.slice(0, 7), {
+          direct: directOnly,
           currency,
           locale
         });
@@ -253,6 +283,7 @@ export async function GET(request: NextRequest) {
       const monthlyResults = await Promise.all(
         Array.from({ length: 6 }, (_, index) =>
           fetchGroupedPrice(origin, destination, monthOffset(index), {
+            direct: directOnly,
             currency,
             locale
           })
@@ -261,8 +292,10 @@ export async function GET(request: NextRequest) {
       prices = monthlyResults.flat();
     }
 
-    const valid = prices
-      .filter((item) => item.link && item.departure_at && Number.isFinite(item.price));
+    const valid = filterPricesByConnection(
+      prices.filter((item) => item.link && item.departure_at && Number.isFinite(item.price)),
+      connectionPreference
+    );
 
     const best = rankPrices(valid, {
       targetDepartureAt: exactDate,
