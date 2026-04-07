@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import clsx from "clsx";
 import {
   BookOpenText,
@@ -115,28 +115,19 @@ export function Header({
   const preferredMarket = getPreferredMarket(language);
   const featuredStay = getStayDealsForMarket(preferredMarket)[0];
 
-  useEffect(() => {
-    const handleClick = (event: MouseEvent) => {
-      if (!languageMenuRef.current?.contains(event.target as Node)) {
-        setLanguageMenuOpen(false);
-      }
-      if (!currencyMenuRef.current?.contains(event.target as Node)) {
-        setCurrencyMenuOpen(false);
-      }
-      if (!discoverMenuRef.current?.contains(event.target as Node)) {
-        setDiscoverOpen(false);
-      }
-    };
-
-    document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
-  }, []);
-
   const navLinks = ["/planner", "/#smart-trips", "/#how-it-works"] as const;
   const navKeys = ["planner", "smart-trips", "how-it-works", "discover"] as const;
 
   return (
     <header className="absolute inset-x-0 top-0 z-40">
+      {discoverOpen ? (
+        <button
+          type="button"
+          aria-label="Close discover menu"
+          onClick={() => setDiscoverOpen(false)}
+          className="fixed inset-0 z-30 cursor-default bg-transparent"
+        />
+      ) : null}
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-8 px-6 py-6 lg:px-8">
         <Link
           href="/"
@@ -175,7 +166,7 @@ export function Header({
 
           <div
             ref={discoverMenuRef}
-            className="relative"
+            className="relative z-40"
           >
             <button
               type="button"
