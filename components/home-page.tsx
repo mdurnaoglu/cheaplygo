@@ -84,6 +84,8 @@ export function HomePage({ featuredBlog }: HomePageProps) {
     language === "ru"
       ? {
           sectionLabel: "Вдохновение для планировщика",
+          heroHeadline:
+            "Планируйте следующее путешествие умнее: сравнивайте бюджет, визовые условия, перелёт и проживание в одном месте.",
           title: "Популярные идеи поездок, которые может подобрать планировщик",
           description:
             "Это примеры умных city-break вариантов. Сам планировщик идёт дальше и учитывает тайминг, визовый доступ и стиль проживания для каждого путешественника.",
@@ -95,6 +97,8 @@ export function HomePage({ featuredBlog }: HomePageProps) {
       : language === "tr"
         ? {
             sectionLabel: "Planner ilhamı",
+            heroHeadline:
+              "Sonraki seyahatini akıllıca planla; bütçe, vize erişimi, uçuş süresi ve konaklama dengesini tek yerde karşılaştır.",
             title: "Planlayıcının keşfedebileceği popüler seyahat fikirleri",
             description:
               "Bunlar bütçe odaklı şehir kaçamağı örnekleri. Planlayıcı ise bunun ötesine geçip zamanlama, vize erişimi ve konaklama stilini her yolcuya göre uyarlar.",
@@ -105,6 +109,8 @@ export function HomePage({ featuredBlog }: HomePageProps) {
           }
       : {
           sectionLabel: "Planner inspiration",
+          heroHeadline:
+            "Plan your next trip smarter by comparing budget, visa access, flight timing, and stay options in one place.",
           title: "Popular trip ideas your planner can discover",
           description:
             "These are examples of budget-smart city breaks. The planner goes further by adapting timing, visa access, and stay style to each traveler.",
@@ -120,6 +126,20 @@ export function HomePage({ featuredBlog }: HomePageProps) {
         <Header />
         <Hero />
       </div>
+
+      <section className="relative -mt-2 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="relative overflow-hidden rounded-[2rem] border border-white/60 bg-white/95 px-6 py-7 shadow-[0_22px_60px_rgba(15,23,42,0.12)] backdrop-blur sm:px-8 sm:py-8">
+            <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,#c9ff05_0%,#dfff66_35%,#326273_100%)]" />
+            <div className="absolute -right-10 top-1/2 h-28 w-28 -translate-y-1/2 rounded-full bg-chartreuse/10 blur-2xl" />
+            <div className="absolute -left-6 top-6 h-16 w-16 rounded-full border border-slate-200/80" />
+
+            <h1 className="relative max-w-5xl text-balance text-2xl font-black leading-[1.08] tracking-[-0.05em] text-ink sm:text-3xl lg:text-[2.6rem]">
+              {copy.heroHeadline}
+            </h1>
+          </div>
+        </div>
+      </section>
 
       <section id="smart-trips" className="px-4 py-6 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">

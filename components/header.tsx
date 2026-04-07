@@ -6,6 +6,8 @@ import clsx from "clsx";
 import {
   BookOpenText,
   ChevronDown,
+  Menu,
+  X,
   Compass,
   Globe,
   Map,
@@ -51,6 +53,7 @@ export function Header({
   const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
   const [currencyMenuOpen, setCurrencyMenuOpen] = useState(false);
   const [discoverOpen, setDiscoverOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const languageMenuRef = useRef<HTMLDivElement | null>(null);
   const currencyMenuRef = useRef<HTMLDivElement | null>(null);
   const discoverMenuRef = useRef<HTMLDivElement | null>(null);
@@ -61,6 +64,10 @@ export function Header({
       ? {
           nav: ["Планировщик", "Умные поездки", "Как это работает", "Исследовать"],
           cta: "Спланировать поездку",
+          menu: "Меню",
+          navigation: "Навигация",
+          languageLabel: "Язык",
+          currencyLabel: "Валюта",
           offers: "Предложения",
           discover: "Открыть",
           domestic: "Популярные маршруты по стране",
@@ -78,6 +85,10 @@ export function Header({
         ? {
             nav: ["Seyahat Planlayıcı", "Akıllı Rotalar", "Nasıl Çalışır", "Keşfet"],
             cta: "Seyahatimi Planla",
+            menu: "Menü",
+            navigation: "Navigasyon",
+            languageLabel: "Dil",
+            currencyLabel: "Para Birimi",
             offers: "Fırsatlar",
             discover: "Keşfet",
             domestic: "Yurt İçi Popüler Destinasyonlar",
@@ -94,6 +105,10 @@ export function Header({
       : {
           nav: navItems,
           cta: "Plan My Trip",
+          menu: "Menu",
+          navigation: "Navigation",
+          languageLabel: "Language",
+          currencyLabel: "Currency",
           offers: "Offers",
           discover: "Explore",
           domestic: "Popular Domestic Destinations",
@@ -126,6 +141,14 @@ export function Header({
           aria-label="Close discover menu"
           onClick={() => setDiscoverOpen(false)}
           className="fixed inset-0 z-30 cursor-default bg-transparent"
+        />
+      ) : null}
+      {mobileMenuOpen ? (
+        <button
+          type="button"
+          aria-label="Close mobile menu"
+          onClick={() => setMobileMenuOpen(false)}
+          className="fixed inset-0 z-30 bg-slate-950/45 backdrop-blur-[2px] lg:hidden"
         />
       ) : null}
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-8 px-6 py-6 lg:px-8">
@@ -203,7 +226,7 @@ export function Header({
               >
                 <div className="grid grid-cols-4">
                   <div className="border-r border-slate-200 p-8">
-                    <div className="flex items-center gap-3 text-lg font-bold text-ink">
+                    <div className="flex items-center gap-3 text-[1.05rem] font-extrabold tracking-[-0.03em] text-ink">
                       <Compass className="h-5 w-5 text-chartreuse" />
                       {labels.offers}
                     </div>
@@ -218,7 +241,7 @@ export function Header({
                           });
                           setDiscoverOpen(false);
                         }}
-                        className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue"
+                        className="block text-[1.05rem] font-extrabold tracking-[-0.03em] text-ink transition hover:text-black"
                       >
                         {labels.flightDeals}
                       </Link>
@@ -232,7 +255,7 @@ export function Header({
                           });
                           setDiscoverOpen(false);
                         }}
-                        className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue"
+                        className="block text-[1.05rem] font-extrabold tracking-[-0.03em] text-ink transition hover:text-black"
                       >
                         {labels.stayDeals}
                       </Link>
@@ -265,10 +288,10 @@ export function Header({
                         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
                           {labels.stayDeals}
                         </p>
-                        <p className="mt-2 text-lg font-bold text-ink">
+                        <p className="mt-2 text-lg font-extrabold tracking-[-0.03em] text-ink">
                           {featuredStay.city} {featuredStay.nightlyFrom}
                         </p>
-                        <p className="mt-2 text-sm leading-6 text-slate-600">
+                        <p className="mt-2 text-sm leading-6 text-ink/70">
                           {featuredStay.highlight}
                         </p>
                       </div>
@@ -276,7 +299,7 @@ export function Header({
                   </div>
 
                   <div className="border-r border-slate-200 p-8">
-                    <div className="flex items-center gap-3 text-lg font-bold text-ink">
+                    <div className="flex items-center gap-3 text-[1.05rem] font-extrabold tracking-[-0.03em] text-ink">
                       <BookOpenText className="h-5 w-5 text-chartreuse" />
                       {labels.discover}
                     </div>
@@ -291,7 +314,7 @@ export function Header({
                           });
                           setDiscoverOpen(false);
                         }}
-                        className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue"
+                        className="block text-[1.05rem] font-extrabold tracking-[-0.03em] text-ink transition hover:text-black"
                       >
                         {labels.blog}
                       </Link>
@@ -305,7 +328,7 @@ export function Header({
                           });
                           setDiscoverOpen(false);
                         }}
-                        className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue"
+                        className="block text-[1.05rem] font-extrabold tracking-[-0.03em] text-ink transition hover:text-black"
                       >
                         {labels.visa}
                       </Link>
@@ -319,7 +342,7 @@ export function Header({
                           });
                           setDiscoverOpen(false);
                         }}
-                        className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue"
+                        className="block text-[1.05rem] font-extrabold tracking-[-0.03em] text-ink transition hover:text-black"
                       >
                         {labels.idEntry}
                       </Link>
@@ -333,7 +356,7 @@ export function Header({
                           });
                           setDiscoverOpen(false);
                         }}
-                        className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue"
+                        className="block text-[1.05rem] font-extrabold leading-[1.1] tracking-[-0.03em] text-ink transition hover:text-black"
                       >
                         {labels.cheapStay}
                       </Link>
@@ -341,7 +364,7 @@ export function Header({
                   </div>
 
                   <div className="border-r border-slate-200 p-8">
-                    <div className="flex items-center gap-3 text-lg font-bold text-ink">
+                    <div className="flex items-center gap-3 text-[1.05rem] font-extrabold tracking-[-0.03em] text-ink">
                       <Map className="h-5 w-5 text-chartreuse" />
                       {labels.domestic}
                     </div>
@@ -358,7 +381,7 @@ export function Header({
                         });
                         setDiscoverOpen(false);
                       }}
-                      className="mt-8 flex items-center justify-between rounded-[1.25rem] border border-chartreuse/60 bg-[#fffbea] px-5 py-4 font-bold text-slateBlue"
+                      className="mt-8 flex items-center justify-between rounded-[1.25rem] border border-chartreuse/60 bg-[#fffbea] px-5 py-4 text-[1.05rem] font-extrabold tracking-[-0.03em] text-ink"
                     >
                       {labels.flightMap}
                       <PlaneTakeoff className="h-5 w-5" />
@@ -378,7 +401,7 @@ export function Header({
                             });
                             setDiscoverOpen(false);
                           }}
-                          className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue"
+                          className="block text-[1.05rem] font-extrabold tracking-[-0.03em] text-ink transition hover:text-black"
                         >
                           {route.label}
                         </a>
@@ -387,7 +410,7 @@ export function Header({
                   </div>
 
                   <div className="p-8">
-                    <div className="flex items-center gap-3 text-lg font-bold text-ink">
+                    <div className="flex items-center gap-3 text-[1.05rem] font-extrabold tracking-[-0.03em] text-ink">
                       <Globe className="h-5 w-5 text-chartreuse" />
                       {labels.international}
                     </div>
@@ -404,7 +427,7 @@ export function Header({
                         });
                         setDiscoverOpen(false);
                       }}
-                      className="mt-8 flex items-center justify-between rounded-[1.25rem] border border-chartreuse/60 bg-[#fffbea] px-5 py-4 font-bold text-slateBlue"
+                      className="mt-8 flex items-center justify-between rounded-[1.25rem] border border-chartreuse/60 bg-[#fffbea] px-5 py-4 text-[1.05rem] font-extrabold tracking-[-0.03em] text-ink"
                     >
                       {labels.flightMap}
                       <PlaneTakeoff className="h-5 w-5" />
@@ -424,7 +447,7 @@ export function Header({
                             });
                             setDiscoverOpen(false);
                           }}
-                          className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue"
+                          className="block text-[1.05rem] font-extrabold tracking-[-0.03em] text-ink transition hover:text-black"
                         >
                           {route.label}
                         </a>
@@ -550,14 +573,148 @@ export function Header({
             ) : null}
           </div>
 
+          <button
+            type="button"
+            onClick={() => {
+              setDiscoverOpen(false);
+              setLanguageMenuOpen(false);
+              setCurrencyMenuOpen(false);
+              setMobileMenuOpen((open) => !open);
+            }}
+            className="inline-flex items-center gap-2 rounded-full bg-chartreuse px-4 py-3 text-sm font-bold text-black transition hover:scale-[1.02] lg:hidden"
+          >
+            {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            {labels.menu}
+          </button>
+
           <a
             href="/planner"
-            className="inline-flex items-center rounded-full bg-chartreuse px-5 py-3 text-sm font-bold text-black transition hover:scale-[1.02]"
+            className="hidden items-center rounded-full bg-chartreuse px-5 py-3 text-sm font-bold text-black transition hover:scale-[1.02] lg:inline-flex"
           >
             {labels.cta}
           </a>
         </div>
       </div>
+
+      {mobileMenuOpen ? (
+        <div className="absolute inset-x-4 top-[5.75rem] z-40 lg:hidden">
+          <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_30px_80px_rgba(15,23,42,0.22)]">
+            <div className="border-b border-slate-200 px-5 py-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+                {labels.navigation}
+              </p>
+              <p className="mt-2 text-lg font-extrabold tracking-[-0.04em] text-ink">
+                {labels.menu}
+              </p>
+            </div>
+
+            <div className="grid gap-6 px-5 py-5">
+              <div className="grid gap-2">
+                {navItems.slice(0, 3).map((item, index) => (
+                  <a
+                    key={item}
+                    href={navLinks[index]}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="rounded-2xl border border-slate-200 px-4 py-3 text-sm font-bold text-ink transition hover:border-chartreuse hover:bg-slate-50"
+                  >
+                    {labels.nav[index]}
+                  </a>
+                ))}
+                <a
+                  href="/firsat-ucuslar"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="rounded-2xl border border-slate-200 px-4 py-3 text-sm font-bold text-ink transition hover:border-chartreuse hover:bg-slate-50"
+                >
+                  {labels.flightDeals}
+                </a>
+                <a
+                  href="/firsat-konaklamalar"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="rounded-2xl border border-slate-200 px-4 py-3 text-sm font-bold text-ink transition hover:border-chartreuse hover:bg-slate-50"
+                >
+                  {labels.stayDeals}
+                </a>
+                <a
+                  href="/blog"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="rounded-2xl border border-slate-200 px-4 py-3 text-sm font-bold text-ink transition hover:border-chartreuse hover:bg-slate-50"
+                >
+                  {labels.blog}
+                </a>
+                <a
+                  href="/vize-rehberi"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="rounded-2xl border border-slate-200 px-4 py-3 text-sm font-bold text-ink transition hover:border-chartreuse hover:bg-slate-50"
+                >
+                  {labels.visa}
+                </a>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-3">
+                  <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-400">
+                    {labels.languageLabel}
+                  </p>
+                  <div className="mt-3 grid grid-cols-3 gap-2">
+                    {languageOptions.map((option) => (
+                      <button
+                        key={option.value}
+                        type="button"
+                        onClick={() => {
+                          setLanguage(option.value);
+                          setMobileMenuOpen(false);
+                        }}
+                        className={clsx(
+                          "rounded-xl px-3 py-2 text-xs font-bold transition",
+                          language === option.value
+                            ? "bg-slateBlue text-white"
+                            : "bg-white text-slate-600 hover:text-ink"
+                        )}
+                      >
+                        {option.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-3">
+                  <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-400">
+                    {labels.currencyLabel}
+                  </p>
+                  <div className="mt-3 grid grid-cols-3 gap-2">
+                    {currencyOptions.map((option) => (
+                      <button
+                        key={option.value}
+                        type="button"
+                        onClick={() => {
+                          setCurrency(option.value);
+                          setMobileMenuOpen(false);
+                        }}
+                        className={clsx(
+                          "rounded-xl px-3 py-2 text-xs font-bold transition",
+                          currency === option.value
+                            ? "bg-slateBlue text-white"
+                            : "bg-white text-slate-600 hover:text-ink"
+                        )}
+                      >
+                        {option.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <a
+                href="/planner"
+                onClick={() => setMobileMenuOpen(false)}
+                className="inline-flex items-center justify-center rounded-full bg-chartreuse px-5 py-3 text-sm font-bold text-black transition hover:brightness-95"
+              >
+                {labels.cta}
+              </a>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </header>
   );
 }
