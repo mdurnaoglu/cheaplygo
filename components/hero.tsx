@@ -16,8 +16,6 @@ export function Hero() {
           eyebrowAccent: "для вашего бюджета",
           titleTop: "Планируйте",
           titleBottom: "следующее путешествие умнее",
-          summary:
-            "Планируйте следующее путешествие умнее: сравнивайте бюджет, визовые условия, продолжительность перелёта и варианты проживания в одном месте.",
           cta: "Спланировать поездку",
           secondaryCta: "или мгновенно забронировать билет",
           trustPrefix: "Без входа. Без карты.",
@@ -29,8 +27,6 @@ export function Hero() {
             eyebrowAccent: "Seyahat Planlayıcı",
             titleTop: "Sonraki Seyahatini",
             titleBottom: "Akıllıca Planla",
-            summary:
-              "Sonraki seyahatini akıllıca planla; bütçe, vize erişimi, uçuş süresi ve konaklama dengesini tek ekranda karşılaştır.",
             cta: "Seyahatimi planla",
             secondaryCta: "veya Biletini Anında Al",
             trustPrefix: "Login yok. Kredi kartı yok.",
@@ -41,8 +37,6 @@ export function Hero() {
           eyebrowAccent: "Trip Planner",
           titleTop: "Plan your",
           titleBottom: "Next Trip Smarter",
-          summary:
-            "Plan your next trip smarter by comparing budget, visa access, flight timing, and stay options in one place.",
           cta: "Plan my trip",
           secondaryCta: "or Book your Ticket Instantly",
           trustPrefix: "No login. No credit card.",
@@ -69,7 +63,7 @@ export function Hero() {
               <span className="text-chartreuse">{copy.eyebrowAccent}</span>
             </p>
 
-            <h1
+            <div
               className={`mx-auto mt-6 font-semibold leading-[0.94] tracking-[-0.05em] text-white ${
                 language === "tr"
                   ? "max-w-[12.5ch] text-[3.15rem] sm:text-[4.45rem] lg:text-[5.2rem]"
@@ -79,14 +73,7 @@ export function Hero() {
             >
               <span className="block">{copy.titleTop}</span>
               <span className="block">{copy.titleBottom}</span>
-            </h1>
-
-            <p
-              className="mx-auto mt-6 max-w-3xl text-pretty text-base leading-7 text-white/88 sm:text-lg"
-              style={{ fontFamily: appleFontStack }}
-            >
-              {copy.summary}
-            </p>
+            </div>
 
             <p
               className="mt-8 text-base text-white sm:text-lg"
