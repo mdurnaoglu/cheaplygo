@@ -17,11 +17,11 @@ export async function generateMetadata({ params }: GuidePageProps): Promise<Meta
   const guide = getVisaGuideBySlug(params.slug);
 
   if (!guide) {
-    return { title: "Vize Rehberi | CheaplyGo" };
+    return { title: "Vize Rehberi" };
   }
 
   return {
-    title: `${guide.title} | CheaplyGo`,
+    title: guide.title,
     description: guide.description,
     openGraph: {
       title: guide.title,

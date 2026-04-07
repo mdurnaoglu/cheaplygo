@@ -4,7 +4,7 @@ import { Header } from "@/components/header";
 import { getAllBlogPosts } from "@/lib/blogs";
 
 export const metadata: Metadata = {
-  title: "Blog | cheaplygo",
+  title: "Blog",
   description:
     "cheaplygo blog sayfasinda butce odakli rota fikirleri, planner mantigi ve daha iyi seyahat karari vermek icin pratik icerikler yer alir."
 };

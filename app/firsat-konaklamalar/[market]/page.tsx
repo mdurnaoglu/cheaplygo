@@ -23,14 +23,14 @@ export async function generateMetadata({
 
   if (!market) {
     return {
-      title: "Fırsat Konaklamalar | CheaplyGo"
+      title: "Fırsat Konaklamalar"
     };
   }
 
   const item = DEAL_MARKETS[market];
 
   return {
-    title: `${item.displayName.tr} Fırsat Konaklamalar | CheaplyGo`,
+    title: `${item.displayName.tr} Fırsat Konaklamalar`,
     description: `${item.displayName.tr} çıkışlı seyahatlerde fiyat-performans odaklı konaklama sayfası.`
   };
 }

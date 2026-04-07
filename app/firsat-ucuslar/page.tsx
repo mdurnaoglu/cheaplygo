@@ -3,7 +3,7 @@ import { FlightDealsCountryGrid } from "@/components/flight-deals-country-grid";
 import { Header } from "@/components/header";
 
 export const metadata: Metadata = {
-  title: "Fırsat Uçuşlar | CheaplyGo",
+  title: "Fırsat Uçuşlar",
   description:
     "Türkiye, Rusya ve Almanya çıkışlı fırsat uçak biletlerini ülkeye özel SEO sayfalarında keşfedin."
 };

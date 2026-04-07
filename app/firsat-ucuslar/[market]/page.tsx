@@ -23,14 +23,14 @@ export async function generateMetadata({
 
   if (!market) {
     return {
-      title: "Fırsat Uçuşlar | CheaplyGo"
+      title: "Fırsat Uçuşlar"
     };
   }
 
   const item = DEAL_MARKETS[market];
 
   return {
-    title: `${item.displayName.tr} Fırsat Uçak Biletleri | CheaplyGo`,
+    title: `${item.displayName.tr} Fırsat Uçak Biletleri`,
     description: item.summary.tr
   };
 }

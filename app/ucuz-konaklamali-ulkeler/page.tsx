@@ -4,7 +4,7 @@ import { InfoCardGrid } from "@/components/info-card-grid";
 import { affordableStayCountries } from "@/lib/explore";
 
 export const metadata: Metadata = {
-  title: "Ucuz Konaklamalı Ülkeler | CheaplyGo",
+  title: "Ucuz Konaklamalı Ülkeler",
   description:
     "Konaklama maliyeti açısından daha verimli ülkeler ve hızlı seyahat planlama sayfaları."
 };

@@ -4,7 +4,7 @@ import { InfoCardGrid } from "@/components/info-card-grid";
 import { visaGuideCards } from "@/lib/explore";
 
 export const metadata: Metadata = {
-  title: "Vize Rehberi | CheaplyGo",
+  title: "Vize Rehberi",
   description:
     "Türkiye, Almanya, Rusya ve Azerbaycan çıkışlı vizesiz ve e-vizeli ülkeler için SEO odaklı rehber sayfaları."
 };

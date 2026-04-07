@@ -21,12 +21,12 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
 
   if (!post) {
     return {
-      title: "Blog | cheaplygo"
+      title: "Blog"
     };
   }
 
   return {
-    title: `${post.title} | cheaplygo`,
+    title: post.title,
     description: post.description,
     openGraph: {
       title: post.title,

@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { AnalyticsTracker } from "@/components/analytics-tracker";
 import { LanguageProvider } from "@/components/language-provider";
 import { GOOGLE_MEASUREMENT_ID } from "@/lib/analytics";
+import { getSiteOrigin } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -11,8 +12,34 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "cheaplygo",
-  description: "Discover hidden cheap flight deals from Istanbul and beyond."
+  metadataBase: getSiteOrigin(),
+  title: {
+    default: "CheaplyGo | Budget-Smart Trip Planner and Flight Deals",
+    template: "%s | CheaplyGo"
+  },
+  description:
+    "CheaplyGo helps travelers compare budget-smart trips with live flight logic, stay ideas, visa context, and destination guides.",
+  applicationName: "CheaplyGo",
+  alternates: {
+    canonical: "/"
+  },
+  openGraph: {
+    type: "website",
+    title: "CheaplyGo | Budget-Smart Trip Planner and Flight Deals",
+    description:
+      "Compare smarter trip ideas with live flight logic, stay suggestions, and destination planning support.",
+    siteName: "CheaplyGo"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CheaplyGo | Budget-Smart Trip Planner and Flight Deals",
+    description:
+      "Plan smarter trips with live flight logic, stay ideas, and destination-specific travel guidance."
+  },
+  robots: {
+    index: true,
+    follow: true
+  }
 };
 
 export default function RootLayout({

@@ -3,7 +3,7 @@ import { Header } from "@/components/header";
 import { StayDealsCountryGrid } from "@/components/stay-deals-country-grid";
 
 export const metadata: Metadata = {
-  title: "Fırsat Konaklamalar | CheaplyGo",
+  title: "Fırsat Konaklamalar",
   description:
     "Türkiye, Rusya ve Almanya çıkışlı fırsat konaklama fikirlerini ülkeye göre açın."
 };

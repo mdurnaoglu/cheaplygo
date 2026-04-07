@@ -4,7 +4,7 @@ import { InfoCardGrid } from "@/components/info-card-grid";
 import { idEntryCountries } from "@/lib/explore";
 
 export const metadata: Metadata = {
-  title: "Kimlikle Gidilen Ülkeler | CheaplyGo",
+  title: "Kimlikle Gidilen Ülkeler",
   description:
     "Türk vatandaşları için kimlikle gidilebilen ülkeler ve hızlı planlama rehberleri."
 };
