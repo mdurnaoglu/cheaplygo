@@ -16,6 +16,7 @@ import {
   getPopularRouteLinks,
   getPreferredMarket
 } from "@/lib/explore";
+import { trackAnalyticsEvent } from "@/lib/analytics";
 import { getStayDealsForMarket } from "@/lib/explore";
 import {
   useLanguage,
@@ -127,8 +128,8 @@ export function Header({
       }
     };
 
-    document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
   }, []);
 
   const navLinks = ["/planner", "/#smart-trips", "/#how-it-works"] as const;
@@ -175,12 +176,21 @@ export function Header({
           <div
             ref={discoverMenuRef}
             className="relative"
-            onMouseEnter={() => setDiscoverOpen(true)}
-            onMouseLeave={() => setDiscoverOpen(false)}
           >
             <button
               type="button"
-              onClick={() => setDiscoverOpen((current) => !current)}
+              onClick={(event) => {
+                event.stopPropagation();
+                setDiscoverOpen((current) => {
+                  const next = !current;
+                  trackAnalyticsEvent("discover_menu_toggle", {
+                    menu_state: next ? "open" : "closed",
+                    menu_label: labels.nav[3],
+                    page_path: window.location.pathname
+                  });
+                  return next;
+                });
+              }}
               className={clsx(
                 "inline-flex items-center gap-2 transition",
                 isDarkTheme ? "text-white/95 hover:text-white" : "text-slate-600 hover:text-ink"
@@ -196,7 +206,10 @@ export function Header({
             </button>
 
             {discoverOpen ? (
-              <div className="absolute left-1/2 top-full z-50 mt-5 w-[min(1120px,calc(100vw-80px))] -translate-x-1/2 overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_32px_70px_rgba(15,23,42,0.18)]">
+              <div
+                onClick={(event) => event.stopPropagation()}
+                className="pointer-events-auto absolute left-1/2 top-full z-50 mt-5 w-[min(1120px,calc(100vw-80px))] -translate-x-1/2 overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_32px_70px_rgba(15,23,42,0.18)]"
+              >
                 <div className="grid grid-cols-4">
                   <div className="border-r border-slate-200 p-8">
                     <div className="flex items-center gap-3 text-lg font-bold text-ink">
@@ -204,10 +217,32 @@ export function Header({
                       {labels.offers}
                     </div>
                     <div className="mt-8 space-y-5">
-                      <Link href="/firsat-ucuslar" className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue">
+                      <Link
+                        href="/firsat-ucuslar"
+                        onClick={() => {
+                          trackAnalyticsEvent("discover_menu_item_click", {
+                            section: "offers",
+                            item_name: "flight_deals",
+                            destination_type: "internal"
+                          });
+                          setDiscoverOpen(false);
+                        }}
+                        className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue"
+                      >
                         {labels.flightDeals}
                       </Link>
-                      <Link href="/firsat-konaklamalar" className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue">
+                      <Link
+                        href="/firsat-konaklamalar"
+                        onClick={() => {
+                          trackAnalyticsEvent("discover_menu_item_click", {
+                            section: "offers",
+                            item_name: "stay_deals",
+                            destination_type: "internal"
+                          });
+                          setDiscoverOpen(false);
+                        }}
+                        className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue"
+                      >
                         {labels.stayDeals}
                       </Link>
                     </div>
@@ -219,6 +254,15 @@ export function Header({
                       })}
                       target="_blank"
                       rel="noreferrer"
+                      onClick={() => {
+                        trackAnalyticsEvent("discover_menu_item_click", {
+                          section: "offers",
+                          item_name: "featured_stay_card",
+                          destination_type: "external",
+                          destination_city: featuredStay.city
+                        });
+                        setDiscoverOpen(false);
+                      }}
                       className="mt-8 block overflow-hidden rounded-[1.5rem] border border-chartreuse/50 bg-[#fffbea]"
                     >
                       <img
@@ -246,16 +290,60 @@ export function Header({
                       {labels.discover}
                     </div>
                     <div className="mt-8 space-y-5">
-                      <Link href="/blog" className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue">
+                      <Link
+                        href="/blog"
+                        onClick={() => {
+                          trackAnalyticsEvent("discover_menu_item_click", {
+                            section: "discover",
+                            item_name: "blog_hub",
+                            destination_type: "internal"
+                          });
+                          setDiscoverOpen(false);
+                        }}
+                        className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue"
+                      >
                         {labels.blog}
                       </Link>
-                      <Link href="/vize-rehberi" className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue">
+                      <Link
+                        href="/vize-rehberi"
+                        onClick={() => {
+                          trackAnalyticsEvent("discover_menu_item_click", {
+                            section: "discover",
+                            item_name: "visa_guide",
+                            destination_type: "internal"
+                          });
+                          setDiscoverOpen(false);
+                        }}
+                        className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue"
+                      >
                         {labels.visa}
                       </Link>
-                      <Link href="/kimlikle-gidilen-ulkeler" className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue">
+                      <Link
+                        href="/kimlikle-gidilen-ulkeler"
+                        onClick={() => {
+                          trackAnalyticsEvent("discover_menu_item_click", {
+                            section: "discover",
+                            item_name: "id_entry_countries",
+                            destination_type: "internal"
+                          });
+                          setDiscoverOpen(false);
+                        }}
+                        className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue"
+                      >
                         {labels.idEntry}
                       </Link>
-                      <Link href="/ucuz-konaklamali-ulkeler" className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue">
+                      <Link
+                        href="/ucuz-konaklamali-ulkeler"
+                        onClick={() => {
+                          trackAnalyticsEvent("discover_menu_item_click", {
+                            section: "discover",
+                            item_name: "affordable_stay_countries",
+                            destination_type: "internal"
+                          });
+                          setDiscoverOpen(false);
+                        }}
+                        className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue"
+                      >
                         {labels.cheapStay}
                       </Link>
                     </div>
@@ -270,6 +358,15 @@ export function Header({
                       href={routeGroups.domestic[0].href}
                       target="_blank"
                       rel="noreferrer"
+                      onClick={() => {
+                        trackAnalyticsEvent("discover_menu_item_click", {
+                          section: "domestic_destinations",
+                          item_name: "flight_map",
+                          destination_type: "external",
+                          origin_city: routeGroups.originCity
+                        });
+                        setDiscoverOpen(false);
+                      }}
                       className="mt-8 flex items-center justify-between rounded-[1.25rem] border border-chartreuse/60 bg-[#fffbea] px-5 py-4 font-bold text-slateBlue"
                     >
                       {labels.flightMap}
@@ -282,6 +379,14 @@ export function Header({
                           href={route.href}
                           target="_blank"
                           rel="noreferrer"
+                          onClick={() => {
+                            trackAnalyticsEvent("aviasales_route_click", {
+                              section: "domestic_destinations",
+                              route_label: route.label,
+                              origin_city: routeGroups.originCity
+                            });
+                            setDiscoverOpen(false);
+                          }}
                           className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue"
                         >
                           {route.label}
@@ -299,6 +404,15 @@ export function Header({
                       href={routeGroups.international[0].href}
                       target="_blank"
                       rel="noreferrer"
+                      onClick={() => {
+                        trackAnalyticsEvent("discover_menu_item_click", {
+                          section: "international_destinations",
+                          item_name: "flight_map",
+                          destination_type: "external",
+                          origin_city: routeGroups.originCity
+                        });
+                        setDiscoverOpen(false);
+                      }}
                       className="mt-8 flex items-center justify-between rounded-[1.25rem] border border-chartreuse/60 bg-[#fffbea] px-5 py-4 font-bold text-slateBlue"
                     >
                       {labels.flightMap}
@@ -311,6 +425,14 @@ export function Header({
                           href={route.href}
                           target="_blank"
                           rel="noreferrer"
+                          onClick={() => {
+                            trackAnalyticsEvent("aviasales_route_click", {
+                              section: "international_destinations",
+                              route_label: route.label,
+                              origin_city: routeGroups.originCity
+                            });
+                            setDiscoverOpen(false);
+                          }}
                           className="block text-[1.1rem] font-semibold text-slate-700 transition hover:text-slateBlue"
                         >
                           {route.label}

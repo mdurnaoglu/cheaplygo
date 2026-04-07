@@ -4,13 +4,6 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { GOOGLE_MEASUREMENT_ID } from "@/lib/analytics";
 
-declare global {
-  interface Window {
-    dataLayer: unknown[];
-    gtag?: (...args: unknown[]) => void;
-  }
-}
-
 function trackPageView(url: string) {
   if (typeof window.gtag !== "function") {
     return;
