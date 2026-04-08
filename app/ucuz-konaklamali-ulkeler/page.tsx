@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/header";
-import { InfoCardGrid } from "@/components/info-card-grid";
-import { affordableStayCountries } from "@/lib/explore";
+import { AffordableStayHubContent } from "@/components/discover-hub-content";
 
 export const metadata: Metadata = {
   title: "Ucuz Konaklamalı Ülkeler",
@@ -13,12 +12,7 @@ export default function AffordableStayCountriesPage() {
   return (
     <main className="min-h-screen bg-page">
       <Header theme="light" activeNav="discover" />
-      <InfoCardGrid
-        eyebrow="Keşfet"
-        title="Ucuz konaklamalı ülkeler"
-        description="Toplam seyahat maliyetinde otel tarafını daha kontrollü tutmak isteyenler için uygun konaklama odaklı rota kümeleri."
-        items={affordableStayCountries}
-      />
+      <AffordableStayHubContent />
     </main>
   );
 }

@@ -21,6 +21,7 @@ import {
   Wallet
 } from "lucide-react";
 import { getDailySpendForecast } from "@/lib/daily-spend";
+import { DEAL_MARKETS, type DestinationSeed, type MarketKey } from "@/lib/flight-deals";
 import {
   useLanguage,
   type Currency,
@@ -92,6 +93,81 @@ type LiveFareMap = Record<
   }
 >;
 
+const eurToCurrencyRate: Record<Currency, number> = {
+  USD: 1.09,
+  RUB: 101.5,
+  TRY: 41.2
+};
+
+const cityHotelBaseEur: Record<string, number> = {
+  Athens: 90,
+  Baku: 64,
+  Barcelona: 92,
+  Belgrade: 61,
+  Berlin: 114,
+  Budapest: 74,
+  Dubai: 146,
+  Istanbul: 96,
+  Kaliningrad: 54,
+  Kazan: 51,
+  Lisbon: 102,
+  Moscow: 84,
+  Paris: 138,
+  Prague: 88,
+  Rome: 112,
+  "Saint Petersburg": 79,
+  Sochi: 58,
+  Tbilisi: 56,
+  Vienna: 108,
+  Yerevan: 52
+};
+
+const cityEstimatedCostEur: Record<string, number> = {
+  Athens: 430,
+  Baku: 340,
+  Barcelona: 560,
+  Belgrade: 390,
+  Berlin: 460,
+  Budapest: 420,
+  Dubai: 590,
+  Istanbul: 350,
+  Kaliningrad: 240,
+  Kazan: 230,
+  Lisbon: 510,
+  Moscow: 290,
+  Paris: 640,
+  Prague: 445,
+  Rome: 520,
+  "Saint Petersburg": 300,
+  Sochi: 250,
+  Tbilisi: 290,
+  Vienna: 490,
+  Yerevan: 310
+};
+
+const cityFlightDuration: Record<string, string> = {
+  Athens: "1h 35m",
+  Baku: "2h 50m",
+  Barcelona: "3h 10m",
+  Belgrade: "1h 50m",
+  Berlin: "2h 55m",
+  Budapest: "2h 05m",
+  Dubai: "5h 05m",
+  Istanbul: "2h 55m",
+  Kaliningrad: "1h 55m",
+  Kazan: "1h 30m",
+  Lisbon: "4h 15m",
+  Moscow: "1h 35m",
+  Paris: "3h 25m",
+  Prague: "2h 20m",
+  Rome: "2h 40m",
+  "Saint Petersburg": "1h 40m",
+  Sochi: "2h 10m",
+  Tbilisi: "2h 15m",
+  Vienna: "2h 15m",
+  Yerevan: "2h 20m"
+};
+
 function formatMoney(value: number, currency: Currency) {
   const locale =
     currency === "TRY" ? "tr-TR" : currency === "RUB" ? "ru-RU" : "en-US";
@@ -101,6 +177,10 @@ function formatMoney(value: number, currency: Currency) {
     currency,
     maximumFractionDigits: 0
   }).format(value);
+}
+
+function convertEurEstimate(value: number, currency: Currency) {
+  return Math.round(value * eurToCurrencyRate[currency]);
 }
 
 function getStayNights(options: {
@@ -152,17 +232,7 @@ function getNightlyHotelBase(
   city: string,
   country: string
 ) {
-  const cityPremium: Record<string, number> = {
-    Barcelona: 72,
-    Paris: 95,
-    Rome: 78,
-    Budapest: 52,
-    Tbilisi: 34,
-    Baku: 39,
-    Belgrade: 42
-  };
-
-  let base = cityPremium[city] ?? 48;
+  let base = cityHotelBaseEur[city] ?? 68;
 
   if (isRussiaDestination(city, country)) {
     base = Math.round(base * 0.85);
@@ -188,18 +258,23 @@ function buildKlookHotelUrl(options: {
   checkIn?: string;
   checkOut?: string | null;
 }) {
-  const queryParts = [options.city, options.country, "hotel"];
+  const url = new URL("https://www.booking.com/searchresults.html");
+  url.searchParams.set("ss", `${options.city}, ${options.country}`);
+  url.searchParams.set("ssne", options.city);
+  url.searchParams.set("ssne_untouched", options.city);
+  url.searchParams.set("dest_type", "city");
+  url.searchParams.set("group_adults", "1");
+  url.searchParams.set("no_rooms", "1");
+  url.searchParams.set("group_children", "0");
 
   if (options.checkIn) {
-    queryParts.push(options.checkIn);
+    url.searchParams.set("checkin", options.checkIn);
   }
 
   if (options.checkOut) {
-    queryParts.push(options.checkOut);
+    url.searchParams.set("checkout", options.checkOut);
   }
 
-  const url = new URL("https://www.klook.com/search/result/");
-  url.searchParams.set("query", queryParts.join(" "));
   return url.toString();
 }
 
@@ -409,6 +484,94 @@ function labelAccommodationPreference(
   return value;
 }
 
+function normalizeMarketValue(value?: string | null) {
+  return value?.toLowerCase().trim() ?? "";
+}
+
+function inferMarketFromDeparture(
+  departure: PlaceOption | undefined,
+  language: Language,
+  citizenship: string
+): MarketKey {
+  const normalizedCode = normalizeMarketValue(departure?.code);
+  const normalizedCountry = normalizeMarketValue(departure?.country);
+  const normalizedName = normalizeMarketValue(departure?.name);
+  const normalizedCity = normalizeMarketValue(departure?.cityName);
+
+  if (
+    normalizedCountry.includes("tur") ||
+    normalizedCode === "ist" ||
+    normalizedCode === "saw" ||
+    normalizedName.includes("istanbul") ||
+    normalizedCity.includes("istanbul")
+  ) {
+    return "turkey";
+  }
+
+  if (
+    normalizedCountry.includes("rus") ||
+    ["mow", "svo", "vko", "dme", "led", "aer", "kgd", "kzn"].includes(normalizedCode)
+  ) {
+    return "russia";
+  }
+
+  if (
+    normalizedCountry.includes("germany") ||
+    ["ber", "fra", "muc", "ham", "cgn", "str"].includes(normalizedCode)
+  ) {
+    return "germany";
+  }
+
+  const normalizedCitizenship = normalizeMarketValue(citizenship);
+  if (normalizedCitizenship.includes("tur")) return "turkey";
+  if (normalizedCitizenship.includes("rus")) return "russia";
+  if (normalizedCitizenship.includes("german")) return "germany";
+
+  return language === "tr" ? "turkey" : language === "ru" ? "russia" : "germany";
+}
+
+function mapVisaRequirement(
+  visaTag: DestinationSeed["visaTag"]
+): Recommendation["visaRequirement"] {
+  if (visaTag === "visa-free") return "visa-free";
+  if (visaTag === "e-visa") return "e-visa required";
+  return "visa required";
+}
+
+function getExperienceMatch(
+  destination: DestinationSeed,
+  accommodationPreference: AccommodationPreference
+) {
+  const premiumCities = new Set(["Paris", "Rome", "Barcelona", "Vienna", "Budapest", "Dubai"]);
+  if (
+    accommodationPreference === "Better experience" &&
+    premiumCities.has(destination.city)
+  ) {
+    return "Premium experience";
+  }
+
+  return "Best value";
+}
+
+function buildRecommendationNote(
+  destination: DestinationSeed,
+  language: Language,
+  market: MarketKey
+) {
+  const marketLabel =
+    market === "turkey" ? "Turkey" : market === "russia" ? "Russia" : "Germany";
+
+  if (language === "ru") {
+    return `${destination.city} выделяется по совокупности перелёта, проживания и доступности маршрута для путешествия из ${marketLabel}.`;
+  }
+
+  if (language === "tr") {
+    return `${destination.city}, ${marketLabel} çıkışlı bir seyahatte uçuş, konaklama ve toplam erişilebilirlik dengesiyle öne çıkıyor.`;
+  }
+
+  return `${destination.city} stands out for its balance of flights, stay value, and overall accessibility on trips starting from ${marketLabel}.`;
+}
+
 export function PlannerForm() {
   const { language, currency } = useLanguage();
   const copy =
@@ -492,9 +655,9 @@ export function PlannerForm() {
             "соответствует вашему бюджету и даёт лучший общий fit поездки, чем альтернативы с более низким рейтингом.",
           dailySpendTitle: "Прогноз ежедневных расходов",
           dailySpendLead: "Прогноз трат в день:",
-          backpackerHoliday: "Backpacker holiday",
-          balancedHoliday: "Balanced holiday",
-          luxuryHoliday: "Luxury holiday",
+          backpackerHoliday: "Экономичный темп",
+          balancedHoliday: "Сбалансированный темп",
+          luxuryHoliday: "Комфортный темп",
           perDay: "/ день",
           loadingFlights: "Загружаем перелёты...",
           seeFlights: "Смотреть перелёты",
@@ -601,9 +764,9 @@ export function PlannerForm() {
             "bütçene uyuyor ve daha alt sıralı alternatiflere göre daha güçlü bir genel trip uyumu sunuyor.",
           dailySpendTitle: "Günlük harcama öngörüleri",
           dailySpendLead: "Günlük tahmini harcama:",
-          backpackerHoliday: "Backpacker holiday",
-          balancedHoliday: "Balanced holiday",
-          luxuryHoliday: "Luxury holiday",
+          backpackerHoliday: "Ekonomik tempo",
+          balancedHoliday: "Dengeli tempo",
+          luxuryHoliday: "Rahat tempo",
           perDay: "/ gün",
           loadingFlights: "Canlı uçuşlar yükleniyor...",
             seeFlights: "Canlı uçuşları gör",
@@ -794,124 +957,96 @@ export function PlannerForm() {
   ]);
 
   const recommendations = useMemo<Recommendation[]>(() => {
-    const base: Recommendation[] = [
-      {
-        city: "Tbilisi",
-        country: "Georgia",
-        destinationCode: "TBS",
-        estimatedCost: 290,
-        flightDuration: "2h 15m",
-        visaRequirement: "visa-free",
-        experienceMatch: "Best value",
-        badge: "Best Match",
-        matchScore: 94,
-        notes:
-          language === "ru"
-            ? "Мы рекомендуем Тбилиси, потому что это безвизовое направление, оно укладывается в ваш бюджет и отлично подходит для гибких city-break поездок."
-            : language === "tr"
-              ? "Tiflis’i öneriyoruz çünkü vizesiz, bütçene uyuyor ve esnek city break planları için çok güçlü bir seçenek."
-              : "We recommend Tbilisi because it's visa-free, within your budget, and works exceptionally well for flexible city breaks."
-      },
-      {
-        city: "Baku",
-        country: "Azerbaijan",
-        destinationCode: "GYD",
-        estimatedCost: 340,
-        flightDuration: "2h 50m",
-        visaRequirement: "e-visa required",
-        experienceMatch: "Best value",
-        badge: "Smart Deal",
-        matchScore: 89,
-        notes:
-          language === "ru"
-            ? "Мы рекомендуем Баку, потому что он сочетает простой доступ, низкую общую стоимость и удобство короткого перелёта, если вам подходит быстрый маршрут с e-визой."
-            : language === "tr"
-              ? "Bakü’yü öneriyoruz çünkü kolay erişim, düşük toplam maliyet ve kısa uçuş rahatlığını bir araya getiriyor; özellikle hızlı e-vize rotalarına açıksan."
-              : "We recommend Baku because it balances easy access, low total cost, and short-haul convenience if you're open to quick e-visa routes."
-      },
-      {
-        city: "Belgrade",
-        country: "Serbia",
-        destinationCode: "BEG",
-        estimatedCost: 390,
-        flightDuration: "1h 50m",
-        visaRequirement: "visa-free",
-        experienceMatch: "Best value",
-        badge: "Trending",
-        matchScore: 87,
-        notes:
-          language === "ru"
-            ? "Мы рекомендуем Белград, потому что это безвизовое направление, оно укладывается в ваш бюджет и предлагает более сильную ценность, чем многие европейские альтернативы."
-            : language === "tr"
-              ? "Belgrad’ı öneriyoruz çünkü vizesiz, bütçene uyuyor ve birçok Avrupa alternatifine göre daha iyi değer sunuyor."
-              : "We recommend Belgrade because it's visa-free, within your budget, and offers better value than many European alternatives."
-      },
-      {
-        city: "Budapest",
-        country: "Hungary",
-        destinationCode: "BUD",
-        estimatedCost: 420,
-        flightDuration: "2h 05m",
-        visaRequirement:
-          form.visaStatus === "Schengen visa" ? "visa-free" : "visa required",
-        experienceMatch: "Premium experience",
-        badge: "Trending",
-        matchScore: 82,
-        notes:
-          language === "ru"
-            ? "Мы рекомендуем Будапешт, если вы хотите более сильный опыт по проживанию и гастрономии, сохраняя при этом управляемый общий бюджет."
-            : language === "tr"
-              ? "Budapeşte’yi, konaklama ve yeme-içme tarafında daha güçlü bir deneyim isterken toplam bütçeyi hâlâ yönetilebilir tutmak istediğinde öneriyoruz."
-              : "We recommend Budapest when you want a stronger accommodation and food scene with a still-manageable total budget."
-      }
-    ];
+    const market = inferMarketFromDeparture(form.departures[0], language, form.citizenship);
+    const seeds = DEAL_MARKETS[market].destinations;
+    const originCountry = DEAL_MARKETS[market].originCountry;
+    const destinationName = form.destination?.cityName ?? form.destination?.name ?? null;
+    const normalizedDestinationName = destinationName?.toLowerCase().trim() ?? null;
 
-    const filteredBase =
-      form.destination === null
+    const base = seeds
+      .filter((seed) => {
+        if (form.travelType === "Domestic" && seed.country !== originCountry) {
+          return false;
+        }
+
+        if (form.travelType === "International" && seed.country === originCountry) {
+          return false;
+        }
+
+        if (form.visaStatus === "No visa" && seed.visaTag !== "visa-free") {
+          return false;
+        }
+
+        if (
+          form.visaStatus === "E-visa" &&
+          !["visa-free", "e-visa"].includes(seed.visaTag)
+        ) {
+          return false;
+        }
+
+        if (
+          form.visaStatus === "Schengen visa" &&
+          !["visa-free", "schengen"].includes(seed.visaTag)
+        ) {
+          return false;
+        }
+
+        if (!normalizedDestinationName) {
+          return true;
+        }
+
+        return seed.city.toLowerCase() === normalizedDestinationName;
+      })
+      .map<Recommendation>((seed, index) => ({
+        city: seed.city,
+        country: seed.country,
+        destinationCode: seed.code,
+        estimatedCost: cityEstimatedCostEur[seed.city] ?? 420,
+        flightDuration:
+          cityFlightDuration[seed.city] ??
+          (market === "germany" ? "2h 25m" : market === "russia" ? "2h 10m" : "2h 40m"),
+        visaRequirement: mapVisaRequirement(seed.visaTag),
+        experienceMatch: getExperienceMatch(seed, form.accommodationPreference),
+        badge: index === 0 ? "Best Match" : index < 3 ? "Smart Deal" : "Trending",
+        matchScore: 84 - index * 2,
+        notes: buildRecommendationNote(seed, language, market)
+      }));
+
+    const effectiveBase: Recommendation[] =
+      base.length > 0
         ? base
-        : base.filter(
-            (item) =>
-              item.city === (form.destination?.cityName ?? form.destination?.name)
-          );
-
-    const fallbackRecommendation: Recommendation | null =
-      form.destination === null || filteredBase.length > 0
-        ? null
-        : {
-            city: form.destination.cityName ?? form.destination.name,
-            country: form.destination.country,
-            destinationCode: form.destination.code,
-            estimatedCost:
-              form.travelType === "Domestic"
-                ? Math.max(120, Math.round(form.budget * 0.7))
-                : Math.max(180, Math.round(form.budget * 0.9)),
-            flightDuration:
-              form.travelType === "Domestic" ? "1h 30m" : "3h 10m",
-            visaRequirement:
-              form.travelType === "Domestic"
-                ? "visa-free"
-                : form.visaStatus === "No visa"
-                  ? "e-visa required"
-                  : "visa-free",
-            experienceMatch:
-              form.accommodationPreference === "Better experience"
-                ? "Premium experience"
-                : "Best value",
-            badge: "Best Match",
-            matchScore: 88,
-            notes:
-              language === "ru"
-                ? `${form.destination.cityName ?? form.destination.name} добавлен, потому что вы выбрали его как целевое направление напрямую.`
-                : language === "tr"
-                  ? `${form.destination.cityName ?? form.destination.name} destinasyonunu doğrudan seçtiğin için onu da önerilere dahil ettik.`
-                  : `We included ${form.destination.cityName ?? form.destination.name} because you selected it directly as your target destination.`
-          };
-
-    const effectiveBase =
-      filteredBase.length > 0 || form.destination === null
-        ? filteredBase
-        : fallbackRecommendation
-          ? [fallbackRecommendation]
+        : form.destination
+          ? [
+              {
+                city: form.destination.cityName ?? form.destination.name,
+                country: form.destination.country,
+                destinationCode: form.destination.code,
+                estimatedCost:
+                  form.travelType === "Domestic"
+                    ? Math.max(140, Math.round(form.budget * 0.7))
+                    : Math.max(220, Math.round(form.budget * 0.9)),
+                flightDuration:
+                  form.travelType === "Domestic" ? "1h 30m" : "3h 10m",
+                visaRequirement:
+                  form.travelType === "Domestic"
+                    ? "visa-free"
+                    : form.visaStatus === "No visa"
+                      ? "e-visa required"
+                      : "visa-free",
+                experienceMatch:
+                  form.accommodationPreference === "Better experience"
+                    ? "Premium experience"
+                    : "Best value",
+                badge: "Best Match",
+                matchScore: 88,
+                notes:
+                  language === "ru"
+                    ? `${form.destination.cityName ?? form.destination.name} добавлен, потому что вы выбрали его как целевое направление напрямую.`
+                    : language === "tr"
+                      ? `${form.destination.cityName ?? form.destination.name} destinasyonunu doğrudan seçtiğin için onu da önerilere dahil ettik.`
+                      : `We included ${form.destination.cityName ?? form.destination.name} because you selected it directly as your target destination.`
+              }
+            ]
           : [];
 
     return effectiveBase
@@ -1012,7 +1147,7 @@ export function PlannerForm() {
       try {
         setIsLoadingDepartureResults(true);
         const response = await fetch(
-          `/api/places-search?term=${encodeURIComponent(term)}`,
+          `/api/places-search?term=${encodeURIComponent(term)}&locale=${language}`,
           { signal: controller.signal }
         );
         const payload = (await response.json()) as
@@ -1040,7 +1175,7 @@ export function PlannerForm() {
       controller.abort();
       window.clearTimeout(timer);
     };
-  }, [departureSearch]);
+  }, [departureSearch, language]);
 
   useEffect(() => {
     const term = destinationSearch.trim();
@@ -1055,7 +1190,7 @@ export function PlannerForm() {
       try {
         setIsLoadingDestinationResults(true);
         const response = await fetch(
-          `/api/places-search?term=${encodeURIComponent(term)}`,
+          `/api/places-search?term=${encodeURIComponent(term)}&locale=${language}`,
           { signal: controller.signal }
         );
         const payload = (await response.json()) as
@@ -1083,7 +1218,7 @@ export function PlannerForm() {
       controller.abort();
       window.clearTimeout(timer);
     };
-  }, [destinationSearch]);
+  }, [destinationSearch, language]);
 
   const getSearchDateLabel = () => {
     if (form.dateFlexibility === "Exact dates" && form.exactDepartureDate) {
@@ -1930,12 +2065,17 @@ export function PlannerForm() {
                         item.city,
                         item.country
                       );
+                      const hotelStartsFromInCurrency = convertEurEstimate(
+                        hotelStartsFrom,
+                        currency
+                      );
                       const hotelEstimateTotal =
                         form.accommodationPreference === "I'll choose my own hotel"
                           ? 0
-                          : hotelStartsFrom * stayNights;
+                          : hotelStartsFromInCurrency * stayNights;
                       const totalTripEstimate =
-                        (fare?.price ?? item.estimatedCost) + hotelEstimateTotal;
+                        (fare?.price ?? convertEurEstimate(item.estimatedCost, currency)) +
+                        hotelEstimateTotal;
 
                       return (
                     <article
@@ -1971,7 +2111,11 @@ export function PlannerForm() {
                             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
                               {copy.liveFlightPrice}
                             </p>
-                            <p className="mt-2 text-4xl font-black tracking-[-0.05em] text-chartreuse">
+                            <p
+                              className={`mt-2 font-black tracking-[-0.05em] text-chartreuse ${
+                                fare?.error ? "text-2xl leading-8" : "text-4xl"
+                              }`}
+                            >
                               {fare?.price
                                 ? formatMoney(fare.price, currency)
                                 : fare?.error
@@ -1986,7 +2130,7 @@ export function PlannerForm() {
                             <p className="mt-2 text-4xl font-black tracking-[-0.05em] text-slateBlue">
                               {form.accommodationPreference === "I'll choose my own hotel"
                                 ? copy.youChoose
-                                : formatMoney(hotelStartsFrom, currency)}
+                                : formatMoney(hotelStartsFromInCurrency, currency)}
                             </p>
                             <p className="mt-1 text-xs font-medium text-slate-500">
                               {form.accommodationPreference === "Just sleep (budget)"
@@ -2061,7 +2205,10 @@ export function PlannerForm() {
                                 {copy.flight}:{" "}
                                 {fare?.price
                                   ? formatMoney(fare.price, currency)
-                                  : `~${formatMoney(item.estimatedCost, currency)}`}
+                                  : `~${formatMoney(
+                                      convertEurEstimate(item.estimatedCost, currency),
+                                      currency
+                                    )}`}
                               </div>
                               <div>
                                 {copy.hotel}:{" "}
@@ -2122,7 +2269,11 @@ export function PlannerForm() {
                                 {copy.backpackerHoliday}
                               </p>
                               <p className="mt-2 text-2xl font-black text-white">
-                                {formatMoney(dailySpend.tiers.backpacker, currency)} {copy.perDay}
+                                {formatMoney(
+                                  convertEurEstimate(dailySpend.tiers.backpacker, currency),
+                                  currency
+                                )}{" "}
+                                {copy.perDay}
                               </p>
                             </div>
                             <div className="rounded-[1.35rem] border border-chartreuse/30 bg-chartreuse/10 px-4 py-4 shadow-[0_12px_36px_rgba(201,255,5,0.08)] backdrop-blur-sm">
@@ -2133,7 +2284,11 @@ export function PlannerForm() {
                                 {copy.balancedHoliday}
                               </p>
                               <p className="mt-2 text-2xl font-black text-white">
-                                {formatMoney(dailySpend.tiers.balanced, currency)} {copy.perDay}
+                                {formatMoney(
+                                  convertEurEstimate(dailySpend.tiers.balanced, currency),
+                                  currency
+                                )}{" "}
+                                {copy.perDay}
                               </p>
                             </div>
                             <div className="rounded-[1.35rem] border border-white/10 bg-white/8 px-4 py-4 backdrop-blur-sm">
@@ -2144,7 +2299,11 @@ export function PlannerForm() {
                                 {copy.luxuryHoliday}
                               </p>
                               <p className="mt-2 text-2xl font-black text-white">
-                                {formatMoney(dailySpend.tiers.luxury, currency)}+ {copy.perDay}
+                                {formatMoney(
+                                  convertEurEstimate(dailySpend.tiers.luxury, currency),
+                                  currency
+                                )}
+                                + {copy.perDay}
                               </p>
                             </div>
                           </div>

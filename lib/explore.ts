@@ -91,8 +91,14 @@ export function buildStaySearchLink(options: { city: string; country: string }) 
     return "https://manteratravel.ru/hotels";
   }
 
-  const url = new URL("https://www.klook.com/search/result/");
-  url.searchParams.set("query", `${options.city} ${options.country} hotel`);
+  const url = new URL("https://www.booking.com/searchresults.html");
+  url.searchParams.set("ss", `${options.city}, ${options.country}`);
+  url.searchParams.set("ssne", options.city);
+  url.searchParams.set("ssne_untouched", options.city);
+  url.searchParams.set("dest_type", "city");
+  url.searchParams.set("group_adults", "1");
+  url.searchParams.set("no_rooms", "1");
+  url.searchParams.set("group_children", "0");
   return url.toString();
 }
 
