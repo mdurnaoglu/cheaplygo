@@ -30,7 +30,7 @@ export function BlogIndexContent({ posts }: { posts: BlogPost[] }) {
             title: "All posts on route selection, budget fit, and smarter travel planning",
             description:
               "This is the reading hub for comparing destinations, understanding total trip cost, and making better travel decisions.",
-            openPost: "Open article"
+            openPost: "Read article"
           };
 
   return (
