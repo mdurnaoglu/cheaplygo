@@ -2101,38 +2101,49 @@ export function PlannerForm() {
                       </p>
 
                       {dailySpend ? (
-                        <div className="mt-5 rounded-[1.5rem] border border-slate-200 bg-slate-50 px-5 py-5">
-                          <div className="flex items-center gap-2 text-slateBlue">
-                            <Sparkles className="h-4 w-4 text-chartreuse" />
-                            <p className="text-sm font-semibold uppercase tracking-[0.16em]">
+                        <div className="relative mt-5 overflow-hidden rounded-[1.75rem] border border-slateBlue/15 bg-[radial-gradient(circle_at_top_left,rgba(201,255,5,0.16),transparent_28%),linear-gradient(135deg,#0f172a_0%,#173042_55%,#20465a_100%)] px-5 py-5 text-white shadow-[0_24px_70px_rgba(15,23,42,0.22)]">
+                          <div className="absolute -right-10 top-0 h-32 w-32 rounded-full bg-chartreuse/10 blur-3xl" />
+                          <div className="absolute bottom-0 left-0 h-24 w-24 rounded-full bg-white/5 blur-2xl" />
+                          <div className="relative flex items-center gap-2 text-chartreuse">
+                            <Sparkles className="h-4 w-4" />
+                            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-chartreuse/95">
                               {copy.dailySpendTitle}
                             </p>
                           </div>
-                          <p className="mt-3 text-sm font-medium text-slate-600">
+                          <p className="relative mt-3 text-sm font-medium text-white/80">
                             {copy.dailySpendLead} {dailySpend.city}, {dailySpend.country}
                           </p>
-                          <div className="mt-4 grid gap-3 md:grid-cols-3">
-                            <div className="rounded-2xl bg-white px-4 py-4">
-                              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">
+                          <div className="relative mt-4 grid gap-3 md:grid-cols-3">
+                            <div className="rounded-[1.35rem] border border-white/10 bg-white/8 px-4 py-4 backdrop-blur-sm">
+                              <div className="inline-flex rounded-full bg-emerald-400/12 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-emerald-200">
+                                Lean
+                              </div>
+                              <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-white/55">
                                 {copy.backpackerHoliday}
                               </p>
-                              <p className="mt-2 text-xl font-black text-ink">
+                              <p className="mt-2 text-2xl font-black text-white">
                                 {formatMoney(dailySpend.tiers.backpacker, currency)} {copy.perDay}
                               </p>
                             </div>
-                            <div className="rounded-2xl bg-white px-4 py-4">
-                              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">
+                            <div className="rounded-[1.35rem] border border-chartreuse/30 bg-chartreuse/10 px-4 py-4 shadow-[0_12px_36px_rgba(201,255,5,0.08)] backdrop-blur-sm">
+                              <div className="inline-flex rounded-full bg-chartreuse/20 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-chartreuse">
+                                Best fit
+                              </div>
+                              <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-white/60">
                                 {copy.balancedHoliday}
                               </p>
-                              <p className="mt-2 text-xl font-black text-ink">
+                              <p className="mt-2 text-2xl font-black text-white">
                                 {formatMoney(dailySpend.tiers.balanced, currency)} {copy.perDay}
                               </p>
                             </div>
-                            <div className="rounded-2xl bg-white px-4 py-4">
-                              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">
+                            <div className="rounded-[1.35rem] border border-white/10 bg-white/8 px-4 py-4 backdrop-blur-sm">
+                              <div className="inline-flex rounded-full bg-fuchsia-400/12 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-fuchsia-200">
+                                Premium
+                              </div>
+                              <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-white/55">
                                 {copy.luxuryHoliday}
                               </p>
-                              <p className="mt-2 text-xl font-black text-ink">
+                              <p className="mt-2 text-2xl font-black text-white">
                                 {formatMoney(dailySpend.tiers.luxury, currency)}+ {copy.perDay}
                               </p>
                             </div>

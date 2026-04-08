@@ -1,0 +1,32 @@
+{
+  "slug": "world-cup-2026-usa-travel-guide",
+  "image": "https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1400&q=80",
+  "publishedAt": "2026-04-08",
+  "featured": false,
+  "locales": {
+    "tr": {
+      "title": "2026 Dünya Kupası ABD Seyahat Rehberi: Şehirler, Uçuşlar ve Planlama Stratejisi",
+      "description": "2026 Dünya Kupası için ABD seyahati nasıl planlanır? Şehir seçimi, uçuş optimizasyonu ve toplam maliyeti düşürme yollarını keşfedin.",
+      "excerpt": "ABD’de Dünya Kupası için en doğru seyahat planını nasıl yapacağını öğren.",
+      "imageAlt": "ABD şehir silüeti ve seyahat konsepti",
+      "readTime": "6 dk okuma",
+      "html": "<h2>2026 Dünya Kupası seyahatini erken planlamak neden önemli?</h2><p>2026 Dünya Kupası, ABD genelinde birçok şehirde oynanacak büyük bir turnuva olacak.</p>"
+    },
+    "en": {
+      "title": "World Cup 2026 USA Travel Guide: Cities, Flights and Planning Strategy",
+      "description": "Planning a trip for World Cup 2026 in the USA? Learn how to choose cities, optimize flights, and reduce total travel cost efficiently.",
+      "excerpt": "Learn how to plan a smarter World Cup trip across the USA.",
+      "imageAlt": "USA skyline and travel concept",
+      "readTime": "6 min read",
+      "html": "<h2>Why planning your World Cup 2026 trip early matters</h2><p>World Cup 2026 will be hosted across multiple cities in the United States.</p>"
+    },
+    "ru": {
+      "title": "Гид по путешествию на Чемпионат мира 2026 в США",
+      "description": "Как спланировать поездку на ЧМ 2026 в США и снизить расходы.",
+      "excerpt": "Планируйте поездку на ЧМ 2026 правильно.",
+      "imageAlt": "Путешествие по США",
+      "readTime": "6 мин чтения",
+      "html": "<h2>Почему важно заранее планировать поездку</h2><p>Чемпионат мира 2026 пройдет в нескольких городах США.</p>"
+    }
+  }
+}
