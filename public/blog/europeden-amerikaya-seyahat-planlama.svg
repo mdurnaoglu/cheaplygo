@@ -1,0 +1,44 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#F4EFE6"/>
+  <rect x="0" y="0" width="1600" height="900" fill="url(#sky)"/>
+  <ellipse cx="1080" cy="180" rx="240" ry="92" fill="#FFF5DD" opacity="0.9"/>
+  <path d="M0 640C115 580 227 562 335 586C439 610 521 646 621 648C722 650 808 610 904 584C1008 555 1095 550 1188 574C1275 596 1412 660 1600 640V900H0V640Z" fill="#D7E2EA"/>
+  <path d="M0 704C100 676 233 662 360 690C491 719 611 774 732 772C856 770 933 722 1042 701C1167 677 1334 682 1600 742V900H0V704Z" fill="#AFC4D1"/>
+  <rect x="160" y="264" width="468" height="314" rx="28" fill="#FFFDF9" stroke="#D8CFC0" stroke-width="3"/>
+  <rect x="1004" y="232" width="420" height="362" rx="32" fill="#F9FAFB" stroke="#D5DDE4" stroke-width="3"/>
+  <rect x="1038" y="278" width="352" height="200" rx="22" fill="url(#usaCard)"/>
+  <rect x="190" y="310" width="208" height="22" rx="11" fill="#D9B36C"/>
+  <rect x="190" y="348" width="312" height="16" rx="8" fill="#D7DEE6"/>
+  <rect x="190" y="378" width="264" height="16" rx="8" fill="#D7DEE6"/>
+  <rect x="190" y="432" width="184" height="96" rx="20" fill="#F5E9D2"/>
+  <rect x="390" y="432" width="204" height="96" rx="20" fill="#EAF0F4"/>
+  <path d="M470 154C561 164 652 210 711 276C756 326 775 373 788 430" stroke="#B7802E" stroke-width="8" stroke-linecap="round" stroke-dasharray="2 22"/>
+  <path d="M809 430C833 356 876 299 948 243C1037 174 1157 143 1236 150" stroke="#B7802E" stroke-width="8" stroke-linecap="round" stroke-dasharray="2 22"/>
+  <circle cx="794" cy="430" r="28" fill="#C97A29"/>
+  <path d="M780 430L792 394L808 430H780Z" fill="#FFF8EF"/>
+  <path d="M764 684C786 654 820 620 874 596C952 561 1045 557 1122 583C1180 602 1220 634 1248 668" stroke="#6B7E8C" stroke-width="10" stroke-linecap="round"/>
+  <path d="M686 704C717 645 758 605 816 570C870 537 928 520 996 518C1080 515 1162 540 1224 586C1270 621 1308 666 1338 724" stroke="#4C6170" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="790" cy="430" r="9" fill="#FFF5DD"/>
+  <circle cx="1236" cy="150" r="10" fill="#B7802E"/>
+  <circle cx="470" cy="154" r="10" fill="#B7802E"/>
+  <path d="M1092 334H1148C1172 334 1192 354 1192 378V388C1192 412 1172 432 1148 432H1092V334Z" fill="#F7FBFF"/>
+  <path d="M1158 334H1268C1292 334 1312 354 1312 378V388C1312 412 1292 432 1268 432H1158V334Z" fill="#F4D0D0"/>
+  <path d="M1092 432H1148C1172 432 1192 452 1192 476V486C1192 510 1172 530 1148 530H1092V432Z" fill="#F4D0D0"/>
+  <path d="M1158 432H1268C1292 432 1312 452 1312 476V486C1312 510 1292 530 1268 530H1158V432Z" fill="#F7FBFF"/>
+  <circle cx="302" cy="480" r="38" fill="#DFA34B"/>
+  <path d="M286 480L298 446L320 480H286Z" fill="#FFF8EF"/>
+  <path d="M1110 658C1144 632 1198 628 1234 650" stroke="#364A59" stroke-width="8" stroke-linecap="round"/>
+  <path d="M200 604H522" stroke="#D1C5B4" stroke-width="4" stroke-linecap="round"/>
+  <path d="M1020 620H1404" stroke="#C9D2DA" stroke-width="4" stroke-linecap="round"/>
+  <defs>
+    <linearGradient id="sky" x1="800" y1="0" x2="800" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8F3E8"/>
+      <stop offset="0.48" stop-color="#EAE5D8"/>
+      <stop offset="1" stop-color="#C8D8E2"/>
+    </linearGradient>
+    <linearGradient id="usaCard" x1="1214" y1="278" x2="1214" y2="478" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FAFD"/>
+      <stop offset="1" stop-color="#E8EEF4"/>
+    </linearGradient>
+  </defs>
+</svg>
