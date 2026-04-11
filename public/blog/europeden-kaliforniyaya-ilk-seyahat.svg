@@ -1,0 +1,57 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#F4EEE5"/>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <circle cx="1268" cy="156" r="96" fill="#FFD27A" fill-opacity="0.9"/>
+  <circle cx="250" cy="170" r="70" fill="#C7E5F4" fill-opacity="0.85"/>
+  <path d="M0 666C124 620 243 610 358 632C480 655 572 712 692 718C818 724 916 678 1028 648C1158 612 1313 612 1600 676V900H0V666Z" fill="#D7DAD0"/>
+  <path d="M0 744C120 712 268 706 410 738C546 768 666 820 816 818C978 816 1122 758 1260 752C1362 748 1478 766 1600 804V900H0V744Z" fill="#B7C2B1"/>
+  <rect x="120" y="232" width="410" height="438" rx="34" fill="#FFFDF8" fill-opacity="0.96"/>
+  <rect x="594" y="202" width="412" height="468" rx="34" fill="#FFFDF8" fill-opacity="0.97"/>
+  <rect x="1070" y="248" width="404" height="422" rx="34" fill="#FFFDF8" fill-opacity="0.96"/>
+  <text x="156" y="292" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">LOS ANGELES</text>
+  <text x="156" y="342" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="23">İlk Kaliforniya ziyareti için</text>
+  <text x="156" y="382" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="23">en esnek ama en dağınık seçenek</text>
+  <text x="156" y="446" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="22">+ Uçuş seçeneği yüksek</text>
+  <text x="156" y="486" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="22">+ Şehir, sahil ve etkinlik dengesi</text>
+  <text x="156" y="526" fill="#B45309" font-family="Arial, Helvetica, sans-serif" font-size="22">- Araba ihtiyacı sık görülür</text>
+  <text x="156" y="592" fill="#1D4ED8" font-family="Arial, Helvetica, sans-serif" font-size="50" font-weight="700">Flexible</text>
+  <text x="632" y="266" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">ORANGE COUNTY</text>
+  <text x="632" y="316" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="23">Santa Ana, Anaheim ve sahil hattı</text>
+  <text x="632" y="356" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="23">daha temiz ilk gece ve daha sakin tempo</text>
+  <text x="632" y="420" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="22">+ Daha düzenli konaklama yapısı</text>
+  <text x="632" y="460" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="22">+ Disneyland ve sahil kombinasyonu</text>
+  <text x="632" y="500" fill="#047857" font-family="Arial, Helvetica, sans-serif" font-size="22">+ İlk ziyaret için güçlü denge</text>
+  <text x="632" y="576" fill="#047857" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Best Value</text>
+  <text x="1108" y="312" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">SAN DIEGO</text>
+  <text x="1108" y="362" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="23">Daha rahat ritim, daha net sahil hissi</text>
+  <text x="1108" y="426" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="22">+ Kısa tatilde verimli kullanım</text>
+  <text x="1108" y="466" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="22">+ Daha az büyük şehir sürtünmesi</text>
+  <text x="1108" y="506" fill="#7C3AED" font-family="Arial, Helvetica, sans-serif" font-size="22">- Bölge seçimi yine kritik</text>
+  <text x="1108" y="580" fill="#7C3AED" font-family="Arial, Helvetica, sans-serif" font-size="50" font-weight="700">Calm Trip</text>
+  <path d="M294 698C346 668 428 660 482 680" stroke="#425466" stroke-width="10" stroke-linecap="round"/>
+  <path d="M746 706C798 664 886 656 952 686" stroke="#425466" stroke-width="10" stroke-linecap="round"/>
+  <path d="M1188 700C1240 666 1318 660 1372 684" stroke="#425466" stroke-width="10" stroke-linecap="round"/>
+  <rect x="192" y="708" width="58" height="96" fill="#334155"/>
+  <rect x="258" y="640" width="82" height="164" fill="#0F172A"/>
+  <rect x="350" y="576" width="84" height="228" fill="#1E293B"/>
+  <rect x="446" y="620" width="60" height="184" fill="#334155"/>
+  <rect x="676" y="654" width="56" height="150" fill="#334155"/>
+  <rect x="742" y="586" width="82" height="218" fill="#0F172A"/>
+  <rect x="836" y="522" width="90" height="282" fill="#1E293B"/>
+  <rect x="938" y="604" width="58" height="200" fill="#334155"/>
+  <rect x="1132" y="668" width="56" height="136" fill="#334155"/>
+  <rect x="1198" y="594" width="74" height="210" fill="#0F172A"/>
+  <rect x="1284" y="552" width="88" height="252" fill="#1E293B"/>
+  <rect x="1384" y="626" width="54" height="178" fill="#334155"/>
+  <path d="M816 176L844 278H788L816 176Z" fill="#D97706"/>
+  <rect x="808" y="148" width="16" height="28" fill="#0F172A"/>
+  <text x="80" y="112" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="700">Europe to California First Trip Guide</text>
+  <text x="82" y="162" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="30">Los Angeles vs Orange County vs San Diego</text>
+  <defs>
+    <linearGradient id="sky" x1="260" y1="30" x2="1372" y2="860" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D7E9F0"/>
+      <stop offset="0.5" stop-color="#F6EFE2"/>
+      <stop offset="1" stop-color="#D6DFC9"/>
+    </linearGradient>
+  </defs>
+</svg>
