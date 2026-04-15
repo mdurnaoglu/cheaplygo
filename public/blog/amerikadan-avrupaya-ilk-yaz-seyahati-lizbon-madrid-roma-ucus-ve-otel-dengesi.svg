@@ -1,0 +1,57 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#F8F3EA"/>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1320" cy="120" r="92" fill="#FFD39A" fill-opacity="0.92"/>
+  <circle cx="246" cy="160" r="74" fill="#D2E8FF" fill-opacity="0.78"/>
+  <path d="M0 640C154 604 292 612 426 656C548 696 666 748 824 734C980 720 1086 640 1226 622C1378 602 1498 636 1600 688V900H0V640Z" fill="#D7DCC8"/>
+  <path d="M0 742C162 704 310 710 444 748C568 784 700 826 858 820C1020 814 1136 756 1274 748C1376 742 1492 760 1600 800V900H0V742Z" fill="#B8C4AD"/>
+  <text x="82" y="112" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="700">First US to Europe Summer Trip Guide</text>
+  <text x="84" y="162" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="30">Lisbon vs Madrid vs Rome for flights and first-night hotels</text>
+  <rect x="112" y="220" width="410" height="448" rx="36" fill="#FFFCF7" fill-opacity="0.97"/>
+  <rect x="594" y="204" width="412" height="464" rx="36" fill="#FFFCF7" fill-opacity="0.97"/>
+  <rect x="1072" y="232" width="410" height="436" rx="36" fill="#FFFCF7" fill-opacity="0.97"/>
+  <text x="148" y="286" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">LISBON</text>
+  <text x="148" y="334" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="23">Softer first days and compact rhythm</text>
+  <text x="148" y="398" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="22">+ Gentle jet lag recovery</text>
+  <text x="148" y="438" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="22">+ Walkable short-trip energy</text>
+  <text x="148" y="478" fill="#B45309" font-family="Arial, Helvetica, sans-serif" font-size="22">- Steep areas can tire arrivals</text>
+  <text x="148" y="554" fill="#D97706" font-family="Arial, Helvetica, sans-serif" font-size="50" font-weight="700">Soft Start</text>
+  <text x="632" y="270" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">MADRID</text>
+  <text x="632" y="318" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="23">Balanced capital with cleaner logistics</text>
+  <text x="632" y="382" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="22">+ Broad hotel stock</text>
+  <text x="632" y="422" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="22">+ Strong first-night structure</text>
+  <text x="632" y="462" fill="#047857" font-family="Arial, Helvetica, sans-serif" font-size="22">+ Best overall trip balance</text>
+  <text x="632" y="538" fill="#047857" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">Best Value</text>
+  <text x="1110" y="298" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">ROME</text>
+  <text x="1110" y="346" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="23">Most iconic opening, highest pressure</text>
+  <text x="1110" y="410" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="22">+ Strong first-trip impact</text>
+  <text x="1110" y="450" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="22">+ Dense landmark experience</text>
+  <text x="1110" y="490" fill="#7C2D12" font-family="Arial, Helvetica, sans-serif" font-size="22">- Hotel prices rise fast</text>
+  <text x="1110" y="564" fill="#B91C1C" font-family="Arial, Helvetica, sans-serif" font-size="50" font-weight="700">Iconic Entry</text>
+  <path d="M276 700C326 666 410 654 468 678" stroke="#45556C" stroke-width="10" stroke-linecap="round"/>
+  <path d="M756 704C810 664 892 656 950 684" stroke="#45556C" stroke-width="10" stroke-linecap="round"/>
+  <path d="M1238 704C1286 666 1368 656 1424 682" stroke="#45556C" stroke-width="10" stroke-linecap="round"/>
+  <rect x="176" y="700" width="60" height="104" fill="#334155"/>
+  <rect x="246" y="632" width="82" height="172" fill="#0F172A"/>
+  <rect x="340" y="570" width="90" height="234" fill="#1E293B"/>
+  <rect x="444" y="612" width="62" height="192" fill="#334155"/>
+  <rect x="662" y="662" width="54" height="142" fill="#334155"/>
+  <rect x="726" y="592" width="82" height="212" fill="#0F172A"/>
+  <rect x="820" y="520" width="92" height="284" fill="#1E293B"/>
+  <rect x="926" y="604" width="60" height="200" fill="#334155"/>
+  <rect x="1160" y="666" width="54" height="138" fill="#334155"/>
+  <rect x="1224" y="586" width="74" height="218" fill="#0F172A"/>
+  <rect x="1310" y="538" width="92" height="266" fill="#1E293B"/>
+  <rect x="1414" y="618" width="58" height="186" fill="#334155"/>
+  <path d="M800 186C826 218 864 262 864 304C864 338 835 362 800 362C765 362 736 338 736 304C736 262 774 218 800 186Z" fill="#E11D48"/>
+  <circle cx="800" cy="304" r="28" fill="#FFF7ED"/>
+  <path d="M796 156H804V210H796V156Z" fill="#0F172A"/>
+  <path d="M790 164H810L804 146H796L790 164Z" fill="#0F172A"/>
+  <defs>
+    <linearGradient id="bg" x1="240" y1="24" x2="1364" y2="854" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DDECF6"/>
+      <stop offset="0.48" stop-color="#F8E9D9"/>
+      <stop offset="1" stop-color="#D5DFC8"/>
+    </linearGradient>
+  </defs>
+</svg>
