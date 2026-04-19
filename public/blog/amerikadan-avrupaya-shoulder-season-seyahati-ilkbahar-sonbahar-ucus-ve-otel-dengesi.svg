@@ -1,0 +1,58 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" rx="36" fill="#F7F1E8"/>
+  <rect width="1600" height="900" rx="36" fill="url(#bg)"/>
+  <circle cx="1330" cy="156" r="118" fill="#F6C88F" fill-opacity="0.45"/>
+  <circle cx="1260" cy="724" r="172" fill="#B7D4C5" fill-opacity="0.42"/>
+  <circle cx="278" cy="152" r="146" fill="#D7E2F2" fill-opacity="0.62"/>
+  <rect x="76" y="92" width="1448" height="716" rx="34" fill="#FFFBF5" fill-opacity="0.88" stroke="#D9CCBB"/>
+  <path d="M227 595C286 467 375 369 484 308C618 233 768 214 933 251C1067 281 1171 341 1256 427C1309 479 1351 539 1380 612" stroke="#D96E3D" stroke-width="18" stroke-linecap="round" stroke-dasharray="14 18"/>
+  <path d="M1172 452L1204 418L1214 451L1247 463L1215 478L1208 512L1187 486L1152 486L1172 452Z" fill="#D96E3D"/>
+  <rect x="143" y="170" width="330" height="208" rx="24" fill="#FFF7EC" stroke="#E2D5C4"/>
+  <text x="177" y="228" fill="#8B684D" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="700">Spring Window</text>
+  <text x="177" y="272" fill="#4E5A54" font-family="Arial, sans-serif" font-size="22">April - May</text>
+  <rect x="177" y="301" width="110" height="12" rx="6" fill="#7FB38A"/>
+  <rect x="177" y="332" width="176" height="12" rx="6" fill="#B7D4C5"/>
+  <rect x="177" y="363" width="146" height="12" rx="6" fill="#D7E2F2"/>
+  <g opacity="0.9">
+    <circle cx="410" cy="315" r="28" fill="#91C48E"/>
+    <path d="M410 275V347" stroke="#6E9E6A" stroke-width="10" stroke-linecap="round"/>
+    <path d="M378 315H442" stroke="#6E9E6A" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <rect x="1124" y="508" width="330" height="208" rx="24" fill="#F8F4ED" stroke="#DED0C1"/>
+  <text x="1158" y="566" fill="#8B684D" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="700">Fall Window</text>
+  <text x="1158" y="610" fill="#4E5A54" font-family="Arial, sans-serif" font-size="22">September - October</text>
+  <rect x="1158" y="639" width="138" height="12" rx="6" fill="#D98C52"/>
+  <rect x="1158" y="670" width="188" height="12" rx="6" fill="#E7B37C"/>
+  <rect x="1158" y="701" width="152" height="12" rx="6" fill="#C99862"/>
+  <g opacity="0.95">
+    <path d="M1396 632C1426 632 1450 654 1450 682C1450 711 1427 735 1398 735C1369 735 1347 713 1347 685C1347 665 1359 649 1377 640" fill="#C76A34"/>
+    <path d="M1395 632C1382 654 1377 676 1378 702" stroke="#8E4A25" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <rect x="526" y="129" width="548" height="622" rx="30" fill="#FFFDF9" stroke="#E4D8CB"/>
+  <text x="583" y="214" fill="#22313A" font-family="Georgia, 'Times New Roman', serif" font-size="54" font-weight="700">US to Europe</text>
+  <text x="583" y="272" fill="#22313A" font-family="Georgia, 'Times New Roman', serif" font-size="54" font-weight="700">Shoulder Season</text>
+  <text x="584" y="334" fill="#6B7278" font-family="Arial, sans-serif" font-size="24">Compare flights, hotel pressure, and city rhythm</text>
+  <rect x="584" y="390" width="430" height="131" rx="22" fill="#F4EEE5"/>
+  <text x="618" y="440" fill="#8B684D" font-family="Arial, sans-serif" font-size="22" font-weight="700">Best for:</text>
+  <text x="618" y="480" fill="#43515A" font-family="Arial, sans-serif" font-size="22">Longer days, lighter pricing spikes, easier first trips</text>
+  <rect x="584" y="548" width="430" height="131" rx="22" fill="#EEF3F0"/>
+  <text x="618" y="598" fill="#5B7C67" font-family="Arial, sans-serif" font-size="22" font-weight="700">Focus:</text>
+  <text x="618" y="638" fill="#43515A" font-family="Arial, sans-serif" font-size="22">Choose dates in a 7 to 10 day window, not one fare</text>
+  <g opacity="0.9">
+    <rect x="1094" y="161" width="212" height="134" rx="24" fill="#FFF7EC" stroke="#E2D5C4"/>
+    <text x="1128" y="221" fill="#8B684D" font-family="Arial, sans-serif" font-size="22" font-weight="700">Hotel Balance</text>
+    <text x="1128" y="258" fill="#43515A" font-family="Arial, sans-serif" font-size="20">Central first nights</text>
+  </g>
+  <g opacity="0.88">
+    <rect x="308" y="589" width="214" height="138" rx="24" fill="#F2F6FA" stroke="#D7E2F2"/>
+    <text x="342" y="650" fill="#5F7388" font-family="Arial, sans-serif" font-size="22" font-weight="700">Flight Window</text>
+    <text x="342" y="687" fill="#43515A" font-family="Arial, sans-serif" font-size="20">NYC, BOS, CHI</text>
+  </g>
+  <defs>
+    <linearGradient id="bg" x1="113" y1="78" x2="1460" y2="855" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4EDE3"/>
+      <stop offset="0.48" stop-color="#F7F4EE"/>
+      <stop offset="1" stop-color="#EAEFE9"/>
+    </linearGradient>
+  </defs>
+</svg>
