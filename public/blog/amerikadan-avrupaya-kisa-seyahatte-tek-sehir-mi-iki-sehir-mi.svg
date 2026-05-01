@@ -1,0 +1,89 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#08121D"/>
+  <rect width="1600" height="900" fill="url(#background)"/>
+  <circle cx="1334" cy="171" r="212" fill="#194669" fill-opacity="0.34"/>
+  <circle cx="246" cy="763" r="294" fill="#0E7490" fill-opacity="0.18"/>
+  <path d="M0 706C208 652 384 637 542 665C709 695 822 779 1002 772C1185 765 1385 648 1600 618V900H0V706Z" fill="url(#ground)"/>
+  <g opacity="0.94">
+    <rect x="108" y="104" width="560" height="284" rx="34" fill="#F8FAFC"/>
+    <rect x="108" y="104" width="560" height="284" rx="34" stroke="#D9E2EC"/>
+    <text x="156" y="174" fill="#0F172A" font-size="40" font-family="Georgia, serif" font-weight="700">One City or Two?</text>
+    <text x="156" y="224" fill="#475569" font-size="26" font-family="Arial, sans-serif">Short US to Europe trip planning</text>
+    <rect x="156" y="264" width="168" height="58" rx="18" fill="#0F766E"/>
+    <text x="201" y="301" fill="#ECFEFF" font-size="24" font-family="Arial, sans-serif" font-weight="700">7 Nights</text>
+    <rect x="341" y="264" width="184" height="58" rx="18" fill="#1D4ED8"/>
+    <text x="381" y="301" fill="#EFF6FF" font-size="24" font-family="Arial, sans-serif" font-weight="700">10 Nights</text>
+    <text x="156" y="355" fill="#0F172A" font-size="24" font-family="Arial, sans-serif">Compare airfare, hotel changes, and transfer time.</text>
+  </g>
+  <path d="M558 507C693 443 833 422 955 447C1068 470 1187 528 1367 497" stroke="url(#route)" stroke-width="10" stroke-linecap="round" stroke-dasharray="15 19"/>
+  <g filter="url(#planeShadow)">
+    <path d="M910 457L950 432L998 437L970 462L1027 487L1013 503L955 485L939 530L917 524L922 479L882 482L874 465L910 457Z" fill="#F8FAFC"/>
+  </g>
+  <g filter="url(#panelShadow)">
+    <rect x="1004" y="156" width="376" height="232" rx="30" fill="#FFF7ED"/>
+    <rect x="1004" y="156" width="376" height="232" rx="30" stroke="#FED7AA"/>
+    <text x="1050" y="214" fill="#9A3412" font-size="28" font-family="Arial, sans-serif" font-weight="700">One City Wins</text>
+    <text x="1050" y="258" fill="#7C2D12" font-size="21" font-family="Arial, sans-serif">Better for 7 nights, fewer hotel</text>
+    <text x="1050" y="291" fill="#7C2D12" font-size="21" font-family="Arial, sans-serif">changes, less transfer friction,</text>
+    <text x="1050" y="324" fill="#7C2D12" font-size="21" font-family="Arial, sans-serif">more real sightseeing time.</text>
+  </g>
+  <g filter="url(#panelShadow)">
+    <rect x="1110" y="486" width="368" height="226" rx="30" fill="#EFF6FF"/>
+    <rect x="1110" y="486" width="368" height="226" rx="30" stroke="#BFDBFE"/>
+    <text x="1154" y="544" fill="#1D4ED8" font-size="28" font-family="Arial, sans-serif" font-weight="700">Two Cities Work</text>
+    <text x="1154" y="588" fill="#1E3A8A" font-size="21" font-family="Arial, sans-serif">Best near 9 to 10 nights when</text>
+    <text x="1154" y="621" fill="#1E3A8A" font-size="21" font-family="Arial, sans-serif">the pair has easy rail or short</text>
+    <text x="1154" y="654" fill="#1E3A8A" font-size="21" font-family="Arial, sans-serif">flight connections.</text>
+  </g>
+  <g opacity="0.96">
+    <rect x="180" y="496" width="382" height="208" rx="28" fill="#0F172A" stroke="#334155"/>
+    <circle cx="252" cy="563" r="27" fill="#E2E8F0"/>
+    <rect x="298" y="545" width="171" height="16" rx="8" fill="#F8FAFC"/>
+    <rect x="298" y="575" width="129" height="13" rx="6.5" fill="#94A3B8"/>
+    <rect x="228" y="625" width="126" height="38" rx="14" fill="#F59E0B"/>
+    <text x="260" y="650" fill="#1C1917" font-size="19" font-family="Arial, sans-serif" font-weight="700">1 HOTEL</text>
+    <rect x="370" y="625" width="138" height="38" rx="14" fill="#1D4ED8"/>
+    <text x="404" y="650" fill="#EFF6FF" font-size="19" font-family="Arial, sans-serif" font-weight="700">2 HOTELS</text>
+  </g>
+  <g opacity="0.86">
+    <rect x="544" y="660" width="492" height="102" rx="28" fill="#F8FAFC"/>
+    <text x="590" y="721" fill="#0F172A" font-size="29" font-family="Georgia, serif" font-weight="700">Short trips need less friction, not more map pins.</text>
+  </g>
+  <defs>
+    <linearGradient id="background" x1="188" y1="65" x2="1390" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0C182E"/>
+      <stop offset="0.57" stop-color="#12304A"/>
+      <stop offset="1" stop-color="#09121C"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="166" y1="594" x2="1368" y2="831" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F172A"/>
+      <stop offset="0.48" stop-color="#0B2840"/>
+      <stop offset="1" stop-color="#113953"/>
+    </linearGradient>
+    <linearGradient id="route" x1="558" y1="507" x2="1367" y2="497" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FCD34D"/>
+      <stop offset="0.48" stop-color="#FB923C"/>
+      <stop offset="1" stop-color="#7DD3FC"/>
+    </linearGradient>
+    <filter id="panelShadow" x="982" y="137" width="522" height="602" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="7" dy="14"/>
+      <feGaussianBlur stdDeviation="15"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.0196078 0 0 0 0 0.0941176 0 0 0 0 0.188235 0 0 0 0.18 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+    <filter id="planeShadow" x="858" y="419" width="190" height="136" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="5" dy="7"/>
+      <feGaussianBlur stdDeviation="7"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.00784314 0 0 0 0 0.0470588 0 0 0 0 0.105882 0 0 0 0.32 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+  </defs>
+</svg>
