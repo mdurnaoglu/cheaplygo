@@ -1,0 +1,107 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#F4EFE7"/>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <circle cx="1276" cy="156" r="132" fill="#F5C88D" fill-opacity="0.52"/>
+  <circle cx="270" cy="138" r="88" fill="#D8E8EF" fill-opacity="0.92"/>
+  <path d="M0 664C166 616 340 606 500 634C644 659 770 723 928 736C1110 752 1272 700 1600 628V900H0V664Z" fill="url(#water)"/>
+  <path d="M0 742C188 698 372 704 538 728C704 751 846 808 1020 809C1205 810 1389 754 1600 708V900H0V742Z" fill="#8FAFC4"/>
+
+  <g opacity="0.96">
+    <rect x="138" y="276" width="54" height="326" rx="6" fill="#2A425B"/>
+    <rect x="201" y="196" width="96" height="406" rx="6" fill="#334E6E"/>
+    <rect x="310" y="232" width="84" height="370" rx="6" fill="#24384E"/>
+    <rect x="410" y="128" width="82" height="474" rx="6" fill="#3A597E"/>
+    <rect x="502" y="254" width="68" height="348" rx="6" fill="#24384E"/>
+    <rect x="584" y="170" width="118" height="432" rx="6" fill="#2E4564"/>
+    <rect x="716" y="96" width="80" height="506" rx="6" fill="#1F3349"/>
+    <rect x="808" y="220" width="94" height="382" rx="6" fill="#355170"/>
+    <rect x="916" y="150" width="84" height="452" rx="6" fill="#24384E"/>
+    <rect x="1014" y="244" width="76" height="358" rx="6" fill="#3A597E"/>
+    <rect x="1104" y="110" width="98" height="492" rx="6" fill="#24384E"/>
+    <rect x="1218" y="274" width="70" height="328" rx="6" fill="#2E4564"/>
+    <rect x="1302" y="196" width="140" height="406" rx="6" fill="#223448"/>
+  </g>
+
+  <g fill="#F6E8C8" opacity="0.75">
+    <rect x="226" y="242" width="10" height="10" rx="2"/>
+    <rect x="226" y="268" width="10" height="10" rx="2"/>
+    <rect x="252" y="242" width="10" height="10" rx="2"/>
+    <rect x="252" y="268" width="10" height="10" rx="2"/>
+    <rect x="438" y="168" width="10" height="10" rx="2"/>
+    <rect x="438" y="194" width="10" height="10" rx="2"/>
+    <rect x="464" y="168" width="10" height="10" rx="2"/>
+    <rect x="464" y="194" width="10" height="10" rx="2"/>
+    <rect x="624" y="214" width="10" height="10" rx="2"/>
+    <rect x="624" y="240" width="10" height="10" rx="2"/>
+    <rect x="650" y="214" width="10" height="10" rx="2"/>
+    <rect x="650" y="240" width="10" height="10" rx="2"/>
+    <rect x="744" y="144" width="10" height="10" rx="2"/>
+    <rect x="744" y="170" width="10" height="10" rx="2"/>
+    <rect x="1138" y="150" width="10" height="10" rx="2"/>
+    <rect x="1138" y="176" width="10" height="10" rx="2"/>
+    <rect x="1164" y="150" width="10" height="10" rx="2"/>
+    <rect x="1164" y="176" width="10" height="10" rx="2"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="92" y="84" width="790" height="214" rx="34" fill="#FFF9F0"/>
+    <rect x="92" y="84" width="790" height="214" rx="34" stroke="#E7D7C5"/>
+  </g>
+  <text x="136" y="148" fill="#24364D" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">
+    Avrupa'dan Amerika'ya ilk Chicago seyahati
+  </text>
+  <text x="136" y="206" fill="#24364D" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="800">
+    The Loop mu, River North mu,
+  </text>
+  <text x="136" y="260" fill="#24364D" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="800">
+    O'Hare airport hotel mi?
+  </text>
+
+  <path d="M1048 452C1144 410 1244 414 1334 444C1418 472 1474 520 1536 554" stroke="#F1D0A0" stroke-width="10" stroke-linecap="round" stroke-dasharray="16 18"/>
+  <path d="M1273 427L1304 407L1344 411L1321 433L1366 454L1354 467L1309 452L1296 489L1279 484L1283 446L1252 448L1245 435L1273 427Z" fill="#FFF8ED"/>
+
+  <g filter="url(#shadow)">
+    <rect x="116" y="584" width="352" height="184" rx="28" fill="#FFFDF8"/>
+    <rect x="624" y="538" width="352" height="230" rx="28" fill="#FFFDF8"/>
+    <rect x="1132" y="584" width="352" height="184" rx="28" fill="#FFFDF8"/>
+  </g>
+
+  <rect x="142" y="610" width="118" height="34" rx="17" fill="#21476C"/>
+  <text x="169" y="633" fill="#FFFDF8" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700">The Loop</text>
+  <text x="142" y="678" fill="#24364D" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="800">En kolay ilk ziyaret</text>
+  <text x="142" y="718" fill="#5A6E82" font-family="Arial, Helvetica, sans-serif" font-size="22">Muzeler, parklar, transit net</text>
+
+  <rect x="650" y="564" width="150" height="34" rx="17" fill="#2F6F78"/>
+  <text x="673" y="587" fill="#FFFDF8" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700">River North</text>
+  <text x="650" y="632" fill="#24364D" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="800">Yemek + aksam ritmi</text>
+  <text x="650" y="673" fill="#5A6E82" font-family="Arial, Helvetica, sans-serif" font-size="22">Daha canli sokak deneyimi</text>
+  <text x="650" y="710" fill="#5A6E82" font-family="Arial, Helvetica, sans-serif" font-size="22">Kisa city-break icin guclu</text>
+
+  <rect x="1158" y="610" width="170" height="34" rx="17" fill="#8C6644"/>
+  <text x="1179" y="633" fill="#FFFDF8" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700">O'Hare buffer</text>
+  <text x="1158" y="678" fill="#24364D" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="800">Gec varis icin akilli</text>
+  <text x="1158" y="718" fill="#5A6E82" font-family="Arial, Helvetica, sans-serif" font-size="22">Jet lag ve baglanti stresi azalir</text>
+
+  <defs>
+    <linearGradient id="sky" x1="188" y1="52" x2="1384" y2="840" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F6E5CF"/>
+      <stop offset="0.5" stop-color="#DCE9F1"/>
+      <stop offset="1" stop-color="#E9EFF6"/>
+    </linearGradient>
+    <linearGradient id="water" x1="94" y1="620" x2="1450" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B7D1DF"/>
+      <stop offset="0.5" stop-color="#9FBED0"/>
+      <stop offset="1" stop-color="#88A9BF"/>
+    </linearGradient>
+    <filter id="shadow" x="72" y="64" width="1432" height="724" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="10"/>
+      <feGaussianBlur stdDeviation="10"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.145098 0 0 0 0 0.211765 0 0 0 0 0.301961 0 0 0 0.14 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+  </defs>
+</svg>
