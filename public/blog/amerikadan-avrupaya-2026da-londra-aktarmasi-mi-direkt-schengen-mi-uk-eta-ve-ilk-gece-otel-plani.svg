@@ -1,0 +1,72 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#0E1B2A"/>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1320" cy="138" r="128" fill="#F0B86D" fill-opacity="0.16"/>
+  <circle cx="196" cy="784" r="236" fill="#2563EB" fill-opacity="0.12"/>
+  <circle cx="1294" cy="748" r="254" fill="#0F766E" fill-opacity="0.13"/>
+  <path d="M0 702C172 642 324 628 462 654C604 680 706 736 844 742C994 748 1126 692 1270 674C1392 660 1498 676 1600 718V900H0V702Z" fill="#10273E"/>
+  <path d="M0 784C160 748 332 742 490 762C654 784 786 824 942 826C1100 828 1214 786 1346 778C1444 772 1528 782 1600 810V900H0V784Z" fill="#163450"/>
+  <text x="88" y="100" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="700">US to Europe 2026</text>
+  <text x="88" y="144" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="26">London stopover vs direct Schengen entry</text>
+  <rect x="84" y="200" width="446" height="470" rx="34" fill="#F7F3EA"/>
+  <rect x="112" y="228" width="390" height="414" rx="26" fill="#11314E"/>
+  <text x="146" y="286" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">London stopover</text>
+  <rect x="146" y="320" width="132" height="132" rx="22" fill="#F0B86D"/>
+  <path d="M206 344C215 344 222 351 222 360V412H190V360C190 351 197 344 206 344Z" fill="#11314E"/>
+  <rect x="184" y="412" width="44" height="12" rx="6" fill="#11314E"/>
+  <rect x="308" y="336" width="150" height="16" rx="8" fill="#D1DCE8"/>
+  <rect x="308" y="372" width="126" height="12" rx="6" fill="#6E8DA8"/>
+  <rect x="146" y="492" width="312" height="16" rx="8" fill="#466781"/>
+  <rect x="146" y="526" width="284" height="16" rx="8" fill="#466781"/>
+  <rect x="146" y="560" width="256" height="16" rx="8" fill="#466781"/>
+  <rect x="146" y="604" width="180" height="18" rx="9" fill="#F0B86D"/>
+  <text x="160" y="618" fill="#11314E" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">ETA + city overnight logic</text>
+  <rect x="568" y="200" width="446" height="470" rx="34" fill="#F7F3EA"/>
+  <rect x="596" y="228" width="390" height="414" rx="26" fill="#173A5A"/>
+  <text x="632" y="286" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Direct Schengen</text>
+  <rect x="632" y="320" width="132" height="132" rx="22" fill="#DCEAF4"/>
+  <circle cx="698" cy="374" r="34" fill="#173A5A"/>
+  <circle cx="698" cy="374" r="20" fill="#DCEAF4"/>
+  <rect x="794" y="336" width="148" height="16" rx="8" fill="#D1DCE8"/>
+  <rect x="794" y="372" width="112" height="12" rx="6" fill="#86A5BC"/>
+  <rect x="632" y="492" width="314" height="16" rx="8" fill="#4C6E88"/>
+  <rect x="632" y="526" width="296" height="16" rx="8" fill="#4C6E88"/>
+  <rect x="632" y="560" width="270" height="16" rx="8" fill="#4C6E88"/>
+  <rect x="632" y="604" width="168" height="18" rx="9" fill="#85D0C7"/>
+  <text x="646" y="618" fill="#173A5A" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">One border, simpler first night</text>
+  <circle cx="1248" cy="330" r="166" fill="#12324E"/>
+  <circle cx="1248" cy="330" r="128" fill="#1D4F78"/>
+  <path d="M1248 202C1262 202 1274 214 1274 228V430H1222V228C1222 214 1234 202 1248 202Z" fill="#F7F3EA"/>
+  <rect x="1202" y="430" width="92" height="18" rx="9" fill="#F7F3EA"/>
+  <g fill="#F0B86D">
+    <circle cx="1248" cy="144" r="10"/>
+    <circle cx="1322" cy="166" r="10"/>
+    <circle cx="1370" cy="220" r="10"/>
+    <circle cx="1388" cy="294" r="10"/>
+    <circle cx="1370" cy="366" r="10"/>
+    <circle cx="1322" cy="420" r="10"/>
+    <circle cx="1248" cy="442" r="10"/>
+    <circle cx="1174" cy="420" r="10"/>
+    <circle cx="1126" cy="366" r="10"/>
+    <circle cx="1108" cy="294" r="10"/>
+    <circle cx="1126" cy="220" r="10"/>
+    <circle cx="1174" cy="166" r="10"/>
+  </g>
+  <path d="M1064 600C1148 520 1258 482 1388 490" stroke="#F0B86D" stroke-width="10" stroke-linecap="round"/>
+  <path d="M1008 656C1122 556 1262 508 1426 526" stroke="#DCEAF4" stroke-width="20" stroke-linecap="round"/>
+  <path d="M948 710C1088 586 1260 530 1458 560" stroke="#F7F3EA" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 18"/>
+  <circle cx="946" cy="710" r="14" fill="#F0B86D"/>
+  <circle cx="1458" cy="560" r="14" fill="#F0B86D"/>
+  <path d="M936 702L976 674L966 720L936 702Z" fill="#F0B86D"/>
+  <rect x="1038" y="626" width="444" height="122" rx="26" fill="#F7F3EA"/>
+  <text x="1076" y="680" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">EES active</text>
+  <text x="1238" y="680" fill="#64748B" font-family="Arial, Helvetica, sans-serif" font-size="26">ETIAS later in 2026</text>
+  <text x="1076" y="722" fill="#0F766E" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">UK ETA matters if you enter Britain</text>
+  <defs>
+    <linearGradient id="bg" x1="194" y1="86" x2="1430" y2="844" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#102133"/>
+      <stop offset="0.54" stop-color="#1B3B59"/>
+      <stop offset="1" stop-color="#16314A"/>
+    </linearGradient>
+  </defs>
+</svg>
