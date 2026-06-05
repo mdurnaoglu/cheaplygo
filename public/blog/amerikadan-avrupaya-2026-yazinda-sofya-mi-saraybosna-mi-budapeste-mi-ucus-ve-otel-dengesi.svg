@@ -1,0 +1,91 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="168" y1="64" x2="1438" y2="842" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFF4E8"/>
+      <stop offset="0.46" stop-color="#F5FAF7"/>
+      <stop offset="1" stop-color="#E3EDF9"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F6F8FC"/>
+    </linearGradient>
+    <linearGradient id="route" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#D97706"/>
+      <stop offset="0.5" stop-color="#0F766E"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="20" stdDeviation="22" flood-color="#0F172A" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1300" cy="170" r="168" fill="#FFF7ED" opacity="0.9"/>
+  <circle cx="248" cy="736" r="212" fill="#DBEAFE" opacity="0.78"/>
+  <circle cx="1328" cy="744" r="146" fill="#DCFCE7" opacity="0.68"/>
+
+  <g opacity="0.18">
+    <path d="M240 350C380 246 540 210 692 242C824 270 934 356 1044 364C1140 370 1226 334 1348 244" stroke="#334155" stroke-width="10" stroke-linecap="round"/>
+    <path d="M292 424C418 344 564 326 684 350C790 372 882 428 994 444C1096 458 1192 440 1324 386" stroke="#334155" stroke-width="10" stroke-linecap="round"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="116" y="100" width="648" height="246" rx="36" fill="url(#panel)"/>
+  </g>
+  <text x="164" y="178" fill="#0F172A" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700">
+    Summer 2026
+  </text>
+  <text x="164" y="240" fill="#0F172A" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700">
+    Europe Value Balance
+  </text>
+  <text x="164" y="292" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="28">
+    Sofia, Sarajevo and Budapest beyond the usual capitals
+  </text>
+
+  <g>
+    <path d="M330 504C446 434 570 410 696 432C790 448 874 500 968 516C1074 536 1170 514 1296 430" stroke="url(#route)" stroke-width="12" stroke-linecap="round" stroke-dasharray="14 18"/>
+    <circle cx="330" cy="504" r="14" fill="#D97706"/>
+    <circle cx="1296" cy="430" r="14" fill="#2563EB"/>
+    <path d="M802 446L830 458L818 478L834 500L810 508L798 488L772 494L782 474L756 460L782 452L780 426L798 442L824 430L820 448L846 450L802 446Z" fill="#0F172A"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="158" y="580" width="270" height="178" rx="30" fill="url(#panel)"/>
+    <rect x="480" y="444" width="270" height="178" rx="30" fill="url(#panel)"/>
+    <rect x="812" y="580" width="270" height="178" rx="30" fill="url(#panel)"/>
+    <rect x="1132" y="356" width="292" height="196" rx="30" fill="url(#panel)"/>
+  </g>
+
+  <g>
+    <text x="194" y="636" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700">Sofia</text>
+    <text x="194" y="682" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">Lighter budget flow</text>
+    <rect x="194" y="708" width="174" height="14" rx="7" fill="#D97706"/>
+    <rect x="194" y="734" width="132" height="12" rx="6" fill="#CBD5E1"/>
+  </g>
+
+  <g>
+    <text x="516" y="500" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700">Sarajevo</text>
+    <text x="516" y="546" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">Original city character</text>
+    <rect x="516" y="572" width="182" height="14" rx="7" fill="#0F766E"/>
+    <rect x="516" y="598" width="146" height="12" rx="6" fill="#CBD5E1"/>
+  </g>
+
+  <g>
+    <text x="848" y="636" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700">Budapest</text>
+    <text x="848" y="682" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">Balanced first-timer pick</text>
+    <rect x="848" y="708" width="192" height="14" rx="7" fill="#2563EB"/>
+    <rect x="848" y="734" width="150" height="12" rx="6" fill="#CBD5E1"/>
+  </g>
+
+  <g opacity="0.96">
+    <rect x="1174" y="126" width="216" height="110" rx="24" fill="#0F172A"/>
+    <text x="1212" y="172" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">2026 travel</text>
+    <text x="1212" y="208" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="22">Value beyond the classics</text>
+  </g>
+
+  <g>
+    <text x="1166" y="424" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Entry signal</text>
+    <text x="1166" y="468" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">EES active, ETIAS not yet live</text>
+    <text x="1166" y="506" fill="#0F766E" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Short trips reward cleaner hotel logic</text>
+  </g>
+</svg>
