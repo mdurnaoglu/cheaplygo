@@ -1,0 +1,84 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="122" y1="76" x2="1431" y2="839" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4EFE6"/>
+      <stop offset="0.42" stop-color="#DDECF5"/>
+      <stop offset="1" stop-color="#C4D7E6"/>
+    </linearGradient>
+    <linearGradient id="card" x1="280" y1="210" x2="1280" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#102A43"/>
+      <stop offset="1" stop-color="#1E4C69"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#FFFDF8"/>
+      <stop offset="1" stop-color="#F7F3EB"/>
+    </linearGradient>
+    <filter id="shadow" x="190" y="160" width="1220" height="600" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="28"/>
+      <feGaussianBlur stdDeviation="28"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.0627451 0 0 0 0 0.164706 0 0 0 0 0.262745 0 0 0 0.18 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" rx="44" fill="url(#bg)"/>
+  <circle cx="184" cy="148" r="116" fill="#F9D7A7" fill-opacity="0.65"/>
+  <circle cx="1448" cy="162" r="98" fill="#BBD6E8" fill-opacity="0.72"/>
+  <circle cx="1376" cy="770" r="132" fill="#F4C3B3" fill-opacity="0.46"/>
+
+  <g filter="url(#shadow)">
+    <rect x="246" y="188" width="1108" height="520" rx="36" fill="url(#card)"/>
+    <rect x="286" y="230" width="1030" height="436" rx="28" fill="#F5F0E6"/>
+  </g>
+
+  <text x="314" y="300" fill="#16324F" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700">US to Europe Summer 2026</text>
+  <text x="314" y="344" fill="#46617A" font-family="Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="0.18em">ARRIVAL FLOW  •  HOTEL FIT  •  SMARTER FIRST CITY</text>
+
+  <g>
+    <rect x="314" y="390" width="276" height="208" rx="24" fill="url(#panel)"/>
+    <rect x="618" y="390" width="276" height="208" rx="24" fill="url(#panel)"/>
+    <rect x="922" y="390" width="276" height="208" rx="24" fill="url(#panel)"/>
+
+    <text x="346" y="444" fill="#15324A" font-family="Arial, sans-serif" font-size="30" font-weight="700">Lisbon</text>
+    <text x="346" y="480" fill="#5E6F7D" font-family="Arial, sans-serif" font-size="18">Atmosphere-first arrival</text>
+    <text x="346" y="520" fill="#15324A" font-family="Arial, sans-serif" font-size="17">• Strong city feel from day one</text>
+    <text x="346" y="552" fill="#15324A" font-family="Arial, sans-serif" font-size="17">• Hotel area choice matters more</text>
+    <text x="346" y="584" fill="#15324A" font-family="Arial, sans-serif" font-size="17">• Best when stop one is the trip</text>
+
+    <text x="650" y="444" fill="#15324A" font-family="Arial, sans-serif" font-size="30" font-weight="700">Madrid</text>
+    <text x="650" y="480" fill="#5E6F7D" font-family="Arial, sans-serif" font-size="18">Balanced first-entry city</text>
+    <text x="650" y="520" fill="#15324A" font-family="Arial, sans-serif" font-size="17">• Cleaner airport-to-center logic</text>
+    <text x="650" y="552" fill="#15324A" font-family="Arial, sans-serif" font-size="17">• Broad hotel inventory</text>
+    <text x="650" y="584" fill="#15324A" font-family="Arial, sans-serif" font-size="17">• Lowest planning friction overall</text>
+
+    <text x="954" y="444" fill="#15324A" font-family="Arial, sans-serif" font-size="30" font-weight="700">Dublin</text>
+    <text x="954" y="480" fill="#5E6F7D" font-family="Arial, sans-serif" font-size="18">Route strategy alternative</text>
+    <text x="954" y="520" fill="#15324A" font-family="Arial, sans-serif" font-size="17">• Not a Schengen first entry</text>
+    <text x="954" y="552" fill="#15324A" font-family="Arial, sans-serif" font-size="17">• Useful for split itineraries</text>
+    <text x="954" y="584" fill="#15324A" font-family="Arial, sans-serif" font-size="17">• Higher hotel pressure in center</text>
+  </g>
+
+  <g opacity="0.9">
+    <path d="M444 366C516 320 574 300 678 294C807 286 842 307 954 351" stroke="#F08A5D" stroke-width="8" stroke-linecap="round" stroke-dasharray="14 18"/>
+    <path d="M946 345L980 332L970 365" stroke="#F08A5D" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M1006 322C1086 292 1154 287 1240 308" stroke="#3B82A0" stroke-width="8" stroke-linecap="round" stroke-dasharray="14 18"/>
+    <path d="M1230 301L1268 308L1238 333" stroke="#3B82A0" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g>
+    <circle cx="428" cy="334" r="12" fill="#F08A5D"/>
+    <circle cx="992" cy="346" r="12" fill="#F08A5D"/>
+    <circle cx="1272" cy="310" r="12" fill="#3B82A0"/>
+  </g>
+
+  <g opacity="0.96">
+    <rect x="314" y="630" width="884" height="18" rx="9" fill="#D3E0E8"/>
+    <rect x="314" y="630" width="414" height="18" rx="9" fill="#F08A5D"/>
+    <rect x="314" y="630" width="676" height="18" rx="9" fill="#6E95AD" fill-opacity="0.45"/>
+    <text x="314" y="688" fill="#4C6578" font-family="Arial, sans-serif" font-size="18" font-weight="700">How to read the chart:</text>
+    <text x="486" y="688" fill="#4C6578" font-family="Arial, sans-serif" font-size="18">energy cost rises when arrival friction and hotel mismatch stack together</text>
+  </g>
+</svg>
