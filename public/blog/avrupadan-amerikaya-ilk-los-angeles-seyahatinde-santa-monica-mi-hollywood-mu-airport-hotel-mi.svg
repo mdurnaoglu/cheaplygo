@@ -1,0 +1,59 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#F4E8DA"/>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1268" cy="154" r="92" fill="#F6D2A6" opacity="0.9"/>
+  <path d="M0 640C134 594 238 574 369 579C528 585 633 666 822 660C1007 654 1143 530 1308 530C1426 530 1518 562 1600 602V900H0V640Z" fill="#B7C6D8"/>
+  <path d="M0 705C117 690 230 676 371 694C522 713 632 788 824 788C1007 788 1132 716 1297 716C1423 716 1521 738 1600 772V900H0V705Z" fill="#8FAAC2"/>
+  <path d="M0 760C129 744 254 742 399 770C534 796 652 848 826 848C1006 848 1139 785 1299 785C1426 785 1531 819 1600 845V900H0V760Z" fill="#E8B47E"/>
+  <rect x="0" y="774" width="1600" height="126" fill="#CA8C5A"/>
+  <rect x="140" y="166" width="582" height="520" rx="42" fill="#FFF9F1" opacity="0.96"/>
+  <rect x="176" y="204" width="224" height="18" rx="9" fill="#C79E77"/>
+  <rect x="176" y="246" width="474" height="72" rx="20" fill="#20354A"/>
+  <rect x="176" y="340" width="496" height="20" rx="10" fill="#D2D8DE"/>
+  <rect x="176" y="374" width="462" height="20" rx="10" fill="#D2D8DE"/>
+  <rect x="176" y="408" width="430" height="20" rx="10" fill="#D2D8DE"/>
+  <g opacity="0.96">
+    <rect x="176" y="472" width="148" height="154" rx="24" fill="#F3D6B3"/>
+    <rect x="342" y="472" width="148" height="154" rx="24" fill="#E8C6A0"/>
+    <rect x="508" y="472" width="148" height="154" rx="24" fill="#D8B08C"/>
+  </g>
+  <text x="176" y="524" fill="#20354A" font-family="Arial, sans-serif" font-size="26" font-weight="700">Santa Monica</text>
+  <text x="176" y="556" fill="#38506A" font-family="Arial, sans-serif" font-size="18">Calm coast</text>
+  <text x="176" y="582" fill="#38506A" font-family="Arial, sans-serif" font-size="18">Higher hotel cost</text>
+  <text x="342" y="524" fill="#20354A" font-family="Arial, sans-serif" font-size="26" font-weight="700">Hollywood</text>
+  <text x="342" y="556" fill="#38506A" font-family="Arial, sans-serif" font-size="18">Central sights</text>
+  <text x="342" y="582" fill="#38506A" font-family="Arial, sans-serif" font-size="18">More active feel</text>
+  <text x="508" y="524" fill="#20354A" font-family="Arial, sans-serif" font-size="26" font-weight="700">LAX Hotel</text>
+  <text x="508" y="556" fill="#38506A" font-family="Arial, sans-serif" font-size="18">Late arrival</text>
+  <text x="508" y="582" fill="#38506A" font-family="Arial, sans-serif" font-size="18">Smooth first night</text>
+  <g>
+    <rect x="930" y="144" width="496" height="580" rx="44" fill="#F5EDE4" opacity="0.92"/>
+    <rect x="974" y="195" width="408" height="244" rx="28" fill="#F0B67D"/>
+    <path d="M974 370C1045 332 1105 322 1173 328C1252 335 1315 389 1382 389V439H974V370Z" fill="#7AA0BE"/>
+    <path d="M972 411C1040 392 1095 392 1166 407C1247 424 1310 474 1384 474V439H972V411Z" fill="#4D6D86"/>
+    <circle cx="1279" cy="253" r="42" fill="#FCE1B2"/>
+    <path d="M1088 454L1132 290H1150L1104 454H1088Z" fill="#2F5D50"/>
+    <path d="M1105 309C1073 328 1059 364 1061 402C1088 383 1118 349 1123 316C1118 311 1112 309 1105 309Z" fill="#3C7A62"/>
+    <path d="M1144 300C1177 320 1191 356 1188 394C1161 375 1131 341 1126 308C1131 303 1137 300 1144 300Z" fill="#3C7A62"/>
+    <path d="M1233 454L1275 266H1291L1248 454H1233Z" fill="#2F5D50"/>
+    <path d="M1248 287C1219 303 1205 336 1207 372C1232 355 1260 324 1266 294C1261 289 1254 287 1248 287Z" fill="#3C7A62"/>
+    <path d="M1284 278C1317 295 1330 330 1328 365C1301 349 1272 318 1267 286C1271 281 1278 278 1284 278Z" fill="#3C7A62"/>
+    <rect x="1002" y="488" width="169" height="120" rx="24" fill="#FFFFFF"/>
+    <rect x="1188" y="488" width="169" height="120" rx="24" fill="#FFFFFF"/>
+    <path d="M1037 558H1136" stroke="#D5DBE1" stroke-width="10" stroke-linecap="round"/>
+    <path d="M1223 558H1322" stroke="#D5DBE1" stroke-width="10" stroke-linecap="round"/>
+    <path d="M1027 532C1050 502 1097 502 1120 532" stroke="#CA8C5A" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="1272" cy="525" r="26" fill="#B7C6D8"/>
+    <path d="M1272 503V548" stroke="#20354A" stroke-width="10" stroke-linecap="round"/>
+    <path d="M1249 526H1295" stroke="#20354A" stroke-width="10" stroke-linecap="round"/>
+    <text x="994" y="663" fill="#20354A" font-family="Arial, sans-serif" font-size="44" font-weight="700">First stay in LA</text>
+    <text x="994" y="705" fill="#4A5D71" font-family="Arial, sans-serif" font-size="24">Coast, city core, or easy airport night?</text>
+  </g>
+  <defs>
+    <linearGradient id="bg" x1="171" y1="68" x2="1400" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7EFE4"/>
+      <stop offset="0.5" stop-color="#F3E1CC"/>
+      <stop offset="1" stop-color="#E7D5C6"/>
+    </linearGradient>
+  </defs>
+</svg>
