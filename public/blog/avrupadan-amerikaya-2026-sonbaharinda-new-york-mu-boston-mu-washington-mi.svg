@@ -1,0 +1,53 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" rx="40" fill="#F4EFE4"/>
+  <rect x="36" y="36" width="1528" height="828" rx="32" fill="url(#bg)"/>
+  <path d="M0 664C175 615 287 603 423 630C559 657 679 733 835 735C1010 737 1148 595 1320 580C1430 570 1517 599 1600 645V900H0V664Z" fill="#D8E7DA"/>
+  <path d="M0 734C138 702 265 698 398 730C528 761 661 823 835 820C1017 818 1161 735 1321 720C1425 710 1512 724 1600 760V900H0V734Z" fill="#A5C7B1"/>
+  <circle cx="1328" cy="166" r="88" fill="#F8C15C"/>
+  <circle cx="1328" cy="166" r="54" fill="#FFE4A8"/>
+  <path d="M104 178C297 72 538 54 745 110C949 165 1116 264 1277 244" stroke="#1E476B" stroke-width="10" stroke-linecap="round" stroke-dasharray="12 20"/>
+  <path d="M1239 236L1288 244L1253 282" stroke="#1E476B" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="92" y="112" width="264" height="166" rx="26" fill="#123049" fill-opacity="0.95"/>
+  <text x="126" y="170" fill="#F7F4EC" font-family="Georgia, serif" font-size="34" font-weight="700">Europe → USA</text>
+  <text x="126" y="218" fill="#D7E7F4" font-family="Arial, sans-serif" font-size="24">Fall 2026 city break balance</text>
+  <g filter="url(#cardShadow)">
+    <rect x="170" y="360" width="360" height="292" rx="28" fill="#FFF9EF"/>
+    <rect x="620" y="300" width="360" height="352" rx="28" fill="#FFF9EF"/>
+    <rect x="1070" y="392" width="360" height="260" rx="28" fill="#FFF9EF"/>
+  </g>
+  <text x="208" y="418" fill="#0E2A40" font-family="Georgia, serif" font-size="42" font-weight="700">Boston</text>
+  <text x="208" y="458" fill="#577087" font-family="Arial, sans-serif" font-size="24">Compact • Walkable • Cleaner pace</text>
+  <rect x="208" y="498" width="182" height="22" rx="11" fill="#B6D4C0"/>
+  <rect x="208" y="538" width="222" height="22" rx="11" fill="#D8E7DA"/>
+  <rect x="208" y="578" width="150" height="22" rx="11" fill="#C8DBE9"/>
+  <path d="M418 598L448 540L474 574L500 504" stroke="#1D5164" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="473" cy="504" r="12" fill="#1D5164"/>
+  <text x="658" y="358" fill="#0E2A40" font-family="Georgia, serif" font-size="42" font-weight="700">New York</text>
+  <text x="658" y="398" fill="#577087" font-family="Arial, sans-serif" font-size="24">Iconic density • Highest hotel pressure</text>
+  <path d="M688 604V488M748 604V442M808 604V510M868 604V398" stroke="#1B415F" stroke-width="28" stroke-linecap="round"/>
+  <rect x="642" y="624" width="296" height="10" rx="5" fill="#D6C8AD"/>
+  <text x="1108" y="450" fill="#0E2A40" font-family="Georgia, serif" font-size="42" font-weight="700">Washington</text>
+  <text x="1108" y="490" fill="#577087" font-family="Arial, sans-serif" font-size="24">Museums • Weekends • Stable rhythm</text>
+  <path d="M1162 598H1340" stroke="#1D5164" stroke-width="14" stroke-linecap="round"/>
+  <path d="M1202 598V520M1260 598V494M1318 598V470" stroke="#1D5164" stroke-width="14" stroke-linecap="round"/>
+  <path d="M1138 598H1364" stroke="#D6C8AD" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="232" cy="734" r="8" fill="#123049"/>
+  <circle cx="264" cy="734" r="8" fill="#123049"/>
+  <circle cx="296" cy="734" r="8" fill="#123049"/>
+  <text x="328" y="742" fill="#123049" font-family="Arial, sans-serif" font-size="26">Flights + hotel + airport energy</text>
+  <defs>
+    <linearGradient id="bg" x1="84" y1="84" x2="1512" y2="816" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8F4EC"/>
+      <stop offset="1" stop-color="#E7F0F4"/>
+    </linearGradient>
+    <filter id="cardShadow" x="130" y="272" width="1340" height="460" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="18"/>
+      <feGaussianBlur stdDeviation="20"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.0602 0 0 0 0 0.1647 0 0 0 0 0.251 0 0 0 0.16 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
+    </filter>
+  </defs>
+</svg>
