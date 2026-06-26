@@ -1,0 +1,54 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <rect x="64" y="64" width="1472" height="772" rx="42" fill="url(#bg)"/>
+  <circle cx="1332" cy="210" r="126" fill="#F4C27A" fill-opacity="0.42"/>
+  <circle cx="1224" cy="184" r="62" fill="#FFDDB0" fill-opacity="0.8"/>
+  <path d="M180 636C280 590 386 562 498 562C654 562 734 618 836 618C966 618 1050 540 1216 540C1322 540 1420 572 1504 626V792H180V636Z" fill="#D7B48A" fill-opacity="0.38"/>
+  <path d="M132 674C262 626 374 604 500 604C648 604 746 668 854 668C990 668 1064 592 1210 592C1326 592 1426 626 1520 688V824H132V674Z" fill="#C6895C" fill-opacity="0.26"/>
+  <text x="130" y="170" fill="#FFF8EF" font-family="Georgia, serif" font-size="34" font-weight="700" letter-spacing="3">CHEAPLYGO BLOG</text>
+  <text x="130" y="260" fill="#1C1A16" font-family="Georgia, serif" font-size="72" font-weight="700">US to Europe in Fall 2026</text>
+  <text x="130" y="338" fill="#2D3A4A" font-family="Arial, sans-serif" font-size="34" font-weight="700">Lisbon • Porto • Madrid</text>
+  <text x="130" y="394" fill="#5A5145" font-family="Arial, sans-serif" font-size="30">4-night city break: flight timing, first-night ease, hotel fit</text>
+  <g filter="url(#shadow)">
+    <rect x="122" y="470" width="380" height="250" rx="32" fill="#FBF6EE"/>
+    <rect x="520" y="470" width="380" height="250" rx="32" fill="#FBF6EE"/>
+    <rect x="918" y="470" width="380" height="250" rx="32" fill="#FBF6EE"/>
+  </g>
+  <text x="162" y="534" fill="#A3572F" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="2">LISBON</text>
+  <text x="560" y="534" fill="#875A32" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="2">PORTO</text>
+  <text x="958" y="534" fill="#A02F38" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="2">MADRID</text>
+  <path d="M166 670L226 618L280 650L332 584L390 646L454 610V688H166V670Z" fill="#E4A25E"/>
+  <rect x="214" y="566" width="46" height="84" rx="8" fill="#F6D3A6"/>
+  <rect x="272" y="530" width="50" height="120" rx="8" fill="#D67D42"/>
+  <path d="M578 668L638 612L696 648L744 598L810 644L854 616V688H578V668Z" fill="#C07E52"/>
+  <rect x="626" y="548" width="44" height="102" rx="8" fill="#EBC8A0"/>
+  <rect x="684" y="520" width="52" height="130" rx="8" fill="#9D5E3C"/>
+  <path d="M964 672L1020 626L1084 654L1136 590L1200 646L1250 618V688H964V672Z" fill="#D66B55"/>
+  <rect x="1016" y="558" width="44" height="92" rx="8" fill="#F4D1B8"/>
+  <rect x="1072" y="514" width="56" height="136" rx="8" fill="#B5454C"/>
+  <text x="162" y="580" fill="#2B241E" font-family="Arial, sans-serif" font-size="28" font-weight="700">Best for:</text>
+  <text x="162" y="618" fill="#584D41" font-family="Arial, sans-serif" font-size="24">views, first Portugal trip,</text>
+  <text x="162" y="650" fill="#584D41" font-family="Arial, sans-serif" font-size="24">high visual payoff</text>
+  <text x="560" y="580" fill="#2B241E" font-family="Arial, sans-serif" font-size="28" font-weight="700">Best for:</text>
+  <text x="560" y="618" fill="#584D41" font-family="Arial, sans-serif" font-size="24">compact stay, river walks,</text>
+  <text x="560" y="650" fill="#584D41" font-family="Arial, sans-serif" font-size="24">romantic pace</text>
+  <text x="958" y="580" fill="#2B241E" font-family="Arial, sans-serif" font-size="28" font-weight="700">Best for:</text>
+  <text x="958" y="618" fill="#584D41" font-family="Arial, sans-serif" font-size="24">easy airport link, smoother</text>
+  <text x="958" y="650" fill="#584D41" font-family="Arial, sans-serif" font-size="24">city logistics</text>
+  <defs>
+    <linearGradient id="bg" x1="160" y1="96" x2="1450" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF8EF"/>
+      <stop offset="0.52" stop-color="#F3E2C8"/>
+      <stop offset="1" stop-color="#E3C8A4"/>
+    </linearGradient>
+    <filter id="shadow" x="86" y="446" width="1248" height="322" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="12"/>
+      <feGaussianBlur stdDeviation="18"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.32 0 0 0 0 0.23 0 0 0 0 0.14 0 0 0 0.14 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+  </defs>
+</svg>
