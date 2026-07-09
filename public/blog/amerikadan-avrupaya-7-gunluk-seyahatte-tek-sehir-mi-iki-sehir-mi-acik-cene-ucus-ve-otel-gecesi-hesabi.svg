@@ -1,0 +1,52 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#F3EFE6"/>
+  <rect x="48" y="48" width="1504" height="804" rx="40" fill="url(#bg)"/>
+  <circle cx="1290" cy="178" r="86" fill="#F6DFA7" fill-opacity="0.9"/>
+  <path d="M140 720C244 626 382 574 520 574C650 574 760 616 860 686C938 741 1020 770 1114 770C1220 770 1314 731 1456 618V812H140V720Z" fill="#D9E3D4"/>
+  <path d="M140 766C270 698 384 670 514 670C654 670 770 704 886 754C972 791 1045 808 1134 808C1258 808 1377 774 1456 726V812H140V766Z" fill="#B9C9B2"/>
+  <rect x="178" y="164" width="560" height="420" rx="28" fill="#FFFDF8" fill-opacity="0.95"/>
+  <rect x="862" y="164" width="560" height="420" rx="28" fill="#FFFDF8" fill-opacity="0.95"/>
+  <text x="220" y="238" fill="#1F3A37" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700">One City</text>
+  <text x="904" y="238" fill="#1F3A37" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700">Two Cities</text>
+  <rect x="220" y="278" width="474" height="120" rx="22" fill="#E3EEE4"/>
+  <rect x="904" y="278" width="220" height="120" rx="22" fill="#E3EEE4"/>
+  <rect x="1156" y="278" width="220" height="120" rx="22" fill="#E8E2D3"/>
+  <text x="250" y="325" fill="#305850" font-family="Arial, sans-serif" font-size="24" font-weight="700">Arrival + 7 nights</text>
+  <text x="250" y="362" fill="#4C5D58" font-family="Arial, sans-serif" font-size="20">One hotel, one base, less friction</text>
+  <text x="934" y="325" fill="#305850" font-family="Arial, sans-serif" font-size="24" font-weight="700">4 nights</text>
+  <text x="1186" y="325" fill="#765C33" font-family="Arial, sans-serif" font-size="24" font-weight="700">3 nights</text>
+  <text x="934" y="362" fill="#4C5D58" font-family="Arial, sans-serif" font-size="20">Open-jaw route</text>
+  <text x="1186" y="362" fill="#6F6550" font-family="Arial, sans-serif" font-size="20">Transfer day cost</text>
+  <path d="M260 470C346 418 450 390 566 390" stroke="#1F3A37" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 18"/>
+  <path d="M950 470C984 440 1038 414 1084 406" stroke="#1F3A37" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 18"/>
+  <path d="M1202 470C1238 436 1290 414 1338 406" stroke="#8B6B3B" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 18"/>
+  <g fill="#1F3A37">
+    <rect x="296" y="446" width="26" height="18" rx="4"/>
+    <rect x="332" y="434" width="28" height="30" rx="6"/>
+    <rect x="370" y="422" width="30" height="42" rx="6"/>
+    <rect x="410" y="400" width="34" height="64" rx="6"/>
+    <rect x="454" y="416" width="26" height="48" rx="6"/>
+  </g>
+  <g fill="#1F3A37">
+    <rect x="990" y="446" width="26" height="18" rx="4"/>
+    <rect x="1026" y="434" width="28" height="30" rx="6"/>
+    <rect x="1064" y="422" width="30" height="42" rx="6"/>
+  </g>
+  <g fill="#8B6B3B">
+    <rect x="1244" y="440" width="26" height="24" rx="4"/>
+    <rect x="1280" y="420" width="28" height="44" rx="6"/>
+    <rect x="1318" y="430" width="30" height="34" rx="6"/>
+  </g>
+  <path d="M650 486C774 440 860 420 950 418" stroke="#6E8C87" stroke-width="7" stroke-linecap="round"/>
+  <path d="M944 410L970 418L948 434" stroke="#6E8C87" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="220" y="638" width="1160" height="110" rx="26" fill="#FFF8EA" fill-opacity="0.92"/>
+  <text x="256" y="688" fill="#3B4D48" font-family="Arial, sans-serif" font-size="28" font-weight="700">US to Europe in 7 days:</text>
+  <text x="566" y="688" fill="#3B4D48" font-family="Arial, sans-serif" font-size="28">choose fewer moves unless the second city saves time on the way back.</text>
+  <defs>
+    <linearGradient id="bg" x1="126" y1="88" x2="1450" y2="806" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF8EB"/>
+      <stop offset="0.54" stop-color="#EEF3EA"/>
+      <stop offset="1" stop-color="#E3ECE8"/>
+    </linearGradient>
+  </defs>
+</svg>
