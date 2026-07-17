@@ -1,0 +1,75 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#F5F1E8"/>
+  <rect x="64" y="64" width="1472" height="772" rx="36" fill="url(#bg)"/>
+  <circle cx="1320" cy="180" r="110" fill="#F2B36D" fill-opacity="0.22"/>
+  <circle cx="260" cy="168" r="84" fill="#7FB2A8" fill-opacity="0.20"/>
+  <rect x="120" y="132" width="620" height="556" rx="30" fill="#FFFCF6" fill-opacity="0.88"/>
+  <text x="168" y="224" fill="#143A52" font-family="Georgia, 'Times New Roman', serif" font-size="40" font-weight="700">
+    Late Summer Europe Window
+  </text>
+  <text x="168" y="278" fill="#4B6473" font-family="Arial, sans-serif" font-size="24">
+    US to Europe  |  Aug 10 - Sep 6
+  </text>
+  <rect x="168" y="330" width="220" height="108" rx="22" fill="#143A52"/>
+  <text x="196" y="374" fill="#F5F1E8" font-family="Arial, sans-serif" font-size="18" font-weight="700">
+    BEST-VALUE WINDOW
+  </text>
+  <text x="196" y="414" fill="#F5F1E8" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700">
+    Aug 10 - Sep 6
+  </text>
+  <rect x="414" y="330" width="278" height="108" rx="22" fill="#E9F0EC"/>
+  <text x="442" y="374" fill="#395B58" font-family="Arial, sans-serif" font-size="18" font-weight="700">
+    PLANNING IDEA
+  </text>
+  <text x="442" y="414" fill="#143A52" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="700">
+    Flight + Hotel + Flow
+  </text>
+  <path d="M176 514C280 474 350 486 442 532C530 576 604 574 678 516" stroke="#D18A46" stroke-width="8" stroke-linecap="round"/>
+  <path d="M654 510L696 510L670 544" stroke="#D18A46" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="168" y="612" fill="#4B6473" font-family="Arial, sans-serif" font-size="22">
+    Cities to compare
+  </text>
+  <g>
+    <rect x="168" y="640" width="148" height="58" rx="29" fill="#143A52"/>
+    <text x="214" y="677" fill="#F5F1E8" font-family="Arial, sans-serif" font-size="24" font-weight="700">Dublin</text>
+  </g>
+  <g>
+    <rect x="334" y="640" width="190" height="58" rx="29" fill="#7FB2A8"/>
+    <text x="380" y="677" fill="#17353D" font-family="Arial, sans-serif" font-size="24" font-weight="700">Stockholm</text>
+  </g>
+  <g>
+    <rect x="542" y="640" width="150" height="58" rx="29" fill="#F2B36D"/>
+    <text x="590" y="677" fill="#17353D" font-family="Arial, sans-serif" font-size="24" font-weight="700">Lisbon</text>
+  </g>
+  <rect x="812" y="156" width="620" height="588" rx="34" fill="#17353D"/>
+  <path d="M946 576C978 500 1072 450 1152 432C1236 414 1324 424 1382 452" stroke="#7FB2A8" stroke-width="10" stroke-linecap="round"/>
+  <path d="M930 596C980 666 1096 714 1212 704C1314 696 1394 654 1430 594" stroke="#F2B36D" stroke-width="10" stroke-linecap="round"/>
+  <path d="M996 326C1030 292 1080 274 1124 282C1164 288 1198 314 1218 344C1238 374 1252 394 1288 406C1320 416 1358 412 1390 396" stroke="#FFFCF6" stroke-width="8" stroke-linecap="round"/>
+  <path d="M1008 328L1044 310L1034 346" stroke="#FFFCF6" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="1038" cy="500" r="64" fill="#FFFCF6" fill-opacity="0.10"/>
+  <circle cx="1224" cy="308" r="48" fill="#FFFCF6" fill-opacity="0.10"/>
+  <circle cx="1328" cy="566" r="82" fill="#FFFCF6" fill-opacity="0.10"/>
+  <text x="884" y="244" fill="#F5F1E8" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="700">
+    Smarter Than Peak Summer
+  </text>
+  <text x="884" y="294" fill="#C9D4DA" font-family="Arial, sans-serif" font-size="24">
+    Better timing can reduce airfare pressure and
+  </text>
+  <text x="884" y="328" fill="#C9D4DA" font-family="Arial, sans-serif" font-size="24">
+    make first-night hotel choices easier to manage.
+  </text>
+  <g>
+    <rect x="884" y="642" width="210" height="62" rx="20" fill="#FFFCF6"/>
+    <text x="920" y="682" fill="#17353D" font-family="Arial, sans-serif" font-size="22" font-weight="700">Less peak pressure</text>
+  </g>
+  <g>
+    <rect x="1112" y="642" width="256" height="62" rx="20" fill="#E9F0EC"/>
+    <text x="1148" y="682" fill="#17353D" font-family="Arial, sans-serif" font-size="22" font-weight="700">Cleaner arrival flow</text>
+  </g>
+  <defs>
+    <linearGradient id="bg" x1="64" y1="64" x2="1536" y2="836" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E8EEF1"/>
+      <stop offset="1" stop-color="#E7DDD0"/>
+    </linearGradient>
+  </defs>
+</svg>
