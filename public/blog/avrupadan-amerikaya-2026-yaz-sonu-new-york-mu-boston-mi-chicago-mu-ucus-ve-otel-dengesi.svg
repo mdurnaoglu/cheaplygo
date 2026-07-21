@@ -1,0 +1,72 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="190" y1="80" x2="1380" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4E4C8"/>
+      <stop offset="0.45" stop-color="#B9D9E8"/>
+      <stop offset="1" stop-color="#6D93B8"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="610" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#16324F"/>
+      <stop offset="1" stop-color="#0A1A2B"/>
+    </linearGradient>
+    <linearGradient id="card" x1="190" y1="160" x2="1380" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" stop-opacity="0.82"/>
+      <stop offset="1" stop-color="#EAF4F8" stop-opacity="0.72"/>
+    </linearGradient>
+    <filter id="shadow" x="140" y="120" width="1320" height="700" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="18"/>
+      <feGaussianBlur stdDeviation="24"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.038 0 0 0 0 0.102 0 0 0 0 0.164 0 0 0 0.18 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <circle cx="1270" cy="186" r="84" fill="#FFD57E" fill-opacity="0.7"/>
+  <path d="M0 625C172 587 315 621 474 648C640 676 814 680 996 625C1160 576 1337 545 1600 601V900H0V625Z" fill="url(#ground)"/>
+  <g filter="url(#shadow)">
+    <rect x="184" y="146" width="1232" height="620" rx="42" fill="url(#card)"/>
+  </g>
+  <path d="M306 274C512 170 721 157 934 214C1064 249 1177 306 1286 350" stroke="#F08A5D" stroke-width="12" stroke-linecap="round" stroke-dasharray="16 20"/>
+  <path d="M1242 340L1306 354L1264 396" stroke="#F08A5D" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="260" y="242" fill="#16324F" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700">Europe to USA</text>
+  <text x="260" y="294" fill="#16324F" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="700">New York vs Boston vs Chicago</text>
+  <text x="262" y="350" fill="#355C7D" font-family="'Trebuchet MS', Arial, sans-serif" font-size="30">Flight ease, hotel pressure, and short-stay value for late summer 2026</text>
+  <g opacity="0.98">
+    <rect x="260" y="414" width="302" height="248" rx="28" fill="#17324D"/>
+    <text x="292" y="464" fill="#F6F3EE" font-family="'Trebuchet MS', Arial, sans-serif" font-size="24" font-weight="700">NEW YORK</text>
+    <rect x="304" y="532" width="36" height="88" fill="#F6F3EE"/>
+    <rect x="350" y="486" width="42" height="134" fill="#F6F3EE"/>
+    <rect x="403" y="450" width="38" height="170" fill="#F6F3EE"/>
+    <rect x="451" y="500" width="52" height="120" fill="#F6F3EE"/>
+    <path d="M422 428L428 400L434 428H422Z" fill="#F6F3EE"/>
+    <text x="292" y="590" fill="#F8C98B" font-family="'Trebuchet MS', Arial, sans-serif" font-size="22">Best for iconic first trips</text>
+    <text x="292" y="626" fill="#D9E5EE" font-family="'Trebuchet MS', Arial, sans-serif" font-size="18">Strong nonstop access</text>
+  </g>
+  <g opacity="0.98">
+    <rect x="650" y="414" width="302" height="248" rx="28" fill="#234D6F"/>
+    <text x="682" y="464" fill="#F6F3EE" font-family="'Trebuchet MS', Arial, sans-serif" font-size="24" font-weight="700">BOSTON</text>
+    <rect x="716" y="520" width="34" height="100" fill="#F6F3EE"/>
+    <rect x="760" y="486" width="44" height="134" fill="#F6F3EE"/>
+    <rect x="814" y="542" width="36" height="78" fill="#F6F3EE"/>
+    <path d="M740 498L774 460L808 498" stroke="#F6F3EE" stroke-width="10" stroke-linecap="round"/>
+    <text x="682" y="590" fill="#F8C98B" font-family="'Trebuchet MS', Arial, sans-serif" font-size="22">Best for compact pacing</text>
+    <text x="682" y="626" fill="#D9E5EE" font-family="'Trebuchet MS', Arial, sans-serif" font-size="18">Lower short-trip friction</text>
+  </g>
+  <g opacity="0.98">
+    <rect x="1040" y="414" width="302" height="248" rx="28" fill="#355C7D"/>
+    <text x="1072" y="464" fill="#F6F3EE" font-family="'Trebuchet MS', Arial, sans-serif" font-size="24" font-weight="700">CHICAGO</text>
+    <rect x="1098" y="502" width="42" height="118" fill="#F6F3EE"/>
+    <rect x="1150" y="458" width="44" height="162" fill="#F6F3EE"/>
+    <rect x="1204" y="526" width="34" height="94" fill="#F6F3EE"/>
+    <rect x="1248" y="488" width="38" height="132" fill="#F6F3EE"/>
+    <text x="1072" y="590" fill="#F8C98B" font-family="'Trebuchet MS', Arial, sans-serif" font-size="22">Best for balance and space</text>
+    <text x="1072" y="626" fill="#D9E5EE" font-family="'Trebuchet MS', Arial, sans-serif" font-size="18">Broader neighborhood value</text>
+  </g>
+  <g>
+    <rect x="260" y="704" width="1082" height="1" fill="#9CB7C7"/>
+    <text x="264" y="736" fill="#355C7D" font-family="'Trebuchet MS', Arial, sans-serif" font-size="22">CheaplyGo blog visual • not photo-based • crisp social preview</text>
+  </g>
+</svg>
