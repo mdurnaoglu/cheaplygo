@@ -1,0 +1,55 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" rx="36" fill="#F5EFE6"/>
+  <rect width="1600" height="900" rx="36" fill="url(#bg)"/>
+  <circle cx="1334" cy="164" r="112" fill="#F4C78E" fill-opacity="0.42"/>
+  <circle cx="1264" cy="744" r="176" fill="#B8D7D1" fill-opacity="0.42"/>
+  <circle cx="254" cy="164" r="150" fill="#D7E1F1" fill-opacity="0.66"/>
+  <rect x="74" y="94" width="1452" height="712" rx="34" fill="#FFFBF6" fill-opacity="0.9" stroke="#DCCFBE"/>
+  <path d="M242 602C310 494 401 406 512 346C646 274 792 244 945 260C1064 272 1165 316 1262 392C1324 441 1374 502 1406 562" stroke="#D96E3D" stroke-width="18" stroke-linecap="round" stroke-dasharray="14 18"/>
+  <path d="M1202 415L1235 384L1244 417L1278 429L1246 444L1238 478L1217 452L1182 451L1202 415Z" fill="#D96E3D"/>
+  <rect x="144" y="166" width="306" height="222" rx="24" fill="#FFF7EC" stroke="#E2D5C4"/>
+  <text x="178" y="226" fill="#8B684D" font-family="Georgia, 'Times New Roman', serif" font-size="32" font-weight="700">Athens</text>
+  <text x="178" y="268" fill="#4E5A54" font-family="Arial, sans-serif" font-size="22">City + island gateway</text>
+  <rect x="178" y="302" width="126" height="12" rx="6" fill="#7FA7D8"/>
+  <rect x="178" y="333" width="180" height="12" rx="6" fill="#B8CDE8"/>
+  <rect x="178" y="364" width="146" height="12" rx="6" fill="#D9E5F4"/>
+  <path d="M364 336L389 278L414 336H364Z" fill="#8FA5BE"/>
+  <rect x="378" y="336" width="22" height="28" rx="6" fill="#8FA5BE"/>
+  <rect x="1114" y="520" width="330" height="212" rx="24" fill="#F8F4ED" stroke="#DED0C1"/>
+  <text x="1148" y="580" fill="#8B684D" font-family="Georgia, 'Times New Roman', serif" font-size="32" font-weight="700">Palermo</text>
+  <text x="1148" y="622" fill="#4E5A54" font-family="Arial, sans-serif" font-size="22">Local rhythm + Sicily route</text>
+  <rect x="1148" y="656" width="142" height="12" rx="6" fill="#D79252"/>
+  <rect x="1148" y="687" width="194" height="12" rx="6" fill="#E4B07A"/>
+  <rect x="1148" y="718" width="158" height="12" rx="6" fill="#C99262"/>
+  <path d="M1384 646C1414 646 1438 669 1438 698C1438 727 1414 750 1385 750C1357 750 1333 727 1333 699C1333 675 1349 655 1370 648" fill="#C86B36"/>
+  <path d="M1386 648C1373 669 1367 690 1368 716" stroke="#8E4A25" stroke-width="8" stroke-linecap="round"/>
+  <rect x="486" y="126" width="628" height="636" rx="30" fill="#FFFDF9" stroke="#E4D8CB"/>
+  <text x="552" y="212" fill="#22313A" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="700">US to Mediterranean</text>
+  <text x="552" y="270" fill="#22313A" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="700">Summer Balance</text>
+  <text x="553" y="330" fill="#6B7278" font-family="Arial, sans-serif" font-size="24">Athens, Malaga, Palermo</text>
+  <rect x="552" y="384" width="496" height="132" rx="22" fill="#F4EEE5"/>
+  <text x="586" y="434" fill="#8B684D" font-family="Arial, sans-serif" font-size="22" font-weight="700">Compare:</text>
+  <text x="586" y="474" fill="#43515A" font-family="Arial, sans-serif" font-size="22">Flight access, first-night hotel logic, onward route flow</text>
+  <rect x="552" y="544" width="496" height="142" rx="22" fill="#EDF5F3"/>
+  <text x="586" y="596" fill="#5B7C67" font-family="Arial, sans-serif" font-size="22" font-weight="700">Best read:</text>
+  <text x="586" y="636" fill="#43515A" font-family="Arial, sans-serif" font-size="22">Do not price the fare alone. Read the first two nights together.</text>
+  <g opacity="0.92">
+    <rect x="1120" y="168" width="256" height="142" rx="24" fill="#FFF7EC" stroke="#E2D5C4"/>
+    <text x="1154" y="224" fill="#8B684D" font-family="Arial, sans-serif" font-size="22" font-weight="700">Malaga</text>
+    <text x="1154" y="260" fill="#43515A" font-family="Arial, sans-serif" font-size="20">Smooth beach + city flow</text>
+    <path d="M1304 266C1324 238 1358 238 1378 266" stroke="#5F99C9" stroke-width="8" stroke-linecap="round"/>
+    <path d="M1292 274C1320 252 1362 252 1390 274" stroke="#7FB9E3" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <g opacity="0.9">
+    <rect x="294" y="586" width="206" height="138" rx="24" fill="#F2F6FA" stroke="#D7E2F2"/>
+    <text x="328" y="646" fill="#5F7388" font-family="Arial, sans-serif" font-size="22" font-weight="700">Hotel Pressure</text>
+    <text x="328" y="684" fill="#43515A" font-family="Arial, sans-serif" font-size="20">Center vs coast</text>
+  </g>
+  <defs>
+    <linearGradient id="bg" x1="118" y1="78" x2="1472" y2="860" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4EDE3"/>
+      <stop offset="0.46" stop-color="#F7F3EC"/>
+      <stop offset="1" stop-color="#E7F0EC"/>
+    </linearGradient>
+  </defs>
+</svg>

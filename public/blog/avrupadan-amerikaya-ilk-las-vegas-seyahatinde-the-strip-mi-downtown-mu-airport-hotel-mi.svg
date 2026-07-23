@@ -1,0 +1,82 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#FFF9F1"/>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1368" cy="132" r="112" fill="#FDBA74" fill-opacity="0.34"/>
+  <circle cx="188" cy="142" r="78" fill="#F9A8D4" fill-opacity="0.38"/>
+  <path d="M0 710C160 666 328 650 494 672C678 696 832 776 1012 772C1196 768 1370 690 1600 708V900H0V710Z" fill="#2D1B4F" fill-opacity="0.12"/>
+  <path d="M0 776C178 744 360 750 530 780C704 810 864 858 1048 852C1234 846 1412 796 1600 810V900H0V776Z" fill="#1F2A44" fill-opacity="0.15"/>
+  <text x="88" y="106" fill="#24163A" font-family="Georgia, serif" font-size="56" font-weight="700">First Las Vegas Stay From Europe</text>
+  <text x="90" y="154" fill="#4B5563" font-family="Arial, Helvetica, sans-serif" font-size="28">The Strip vs Downtown vs airport hotel</text>
+  <g filter="url(#shadow)">
+    <rect x="92" y="210" width="430" height="436" rx="34" fill="#FFF7ED"/>
+    <text x="128" y="278" fill="#24163A" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700">THE STRIP</text>
+    <text x="128" y="322" fill="#6B7280" font-family="Arial, Helvetica, sans-serif" font-size="22">Classic first-time Vegas feel and easiest orientation</text>
+    <rect x="128" y="362" width="16" height="120" rx="8" fill="#F97316"/>
+    <rect x="158" y="412" width="16" height="70" rx="8" fill="#E11D48"/>
+    <rect x="188" y="336" width="16" height="146" rx="8" fill="#22C55E"/>
+    <rect x="218" y="390" width="16" height="92" rx="8" fill="#2563EB"/>
+    <rect x="248" y="350" width="16" height="132" rx="8" fill="#F59E0B"/>
+    <path d="M300 470C344 434 386 400 426 360" stroke="#EC4899" stroke-width="8" stroke-linecap="round" stroke-dasharray="2 16"/>
+    <circle cx="428" cy="358" r="15" fill="#EC4899"/>
+    <text x="128" y="540" fill="#24163A" font-family="Arial, Helvetica, sans-serif" font-size="20">Best for iconic resort walkability</text>
+    <text x="128" y="580" fill="#24163A" font-family="Arial, Helvetica, sans-serif" font-size="20">Watch resort fee and long indoor walks</text>
+    <text x="128" y="622" fill="#C2410C" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700">Atmosphere Lead</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="586" y="192" width="420" height="454" rx="34" fill="#FFFDFC"/>
+    <text x="622" y="260" fill="#24163A" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700">DOWNTOWN</text>
+    <text x="622" y="304" fill="#6B7280" font-family="Arial, Helvetica, sans-serif" font-size="22">More compact evenings and tighter cost control</text>
+    <rect x="636" y="356" width="260" height="128" rx="24" fill="#1F2937"/>
+    <path d="M670 356V324L706 344L742 316L778 340L814 310L850 332V356" stroke="#60A5FA" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="676" y="430" fill="#FDE68A" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700">FREMONT</text>
+    <text x="676" y="466" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="24">shorter blocks, lighter spend</text>
+    <text x="622" y="548" fill="#24163A" font-family="Arial, Helvetica, sans-serif" font-size="20">Good if classic mega-resort feel is not essential</text>
+    <text x="622" y="588" fill="#24163A" font-family="Arial, Helvetica, sans-serif" font-size="20">Stronger for controlled city-break pacing</text>
+    <text x="622" y="632" fill="#2563EB" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700">Compact Value</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="1082" y="226" width="402" height="396" rx="34" fill="#FFF8F7"/>
+    <text x="1118" y="294" fill="#24163A" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700">AIRPORT HOTEL</text>
+    <text x="1118" y="338" fill="#6B7280" font-family="Arial, Helvetica, sans-serif" font-size="22">Strong for late arrivals and easy night one</text>
+    <circle cx="1216" cy="438" r="66" fill="#DBEAFE"/>
+    <path d="M1194 444H1238" stroke="#2563EB" stroke-width="12" stroke-linecap="round"/>
+    <path d="M1216 420V466" stroke="#2563EB" stroke-width="12" stroke-linecap="round"/>
+    <path d="M1216 438L1268 412" stroke="#2563EB" stroke-width="10" stroke-linecap="round"/>
+    <path d="M1216 438L1166 414" stroke="#2563EB" stroke-width="10" stroke-linecap="round"/>
+    <path d="M1216 438L1260 466" stroke="#2563EB" stroke-width="10" stroke-linecap="round"/>
+    <path d="M1216 438L1174 466" stroke="#2563EB" stroke-width="10" stroke-linecap="round"/>
+    <rect x="1306" y="404" width="110" height="84" rx="18" fill="#FDE68A"/>
+    <rect x="1320" y="420" width="18" height="52" rx="9" fill="#A16207"/>
+    <rect x="1348" y="394" width="18" height="78" rx="9" fill="#A16207"/>
+    <rect x="1376" y="428" width="18" height="44" rx="9" fill="#A16207"/>
+    <text x="1118" y="540" fill="#24163A" font-family="Arial, Helvetica, sans-serif" font-size="20">Useful for very late landings or split stays</text>
+    <text x="1118" y="580" fill="#24163A" font-family="Arial, Helvetica, sans-serif" font-size="20">Move fresh next day instead of forcing arrival night</text>
+    <text x="1118" y="620" fill="#DC2626" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700">Arrival Control</text>
+  </g>
+  <path d="M270 714C420 638 590 628 756 668C850 690 942 730 1024 786" stroke="#7C3AED" stroke-width="16" stroke-linecap="round"/>
+  <path d="M1026 786C1092 734 1174 694 1262 682C1340 670 1412 678 1488 706" stroke="#7C3AED" stroke-width="16" stroke-linecap="round"/>
+  <rect x="164" y="752" width="78" height="88" fill="#24163A"/>
+  <rect x="252" y="694" width="86" height="146" fill="#312E81"/>
+  <rect x="352" y="628" width="98" height="212" fill="#4338CA"/>
+  <rect x="1072" y="734" width="70" height="106" fill="#24163A"/>
+  <rect x="1154" y="676" width="84" height="164" fill="#312E81"/>
+  <rect x="1250" y="620" width="96" height="220" fill="#1F2937"/>
+  <rect x="1360" y="660" width="78" height="180" fill="#4338CA"/>
+  <defs>
+    <linearGradient id="bg" x1="124" y1="44" x2="1402" y2="856" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF1D6"/>
+      <stop offset="0.42" stop-color="#FFF9F1"/>
+      <stop offset="1" stop-color="#F3E8FF"/>
+    </linearGradient>
+    <filter id="shadow" x="64" y="170" width="1456" height="520" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="6" dy="12"/>
+      <feGaussianBlur stdDeviation="14"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.141176 0 0 0 0 0.0862745 0 0 0 0 0.227451 0 0 0 0.16 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+  </defs>
+</svg>

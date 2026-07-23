@@ -1,0 +1,109 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#F5EFE6"/>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <circle cx="1266" cy="160" r="170" fill="#F9C784" fill-opacity="0.36"/>
+  <circle cx="232" cy="742" r="246" fill="#2D6A73" fill-opacity="0.16"/>
+  <path d="M0 648C186 608 396 596 584 636C748 671 892 750 1102 738C1303 726 1446 662 1600 622V900H0V648Z" fill="url(#base)"/>
+
+  <g filter="url(#cardShadow)">
+    <rect x="106" y="96" width="610" height="292" rx="34" fill="#FFFDF9"/>
+    <rect x="106" y="96" width="610" height="292" rx="34" stroke="#E8DCC8"/>
+    <text x="154" y="168" fill="#243746" font-size="42" font-family="Georgia, serif" font-weight="700">Porto, Valencia, or Bologna?</text>
+    <text x="154" y="220" fill="#5E6D77" font-size="27" font-family="Arial, sans-serif">Short US to Europe summer 2026 city-break planning</text>
+    <rect x="154" y="264" width="172" height="56" rx="18" fill="#1F6F78"/>
+    <text x="195" y="300" fill="#F4FBFC" font-size="23" font-family="Arial, sans-serif" font-weight="700">3-4 Nights</text>
+    <rect x="342" y="264" width="182" height="56" rx="18" fill="#C96D3A"/>
+    <text x="382" y="300" fill="#FFF8F3" font-size="23" font-family="Arial, sans-serif" font-weight="700">Hotel Value</text>
+    <text x="154" y="354" fill="#243746" font-size="24" font-family="Arial, sans-serif">Compare flight friction, hotel pressure, and trip rhythm.</text>
+  </g>
+
+  <path d="M564 492C700 430 838 420 960 450C1080 478 1186 540 1366 514" stroke="url(#route)" stroke-width="10" stroke-linecap="round" stroke-dasharray="16 18"/>
+  <g filter="url(#planeShadow)">
+    <path d="M918 456L957 431L1008 437L978 463L1035 490L1020 506L963 488L946 534L924 528L929 481L890 484L881 467L918 456Z" fill="#FFFDF9"/>
+  </g>
+
+  <g filter="url(#panelShadow)">
+    <rect x="954" y="116" width="470" height="248" rx="30" fill="#FFF8EF"/>
+    <rect x="954" y="116" width="470" height="248" rx="30" stroke="#E8D3B7"/>
+    <text x="1002" y="176" fill="#9E4E24" font-size="30" font-family="Georgia, serif" font-weight="700">Best Fit by Travel Style</text>
+    <text x="1002" y="224" fill="#7B4B30" font-size="22" font-family="Arial, sans-serif">Porto: scenery and low city friction</text>
+    <text x="1002" y="260" fill="#7B4B30" font-size="22" font-family="Arial, sans-serif">Valencia: beach plus city balance</text>
+    <text x="1002" y="296" fill="#7B4B30" font-size="22" font-family="Arial, sans-serif">Bologna: food and rail flexibility</text>
+  </g>
+
+  <g filter="url(#panelShadow)">
+    <rect x="1042" y="468" width="410" height="232" rx="30" fill="#F8FBFC"/>
+    <rect x="1042" y="468" width="410" height="232" rx="30" stroke="#CFE2E4"/>
+    <text x="1088" y="528" fill="#1F6F78" font-size="29" font-family="Georgia, serif" font-weight="700">Cleaner Total Value</text>
+    <text x="1088" y="574" fill="#36525A" font-size="21" font-family="Arial, sans-serif">Do not judge by airfare alone.</text>
+    <text x="1088" y="608" fill="#36525A" font-size="21" font-family="Arial, sans-serif">Central hotel, transfers, and</text>
+    <text x="1088" y="642" fill="#36525A" font-size="21" font-family="Arial, sans-serif">usable sightseeing hours matter.</text>
+  </g>
+
+  <g filter="url(#cardShadow)">
+    <rect x="164" y="494" width="596" height="212" rx="30" fill="#173041"/>
+    <rect x="164" y="494" width="596" height="212" rx="30" stroke="#355467"/>
+    <rect x="214" y="542" width="148" height="112" rx="22" fill="#E38B5B"/>
+    <text x="246" y="588" fill="#FFF7F1" font-size="29" font-family="Georgia, serif" font-weight="700">Porto</text>
+    <text x="233" y="624" fill="#FFF7F1" font-size="18" font-family="Arial, sans-serif">Compact, scenic, easy</text>
+    <rect x="388" y="542" width="148" height="112" rx="22" fill="#F1C27D"/>
+    <text x="408" y="588" fill="#5E390F" font-size="29" font-family="Georgia, serif" font-weight="700">Valencia</text>
+    <text x="414" y="624" fill="#6C4A1C" font-size="18" font-family="Arial, sans-serif">Beach + city mix</text>
+    <rect x="562" y="542" width="148" height="112" rx="22" fill="#7DA0A8"/>
+    <text x="586" y="588" fill="#F7FAFB" font-size="29" font-family="Georgia, serif" font-weight="700">Bologna</text>
+    <text x="591" y="624" fill="#EAF2F4" font-size="18" font-family="Arial, sans-serif">Food + rail logic</text>
+  </g>
+
+  <g opacity="0.92">
+    <rect x="466" y="736" width="654" height="94" rx="28" fill="#FFFDF9"/>
+    <text x="514" y="794" fill="#243746" font-size="30" font-family="Georgia, serif" font-weight="700">Better city breaks come from cleaner tradeoffs, not bigger names.</text>
+  </g>
+
+  <defs>
+    <linearGradient id="sky" x1="148" y1="68" x2="1400" y2="826" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7F1E8"/>
+      <stop offset="0.54" stop-color="#E6EFEA"/>
+      <stop offset="1" stop-color="#DCE7E2"/>
+    </linearGradient>
+    <linearGradient id="base" x1="120" y1="614" x2="1416" y2="830" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22425A"/>
+      <stop offset="0.48" stop-color="#1B5A63"/>
+      <stop offset="1" stop-color="#355059"/>
+    </linearGradient>
+    <linearGradient id="route" x1="564" y1="492" x2="1366" y2="514" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D07C47"/>
+      <stop offset="0.5" stop-color="#E8C27A"/>
+      <stop offset="1" stop-color="#4E8D97"/>
+    </linearGradient>
+    <filter id="cardShadow" x="86" y="83" width="694" height="650" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="8" dy="14"/>
+      <feGaussianBlur stdDeviation="14"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.145098 0 0 0 0 0.219608 0 0 0 0 0.27451 0 0 0 0.14 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+    <filter id="panelShadow" x="930" y="98" width="548" height="631" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="8" dy="14"/>
+      <feGaussianBlur stdDeviation="16"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.168627 0 0 0 0 0.223529 0 0 0 0 0.258824 0 0 0 0.12 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+    <filter id="planeShadow" x="866" y="420" width="192" height="136" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="5" dy="7"/>
+      <feGaussianBlur stdDeviation="7"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.109804 0 0 0 0 0.156863 0 0 0 0 0.188235 0 0 0 0.22 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+  </defs>
+</svg>

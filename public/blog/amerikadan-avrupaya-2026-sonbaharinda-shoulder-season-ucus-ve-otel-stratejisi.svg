@@ -1,0 +1,95 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="160" y1="80" x2="1460" y2="850" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFF6E9"/>
+      <stop offset="0.45" stop-color="#F4F7FB"/>
+      <stop offset="1" stop-color="#E4EEF6"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F7FAFC"/>
+    </linearGradient>
+    <linearGradient id="line" x1="328" y1="502" x2="1288" y2="396" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#C2410C"/>
+      <stop offset="0.48" stop-color="#0F766E"/>
+      <stop offset="1" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="20" stdDeviation="20" flood-color="#0F172A" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <circle cx="1334" cy="160" r="158" fill="#FFF1D6"/>
+  <circle cx="264" cy="734" r="214" fill="#DBEAFE" opacity="0.82"/>
+  <circle cx="1368" cy="752" r="126" fill="#DCFCE7" opacity="0.78"/>
+
+  <path d="M0 694C128 650 244 626 348 626C482 626 562 690 670 690C810 690 870 594 994 594C1126 594 1206 682 1332 682C1436 682 1524 646 1600 602V900H0V694Z" fill="#E7EEF6"/>
+  <path d="M0 748C146 704 252 690 352 690C468 690 564 752 684 752C812 752 904 664 1018 664C1142 664 1246 744 1370 744C1454 744 1532 722 1600 690V900H0V748Z" fill="#D9E5F2"/>
+
+  <g opacity="0.17">
+    <path d="M238 340C376 246 536 210 688 240C816 266 928 350 1032 356C1144 362 1236 328 1360 232" stroke="#475569" stroke-width="10" stroke-linecap="round"/>
+    <path d="M290 416C416 340 562 322 684 346C788 366 886 424 1000 438C1094 450 1202 434 1324 378" stroke="#475569" stroke-width="10" stroke-linecap="round"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="110" y="94" width="708" height="254" rx="38" fill="url(#card)"/>
+  </g>
+  <text x="158" y="178" fill="#0F172A" font-family="Georgia, 'Times New Roman', serif" font-size="56" font-weight="700">
+    Fall 2026 Europe
+  </text>
+  <text x="158" y="240" fill="#0F172A" font-family="Georgia, 'Times New Roman', serif" font-size="56" font-weight="700">
+    Shoulder Season Value
+  </text>
+  <text x="158" y="292" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="28">
+    Better flight timing, calmer hotels, cleaner first-night logic
+  </text>
+
+  <g>
+    <path d="M328 504C458 434 588 408 720 426C812 438 900 486 984 500C1090 518 1180 494 1288 406" stroke="url(#line)" stroke-width="12" stroke-linecap="round" stroke-dasharray="16 18"/>
+    <circle cx="328" cy="504" r="14" fill="#C2410C"/>
+    <circle cx="1288" cy="406" r="14" fill="#1D4ED8"/>
+    <path d="M808 440L836 452L824 474L840 496L816 504L804 484L776 490L788 470L760 456L788 448L786 422L804 438L830 426L826 444L852 446L808 440Z" fill="#0F172A"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="150" y="566" width="284" height="184" rx="30" fill="url(#card)"/>
+    <rect x="480" y="444" width="294" height="184" rx="30" fill="url(#card)"/>
+    <rect x="824" y="566" width="300" height="184" rx="30" fill="url(#card)"/>
+    <rect x="1148" y="344" width="296" height="208" rx="30" fill="url(#card)"/>
+  </g>
+
+  <g>
+    <text x="186" y="622" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Airfare</text>
+    <text x="186" y="668" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">Shoulder season often</text>
+    <text x="186" y="700" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">beats peak-summer pressure</text>
+    <rect x="186" y="720" width="176" height="14" rx="7" fill="#C2410C"/>
+  </g>
+
+  <g>
+    <text x="516" y="500" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Hotel Base</text>
+    <text x="516" y="546" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">One smart district usually</text>
+    <text x="516" y="578" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">wins over hotel-hopping</text>
+    <rect x="516" y="598" width="184" height="14" rx="7" fill="#0F766E"/>
+  </g>
+
+  <g>
+    <text x="860" y="622" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">City Fit</text>
+    <text x="860" y="668" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">Airport access and walkability</text>
+    <text x="860" y="700" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">matter more on short trips</text>
+    <rect x="860" y="720" width="190" height="14" rx="7" fill="#1D4ED8"/>
+  </g>
+
+  <g>
+    <text x="1180" y="412" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700">Entry Reality</text>
+    <text x="1180" y="456" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">EES active since</text>
+    <text x="1180" y="488" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">April 10, 2026</text>
+    <text x="1180" y="528" fill="#0F766E" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">ETIAS not live yet</text>
+  </g>
+
+  <g opacity="0.96">
+    <rect x="1208" y="122" width="180" height="98" rx="24" fill="#0F172A"/>
+    <text x="1240" y="168" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">US to Europe</text>
+    <text x="1240" y="198" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="20">Fall planning</text>
+  </g>
+</svg>

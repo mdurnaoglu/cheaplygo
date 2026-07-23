@@ -1,0 +1,100 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="126" y1="88" x2="1456" y2="824" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFF6E7"/>
+      <stop offset="0.5" stop-color="#F2F8FF"/>
+      <stop offset="1" stop-color="#E8FFF5"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F7FAFC"/>
+    </linearGradient>
+    <linearGradient id="route" x1="314" y1="520" x2="1300" y2="408" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#EA580C"/>
+      <stop offset="0.5" stop-color="#0F766E"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="20" stdDeviation="24" flood-color="#0F172A" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1320" cy="178" r="164" fill="#FFF1D6" opacity="0.92"/>
+  <circle cx="286" cy="756" r="198" fill="#DBEAFE" opacity="0.72"/>
+  <circle cx="1326" cy="742" r="150" fill="#D1FAE5" opacity="0.72"/>
+
+  <g opacity="0.18">
+    <path d="M236 352C360 264 528 224 688 258C840 290 960 390 1086 392C1188 394 1276 350 1368 278" stroke="#334155" stroke-width="10" stroke-linecap="round"/>
+    <path d="M284 430C410 362 576 344 706 368C838 392 934 452 1048 468C1142 480 1234 464 1340 414" stroke="#334155" stroke-width="10" stroke-linecap="round"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="112" y="98" width="720" height="248" rx="38" fill="url(#panel)"/>
+  </g>
+
+  <text x="164" y="176" fill="#0F172A" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700">
+    Fall 2026 USA Balance
+  </text>
+  <text x="164" y="240" fill="#0F172A" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700">
+    New York, Chicago, Miami
+  </text>
+  <text x="164" y="292" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="28">
+    Europe departures need the right hotel logic, not just the cheapest fare
+  </text>
+
+  <g>
+    <path d="M314 514C438 436 566 410 686 430C792 446 880 500 982 518C1092 538 1188 514 1300 418" stroke="url(#route)" stroke-width="12" stroke-linecap="round" stroke-dasharray="16 18"/>
+    <circle cx="314" cy="514" r="14" fill="#EA580C"/>
+    <circle cx="1300" cy="418" r="14" fill="#2563EB"/>
+    <path d="M804 446L834 458L822 480L838 502L812 510L800 490L772 496L784 474L756 458L784 450L782 422L800 440L828 428L824 448L850 450L804 446Z" fill="#0F172A"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="150" y="584" width="274" height="180" rx="30" fill="url(#panel)"/>
+    <rect x="482" y="444" width="286" height="186" rx="30" fill="url(#panel)"/>
+    <rect x="828" y="584" width="274" height="180" rx="30" fill="url(#panel)"/>
+    <rect x="1116" y="350" width="310" height="204" rx="30" fill="url(#panel)"/>
+  </g>
+
+  <g>
+    <rect x="186" y="618" width="22" height="74" rx="5" fill="#0F172A"/>
+    <rect x="214" y="590" width="22" height="102" rx="5" fill="#0F172A"/>
+    <rect x="242" y="564" width="22" height="128" rx="5" fill="#0F172A"/>
+    <rect x="270" y="606" width="22" height="86" rx="5" fill="#0F172A"/>
+    <text x="186" y="726" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">New York</text>
+    <text x="186" y="758" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="22">Dense first-timer value</text>
+  </g>
+
+  <g>
+    <rect x="522" y="478" width="24" height="102" rx="6" fill="#0F172A"/>
+    <rect x="552" y="450" width="24" height="130" rx="6" fill="#0F172A"/>
+    <rect x="582" y="430" width="24" height="150" rx="6" fill="#0F172A"/>
+    <rect x="612" y="468" width="24" height="112" rx="6" fill="#0F172A"/>
+    <rect x="642" y="442" width="24" height="138" rx="6" fill="#0F172A"/>
+    <text x="522" y="614" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Chicago</text>
+    <text x="522" y="646" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="22">Cleaner hotel balance</text>
+  </g>
+
+  <g>
+    <path d="M866 684C892 644 928 622 968 622C1010 622 1044 644 1070 684" stroke="#0F766E" stroke-width="12" stroke-linecap="round"/>
+    <path d="M888 676C922 656 956 652 996 660C1026 666 1050 678 1072 694" stroke="#14B8A6" stroke-width="10" stroke-linecap="round"/>
+    <rect x="884" y="610" width="12" height="84" rx="6" fill="#92400E"/>
+    <path d="M866 620C884 594 914 582 946 588C930 612 904 632 866 620Z" fill="#16A34A"/>
+    <path d="M892 598C916 574 950 566 982 578C966 604 934 620 892 598Z" fill="#22C55E"/>
+    <text x="862" y="726" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Miami</text>
+    <text x="862" y="758" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="22">Warm-weather longer stays</text>
+  </g>
+
+  <g opacity="0.96">
+    <rect x="1182" y="126" width="214" height="110" rx="24" fill="#0F172A"/>
+    <text x="1220" y="172" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">2026 signal</text>
+    <text x="1220" y="208" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="22">Measured, full-trip choices</text>
+  </g>
+
+  <g>
+    <text x="1152" y="418" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Decision frame</text>
+    <text x="1152" y="462" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">Flight + hotel + transfer + pace</text>
+    <text x="1152" y="500" fill="#0F766E" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Best city is rarely the cheapest ticket</text>
+  </g>
+</svg>

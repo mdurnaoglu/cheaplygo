@@ -1,0 +1,52 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#F3F4F6"/>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1280" cy="140" r="112" fill="#FDE68A" fill-opacity="0.8"/>
+  <circle cx="220" cy="152" r="76" fill="#BFDBFE" fill-opacity="0.75"/>
+  <path d="M0 682C106 650 221 630 338 622C528 609 699 654 881 652C1062 650 1261 589 1600 612V900H0V682Z" fill="#E2E8F0"/>
+  <path d="M0 740C168 700 304 700 474 720C639 739 786 786 958 784C1150 782 1327 724 1600 733V900H0V740Z" fill="#CBD5E1"/>
+  <rect x="150" y="250" width="360" height="420" rx="32" fill="white" fill-opacity="0.94"/>
+  <rect x="620" y="210" width="360" height="460" rx="32" fill="white" fill-opacity="0.96"/>
+  <rect x="1090" y="270" width="360" height="400" rx="32" fill="white" fill-opacity="0.94"/>
+  <text x="180" y="320" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">MANHATTAN</text>
+  <text x="180" y="374" fill="#334155" font-family="Arial, Helvetica, sans-serif" font-size="24">En kolay ilk deneyim</text>
+  <text x="180" y="430" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="22">+ Yüksek tempo</text>
+  <text x="180" y="470" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="22">+ Gece dönüşü rahat</text>
+  <text x="180" y="510" fill="#B91C1C" font-family="Arial, Helvetica, sans-serif" font-size="22">- En yüksek otel baskısı</text>
+  <text x="180" y="590" fill="#1D4ED8" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">Premium</text>
+  <text x="650" y="280" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">LONG ISLAND CITY</text>
+  <text x="650" y="334" fill="#334155" font-family="Arial, Helvetica, sans-serif" font-size="24">Fiyat ve metro dengesi</text>
+  <text x="650" y="390" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="22">+ Midtown'a hızlı erişim</text>
+  <text x="650" y="430" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="22">+ İlk ziyaret için güçlü değer</text>
+  <text x="650" y="470" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="22">+ JFK sonrası daha temiz giriş</text>
+  <text x="650" y="550" fill="#047857" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">Best Value</text>
+  <text x="1120" y="340" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">DOWNTOWN</text>
+  <text x="1120" y="384" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">BROOKLYN</text>
+  <text x="1120" y="438" fill="#334155" font-family="Arial, Helvetica, sans-serif" font-size="24">Karakter ve erişim ortası</text>
+  <text x="1120" y="494" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="22">+ Daha yerel his</text>
+  <text x="1120" y="534" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="22">+ Güçlü metro bağlantıları</text>
+  <text x="1120" y="614" fill="#7C3AED" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">Balanced</text>
+  <rect x="242" y="675" width="60" height="120" fill="#0F172A"/>
+  <rect x="312" y="598" width="76" height="197" fill="#1E293B"/>
+  <rect x="398" y="470" width="92" height="325" fill="#0F172A"/>
+  <rect x="500" y="360" width="88" height="435" fill="#334155"/>
+  <rect x="598" y="525" width="64" height="270" fill="#0F172A"/>
+  <rect x="672" y="448" width="78" height="347" fill="#1E293B"/>
+  <rect x="760" y="315" width="96" height="480" fill="#0F172A"/>
+  <rect x="866" y="396" width="84" height="399" fill="#334155"/>
+  <rect x="960" y="544" width="62" height="251" fill="#0F172A"/>
+  <rect x="1032" y="468" width="78" height="327" fill="#1E293B"/>
+  <rect x="1120" y="388" width="88" height="407" fill="#0F172A"/>
+  <rect x="1218" y="498" width="72" height="297" fill="#334155"/>
+  <rect x="1300" y="560" width="56" height="235" fill="#0F172A"/>
+  <path d="M804 212L832 315H776L804 212Z" fill="#DC2626"/>
+  <rect x="796" y="184" width="16" height="28" fill="#0F172A"/>
+  <text x="84" y="108" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="700">Europe to NYC Stay Guide</text>
+  <text x="86" y="160" fill="#334155" font-family="Arial, Helvetica, sans-serif" font-size="30">Manhattan vs LIC vs Downtown Brooklyn</text>
+  <defs>
+    <linearGradient id="bg" x1="220" y1="40" x2="1380" y2="860" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DBEAFE"/>
+      <stop offset="1" stop-color="#F8FAFC"/>
+    </linearGradient>
+  </defs>
+</svg>

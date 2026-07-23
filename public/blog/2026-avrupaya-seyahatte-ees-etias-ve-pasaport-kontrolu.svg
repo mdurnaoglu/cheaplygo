@@ -1,0 +1,54 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#0F172A"/>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1290" cy="160" r="108" fill="#F7C873" fill-opacity="0.18"/>
+  <circle cx="140" cy="760" r="220" fill="#1D4ED8" fill-opacity="0.12"/>
+  <circle cx="1240" cy="760" r="280" fill="#0F766E" fill-opacity="0.14"/>
+  <path d="M0 698C132 648 268 628 386 644C512 660 628 722 760 726C896 730 1002 678 1144 656C1272 636 1402 646 1600 716V900H0V698Z" fill="#11233D"/>
+  <path d="M0 772C140 734 284 726 420 748C566 772 690 820 840 824C974 828 1088 788 1226 774C1348 762 1468 774 1600 816V900H0V772Z" fill="#16314E"/>
+  <rect x="124" y="146" width="536" height="610" rx="36" fill="#F5E8C9"/>
+  <rect x="154" y="176" width="476" height="550" rx="26" fill="#0F3A5B"/>
+  <rect x="204" y="236" width="140" height="140" rx="22" fill="#E6D7B6"/>
+  <rect x="374" y="248" width="194" height="20" rx="10" fill="#D7C6A0"/>
+  <rect x="374" y="286" width="156" height="14" rx="7" fill="#7FA1B8"/>
+  <rect x="204" y="416" width="364" height="18" rx="9" fill="#40637E"/>
+  <rect x="204" y="454" width="320" height="18" rx="9" fill="#40637E"/>
+  <rect x="204" y="492" width="338" height="18" rx="9" fill="#40637E"/>
+  <rect x="204" y="548" width="160" height="108" rx="20" fill="#E6D7B6"/>
+  <path d="M252 602L278 560L306 602H252Z" fill="#0F3A5B"/>
+  <circle cx="1080" cy="290" r="170" fill="#103B5E"/>
+  <circle cx="1080" cy="290" r="126" fill="#194D77"/>
+  <g fill="#F7C873">
+    <circle cx="1080" cy="146" r="12"/>
+    <circle cx="1154" cy="166" r="12"/>
+    <circle cx="1208" cy="220" r="12"/>
+    <circle cx="1228" cy="292" r="12"/>
+    <circle cx="1208" cy="366" r="12"/>
+    <circle cx="1154" cy="420" r="12"/>
+    <circle cx="1080" cy="440" r="12"/>
+    <circle cx="1006" cy="420" r="12"/>
+    <circle cx="952" cy="366" r="12"/>
+    <circle cx="932" cy="292" r="12"/>
+    <circle cx="952" cy="220" r="12"/>
+    <circle cx="1006" cy="166" r="12"/>
+  </g>
+  <path d="M788 502C844 450 910 426 986 428C1060 430 1124 454 1182 502" stroke="#F7C873" stroke-width="10" stroke-linecap="round"/>
+  <path d="M746 566C826 494 930 458 1048 458C1178 458 1286 502 1368 586" stroke="#A7C7D7" stroke-width="18" stroke-linecap="round"/>
+  <path d="M704 628C778 532 886 476 1016 466C1140 456 1268 500 1378 594" stroke="#F4E6C7" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 18"/>
+  <circle cx="702" cy="630" r="14" fill="#F7C873"/>
+  <circle cx="1382" cy="594" r="14" fill="#F7C873"/>
+  <path d="M694 620L734 592L722 638L694 620Z" fill="#F7C873"/>
+  <rect x="858" y="560" width="470" height="188" rx="28" fill="#F6F3EA"/>
+  <text x="898" y="624" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700">EES ACTIVE NOW</text>
+  <text x="898" y="670" fill="#334155" font-family="Arial, Helvetica, sans-serif" font-size="24">Europe first-entry timing matters in 2026</text>
+  <text x="898" y="716" fill="#0F766E" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">ETIAS planned for late 2026</text>
+  <text x="80" y="92" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="700">Europe Border Update 2026</text>
+  <text x="82" y="136" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="28">EES, ETIAS and smarter US to Europe trip planning</text>
+  <defs>
+    <linearGradient id="bg" x1="224" y1="84" x2="1400" y2="860" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#102033"/>
+      <stop offset="0.52" stop-color="#1B3656"/>
+      <stop offset="1" stop-color="#173450"/>
+    </linearGradient>
+  </defs>
+</svg>

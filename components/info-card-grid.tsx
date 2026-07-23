@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { CountryCard } from "@/lib/explore";
+import { useLanguage } from "@/components/language-provider";
 
 type InfoCardGridProps = {
   eyebrow: string;
@@ -15,6 +18,10 @@ export function InfoCardGrid({
   description,
   items
 }: InfoCardGridProps) {
+  const { language } = useLanguage();
+  const openLabel =
+    language === "ru" ? "Открыть страницу" : language === "tr" ? "Sayfayı aç" : "Open page";
+
   return (
     <section className="px-4 pb-16 pt-36 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
@@ -52,7 +59,7 @@ export function InfoCardGrid({
                 </h2>
                 <p className="mt-4 text-sm leading-7 text-slate-600">{item.description}</p>
                 <span className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-slateBlue">
-                  Sayfayı aç
+                  {openLabel}
                   <ArrowRight className="h-4 w-4" />
                 </span>
               </div>

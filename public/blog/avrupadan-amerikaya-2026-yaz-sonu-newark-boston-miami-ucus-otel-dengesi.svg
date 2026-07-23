@@ -1,0 +1,53 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#F3F0E8"/>
+  <rect x="48" y="48" width="1504" height="804" rx="40" fill="url(#bg)"/>
+  <circle cx="1320" cy="180" r="130" fill="#F8C67C" fill-opacity="0.35"/>
+  <circle cx="1220" cy="250" r="74" fill="#F9E6BE" fill-opacity="0.6"/>
+  <path d="M0 708C191 652 295 620 449 631C617 642 733 755 904 760C1100 766 1294 655 1600 571V900H0V708Z" fill="#D2E6E0"/>
+  <path d="M0 756C193 702 342 700 475 722C629 748 723 827 919 823C1124 819 1308 719 1600 654V900H0V756Z" fill="#A9C9C0"/>
+  <rect x="106" y="96" width="332" height="612" rx="28" fill="#FFFDF8" fill-opacity="0.92"/>
+  <rect x="472" y="96" width="332" height="612" rx="28" fill="#FFFDF8" fill-opacity="0.92"/>
+  <rect x="838" y="96" width="332" height="612" rx="28" fill="#FFFDF8" fill-opacity="0.92"/>
+  <text x="136" y="156" fill="#17313C" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700">Newark</text>
+  <text x="502" y="156" fill="#17313C" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700">Boston</text>
+  <text x="868" y="156" fill="#17313C" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700">Miami</text>
+  <text x="136" y="206" fill="#55707A" font-family="Arial, Helvetica, sans-serif" font-size="22">Ucuz giris havaalani</text>
+  <text x="502" y="206" fill="#55707A" font-family="Arial, Helvetica, sans-serif" font-size="22">Ucuz bilet, sert otel</text>
+  <text x="868" y="206" fill="#55707A" font-family="Arial, Helvetica, sans-serif" font-size="22">Daha yumusak tempo</text>
+  <rect x="136" y="248" width="272" height="110" rx="22" fill="#D8ECE4"/>
+  <rect x="502" y="248" width="272" height="110" rx="22" fill="#F4E1C6"/>
+  <rect x="868" y="248" width="272" height="110" rx="22" fill="#D9E7F7"/>
+  <text x="162" y="294" fill="#17313C" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Ort. giris fiyati</text>
+  <text x="162" y="334" fill="#17313C" font-family="Georgia, 'Times New Roman', serif" font-size="36" font-weight="700">$678</text>
+  <text x="528" y="294" fill="#17313C" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Dusuk son fiyat</text>
+  <text x="528" y="334" fill="#17313C" font-family="Georgia, 'Times New Roman', serif" font-size="36" font-weight="700">$296</text>
+  <text x="894" y="294" fill="#17313C" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Arama payi</text>
+  <text x="894" y="334" fill="#17313C" font-family="Georgia, 'Times New Roman', serif" font-size="36" font-weight="700">%6</text>
+  <path d="M152 458H390" stroke="#7FB6A7" stroke-width="8" stroke-linecap="round"/>
+  <path d="M518 458H756" stroke="#D9A86C" stroke-width="8" stroke-linecap="round"/>
+  <path d="M884 458H1122" stroke="#7CA8D6" stroke-width="8" stroke-linecap="round"/>
+  <text x="136" y="420" fill="#17313C" font-family="Arial, Helvetica, sans-serif" font-size="20">Esnek New York erisimi</text>
+  <text x="502" y="420" fill="#17313C" font-family="Arial, Helvetica, sans-serif" font-size="20">Otel baskisi yuksek</text>
+  <text x="868" y="420" fill="#17313C" font-family="Arial, Helvetica, sans-serif" font-size="20">Sehir + tatil karmasi</text>
+  <path d="M168 598L208 542L248 598V648H168V598Z" fill="#7FB6A7"/>
+  <rect x="214" y="514" width="42" height="134" fill="#17313C" fill-opacity="0.8"/>
+  <rect x="264" y="558" width="40" height="90" fill="#7FB6A7"/>
+  <rect x="310" y="530" width="54" height="118" fill="#17313C" fill-opacity="0.65"/>
+  <path d="M534 612L572 548L608 612V648H534V612Z" fill="#D9A86C"/>
+  <rect x="582" y="502" width="44" height="146" fill="#17313C" fill-opacity="0.8"/>
+  <rect x="634" y="544" width="48" height="104" fill="#D9A86C"/>
+  <rect x="688" y="566" width="42" height="82" fill="#17313C" fill-opacity="0.65"/>
+  <path d="M904 620C932 572 968 540 1006 526C1036 560 1058 606 1072 648H904V620Z" fill="#7CA8D6"/>
+  <rect x="974" y="522" width="28" height="126" fill="#17313C" fill-opacity="0.74"/>
+  <path d="M1040 612C1072 590 1094 590 1122 612V648H1040V612Z" fill="#7CA8D6"/>
+  <path d="M1244 500C1162 491 1087 465 1030 424C972 382 940 330 940 284" stroke="#FFF8EE" stroke-width="10" stroke-linecap="round" stroke-dasharray="12 16"/>
+  <path d="M1224 488L1248 498L1234 522" stroke="#FFF8EE" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="104" y="790" fill="#17313C" font-family="Georgia, 'Times New Roman', serif" font-size="56" font-weight="700">Europe to USA 2026</text>
+  <text x="106" y="840" fill="#35525B" font-family="Arial, Helvetica, sans-serif" font-size="28">Ucus fiyati, ilk gece oteli ve sehir ritmini birlikte okumak gerekir.</text>
+  <defs>
+    <linearGradient id="bg" x1="168" y1="96" x2="1450" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1F4B57"/>
+      <stop offset="1" stop-color="#3E7A73"/>
+    </linearGradient>
+  </defs>
+</svg>

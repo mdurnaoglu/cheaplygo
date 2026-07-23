@@ -1,0 +1,71 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="182" y1="110" x2="1431" y2="807" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F3EFE5"/>
+      <stop offset="0.52" stop-color="#E6EEF2"/>
+      <stop offset="1" stop-color="#D9E4DA"/>
+    </linearGradient>
+    <linearGradient id="cardA" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#FBF7EA"/>
+      <stop offset="1" stop-color="#EFD9A7"/>
+    </linearGradient>
+    <linearGradient id="cardB" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#F5F7FB"/>
+      <stop offset="1" stop-color="#D5E0F1"/>
+    </linearGradient>
+    <linearGradient id="cardC" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#F8F1EF"/>
+      <stop offset="1" stop-color="#E6C5B9"/>
+    </linearGradient>
+    <filter id="shadow" x="210" y="178" width="1180" height="544" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="20"/>
+      <feGaussianBlur stdDeviation="24"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.152941 0 0 0 0 0.203922 0 0 0 0 0.27451 0 0 0 0.14 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_2"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_2" result="shape"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="205" cy="156" r="162" fill="#EBCB8D" fill-opacity="0.22"/>
+  <circle cx="1393" cy="746" r="194" fill="#88A8B9" fill-opacity="0.18"/>
+  <path d="M0 770C170 698 326 676 469 704C616 733 717 812 876 816C1041 820 1168 724 1336 716C1435 711 1523 736 1600 776V900H0V770Z" fill="#C6D6CE" fill-opacity="0.38"/>
+  <text x="220" y="142" fill="#304255" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" letter-spacing="0.18em">CHEAPLYGO BLOG</text>
+  <text x="220" y="214" fill="#162331" font-family="Georgia, Times New Roman, serif" font-size="62" font-weight="700">ETIAS basladi mi?</text>
+  <text x="220" y="278" fill="#41505D" font-family="Arial, Helvetica, sans-serif" font-size="30">US to Europe fall 2026: first entry, hotel, and city rhythm</text>
+  <g filter="url(#shadow)">
+    <rect x="258" y="238" width="320" height="396" rx="34" fill="url(#cardA)"/>
+    <rect x="640" y="238" width="320" height="396" rx="34" fill="url(#cardB)"/>
+    <rect x="1022" y="238" width="320" height="396" rx="34" fill="url(#cardC)"/>
+  </g>
+  <g>
+    <text x="300" y="304" fill="#9B7B36" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" letter-spacing="0.2em">LISBON</text>
+    <text x="678" y="304" fill="#597698" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" letter-spacing="0.2em">ATHENS</text>
+    <text x="1070" y="304" fill="#9C634F" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" letter-spacing="0.2em">ROME</text>
+
+    <path d="M348 530L388 382L428 450L468 338L510 530H348Z" fill="#D8B362"/>
+    <rect x="330" y="530" width="198" height="10" rx="5" fill="#C4A15A"/>
+    <circle cx="389" cy="360" r="22" fill="#EED7A7"/>
+    <path d="M389 347V373" stroke="#C18A29" stroke-width="6" stroke-linecap="round"/>
+    <path d="M376 360H402" stroke="#C18A29" stroke-width="6" stroke-linecap="round"/>
+    <text x="302" y="574" fill="#334252" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Smooth first-night flow</text>
+
+    <path d="M708 523L734 420L777 452L820 340L860 523H708Z" fill="#7A9BC3"/>
+    <rect x="689" y="523" width="190" height="10" rx="5" fill="#6488B6"/>
+    <path d="M742 382H823" stroke="#CFDDF2" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="781" cy="355" r="24" fill="#DDE8F7"/>
+    <text x="686" y="574" fill="#334252" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Value deeper into fall</text>
+
+    <path d="M1080 520C1080 443 1142 381 1219 381C1296 381 1358 443 1358 520H1080Z" fill="#C98670"/>
+    <rect x="1118" y="342" width="202" height="178" rx="101" fill="#D9A28F"/>
+    <rect x="1139" y="363" width="160" height="136" rx="80" fill="#F4E2DB"/>
+    <rect x="1088" y="520" width="262" height="12" rx="6" fill="#B1705A"/>
+    <text x="1086" y="574" fill="#334252" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Highest iconic payoff</text>
+  </g>
+  <g>
+    <rect x="220" y="696" width="1160" height="84" rx="24" fill="#FFFFFF" fill-opacity="0.62"/>
+    <text x="254" y="748" fill="#24384C" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">EES live since April 10, 2026</text>
+    <text x="748" y="748" fill="#24384C" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">ETIAS planned for Q4 2026</text>
+  </g>
+</svg>

@@ -1,0 +1,55 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#EEF2F7"/>
+  <rect x="64" y="64" width="1472" height="772" rx="40" fill="url(#bg)"/>
+  <circle cx="1280" cy="214" r="112" fill="#D7E6F4" opacity="0.8"/>
+  <circle cx="1336" cy="182" r="42" fill="#F4D9C6" opacity="0.8"/>
+  <path d="M189 692C331 561 465 501 597 500C709 500 822 546 947 546C1095 546 1220 476 1389 316" stroke="#5B7C99" stroke-width="16" stroke-linecap="round" stroke-dasharray="14 22"/>
+  <g filter="url(#cardShadow)">
+    <rect x="150" y="170" width="428" height="505" rx="28" fill="#FBFCFE"/>
+    <rect x="186" y="214" width="156" height="110" rx="16" fill="#214B72"/>
+    <text x="216" y="262" fill="#F8FBFF" font-family="Arial, sans-serif" font-size="30" font-weight="700">USA</text>
+    <text x="216" y="298" fill="#B8D2EA" font-family="Arial, sans-serif" font-size="18">Passport</text>
+    <rect x="186" y="372" width="356" height="24" rx="12" fill="#D9E4EF"/>
+    <rect x="186" y="414" width="300" height="18" rx="9" fill="#E8EEF5"/>
+    <rect x="186" y="452" width="332" height="18" rx="9" fill="#E8EEF5"/>
+    <rect x="186" y="510" width="170" height="56" rx="16" fill="#DCE9D9"/>
+    <text x="210" y="545" fill="#3D6947" font-family="Arial, sans-serif" font-size="24" font-weight="700">EES live</text>
+    <rect x="372" y="510" width="170" height="56" rx="16" fill="#F3E7D8"/>
+    <text x="393" y="545" fill="#946A39" font-family="Arial, sans-serif" font-size="24" font-weight="700">ETIAS later</text>
+  </g>
+  <g filter="url(#cardShadow)">
+    <rect x="675" y="146" width="362" height="220" rx="30" fill="#FCFCFD"/>
+    <text x="719" y="211" fill="#223649" font-family="Arial, sans-serif" font-size="26" font-weight="700">First entry</text>
+    <text x="719" y="251" fill="#5B6C7D" font-family="Arial, sans-serif" font-size="22">Keep arrival day light</text>
+    <text x="719" y="287" fill="#5B6C7D" font-family="Arial, sans-serif" font-size="22">Choose easy transfer</text>
+    <text x="719" y="323" fill="#5B6C7D" font-family="Arial, sans-serif" font-size="22">Book a simple first hotel</text>
+  </g>
+  <g filter="url(#cardShadow)">
+    <rect x="958" y="474" width="460" height="214" rx="32" fill="#FFFDFC"/>
+    <rect x="1004" y="518" width="122" height="122" rx="24" fill="#C9D9E8"/>
+    <path d="M1029 599V561L1064 534L1099 561V599" stroke="#365777" stroke-width="12" stroke-linejoin="round"/>
+    <path d="M1050 598V574H1078V598" stroke="#365777" stroke-width="12" stroke-linejoin="round"/>
+    <text x="1160" y="555" fill="#223649" font-family="Arial, sans-serif" font-size="30" font-weight="700">Hotel plan</text>
+    <text x="1160" y="595" fill="#5B6C7D" font-family="Arial, sans-serif" font-size="22">Central area</text>
+    <text x="1160" y="628" fill="#5B6C7D" font-family="Arial, sans-serif" font-size="22">Late check-in confidence</text>
+  </g>
+  <path d="M883 491C897 473 914 456 934 441C958 423 985 413 1015 412" stroke="#214B72" stroke-width="14" stroke-linecap="round"/>
+  <path d="M857 502L818 454L847 410L905 429L902 484L857 502Z" fill="#214B72"/>
+  <text x="151" y="766" fill="#27405A" font-family="Arial, sans-serif" font-size="48" font-weight="700">US to Europe 2026</text>
+  <text x="151" y="818" fill="#5B6C7D" font-family="Arial, sans-serif" font-size="28">EES is active. ETIAS has not started yet.</text>
+  <defs>
+    <linearGradient id="bg" x1="116" y1="118" x2="1463" y2="771" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F9FBFD"/>
+      <stop offset="1" stop-color="#E4EBF3"/>
+    </linearGradient>
+    <filter id="cardShadow" x="130" y="126" width="1328" height="582" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="14"/>
+      <feGaussianBlur stdDeviation="10"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.193333 0 0 0 0 0.283333 0 0 0 0 0.39 0 0 0 0.12 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
+    </filter>
+  </defs>
+</svg>

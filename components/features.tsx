@@ -78,7 +78,7 @@ export function Features() {
         };
 
   return (
-    <section id="how-it-works" className="px-4 pb-16 sm:px-6 lg:px-8">
+    <section id="how-it-works" className="scroll-mt-36 px-4 pb-16 sm:px-6 lg:scroll-mt-40 lg:px-8">
       <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[1.35fr_0.65fr]">
         <div className="grid gap-4 rounded-[2rem] bg-white p-6 shadow-card sm:grid-cols-3 sm:p-8">
           {copy.items.map(({ title, description }, index) => {

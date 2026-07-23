@@ -116,7 +116,7 @@ export function HomePage({ featuredBlog }: HomePageProps) {
         <Hero />
       </div>
 
-      <section id="smart-trips" className="px-4 py-6 sm:px-6 lg:px-8">
+      <section id="smart-trips" className="scroll-mt-28 px-4 py-6 sm:px-6 lg:scroll-mt-32 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <FlightDealsStrip />
 

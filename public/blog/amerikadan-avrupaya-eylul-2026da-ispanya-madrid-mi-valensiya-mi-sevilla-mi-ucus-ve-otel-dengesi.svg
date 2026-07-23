@@ -1,0 +1,72 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="160" y1="90" x2="1460" y2="840" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7C873"/>
+      <stop offset="0.48" stop-color="#F29E4C"/>
+      <stop offset="1" stop-color="#D9643A"/>
+    </linearGradient>
+    <linearGradient id="card" x1="370" y1="220" x2="1230" y2="720" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF7ED"/>
+      <stop offset="1" stop-color="#FFE4C7"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#2F8F9D"/>
+      <stop offset="1" stop-color="#66C7D8"/>
+    </linearGradient>
+    <filter id="shadow" x="256" y="150" width="1088" height="608" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="20" stdDeviation="30" flood-color="#7A2E1A" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" rx="40" fill="url(#bg)"/>
+  <circle cx="1320" cy="172" r="116" fill="#FFF4C2" fill-opacity="0.58"/>
+  <circle cx="1475" cy="278" r="44" fill="#FFD78F" fill-opacity="0.55"/>
+  <path d="M0 710C180 648 311 675 476 717C636 758 805 812 1006 782C1180 756 1368 663 1600 701V900H0V710Z" fill="#BD5131" fill-opacity="0.32"/>
+  <path d="M0 770C180 708 395 743 597 804C808 869 1040 870 1277 804C1389 773 1490 736 1600 744V900H0V770Z" fill="#9E3C23" fill-opacity="0.26"/>
+
+  <g filter="url(#shadow)">
+    <rect x="286" y="180" width="1028" height="548" rx="38" fill="url(#card)"/>
+  </g>
+
+  <text x="366" y="290" fill="#8D3F1F" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700" letter-spacing="3">SEPTEMBER 2026 SPAIN</text>
+  <text x="366" y="356" fill="#3E1D13" font-family="Georgia, 'Times New Roman', serif" font-size="74" font-weight="700">Madrid</text>
+  <text x="661" y="356" fill="#C26B2E" font-family="Georgia, 'Times New Roman', serif" font-size="48" font-weight="700">vs</text>
+  <text x="760" y="356" fill="#3E1D13" font-family="Georgia, 'Times New Roman', serif" font-size="74" font-weight="700">Valencia</text>
+  <text x="1102" y="356" fill="#C26B2E" font-family="Georgia, 'Times New Roman', serif" font-size="48" font-weight="700">vs</text>
+  <text x="1182" y="356" fill="#3E1D13" font-family="Georgia, 'Times New Roman', serif" font-size="74" font-weight="700">Seville</text>
+
+  <text x="366" y="420" fill="#6B3A28" font-family="Arial, Helvetica, sans-serif" font-size="28">US to Europe shoulder season flight and hotel balance</text>
+
+  <g transform="translate(364 492)">
+    <rect width="240" height="146" rx="24" fill="#FFFDF7"/>
+    <text x="28" y="44" fill="#A8542D" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Madrid</text>
+    <text x="28" y="82" fill="#3E1D13" font-family="Arial, Helvetica, sans-serif" font-size="18">Cleanest US flight logic</text>
+    <text x="28" y="112" fill="#3E1D13" font-family="Arial, Helvetica, sans-serif" font-size="18">Best first-entry ease</text>
+    <circle cx="196" cy="58" r="22" fill="#E36C3D"/>
+    <path d="M182 70H210V86H182V70Z" fill="#FFD36A"/>
+    <path d="M186 40H206L198 58H194L186 40Z" fill="#FFD36A"/>
+  </g>
+
+  <g transform="translate(674 492)">
+    <rect width="252" height="146" rx="24" fill="#FFFDF7"/>
+    <text x="28" y="44" fill="#A8542D" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Valencia</text>
+    <text x="28" y="82" fill="#3E1D13" font-family="Arial, Helvetica, sans-serif" font-size="18">Quietest total-value mix</text>
+    <text x="28" y="112" fill="#3E1D13" font-family="Arial, Helvetica, sans-serif" font-size="18">City + coast flexibility</text>
+    <rect x="180" y="36" width="38" height="38" rx="12" fill="url(#sea)"/>
+    <path d="M170 84C183 68 199 67 214 84C227 98 240 98 252 84V102H170V84Z" fill="#3AAFC4"/>
+  </g>
+
+  <g transform="translate(996 492)">
+    <rect width="240" height="146" rx="24" fill="#FFFDF7"/>
+    <text x="28" y="44" fill="#A8542D" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Seville</text>
+    <text x="28" y="82" fill="#3E1D13" font-family="Arial, Helvetica, sans-serif" font-size="18">Strongest atmosphere</text>
+    <text x="28" y="112" fill="#3E1D13" font-family="Arial, Helvetica, sans-serif" font-size="18">Needs tighter hotel logic</text>
+    <path d="M180 76C180 55 196 38 218 38C238 38 254 54 254 76C254 93 243 107 227 113V126H207V113C191 107 180 93 180 76Z" fill="#C7452D"/>
+    <path d="M205 78C214 68 223 58 232 46" stroke="#FFD36A" stroke-width="6" stroke-linecap="round"/>
+  </g>
+
+  <path d="M463 448C592 426 695 427 812 447C922 466 1034 473 1149 452" stroke="#B45A2E" stroke-width="7" stroke-linecap="round" stroke-dasharray="2 18"/>
+  <path d="M1094 428C1076 419 1056 405 1035 391L1098 377L1094 428Z" fill="#B45A2E"/>
+
+  <text x="369" y="688" fill="#6B3A28" font-family="Arial, Helvetica, sans-serif" font-size="24">EES active since April 10, 2026  |  ETIAS not yet live as of July 20, 2026</text>
+</svg>

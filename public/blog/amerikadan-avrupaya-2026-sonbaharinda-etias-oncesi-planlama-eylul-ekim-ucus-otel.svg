@@ -1,0 +1,92 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="164" y1="72" x2="1438" y2="826" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFF1E6"/>
+      <stop offset="0.44" stop-color="#F8FAFC"/>
+      <stop offset="1" stop-color="#E0F2FE"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F5F7FB"/>
+    </linearGradient>
+    <linearGradient id="route" x1="260" y1="522" x2="1318" y2="438" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#C2410C"/>
+      <stop offset="0.48" stop-color="#0F766E"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#0F172A" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1298" cy="180" r="174" fill="#FFEDD5" opacity="0.9"/>
+  <circle cx="260" cy="730" r="204" fill="#DBEAFE" opacity="0.82"/>
+  <circle cx="1314" cy="744" r="152" fill="#DCFCE7" opacity="0.72"/>
+
+  <g opacity="0.18">
+    <path d="M228 330C374 250 540 222 702 256C826 282 944 360 1058 372C1166 382 1260 344 1372 272" stroke="#475569" stroke-width="10" stroke-linecap="round"/>
+    <path d="M260 404C392 338 552 320 682 350C798 376 894 434 1008 448C1116 460 1218 438 1350 392" stroke="#475569" stroke-width="10" stroke-linecap="round"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="104" y="96" width="710" height="250" rx="36" fill="url(#card)"/>
+  </g>
+  <text x="154" y="174" fill="#0F172A" font-family="Georgia, 'Times New Roman', serif" font-size="56" font-weight="700">
+    Fall 2026 Europe
+  </text>
+  <text x="154" y="238" fill="#0F172A" font-family="Georgia, 'Times New Roman', serif" font-size="56" font-weight="700">
+    ETIAS-Prelaunch Planning
+  </text>
+  <text x="154" y="290" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="28">
+    Lock the right hotel first, watch the right flight window second
+  </text>
+
+  <g>
+    <path d="M286 522C420 448 558 420 694 438C820 454 916 516 1030 528C1140 540 1226 516 1318 438" stroke="url(#route)" stroke-width="12" stroke-linecap="round" stroke-dasharray="14 18"/>
+    <circle cx="286" cy="522" r="14" fill="#C2410C"/>
+    <circle cx="1318" cy="438" r="14" fill="#2563EB"/>
+    <path d="M792 450L822 462L810 482L828 504L802 512L792 492L764 500L776 476L748 462L776 454L772 426L792 444L818 432L814 450L842 454L792 450Z" fill="#0F172A"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="144" y="582" width="286" height="178" rx="30" fill="url(#card)"/>
+    <rect x="492" y="446" width="286" height="178" rx="30" fill="url(#card)"/>
+    <rect x="838" y="582" width="286" height="178" rx="30" fill="url(#card)"/>
+    <rect x="1146" y="348" width="304" height="220" rx="30" fill="url(#card)"/>
+  </g>
+
+  <g>
+    <text x="180" y="638" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700">EES live</text>
+    <text x="180" y="682" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">First-entry flow matters more</text>
+    <rect x="180" y="708" width="182" height="14" rx="7" fill="#C2410C"/>
+    <rect x="180" y="734" width="128" height="12" rx="6" fill="#CBD5E1"/>
+  </g>
+
+  <g>
+    <text x="528" y="500" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Flight timing</text>
+    <text x="528" y="544" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">Use alerts, do not buy blindly</text>
+    <rect x="528" y="570" width="170" height="14" rx="7" fill="#0F766E"/>
+    <rect x="528" y="596" width="140" height="12" rx="6" fill="#CBD5E1"/>
+  </g>
+
+  <g>
+    <text x="872" y="638" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Refundable hotel</text>
+    <text x="872" y="682" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">Often the smarter early lock</text>
+    <rect x="872" y="708" width="198" height="14" rx="7" fill="#2563EB"/>
+    <rect x="872" y="734" width="146" height="12" rx="6" fill="#CBD5E1"/>
+  </g>
+
+  <g>
+    <rect x="1186" y="120" width="208" height="108" rx="24" fill="#0F172A"/>
+    <text x="1222" y="164" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Sep-Oct 2026</text>
+    <text x="1222" y="200" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="22">Plan before prices harden</text>
+  </g>
+
+  <g>
+    <text x="1180" y="412" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">ETIAS signal</text>
+    <text x="1180" y="456" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">Scheduled for late 2026</text>
+    <text x="1180" y="494" fill="#0F766E" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Exact start date still pending</text>
+    <text x="1180" y="530" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="22">Design your first night around low friction</text>
+  </g>
+</svg>

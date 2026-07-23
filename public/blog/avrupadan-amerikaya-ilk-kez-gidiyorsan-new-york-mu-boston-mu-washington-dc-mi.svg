@@ -1,0 +1,28 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#F6EFE4"/>
+  <rect y="540" width="1600" height="360" fill="#183B4E"/>
+  <path d="M0 604C176 566 336 560 480 592C626 624 740 628 872 598C1018 565 1168 528 1328 552C1436 568 1528 596 1600 626V900H0V604Z" fill="#E78B48"/>
+  <path d="M0 656C130 626 274 630 398 658C526 688 662 704 796 682C950 656 1078 610 1242 620C1384 630 1492 678 1600 726V900H0V656Z" fill="#4F959D"/>
+  <circle cx="1278" cy="148" r="78" fill="#F3C969"/>
+  <rect x="88" y="308" width="332" height="268" rx="26" fill="#FFF9F2"/>
+  <rect x="438" y="308" width="332" height="268" rx="26" fill="#FFF9F2"/>
+  <rect x="788" y="308" width="332" height="268" rx="26" fill="#FFF9F2"/>
+  <text x="132" y="372" fill="#183B4E" font-family="Georgia, 'Times New Roman', serif" font-size="38" font-weight="700">New York</text>
+  <text x="483" y="372" fill="#183B4E" font-family="Georgia, 'Times New Roman', serif" font-size="38" font-weight="700">Boston</text>
+  <text x="826" y="372" fill="#183B4E" font-family="Georgia, 'Times New Roman', serif" font-size="38" font-weight="700">Washington DC</text>
+  <text x="132" y="424" fill="#6A7280" font-family="Arial, sans-serif" font-size="21">High energy, high icon density</text>
+  <text x="483" y="424" fill="#6A7280" font-family="Arial, sans-serif" font-size="21">Compact flow, easier adaptation</text>
+  <text x="826" y="424" fill="#6A7280" font-family="Arial, sans-serif" font-size="21">Museum depth, steadier budget</text>
+  <rect x="130" y="463" width="244" height="14" rx="7" fill="#E78B48"/>
+  <rect x="481" y="463" width="206" height="14" rx="7" fill="#4F959D"/>
+  <rect x="830" y="463" width="220" height="14" rx="7" fill="#F3C969"/>
+  <text x="131" y="520" fill="#183B4E" font-family="Arial, sans-serif" font-size="26" font-weight="700">Fast pace</text>
+  <text x="481" y="520" fill="#183B4E" font-family="Arial, sans-serif" font-size="26" font-weight="700">Balanced start</text>
+  <text x="830" y="520" fill="#183B4E" font-family="Arial, sans-serif" font-size="26" font-weight="700">Calmer structure</text>
+  <path d="M148 690H254V576H282V690H326V530H362V690H402V618H430V690H492V742H148V690Z" fill="#102A38"/>
+  <path d="M594 742H674V596H724V670H792V618H836V742H594Z" fill="#102A38"/>
+  <path d="M1088 742H1142V612H1180V742H1238V560H1282V742H1340V648H1380V742H1440V782H1088V742Z" fill="#102A38"/>
+  <path d="M1200 560L1220 508L1240 560H1200Z" fill="#102A38"/>
+  <text x="88" y="110" fill="#183B4E" font-family="Georgia, 'Times New Roman', serif" font-size="66" font-weight="700">First US Trip from Europe</text>
+  <text x="88" y="166" fill="#5B6472" font-family="Arial, sans-serif" font-size="30">Compare the flight, hotel, and city pace before you book.</text>
+</svg>

@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, PlaneTakeoff } from "lucide-react";
 import { DEAL_MARKETS, DEAL_MARKET_ORDER } from "@/lib/flight-deals";
+import { useLanguage } from "@/components/language-provider";
 
 const countryImages: Record<string, string> = {
   turkey:
@@ -12,19 +15,50 @@ const countryImages: Record<string, string> = {
 };
 
 export function FlightDealsCountryGrid() {
+  const { language } = useLanguage();
+  const copy =
+    language === "ru"
+      ? {
+          eyebrow: "Выгодные перелёты",
+          title: "Страницы лучших авиабилетов по странам вылета",
+          description:
+            "Выберите страну вылета и сравните самые сильные международные маршруты с кэшированными живыми ценами.",
+          from: "вылет из",
+          suffix: "выгодные авиабилеты",
+          open: "Открыть страницу"
+        }
+      : language === "tr"
+        ? {
+            eyebrow: "Fırsat Uçuşlar",
+            title: "Ülkeye göre fırsat uçak biletleri",
+            description:
+              "Kalkış ülkeni seç, cache'lenmiş canlı fiyatlarla en güçlü yurtdışı rotalarını tek sayfada gör. Her ülke için ayrı SEO sayfası açıldı.",
+            from: "kalkışlı",
+            suffix: "fırsat uçak biletleri",
+            open: "Sayfayı aç"
+          }
+        : {
+            eyebrow: "Deal Flights",
+            title: "Best flight deal pages by departure country",
+            description:
+              "Pick your departure country and compare the strongest outbound routes with cached live prices on one page.",
+            from: "departing from",
+            suffix: "flight deals",
+            open: "Open page"
+          };
+
   return (
     <section className="px-4 pb-16 pt-36 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="max-w-3xl">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-            Fırsat Uçuşlar
+            {copy.eyebrow}
           </p>
           <h1 className="mt-3 text-4xl font-extrabold tracking-[-0.05em] text-ink sm:text-5xl">
-            Ülkeye göre fırsat uçak biletleri
+            {copy.title}
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-7 text-slate-500">
-            Kalkış ülkeni seç, cache&apos;lenmiş canlı fiyatlarla en güçlü yurtdışı
-            rotalarını tek sayfada gör. Her ülke için ayrı SEO sayfası açıldı.
+            {copy.description}
           </p>
         </div>
 
@@ -42,7 +76,7 @@ export function FlightDealsCountryGrid() {
                   <div className="relative h-56 overflow-hidden">
                     <img
                       src={countryImages[market]}
-                      alt={item.displayName.tr}
+                      alt={item.displayName[language]}
                       className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.08)_0%,rgba(15,23,42,0.48)_100%)]" />
@@ -53,16 +87,16 @@ export function FlightDealsCountryGrid() {
 
                   <div className="flex flex-1 flex-col p-6">
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-                      {item.originCity} kalkışlı
+                      {item.originCity} {copy.from}
                     </p>
                     <h2 className="mt-3 min-h-[4.75rem] text-3xl font-extrabold tracking-[-0.05em] text-ink">
-                      {item.displayName.tr} fırsat uçak biletleri
+                      {item.displayName[language]} {copy.suffix}
                     </h2>
                     <p className="mt-4 min-h-[4.5rem] text-sm leading-6 text-slate-500">
-                      {item.summary.tr}
+                      {item.summary[language]}
                     </p>
                     <span className="mt-auto inline-flex items-center gap-2 rounded-full bg-chartreuse px-4 py-3 text-sm font-bold text-black transition group-hover:brightness-95">
-                      Sayfayı aç
+                      {copy.open}
                       <ArrowRight className="h-4 w-4" />
                     </span>
                   </div>

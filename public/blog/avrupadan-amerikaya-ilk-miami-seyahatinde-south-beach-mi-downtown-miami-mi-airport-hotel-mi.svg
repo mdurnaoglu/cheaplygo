@@ -1,0 +1,109 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#FFF7EE"/>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <circle cx="1324" cy="136" r="156" fill="#FFD28A" fill-opacity="0.48"/>
+  <circle cx="224" cy="730" r="224" fill="#1F7A8C" fill-opacity="0.14"/>
+  <path d="M0 628C190 590 344 592 522 640C726 694 930 790 1178 768C1372 752 1490 690 1600 646V900H0V628Z" fill="url(#ocean)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="108" y="94" width="642" height="304" rx="34" fill="#FFFDF8"/>
+    <rect x="108" y="94" width="642" height="304" rx="34" stroke="#ECD9C4"/>
+    <text x="156" y="164" fill="#1D3342" font-size="44" font-family="Georgia, serif" font-weight="700">First Miami Stay Logic</text>
+    <text x="156" y="220" fill="#5E6C76" font-size="27" font-family="Arial, sans-serif">South Beach, Downtown, or airport hotel?</text>
+    <rect x="156" y="262" width="186" height="56" rx="18" fill="#0F766E"/>
+    <text x="200" y="299" fill="#F5FFFD" font-size="23" font-family="Arial, sans-serif" font-weight="700">Jet Lag Flow</text>
+    <rect x="356" y="262" width="194" height="56" rx="18" fill="#DB7C4D"/>
+    <text x="404" y="299" fill="#FFF8F0" font-size="23" font-family="Arial, sans-serif" font-weight="700">Beach vs City</text>
+    <text x="156" y="356" fill="#1D3342" font-size="24" font-family="Arial, sans-serif">Pick the area that handles your first 24 hours best.</text>
+  </g>
+
+  <g filter="url(#panelShadow)">
+    <rect x="962" y="112" width="462" height="252" rx="30" fill="#FFF8EE"/>
+    <rect x="962" y="112" width="462" height="252" rx="30" stroke="#E5D0B8"/>
+    <text x="1010" y="174" fill="#A45A31" font-size="31" font-family="Georgia, serif" font-weight="700">Area Match</text>
+    <text x="1010" y="224" fill="#73492E" font-size="22" font-family="Arial, sans-serif">South Beach: iconic vacation mood</text>
+    <text x="1010" y="260" fill="#73492E" font-size="22" font-family="Arial, sans-serif">Downtown: cleaner city logistics</text>
+    <text x="1010" y="296" fill="#73492E" font-size="22" font-family="Arial, sans-serif">Airport: easiest late-night landing</text>
+  </g>
+
+  <path d="M576 482C698 434 858 428 976 456C1090 482 1198 540 1360 522" stroke="url(#route)" stroke-width="10" stroke-linecap="round" stroke-dasharray="16 18"/>
+  <g filter="url(#planeShadow)">
+    <path d="M936 463L974 438L1026 444L994 470L1054 499L1038 516L980 497L964 542L940 536L947 489L906 491L898 474L936 463Z" fill="#FFFDF9"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="156" y="492" width="648" height="222" rx="30" fill="#19394A"/>
+    <rect x="156" y="492" width="648" height="222" rx="30" stroke="#355A6C"/>
+    <rect x="208" y="542" width="162" height="116" rx="22" fill="#F08A5D"/>
+    <text x="232" y="590" fill="#FFF7F0" font-size="29" font-family="Georgia, serif" font-weight="700">South Beach</text>
+    <text x="233" y="626" fill="#FFF7F0" font-size="18" font-family="Arial, sans-serif">Beach-first, scenic, lively</text>
+    <rect x="398" y="542" width="162" height="116" rx="22" fill="#7CC6C9"/>
+    <text x="420" y="590" fill="#133540" font-size="29" font-family="Georgia, serif" font-weight="700">Downtown</text>
+    <text x="420" y="626" fill="#1D4752" font-size="18" font-family="Arial, sans-serif">Balanced, modern, central</text>
+    <rect x="588" y="542" width="162" height="116" rx="22" fill="#F2C879"/>
+    <text x="620" y="590" fill="#634015" font-size="29" font-family="Georgia, serif" font-weight="700">Airport</text>
+    <text x="608" y="626" fill="#714E21" font-size="18" font-family="Arial, sans-serif">Best for late arrivals</text>
+  </g>
+
+  <g filter="url(#panelShadow)">
+    <rect x="1036" y="468" width="420" height="238" rx="30" fill="#F6FCFC"/>
+    <rect x="1036" y="468" width="420" height="238" rx="30" stroke="#CFE2E1"/>
+    <text x="1082" y="528" fill="#0F766E" font-size="29" font-family="Georgia, serif" font-weight="700">Total Trip Value</text>
+    <text x="1082" y="576" fill="#39575D" font-size="21" font-family="Arial, sans-serif">Look beyond the room rate.</text>
+    <text x="1082" y="610" fill="#39575D" font-size="21" font-family="Arial, sans-serif">Transfers, sleep quality, and</text>
+    <text x="1082" y="644" fill="#39575D" font-size="21" font-family="Arial, sans-serif">walkable time change the answer.</text>
+  </g>
+
+  <g opacity="0.96">
+    <rect x="438" y="742" width="724" height="92" rx="28" fill="#FFFDF8"/>
+    <text x="484" y="798" fill="#1D3342" font-size="30" font-family="Georgia, serif" font-weight="700">The smartest Miami hotel area is the one that fits your arrival rhythm.</text>
+  </g>
+
+  <defs>
+    <linearGradient id="sky" x1="120" y1="40" x2="1422" y2="834" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF3E0"/>
+      <stop offset="0.5" stop-color="#EAF7F5"/>
+      <stop offset="1" stop-color="#D9E8EE"/>
+    </linearGradient>
+    <linearGradient id="ocean" x1="88" y1="610" x2="1428" y2="852" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#20445B"/>
+      <stop offset="0.48" stop-color="#16697A"/>
+      <stop offset="1" stop-color="#2C5364"/>
+    </linearGradient>
+    <linearGradient id="route" x1="576" y1="482" x2="1360" y2="522" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D07A45"/>
+      <stop offset="0.5" stop-color="#F0C77A"/>
+      <stop offset="1" stop-color="#2C9C95"/>
+    </linearGradient>
+    <filter id="shadow" x="88" y="82" width="780" height="660" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="8" dy="14"/>
+      <feGaussianBlur stdDeviation="14"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.121569 0 0 0 0 0.2 0 0 0 0 0.258824 0 0 0 0.14 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
+    </filter>
+    <filter id="panelShadow" x="938" y="96" width="572" height="638" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="8" dy="14"/>
+      <feGaussianBlur stdDeviation="16"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.160784 0 0 0 0 0.227451 0 0 0 0 0.258824 0 0 0 0.12 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
+    </filter>
+    <filter id="planeShadow" x="883" y="427" width="192" height="133" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="5" dy="7"/>
+      <feGaussianBlur stdDeviation="7"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.109804 0 0 0 0 0.156863 0 0 0 0 0.188235 0 0 0 0.22 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
+    </filter>
+  </defs>
+</svg>

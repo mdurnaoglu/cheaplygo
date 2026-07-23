@@ -1,0 +1,63 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#F3EBDD"/>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1332" cy="168" r="138" fill="#F4B46E" fill-opacity="0.26"/>
+  <circle cx="1244" cy="250" r="82" fill="#FFF6E4" fill-opacity="0.7"/>
+  <circle cx="248" cy="138" r="120" fill="#A4C2C0" fill-opacity="0.28"/>
+  <path d="M0 680C153 639 272 629 410 652C566 679 662 748 835 753C1044 760 1203 644 1383 632C1474 626 1548 636 1600 651V900H0V680Z" fill="#E4D4BC"/>
+  <path d="M0 739C131 699 249 690 392 710C556 734 672 807 857 809C1047 812 1187 716 1360 703C1458 696 1536 708 1600 726V900H0V739Z" fill="#C5D7D1"/>
+  <g filter="url(#shadow)">
+    <rect x="110" y="118" width="620" height="664" rx="36" fill="#FFF9F0"/>
+  </g>
+  <rect x="150" y="160" width="540" height="82" rx="18" fill="#153A4A"/>
+  <text x="184" y="213" fill="#FFF9F0" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">US to Europe / Fall 2026</text>
+  <text x="184" y="294" fill="#153A4A" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">ETIAS</text>
+  <text x="320" y="294" fill="#56727D" font-family="Arial, Helvetica, sans-serif" font-size="26">Not active yet</text>
+  <rect x="184" y="314" width="472" height="2" fill="#E8DCC9"/>
+  <text x="184" y="376" fill="#153A4A" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">EES</text>
+  <text x="320" y="376" fill="#56727D" font-family="Arial, Helvetica, sans-serif" font-size="26">Fully active since Apr 10, 2026</text>
+  <rect x="184" y="398" width="472" height="2" fill="#E8DCC9"/>
+  <text x="184" y="460" fill="#153A4A" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">Hotel logic</text>
+  <text x="184" y="505" fill="#56727D" font-family="Arial, Helvetica, sans-serif" font-size="24">Choose one well-located base hotel</text>
+  <text x="184" y="551" fill="#56727D" font-family="Arial, Helvetica, sans-serif" font-size="24">for a 3-6 night trip.</text>
+  <rect x="184" y="575" width="472" height="2" fill="#E8DCC9"/>
+  <text x="184" y="638" fill="#153A4A" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">Flight logic</text>
+  <text x="184" y="683" fill="#56727D" font-family="Arial, Helvetica, sans-serif" font-size="24">Arrival time and airport transfer ease</text>
+  <text x="184" y="729" fill="#56727D" font-family="Arial, Helvetica, sans-serif" font-size="24">matter as much as headline fare.</text>
+  <g filter="url(#shadow)">
+    <rect x="836" y="130" width="640" height="590" rx="42" fill="#FCF5E7"/>
+  </g>
+  <rect x="885" y="195" width="540" height="430" rx="32" fill="#F1E3CB"/>
+  <path d="M926 558C1010 500 1077 486 1148 502C1213 516 1258 559 1330 571C1363 576 1396 575 1426 570V625H926V558Z" fill="#88A89C"/>
+  <rect x="1006" y="416" width="60" height="142" rx="9" fill="#D68A56"/>
+  <rect x="1080" y="369" width="74" height="189" rx="9" fill="#C86D44"/>
+  <rect x="1174" y="338" width="86" height="220" rx="9" fill="#B8573F"/>
+  <rect x="1279" y="391" width="56" height="167" rx="9" fill="#D9A16A"/>
+  <path d="M889 261C1049 265 1205 264 1424 252" stroke="#E7B87C" stroke-width="12" stroke-linecap="round"/>
+  <path d="M1040 244L1121 233L1261 240" stroke="#D27E52" stroke-width="12" stroke-linecap="round"/>
+  <path d="M931 256C989 236 1025 228 1058 228C1090 228 1119 237 1155 257" stroke="#153A4A" stroke-width="7" stroke-linecap="round"/>
+  <path d="M1069 232C1118 192 1178 177 1238 181C1297 185 1364 209 1426 261" stroke="#153A4A" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="1112" cy="312" r="20" fill="#153A4A"/>
+  <path d="M1109 268L1246 221C1267 214 1288 220 1297 237C1306 253 1301 274 1283 287L1171 368C1152 383 1126 378 1114 357L1098 330C1086 309 1090 278 1109 268Z" fill="#FFF9F0"/>
+  <path d="M1124 277L1234 239C1250 233 1266 239 1272 252C1278 264 1273 279 1259 289L1178 349C1165 358 1147 354 1138 342L1121 319C1112 307 1113 287 1124 277Z" fill="#153A4A"/>
+  <path d="M1204 432C1237 406 1270 390 1309 386C1357 381 1403 395 1451 430" stroke="#153A4A" stroke-width="8" stroke-linecap="round"/>
+  <rect x="887" y="640" width="540" height="16" rx="8" fill="#E7D8BF"/>
+  <text x="900" y="777" fill="#153A4A" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="700">Fall booking matters more than hype.</text>
+  <text x="900" y="824" fill="#6A7D83" font-family="Arial, Helvetica, sans-serif" font-size="26">Cheaper-looking is not always smarter.</text>
+  <defs>
+    <linearGradient id="bg" x1="143" y1="69" x2="1426" y2="860" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8F1E4"/>
+      <stop offset="1" stop-color="#E8D7BD"/>
+    </linearGradient>
+    <filter id="shadow" x="76" y="98" width="1434" height="734" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="10"/>
+      <feGaussianBlur stdDeviation="17"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.0823529 0 0 0 0 0.227451 0 0 0 0 0.290196 0 0 0 0.12 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+  </defs>
+</svg>
