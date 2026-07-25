@@ -1,0 +1,94 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#09111E"/>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1295" cy="150" r="228" fill="#153B66" fill-opacity="0.42"/>
+  <circle cx="249" cy="768" r="284" fill="#0C7A7A" fill-opacity="0.18"/>
+  <path d="M0 678C205 631 365 626 519 663C687 703 826 793 1008 785C1181 777 1377 647 1600 632V900H0V678Z" fill="url(#ground)"/>
+  <path d="M127 584C275 518 429 520 540 562C656 606 745 603 846 554C952 502 1068 410 1220 410C1330 410 1441 458 1549 448" stroke="url(#route)" stroke-width="11" stroke-linecap="round" stroke-dasharray="14 18"/>
+  <g filter="url(#planeShadow)">
+    <path d="M1147 431L1188 403L1235 410L1208 434L1260 456L1247 473L1194 459L1177 499L1157 494L1163 451L1124 455L1117 439L1147 431Z" fill="#F8FAFC"/>
+  </g>
+  <g opacity="0.96">
+    <rect x="112" y="98" width="555" height="290" rx="34" fill="#F8FAFC"/>
+    <rect x="112" y="98" width="555" height="290" rx="34" stroke="#D6E0EA"/>
+    <text x="156" y="170" fill="#0F172A" font-size="42" font-family="Georgia, serif" font-weight="700">US to Europe: Fall 2026</text>
+    <text x="156" y="220" fill="#475569" font-size="26" font-family="Arial, sans-serif">Paris, Amsterdam, or Barcelona?</text>
+    <rect x="156" y="258" width="150" height="54" rx="16" fill="#1D4ED8"/>
+    <text x="199" y="292" fill="#EFF6FF" font-size="24" font-family="Arial, sans-serif" font-weight="700">Flights</text>
+    <rect x="322" y="258" width="137" height="54" rx="16" fill="#0F766E"/>
+    <text x="359" y="292" fill="#ECFEFF" font-size="24" font-family="Arial, sans-serif" font-weight="700">Hotels</text>
+    <rect x="474" y="258" width="139" height="54" rx="16" fill="#F59E0B"/>
+    <text x="510" y="292" fill="#1C1917" font-size="24" font-family="Arial, sans-serif" font-weight="700">Arrival</text>
+    <text x="156" y="348" fill="#334155" font-size="25" font-family="Arial, sans-serif">Choose the city that lowers total trip friction,</text>
+    <text x="156" y="384" fill="#334155" font-size="25" font-family="Arial, sans-serif">not just the one with the cheapest airfare.</text>
+  </g>
+  <g filter="url(#cardShadow)">
+    <rect x="979" y="150" width="430" height="170" rx="30" fill="#FFF7ED"/>
+    <rect x="979" y="150" width="430" height="170" rx="30" stroke="#FED7AA"/>
+    <text x="1022" y="207" fill="#9A3412" font-size="28" font-family="Georgia, serif" font-weight="700">Paris</text>
+    <text x="1022" y="248" fill="#7C2D12" font-size="22" font-family="Arial, sans-serif">Best for nonstop depth and classic city density.</text>
+  </g>
+  <g filter="url(#cardShadow)">
+    <rect x="1074" y="356" width="390" height="170" rx="30" fill="#EFF6FF"/>
+    <rect x="1074" y="356" width="390" height="170" rx="30" stroke="#BFDBFE"/>
+    <text x="1117" y="413" fill="#1D4ED8" font-size="28" font-family="Georgia, serif" font-weight="700">Amsterdam</text>
+    <text x="1117" y="454" fill="#1E3A8A" font-size="22" font-family="Arial, sans-serif">Best for a cleaner, more compact arrival flow.</text>
+  </g>
+  <g filter="url(#cardShadow)">
+    <rect x="940" y="565" width="430" height="170" rx="30" fill="#ECFDF5"/>
+    <rect x="940" y="565" width="430" height="170" rx="30" stroke="#A7F3D0"/>
+    <text x="983" y="622" fill="#047857" font-size="28" font-family="Georgia, serif" font-weight="700">Barcelona</text>
+    <text x="983" y="663" fill="#065F46" font-size="22" font-family="Arial, sans-serif">Best for city energy and softer early-fall rhythm.</text>
+  </g>
+  <g opacity="0.92">
+    <rect x="170" y="542" width="426" height="190" rx="28" fill="#0F172A" stroke="#334155"/>
+    <circle cx="238" cy="600" r="28" fill="#E2E8F0"/>
+    <rect x="283" y="579" width="191" height="16" rx="8" fill="#F8FAFC"/>
+    <rect x="283" y="608" width="146" height="13" rx="6.5" fill="#94A3B8"/>
+    <rect x="220" y="654" width="123" height="40" rx="14" fill="#F59E0B"/>
+    <text x="256" y="680" fill="#1C1917" font-size="19" font-family="Arial, sans-serif" font-weight="700">EES LIVE</text>
+    <rect x="360" y="654" width="171" height="40" rx="14" fill="#1D4ED8"/>
+    <text x="391" y="680" fill="#EFF6FF" font-size="19" font-family="Arial, sans-serif" font-weight="700">ETIAS NOT LIVE</text>
+  </g>
+  <g opacity="0.8">
+    <rect x="585" y="696" width="519" height="100" rx="28" fill="#F8FAFC"/>
+    <text x="634" y="756" fill="#0F172A" font-size="30" font-family="Georgia, serif" font-weight="700">The right hotel can beat the cheapest ticket.</text>
+  </g>
+  <defs>
+    <linearGradient id="bg" x1="226" y1="66" x2="1367" y2="824" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1730"/>
+      <stop offset="0.55" stop-color="#102844"/>
+      <stop offset="1" stop-color="#0A121E"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="220" y1="562" x2="1372" y2="846" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F172A"/>
+      <stop offset="0.52" stop-color="#0B253B"/>
+      <stop offset="1" stop-color="#0F3148"/>
+    </linearGradient>
+    <linearGradient id="route" x1="127" y1="584" x2="1549" y2="448" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FDBA74"/>
+      <stop offset="0.52" stop-color="#FDE68A"/>
+      <stop offset="1" stop-color="#7DD3FC"/>
+    </linearGradient>
+    <filter id="cardShadow" x="913" y="128" width="589" height="629" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="6" dy="12"/>
+      <feGaussianBlur stdDeviation="13"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.0196078 0 0 0 0 0.0941176 0 0 0 0 0.188235 0 0 0 0.18 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+    <filter id="planeShadow" x="1102" y="390" width="177" height="125" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="5" dy="6"/>
+      <feGaussianBlur stdDeviation="6"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.00784314 0 0 0 0 0.0470588 0 0 0 0 0.105882 0 0 0 0.35 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+  </defs>
+</svg>
