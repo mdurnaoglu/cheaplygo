@@ -1,0 +1,91 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="104" y1="88" x2="1460" y2="842" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFF7ED"/>
+      <stop offset="0.48" stop-color="#F3F9FF"/>
+      <stop offset="1" stop-color="#E7F5F1"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F8FAFC"/>
+    </linearGradient>
+    <linearGradient id="route" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0F766E"/>
+      <stop offset="0.5" stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#EA580C"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#0F172A" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1368" cy="166" r="170" fill="#DBEAFE" opacity="0.72"/>
+  <circle cx="252" cy="742" r="202" fill="#FED7AA" opacity="0.66"/>
+  <circle cx="1308" cy="748" r="148" fill="#D1FAE5" opacity="0.7"/>
+
+  <g opacity="0.18">
+    <path d="M248 322C388 224 562 206 706 262C826 308 918 400 1020 412C1118 424 1208 388 1320 286" stroke="#334155" stroke-width="10" stroke-linecap="round"/>
+    <path d="M294 408C424 338 582 326 696 364C804 400 894 472 998 498C1102 522 1198 512 1322 446" stroke="#334155" stroke-width="10" stroke-linecap="round"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="118" y="102" width="680" height="250" rx="38" fill="url(#card)"/>
+  </g>
+  <text x="170" y="178" fill="#0F172A" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700">
+    Smarter Europe Entry
+  </text>
+  <text x="170" y="244" fill="#0F172A" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700">
+    Summer 2026
+  </text>
+  <text x="170" y="298" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="28">
+    Dublin, Reykjavik and Lisbon under peak-season pressure
+  </text>
+
+  <g>
+    <path d="M336 516C468 430 586 408 714 436C816 458 884 510 974 520C1072 530 1178 502 1282 422" stroke="url(#route)" stroke-width="12" stroke-linecap="round" stroke-dasharray="14 18"/>
+    <circle cx="338" cy="516" r="14" fill="#0F766E"/>
+    <circle cx="1282" cy="422" r="14" fill="#EA580C"/>
+    <path d="M798 448L834 462L818 482L836 506L810 514L796 492L768 500L780 478L750 462L780 456L778 426L798 444L826 430L822 450L850 452L798 448Z" fill="#0F172A"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="156" y="586" width="276" height="176" rx="30" fill="url(#card)"/>
+    <rect x="484" y="450" width="276" height="176" rx="30" fill="url(#card)"/>
+    <rect x="822" y="586" width="276" height="176" rx="30" fill="url(#card)"/>
+    <rect x="1132" y="364" width="286" height="192" rx="30" fill="url(#card)"/>
+  </g>
+
+  <g>
+    <text x="194" y="642" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700">Dublin</text>
+    <text x="194" y="688" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">Low-friction arrival</text>
+    <rect x="194" y="714" width="174" height="14" rx="7" fill="#0F766E"/>
+    <rect x="194" y="740" width="136" height="12" rx="6" fill="#CBD5E1"/>
+  </g>
+
+  <g>
+    <text x="522" y="506" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700">Reykjavik</text>
+    <text x="522" y="552" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">Distinct high-impact start</text>
+    <rect x="522" y="578" width="182" height="14" rx="7" fill="#2563EB"/>
+    <rect x="522" y="604" width="148" height="12" rx="6" fill="#CBD5E1"/>
+  </g>
+
+  <g>
+    <text x="860" y="642" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700">Lisbon</text>
+    <text x="860" y="688" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">Balanced summer value</text>
+    <rect x="860" y="714" width="176" height="14" rx="7" fill="#EA580C"/>
+    <rect x="860" y="740" width="144" height="12" rx="6" fill="#CBD5E1"/>
+  </g>
+
+  <g opacity="0.96">
+    <rect x="1160" y="122" width="238" height="114" rx="24" fill="#0F172A"/>
+    <text x="1200" y="170" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">2026 signal</text>
+    <text x="1200" y="206" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="22">Peak demand, tighter budgets</text>
+  </g>
+
+  <g>
+    <text x="1168" y="430" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Timing matters</text>
+    <text x="1168" y="474" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">June-July pressure stays high</text>
+    <text x="1168" y="512" fill="#0F766E" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">August stays more workable</text>
+  </g>
+</svg>
