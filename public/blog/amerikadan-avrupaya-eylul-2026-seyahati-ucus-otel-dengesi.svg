@@ -1,0 +1,50 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#F3F0E8"/>
+  <rect x="60" y="60" width="1480" height="780" rx="40" fill="url(#bg)"/>
+  <circle cx="1330" cy="200" r="120" fill="#F7C66B" fill-opacity="0.9"/>
+  <circle cx="280" cy="190" r="88" fill="#C7DDE8" fill-opacity="0.95"/>
+  <path d="M112 650C248 518 414 454 610 458C824 462 952 582 1105 588C1260 594 1364 520 1488 404V840H112V650Z" fill="#E7DCC8"/>
+  <path d="M112 714C270 618 408 576 578 578C764 580 882 670 1054 676C1210 682 1334 622 1488 524V840H112V714Z" fill="#D3E4D4"/>
+  <rect x="166" y="164" width="520" height="344" rx="28" fill="#FFF9F0" fill-opacity="0.86"/>
+  <text x="214" y="238" fill="#17344E" font-family="Georgia, 'Times New Roman', serif" font-size="40" font-weight="700">
+    September 2026
+  </text>
+  <text x="214" y="292" fill="#17344E" font-family="Arial, sans-serif" font-size="28">
+    US to Europe
+  </text>
+  <text x="214" y="340" fill="#5B7182" font-family="Arial, sans-serif" font-size="24">
+    Flight + hotel balance
+  </text>
+  <text x="214" y="378" fill="#5B7182" font-family="Arial, sans-serif" font-size="24">
+    shoulder season logic
+  </text>
+  <rect x="214" y="414" width="200" height="14" rx="7" fill="#C96D4C"/>
+  <rect x="214" y="444" width="156" height="14" rx="7" fill="#D8B86A"/>
+  <rect x="214" y="474" width="116" height="14" rx="7" fill="#86A78E"/>
+  <rect x="862" y="192" width="468" height="292" rx="30" fill="#FFF9F0" fill-opacity="0.88"/>
+  <rect x="908" y="240" width="190" height="128" rx="22" fill="#D7E4EF"/>
+  <rect x="1122" y="240" width="160" height="70" rx="18" fill="#F1DFC5"/>
+  <rect x="1122" y="326" width="160" height="42" rx="14" fill="#CCD9C9"/>
+  <path d="M952 470C979 430 1030 398 1088 398C1146 398 1197 430 1224 470" stroke="#17344E" stroke-width="18" stroke-linecap="round"/>
+  <path d="M994 288L1048 288" stroke="#17344E" stroke-width="14" stroke-linecap="round"/>
+  <path d="M1160 272H1248" stroke="#17344E" stroke-width="12" stroke-linecap="round"/>
+  <path d="M1160 344H1232" stroke="#17344E" stroke-width="12" stroke-linecap="round"/>
+  <path d="M580 590C724 520 904 502 1086 536" stroke="#17344E" stroke-width="10" stroke-linecap="round" stroke-dasharray="16 20"/>
+  <path d="M1068 518L1092 538L1062 548" fill="#17344E"/>
+  <g transform="translate(490 525)">
+    <path d="M0 32C72 20 132 12 180 8L206 0L222 8L194 22L234 26L250 42L194 44L210 62L198 70L176 58C128 62 72 72 8 90L0 32Z" fill="#C96D4C"/>
+    <path d="M110 28L132 60" stroke="#FFF9F0" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <text x="166" y="782" fill="#17344E" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="700">
+    CheaplyGo Blog
+  </text>
+  <text x="166" y="828" fill="#5B7182" font-family="Arial, sans-serif" font-size="26">
+    smarter transatlantic timing, calmer cities, stronger stays
+  </text>
+  <defs>
+    <linearGradient id="bg" x1="60" y1="60" x2="1540" y2="840" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FCFBF7"/>
+      <stop offset="1" stop-color="#E8EEE7"/>
+    </linearGradient>
+  </defs>
+</svg>
