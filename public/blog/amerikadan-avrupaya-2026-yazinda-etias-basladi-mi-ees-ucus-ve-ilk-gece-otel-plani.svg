@@ -1,0 +1,98 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="160" y1="52" x2="1440" y2="860" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFF8EC"/>
+      <stop offset="0.48" stop-color="#F2F7FF"/>
+      <stop offset="1" stop-color="#E7F6EF"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F8FAFC"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#EA580C"/>
+      <stop offset="0.5" stop-color="#0F766E"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#0F172A" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1328" cy="166" r="176" fill="#FFF1D6" opacity="0.95"/>
+  <circle cx="244" cy="746" r="214" fill="#DBEAFE" opacity="0.8"/>
+  <circle cx="1298" cy="744" r="150" fill="#DCFCE7" opacity="0.74"/>
+
+  <g opacity="0.16">
+    <path d="M214 348C370 250 524 224 676 254C818 282 930 376 1044 384C1148 392 1244 356 1376 250" stroke="#334155" stroke-width="10" stroke-linecap="round"/>
+    <path d="M248 426C390 350 562 336 692 360C804 380 896 436 1010 448C1116 460 1220 442 1340 392" stroke="#334155" stroke-width="10" stroke-linecap="round"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="108" y="94" width="724" height="260" rx="38" fill="url(#card)"/>
+  </g>
+  <text x="160" y="178" fill="#0F172A" font-family="Georgia, 'Times New Roman', serif" font-size="56" font-weight="700">
+    ETIAS not live yet
+  </text>
+  <text x="160" y="240" fill="#0F172A" font-family="Georgia, 'Times New Roman', serif" font-size="56" font-weight="700">
+    EES is the real 2026 shift
+  </text>
+  <text x="160" y="292" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="28">
+    US to Europe planning now depends on first entry and first-night hotel logic
+  </text>
+
+  <g filter="url(#shadow)">
+    <rect x="986" y="112" width="454" height="186" rx="34" fill="#0F172A"/>
+  </g>
+  <text x="1034" y="182" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">
+    July 16, 2026
+  </text>
+  <text x="1034" y="228" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="24">
+    ETIAS status: not active
+  </text>
+  <text x="1034" y="264" fill="#86EFAC" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">
+    EES fully active since April 10
+  </text>
+
+  <g>
+    <path d="M278 516C424 434 568 406 720 430C836 448 918 502 1016 518C1130 536 1224 514 1350 426" stroke="url(#accent)" stroke-width="12" stroke-linecap="round" stroke-dasharray="14 18"/>
+    <circle cx="278" cy="516" r="14" fill="#EA580C"/>
+    <circle cx="1350" cy="426" r="14" fill="#2563EB"/>
+    <path d="M810 440L840 454L828 474L844 498L818 504L806 486L780 492L792 472L764 458L792 450L790 424L808 440L834 428L830 448L856 448L810 440Z" fill="#0F172A"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="144" y="592" width="294" height="176" rx="30" fill="url(#card)"/>
+    <rect x="496" y="458" width="286" height="176" rx="30" fill="url(#card)"/>
+    <rect x="842" y="592" width="306" height="176" rx="30" fill="url(#card)"/>
+    <rect x="1168" y="356" width="284" height="196" rx="30" fill="url(#card)"/>
+  </g>
+
+  <g>
+    <text x="178" y="644" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Flight</text>
+    <text x="178" y="688" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">Pick workable arrival time</text>
+    <rect x="178" y="716" width="184" height="14" rx="7" fill="#EA580C"/>
+    <rect x="178" y="742" width="148" height="12" rx="6" fill="#CBD5E1"/>
+  </g>
+
+  <g>
+    <text x="530" y="510" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">First entry</text>
+    <text x="530" y="554" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">Budget buffer for EES flow</text>
+    <rect x="530" y="582" width="194" height="14" rx="7" fill="#0F766E"/>
+    <rect x="530" y="608" width="156" height="12" rx="6" fill="#CBD5E1"/>
+  </g>
+
+  <g>
+    <text x="876" y="644" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Hotel</text>
+    <text x="876" y="688" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">Choose low-friction first night</text>
+    <rect x="876" y="716" width="212" height="14" rx="7" fill="#2563EB"/>
+    <rect x="876" y="742" width="166" height="12" rx="6" fill="#CBD5E1"/>
+  </g>
+
+  <g>
+    <text x="1202" y="424" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Travel signal</text>
+    <text x="1202" y="468" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">Europe demand stays strong</text>
+    <text x="1202" y="506" fill="#0F766E" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Decision-stage SEO topic</text>
+  </g>
+</svg>
