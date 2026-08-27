@@ -1,0 +1,55 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="132" y1="98" x2="1467" y2="830" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4EFE6"/>
+      <stop offset="0.52" stop-color="#E7EEF4"/>
+      <stop offset="1" stop-color="#D7E5E4"/>
+    </linearGradient>
+    <linearGradient id="card" x1="262" y1="180" x2="1294" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F2740"/>
+      <stop offset="1" stop-color="#234F6F"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="1035" y1="234" x2="1378" y2="561" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F1B45C"/>
+      <stop offset="1" stop-color="#D96E4F"/>
+    </linearGradient>
+    <filter id="shadow" x="182" y="116" width="1236" height="668" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="16"/>
+      <feGaussianBlur stdDeviation="24"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.0588235 0 0 0 0 0.152941 0 0 0 0 0.25098 0 0 0 0.14 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1381" cy="140" r="122" fill="#F6D8B6" fill-opacity="0.48"/>
+  <circle cx="191" cy="734" r="158" fill="#C4D8E7" fill-opacity="0.56"/>
+  <g filter="url(#shadow)">
+    <rect x="230" y="164" width="1140" height="572" rx="38" fill="url(#card)"/>
+    <rect x="286" y="218" width="552" height="42" rx="21" fill="#F4EFE6" fill-opacity="0.12"/>
+    <rect x="286" y="290" width="640" height="152" rx="24" fill="#F4EFE6" fill-opacity="0.08"/>
+    <rect x="286" y="478" width="392" height="22" rx="11" fill="#DDE8EE" fill-opacity="0.16"/>
+    <rect x="286" y="524" width="344" height="22" rx="11" fill="#DDE8EE" fill-opacity="0.16"/>
+    <rect x="286" y="586" width="198" height="66" rx="20" fill="#F1B45C"/>
+    <path d="M1063 241C1148.05 241 1217 309.948 1217 395C1217 480.052 1148.05 549 1063 549C977.948 549 909 480.052 909 395C909 309.948 977.948 241 1063 241Z" fill="#F4EFE6" fill-opacity="0.08"/>
+    <path d="M1091.14 307.739L1116.74 321.901L1172.46 352.77C1178.55 356.145 1178.47 364.94 1172.31 368.208L1115.59 398.305L1089.34 412.235C1085.44 414.303 1080.73 414.182 1076.95 411.916L1031.1 384.471L993.357 361.876C987.695 358.486 987.927 350.189 993.771 347.122L1032.55 326.762L1077.72 303.036C1081.8 300.892 1087.08 301.017 1091.14 303.2V307.739Z" fill="url(#accent)"/>
+    <path d="M1033 399L1033.01 461.475C1033.01 466.546 1035.72 471.231 1040.13 473.765L1078.46 495.78C1082.51 498.104 1087.49 498.104 1091.54 495.78L1129.87 473.765C1134.28 471.231 1136.99 466.546 1136.99 461.475V399.5L1091.47 423.631C1087.45 425.764 1082.56 425.787 1078.52 423.69L1033 399Z" fill="#F6DCC0"/>
+    <path d="M905 606C905 585.013 922.013 568 943 568H1182C1202.99 568 1220 585.013 1220 606V611C1220 631.987 1202.99 649 1182 649H943C922.013 649 905 631.987 905 611V606Z" fill="#F4EFE6" fill-opacity="0.1"/>
+    <circle cx="960" cy="608" r="17" fill="#F1B45C"/>
+    <rect x="995" y="594" width="173" height="13" rx="6.5" fill="#F4EFE6" fill-opacity="0.56"/>
+    <rect x="995" y="618" width="125" height="11" rx="5.5" fill="#F4EFE6" fill-opacity="0.28"/>
+  </g>
+  <text x="286" y="249" fill="#F6DCC0" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="4">CHEAPLYGO BLOG</text>
+  <text x="286" y="338" fill="#FFFFFF" font-family="Georgia, serif" font-size="54" font-weight="700">
+    <tspan x="286" dy="0">ETIAS 2026 basladi mi?</tspan>
+    <tspan x="286" dy="68">Ucus ve ilk gece</tspan>
+    <tspan x="286" dy="68">otel plani</tspan>
+  </text>
+  <text x="286" y="496" fill="#DDE8EE" font-family="Arial, sans-serif" font-size="24">
+    <tspan x="286" dy="0">ABD cikisli Avrupa seyahatinde belge degil,</tspan>
+    <tspan x="286" dy="36">ilk giris ve ilk gece akisi kritik hale geldi.</tspan>
+  </text>
+  <text x="339" y="628" fill="#183047" font-family="Arial, sans-serif" font-size="24" font-weight="700">03 Jul 2026</text>
+</svg>
