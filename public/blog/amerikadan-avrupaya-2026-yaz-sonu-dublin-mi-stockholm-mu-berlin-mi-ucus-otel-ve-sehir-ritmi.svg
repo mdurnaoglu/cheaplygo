@@ -1,0 +1,109 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#F5F0E8"/>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1338" cy="166" r="176" fill="#E8B978" fill-opacity="0.36"/>
+  <circle cx="214" cy="756" r="238" fill="#28556A" fill-opacity="0.14"/>
+  <path d="M0 650C154 622 380 598 574 632C752 664 886 738 1086 734C1284 730 1446 680 1600 630V900H0V650Z" fill="url(#ground)"/>
+
+  <g filter="url(#shadowLarge)">
+    <rect x="98" y="88" width="650" height="304" rx="34" fill="#FFFDF9"/>
+    <rect x="98" y="88" width="650" height="304" rx="34" stroke="#E7DCCF"/>
+    <text x="146" y="160" fill="#213746" font-size="44" font-family="Georgia, serif" font-weight="700">Dublin, Stockholm, or Berlin?</text>
+    <text x="146" y="214" fill="#5C6E7B" font-size="27" font-family="Arial, sans-serif">Late-summer US to Europe city choice with cleaner total value</text>
+    <rect x="146" y="258" width="176" height="58" rx="18" fill="#1F7082"/>
+    <text x="188" y="295" fill="#F4FBFD" font-size="24" font-family="Arial, sans-serif" font-weight="700">Late Summer</text>
+    <rect x="338" y="258" width="174" height="58" rx="18" fill="#CA7340"/>
+    <text x="374" y="295" fill="#FFF8F3" font-size="24" font-family="Arial, sans-serif" font-weight="700">Hotel Logic</text>
+    <text x="146" y="362" fill="#243746" font-size="24" font-family="Arial, sans-serif">Compare airfare timing, first-night friction, and city rhythm.</text>
+  </g>
+
+  <path d="M560 496C708 432 852 422 970 452C1088 480 1188 532 1368 516" stroke="url(#route)" stroke-width="10" stroke-linecap="round" stroke-dasharray="16 18"/>
+  <g filter="url(#shadowPlane)">
+    <path d="M930 456L969 431L1022 439L988 466L1046 494L1031 510L971 490L954 536L932 530L939 482L898 486L890 468L930 456Z" fill="#FFFDF9"/>
+  </g>
+
+  <g filter="url(#shadowPanel)">
+    <rect x="962" y="112" width="460" height="256" rx="30" fill="#FFF8EF"/>
+    <rect x="962" y="112" width="460" height="256" rx="30" stroke="#E6D4BF"/>
+    <text x="1010" y="174" fill="#A05327" font-size="31" font-family="Georgia, serif" font-weight="700">Best Fit by Travel Style</text>
+    <text x="1010" y="224" fill="#77492F" font-size="22" font-family="Arial, sans-serif">Dublin: easiest first Europe feel</text>
+    <text x="1010" y="260" fill="#77492F" font-size="22" font-family="Arial, sans-serif">Stockholm: calm and efficient flow</text>
+    <text x="1010" y="296" fill="#77492F" font-size="22" font-family="Arial, sans-serif">Berlin: strongest total flexibility</text>
+  </g>
+
+  <g filter="url(#shadowLarge)">
+    <rect x="150" y="502" width="616" height="214" rx="30" fill="#163445"/>
+    <rect x="150" y="502" width="616" height="214" rx="30" stroke="#34566A"/>
+    <rect x="202" y="548" width="154" height="118" rx="22" fill="#7BA7B8"/>
+    <text x="229" y="594" fill="#F7FBFC" font-size="30" font-family="Georgia, serif" font-weight="700">Dublin</text>
+    <text x="220" y="631" fill="#F0F7F9" font-size="18" font-family="Arial, sans-serif">Easy landing, compact feel</text>
+    <rect x="382" y="548" width="154" height="118" rx="22" fill="#E1BE78"/>
+    <text x="396" y="594" fill="#5E4317" font-size="29" font-family="Georgia, serif" font-weight="700">Stockholm</text>
+    <text x="405" y="631" fill="#674A1C" font-size="18" font-family="Arial, sans-serif">Order, transit, late-summer logic</text>
+    <rect x="562" y="548" width="154" height="118" rx="22" fill="#D27A4A"/>
+    <text x="595" y="594" fill="#FFF8F2" font-size="30" font-family="Georgia, serif" font-weight="700">Berlin</text>
+    <text x="578" y="631" fill="#FFF1E7" font-size="18" font-family="Arial, sans-serif">Neighborhood and hotel range</text>
+  </g>
+
+  <g filter="url(#shadowPanel)">
+    <rect x="1038" y="470" width="412" height="228" rx="30" fill="#F8FBFC"/>
+    <rect x="1038" y="470" width="412" height="228" rx="30" stroke="#CEE1E5"/>
+    <text x="1084" y="528" fill="#1E6F80" font-size="30" font-family="Georgia, serif" font-weight="700">Smarter Total Value</text>
+    <text x="1084" y="574" fill="#345259" font-size="21" font-family="Arial, sans-serif">Airfare alone is not enough.</text>
+    <text x="1084" y="608" fill="#345259" font-size="21" font-family="Arial, sans-serif">First-night sleep, transit, and</text>
+    <text x="1084" y="642" fill="#345259" font-size="21" font-family="Arial, sans-serif">usable sightseeing hours decide more.</text>
+  </g>
+
+  <g opacity="0.94">
+    <rect x="448" y="738" width="690" height="94" rx="28" fill="#FFFDF9"/>
+    <text x="495" y="796" fill="#253746" font-size="30" font-family="Georgia, serif" font-weight="700">The best city is the one that wastes the fewest hours after landing.</text>
+  </g>
+
+  <defs>
+    <linearGradient id="bg" x1="148" y1="76" x2="1426" y2="826" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7F1E8"/>
+      <stop offset="0.52" stop-color="#E6F0ED"/>
+      <stop offset="1" stop-color="#DBE7E4"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="108" y1="618" x2="1418" y2="834" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#21425A"/>
+      <stop offset="0.48" stop-color="#1D6272"/>
+      <stop offset="1" stop-color="#334C59"/>
+    </linearGradient>
+    <linearGradient id="route" x1="560" y1="496" x2="1368" y2="516" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#CF7B47"/>
+      <stop offset="0.5" stop-color="#E8C57D"/>
+      <stop offset="1" stop-color="#4D919C"/>
+    </linearGradient>
+    <filter id="shadowLarge" x="78" y="75" width="752" height="668" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="8" dy="14"/>
+      <feGaussianBlur stdDeviation="14"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.137255 0 0 0 0 0.211765 0 0 0 0 0.266667 0 0 0 0.14 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+    <filter id="shadowPanel" x="938" y="94" width="540" height="632" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="8" dy="14"/>
+      <feGaussianBlur stdDeviation="16"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.164706 0 0 0 0 0.223529 0 0 0 0 0.258824 0 0 0 0.12 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+    <filter id="shadowPlane" x="875" y="420" width="194" height="138" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="5" dy="7"/>
+      <feGaussianBlur stdDeviation="7"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.105882 0 0 0 0 0.156863 0 0 0 0 0.188235 0 0 0 0.22 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+  </defs>
+</svg>
