@@ -1,0 +1,91 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="196" y1="52" x2="1422" y2="842" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FDF7ED"/>
+      <stop offset="0.48" stop-color="#F5F8FF"/>
+      <stop offset="1" stop-color="#E3F4F1"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F8FAFC"/>
+    </linearGradient>
+    <linearGradient id="route" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#EA580C"/>
+      <stop offset="0.5" stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#0F766E"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="20" stdDeviation="22" flood-color="#0F172A" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1326" cy="156" r="168" fill="#FFF1E6" opacity="0.94"/>
+  <circle cx="246" cy="748" r="212" fill="#DBEAFE" opacity="0.74"/>
+  <circle cx="1342" cy="764" r="138" fill="#D1FAE5" opacity="0.72"/>
+
+  <g opacity="0.16">
+    <path d="M242 372C372 282 546 230 708 248C846 264 960 332 1082 340C1178 348 1250 318 1362 236" stroke="#334155" stroke-width="10" stroke-linecap="round"/>
+    <path d="M282 442C402 374 552 352 692 370C816 386 912 438 1016 460C1120 482 1214 468 1330 410" stroke="#334155" stroke-width="10" stroke-linecap="round"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="112" y="98" width="688" height="250" rx="36" fill="url(#panel)"/>
+  </g>
+  <text x="160" y="176" fill="#0F172A" font-family="Georgia, 'Times New Roman', serif" font-size="56" font-weight="700">
+    Fall 2026
+  </text>
+  <text x="160" y="236" fill="#0F172A" font-family="Georgia, 'Times New Roman', serif" font-size="56" font-weight="700">
+    US Arrival Balance
+  </text>
+  <text x="160" y="288" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="28">
+    Chicago, Washington DC and Philadelphia for smarter first-trip logic
+  </text>
+
+  <g>
+    <path d="M284 504C432 432 566 404 704 426C830 446 930 512 1038 530C1140 546 1228 520 1320 430" stroke="url(#route)" stroke-width="12" stroke-linecap="round" stroke-dasharray="14 18"/>
+    <circle cx="284" cy="504" r="14" fill="#EA580C"/>
+    <circle cx="1320" cy="430" r="14" fill="#0F766E"/>
+    <path d="M792 446L824 458L812 478L830 500L806 508L792 490L768 494L780 474L754 460L780 452L778 426L796 442L820 430L818 448L844 450L792 446Z" fill="#0F172A"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="146" y="580" width="292" height="178" rx="30" fill="url(#panel)"/>
+    <rect x="490" y="446" width="310" height="178" rx="30" fill="url(#panel)"/>
+    <rect x="850" y="580" width="300" height="178" rx="30" fill="url(#panel)"/>
+    <rect x="1140" y="352" width="302" height="206" rx="30" fill="url(#panel)"/>
+  </g>
+
+  <g>
+    <text x="180" y="636" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700">Chicago</text>
+    <text x="180" y="682" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">Flight flexibility first</text>
+    <rect x="180" y="708" width="186" height="14" rx="7" fill="#EA580C"/>
+    <rect x="180" y="734" width="142" height="12" rx="6" fill="#CBD5E1"/>
+  </g>
+
+  <g>
+    <text x="526" y="502" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Washington DC</text>
+    <text x="526" y="548" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">Controlled first-trip pace</text>
+    <rect x="526" y="574" width="206" height="14" rx="7" fill="#2563EB"/>
+    <rect x="526" y="600" width="158" height="12" rx="6" fill="#CBD5E1"/>
+  </g>
+
+  <g>
+    <text x="884" y="636" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700">Philadelphia</text>
+    <text x="884" y="682" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">Compact East Coast stay</text>
+    <rect x="884" y="708" width="202" height="14" rx="7" fill="#0F766E"/>
+    <rect x="884" y="734" width="152" height="12" rx="6" fill="#CBD5E1"/>
+  </g>
+
+  <g opacity="0.96">
+    <rect x="1178" y="126" width="212" height="110" rx="24" fill="#0F172A"/>
+    <text x="1214" y="172" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">US entry 2026</text>
+    <text x="1214" y="208" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="22">ESTA first, then city logic</text>
+  </g>
+
+  <g>
+    <text x="1172" y="424" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Hotel signal</text>
+    <text x="1172" y="468" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">Event weeks distort value fast</text>
+    <text x="1172" y="506" fill="#0F766E" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Short trips reward cleaner first-night planning</text>
+  </g>
+</svg>
