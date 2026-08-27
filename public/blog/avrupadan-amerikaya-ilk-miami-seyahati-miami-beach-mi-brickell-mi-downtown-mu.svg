@@ -1,0 +1,73 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" rx="36" fill="#F7F3EE"/>
+  <rect width="1600" height="900" rx="36" fill="url(#bg)"/>
+  <circle cx="1328" cy="140" r="126" fill="#FDBA74" fill-opacity="0.34"/>
+  <circle cx="238" cy="160" r="108" fill="#93C5FD" fill-opacity="0.38"/>
+  <circle cx="1226" cy="730" r="178" fill="#67E8F9" fill-opacity="0.18"/>
+  <path d="M0 630C132 606 260 608 388 626C520 646 646 686 790 690C954 696 1106 650 1272 646C1384 643 1496 658 1600 684V900H0V630Z" fill="#CDE8EE"/>
+  <path d="M0 704C166 674 344 680 514 714C672 746 824 802 1004 804C1196 808 1374 756 1600 770V900H0V704Z" fill="#B5D1DA"/>
+  <rect x="82" y="86" width="1436" height="730" rx="32" fill="#FFFDF9" fill-opacity="0.82" stroke="#E7DDD3"/>
+  <text x="138" y="166" fill="#12263A" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700">First Miami Stay From Europe</text>
+  <text x="140" y="214" fill="#48606E" font-family="Arial, Helvetica, sans-serif" font-size="28">Miami Beach vs Brickell vs Downtown</text>
+  <path d="M274 616C402 500 540 434 696 414C852 394 1010 428 1168 500C1266 544 1358 602 1432 672" stroke="#F97316" stroke-width="12" stroke-linecap="round" stroke-dasharray="8 18"/>
+  <path d="M1160 500L1189 462L1203 500L1243 514L1204 530L1196 570L1172 541L1132 542L1160 500Z" fill="#F97316"/>
+  <g filter="url(#shadow)">
+    <rect x="130" y="274" width="386" height="334" rx="30" fill="#FFF8EF"/>
+    <text x="166" y="340" fill="#183153" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700">MIAMI BEACH</text>
+    <text x="166" y="384" fill="#5F7388" font-family="Arial, Helvetica, sans-serif" font-size="22">Best for sand, ocean mornings, classic Miami feel</text>
+    <rect x="166" y="430" width="202" height="14" rx="7" fill="#0EA5E9"/>
+    <rect x="166" y="470" width="250" height="14" rx="7" fill="#F59E0B"/>
+    <rect x="166" y="510" width="228" height="14" rx="7" fill="#FB7185"/>
+    <text x="166" y="456" fill="#183153" font-family="Arial, Helvetica, sans-serif" font-size="20">Walk-to-beach value</text>
+    <text x="166" y="496" fill="#183153" font-family="Arial, Helvetica, sans-serif" font-size="20">Watch resort fee and parking load</text>
+    <text x="166" y="536" fill="#183153" font-family="Arial, Helvetica, sans-serif" font-size="20">Louder weekend rhythm</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="604" y="238" width="392" height="398" rx="30" fill="#F9FCFF"/>
+    <text x="640" y="304" fill="#183153" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700">BRICKELL</text>
+    <text x="640" y="348" fill="#5F7388" font-family="Arial, Helvetica, sans-serif" font-size="22">Balanced for restaurants, airport access, cleaner flow</text>
+    <rect x="640" y="394" width="234" height="14" rx="7" fill="#22C55E"/>
+    <rect x="640" y="434" width="248" height="14" rx="7" fill="#2563EB"/>
+    <rect x="640" y="474" width="220" height="14" rx="7" fill="#14B8A6"/>
+    <text x="640" y="420" fill="#183153" font-family="Arial, Helvetica, sans-serif" font-size="20">Strong all-around base</text>
+    <text x="640" y="460" fill="#183153" font-family="Arial, Helvetica, sans-serif" font-size="20">Beach still manageable by rideshare</text>
+    <text x="640" y="500" fill="#183153" font-family="Arial, Helvetica, sans-serif" font-size="20">Works well for mixed work and leisure</text>
+    <rect x="640" y="544" width="228" height="56" rx="20" fill="#E7F6EF"/>
+    <text x="670" y="580" fill="#18794E" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Best Balance</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="1084" y="282" width="382" height="314" rx="30" fill="#FFF9F4"/>
+    <text x="1120" y="348" fill="#183153" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700">DOWNTOWN</text>
+    <text x="1120" y="392" fill="#5F7388" font-family="Arial, Helvetica, sans-serif" font-size="22">Useful for cruises, short stays, fast city positioning</text>
+    <rect x="1120" y="438" width="198" height="14" rx="7" fill="#F97316"/>
+    <rect x="1120" y="478" width="214" height="14" rx="7" fill="#A855F7"/>
+    <text x="1120" y="464" fill="#183153" font-family="Arial, Helvetica, sans-serif" font-size="20">PortMiami logic</text>
+    <text x="1120" y="504" fill="#183153" font-family="Arial, Helvetica, sans-serif" font-size="20">Check block-by-block walkability</text>
+  </g>
+  <rect x="208" y="696" width="92" height="120" fill="#1E293B"/>
+  <rect x="318" y="634" width="108" height="182" fill="#334155"/>
+  <rect x="446" y="592" width="84" height="224" fill="#0F172A"/>
+  <rect x="1066" y="686" width="74" height="130" fill="#1E293B"/>
+  <rect x="1156" y="628" width="92" height="188" fill="#334155"/>
+  <rect x="1266" y="566" width="110" height="250" fill="#0F172A"/>
+  <rect x="1394" y="642" width="70" height="174" fill="#334155"/>
+  <path d="M164 708C220 642 286 622 350 650C416 678 468 748 520 778" stroke="#0EA5E9" stroke-width="10" stroke-linecap="round"/>
+  <path d="M508 770C590 714 680 694 770 706C846 716 916 748 986 790" stroke="#38BDF8" stroke-width="10" stroke-linecap="round"/>
+  <defs>
+    <linearGradient id="bg" x1="120" y1="80" x2="1458" y2="860" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EAF5FF"/>
+      <stop offset="0.52" stop-color="#FFF8F1"/>
+      <stop offset="1" stop-color="#EAF6F7"/>
+    </linearGradient>
+    <filter id="shadow" x="108" y="220" width="1388" height="446" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dx="8" dy="12"/>
+      <feGaussianBlur stdDeviation="14"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.0705882 0 0 0 0 0.14902 0 0 0 0 0.227451 0 0 0 0.14 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1" result="shape"/>
+    </filter>
+  </defs>
+</svg>
