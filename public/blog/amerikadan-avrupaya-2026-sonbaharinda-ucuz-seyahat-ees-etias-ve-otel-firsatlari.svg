@@ -1,0 +1,37 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="220" y1="80" x2="1370" y2="800" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF4D6"/>
+      <stop offset="0.38" stop-color="#F6C38B"/>
+      <stop offset="0.7" stop-color="#D96C42"/>
+      <stop offset="1" stop-color="#233B63"/>
+    </linearGradient>
+    <linearGradient id="sunset" x1="834" y1="224" x2="834" y2="528" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE9A8"/>
+      <stop offset="1" stop-color="#F09356"/>
+    </linearGradient>
+    <linearGradient id="plane" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#FFFDF8"/>
+      <stop offset="1" stop-color="#FFD8B5"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" rx="48" fill="url(#sky)"/>
+  <circle cx="1190" cy="250" r="138" fill="url(#sunset)" opacity="0.95"/>
+  <path d="M0 710C161 648 266 632 421 664C560 692 624 759 784 767C1007 778 1140 631 1364 631C1479 631 1545 653 1600 678V900H0V710Z" fill="#1F3253" opacity="0.38"/>
+  <path d="M0 766C115 719 258 706 392 744C533 784 645 848 835 833C1023 818 1170 700 1373 712C1456 717 1536 744 1600 779V900H0V766Z" fill="#15233A" opacity="0.62"/>
+  <path d="M186 648L281 575L351 648H312L262 608L211 648H186Z" fill="#F8E7CF" opacity="0.88"/>
+  <path d="M305 648L424 517L525 648H475L411 572L347 648H305Z" fill="#F3D7B4" opacity="0.9"/>
+  <path d="M482 648L648 450L786 648H713L624 539L551 648H482Z" fill="#FBE4C8" opacity="0.92"/>
+  <path d="M1083 648L1204 538L1312 648H1264L1197 583L1127 648H1083Z" fill="#F8DFC3" opacity="0.88"/>
+  <path d="M1187 648L1324 470L1453 648H1386L1316 553L1245 648H1187Z" fill="#FBE9D3" opacity="0.92"/>
+  <rect x="138" y="128" width="474" height="254" rx="28" fill="#FFF8EF" fill-opacity="0.14" stroke="#FFF7ED" stroke-opacity="0.36"/>
+  <path d="M292 274C398 247 502 216 643 138C659 129 677 127 692 134C706 141 714 156 714 171C714 189 704 204 687 212L578 265L758 345C774 352 782 370 775 385C769 400 753 410 736 409L530 395L461 485C451 498 434 505 418 500C401 495 388 481 386 464L367 350L218 386C202 390 186 385 175 373C164 361 160 344 166 329C172 313 184 301 199 297L292 274Z" fill="url(#plane)"/>
+  <path d="M140 421C192 374 259 352 339 356" stroke="#FFF0D6" stroke-width="18" stroke-linecap="round" stroke-opacity="0.35"/>
+  <path d="M164 474C226 425 296 403 385 404" stroke="#FFF0D6" stroke-width="10" stroke-linecap="round" stroke-opacity="0.28"/>
+  <text x="140" y="746" fill="#FFF7EE" font-size="66" font-family="Georgia, 'Times New Roman', serif" font-weight="700">
+    Fall Europe from the U.S.
+  </text>
+  <text x="140" y="804" fill="#FDE7CF" font-size="34" font-family="Arial, Helvetica, sans-serif" letter-spacing="3">
+    EES ACTIVE  •  ETIAS LATER IN 2026  •  SMARTER HOTEL VALUE
+  </text>
+</svg>
