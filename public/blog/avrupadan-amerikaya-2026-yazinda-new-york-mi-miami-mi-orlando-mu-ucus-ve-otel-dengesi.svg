@@ -1,0 +1,92 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">New York, Miami ve Orlando ucus ve otel dengesi gorseli</title>
+  <desc id="desc">New York, Miami ve Orlando sehirlerini ucus ve konaklama dengesi acisindan karsilastiran temiz seyahat illusturasyonu.</desc>
+  <defs>
+    <linearGradient id="bg" x1="160" y1="80" x2="1420" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E8F6FF"/>
+      <stop offset="0.52" stop-color="#FFF6E9"/>
+      <stop offset="1" stop-color="#EAF7EF"/>
+    </linearGradient>
+    <linearGradient id="cardTop" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F8FAFC"/>
+    </linearGradient>
+    <linearGradient id="skyline1" x1="0" y1="1" x2="1" y2="0">
+      <stop stop-color="#0F172A"/>
+      <stop offset="1" stop-color="#1E3A8A"/>
+    </linearGradient>
+    <linearGradient id="skyline2" x1="0" y1="1" x2="1" y2="0">
+      <stop stop-color="#0F766E"/>
+      <stop offset="1" stop-color="#0284C7"/>
+    </linearGradient>
+    <linearGradient id="skyline3" x1="0" y1="1" x2="1" y2="0">
+      <stop stop-color="#92400E"/>
+      <stop offset="1" stop-color="#EA580C"/>
+    </linearGradient>
+    <filter id="shadow" x="110" y="111" width="1380" height="651" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="18"/>
+      <feGaussianBlur stdDeviation="24"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.0588235 0 0 0 0 0.0941176 0 0 0 0 0.156863 0 0 0 0.12 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1380" cy="126" r="112" fill="#FDE68A" fill-opacity="0.38"/>
+  <circle cx="220" cy="156" r="86" fill="#BFDBFE" fill-opacity="0.45"/>
+  <path d="M96 735C273 642 400 638 574 704C744 768 890 772 1066 684C1218 608 1338 594 1504 666V900H96V735Z" fill="#D9F0E2"/>
+  <path d="M0 778C196 674 414 665 626 748C850 836 1078 828 1294 724C1412 668 1508 654 1600 670V900H0V778Z" fill="#CFE5F4"/>
+  <g filter="url(#shadow)">
+    <rect x="158" y="141" width="1284" height="555" rx="36" fill="url(#cardTop)"/>
+    <rect x="206" y="190" width="1188" height="128" rx="28" fill="#F8FAFC"/>
+    <text x="248" y="238" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">Europe to USA 2026</text>
+    <text x="248" y="278" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="800">New York vs Miami vs Orlando</text>
+    <text x="248" y="308" fill="#64748B" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="500">Flight ease, hotel pressure, first-night logic</text>
+
+    <rect x="206" y="358" width="344" height="276" rx="30" fill="white"/>
+    <rect x="206" y="358" width="344" height="114" rx="30" fill="#EFF6FF"/>
+    <path d="M246 470H510V446C510 430 497 417 481 417H275C259 417 246 430 246 446V470Z" fill="url(#skyline1)"/>
+    <rect x="270" y="374" width="28" height="72" rx="6" fill="#1E293B"/>
+    <rect x="308" y="396" width="36" height="50" rx="6" fill="#1E3A8A"/>
+    <rect x="352" y="352" width="42" height="94" rx="6" fill="#0F172A"/>
+    <rect x="402" y="386" width="38" height="60" rx="6" fill="#1D4ED8"/>
+    <rect x="450" y="404" width="24" height="42" rx="6" fill="#334155"/>
+    <text x="246" y="528" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="800">New York</text>
+    <text x="246" y="564" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="600">Best for direct access</text>
+    <text x="246" y="596" fill="#64748B" font-family="Arial, Helvetica, sans-serif" font-size="20">High city intensity</text>
+    <text x="246" y="624" fill="#64748B" font-family="Arial, Helvetica, sans-serif" font-size="20">Higher hotel pressure</text>
+
+    <rect x="628" y="358" width="344" height="276" rx="30" fill="white"/>
+    <rect x="628" y="358" width="344" height="114" rx="30" fill="#ECFEFF"/>
+    <path d="M668 462H932C918 438 898 424 880 419C848 409 810 422 786 433C760 445 715 451 668 462Z" fill="#8DD3C7"/>
+    <path d="M668 470H932V448C904 448 876 440 844 430C808 418 776 418 736 430C710 437 688 446 668 470Z" fill="url(#skyline2)"/>
+    <rect x="706" y="394" width="26" height="52" rx="6" fill="#115E59"/>
+    <rect x="742" y="374" width="30" height="72" rx="6" fill="#0F766E"/>
+    <rect x="782" y="402" width="34" height="44" rx="6" fill="#0369A1"/>
+    <rect x="826" y="388" width="28" height="58" rx="6" fill="#14B8A6"/>
+    <rect x="864" y="408" width="22" height="38" rx="6" fill="#0891B2"/>
+    <text x="668" y="528" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="800">Miami</text>
+    <text x="668" y="564" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="600">Best for city + beach feel</text>
+    <text x="668" y="596" fill="#64748B" font-family="Arial, Helvetica, sans-serif" font-size="20">Warmer, looser rhythm</text>
+    <text x="668" y="624" fill="#64748B" font-family="Arial, Helvetica, sans-serif" font-size="20">Area choice matters more</text>
+
+    <rect x="1050" y="358" width="344" height="276" rx="30" fill="white"/>
+    <rect x="1050" y="358" width="344" height="114" rx="30" fill="#FFF7ED"/>
+    <path d="M1090 470H1354V454C1326 446 1298 432 1268 422C1234 410 1206 410 1174 420C1142 430 1114 446 1090 470Z" fill="url(#skyline3)"/>
+    <rect x="1124" y="396" width="28" height="50" rx="6" fill="#9A3412"/>
+    <rect x="1162" y="372" width="34" height="74" rx="6" fill="#C2410C"/>
+    <rect x="1206" y="404" width="30" height="42" rx="6" fill="#EA580C"/>
+    <rect x="1246" y="388" width="24" height="58" rx="6" fill="#FB923C"/>
+    <rect x="1280" y="414" width="22" height="32" rx="6" fill="#7C2D12"/>
+    <text x="1090" y="528" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="800">Orlando</text>
+    <text x="1090" y="564" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="600">Best for hotel supply</text>
+    <text x="1090" y="596" fill="#64748B" font-family="Arial, Helvetica, sans-serif" font-size="20">Family and resort fit</text>
+    <text x="1090" y="624" fill="#64748B" font-family="Arial, Helvetica, sans-serif" font-size="20">Less spontaneous urban flow</text>
+
+    <path d="M432 330C538 312 656 310 784 330C914 350 1030 352 1168 334" stroke="#CBD5E1" stroke-width="8" stroke-linecap="round" stroke-dasharray="10 16"/>
+    <path d="M760 302L814 320L758 338C768 327 770 314 760 302Z" fill="#0F172A"/>
+  </g>
+  <text x="158" y="842" fill="#334155" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">cheaplygo.online blog</text>
+</svg>
