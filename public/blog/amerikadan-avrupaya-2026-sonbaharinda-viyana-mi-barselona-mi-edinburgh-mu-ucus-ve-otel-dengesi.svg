@@ -1,0 +1,61 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" rx="36" fill="#F8F1E7"/>
+  <rect width="1600" height="900" rx="36" fill="url(#bg)"/>
+  <circle cx="1328" cy="170" r="124" fill="#F4B06A" fill-opacity="0.32"/>
+  <circle cx="1288" cy="730" r="184" fill="#8AB0A5" fill-opacity="0.24"/>
+  <circle cx="236" cy="174" r="148" fill="#D6E0F2" fill-opacity="0.54"/>
+  <rect x="74" y="88" width="1452" height="724" rx="34" fill="#FFFCF8" fill-opacity="0.9" stroke="#DDCFC0"/>
+  <path d="M250 610C336 502 450 412 592 350C749 282 904 263 1060 291C1162 309 1250 350 1324 410" stroke="#CB6C3B" stroke-width="18" stroke-linecap="round" stroke-dasharray="16 18"/>
+  <path d="M1236 406L1268 376L1280 406L1312 418L1282 437L1274 469L1253 445L1218 442L1236 406Z" fill="#CB6C3B"/>
+  <rect x="526" y="122" width="548" height="646" rx="32" fill="#FFFDFB" stroke="#E5D8CC"/>
+  <text x="580" y="208" fill="#25343D" font-family="Georgia, 'Times New Roman', serif" font-size="54" font-weight="700">US to Europe</text>
+  <text x="580" y="268" fill="#25343D" font-family="Georgia, 'Times New Roman', serif" font-size="54" font-weight="700">Fall City Break</text>
+  <text x="580" y="324" fill="#6C737A" font-family="Arial, sans-serif" font-size="24">Vienna, Barcelona, Edinburgh</text>
+  <rect x="580" y="374" width="438" height="132" rx="24" fill="#F5EFE7"/>
+  <text x="614" y="425" fill="#8C6A50" font-family="Arial, sans-serif" font-size="22" font-weight="700">Decision frame</text>
+  <text x="614" y="466" fill="#44515A" font-family="Arial, sans-serif" font-size="22">Read flights, first-night hotels, and city pace together</text>
+  <rect x="580" y="534" width="438" height="162" rx="24" fill="#EDF3EF"/>
+  <text x="614" y="586" fill="#5E7C6B" font-family="Arial, sans-serif" font-size="22" font-weight="700">Best for</text>
+  <text x="614" y="627" fill="#44515A" font-family="Arial, sans-serif" font-size="22">September and October trips</text>
+  <text x="614" y="664" fill="#44515A" font-family="Arial, sans-serif" font-size="22">Cooler air, lower friction, smarter hotel timing</text>
+  <rect x="134" y="166" width="316" height="202" rx="24" fill="#FFF7EC" stroke="#E5D7C7"/>
+  <text x="168" y="224" fill="#8C6A50" font-family="Georgia, 'Times New Roman', serif" font-size="32" font-weight="700">Vienna</text>
+  <text x="168" y="268" fill="#516069" font-family="Arial, sans-serif" font-size="22">Ordered rhythm</text>
+  <rect x="168" y="296" width="116" height="12" rx="6" fill="#85AB8C"/>
+  <rect x="168" y="326" width="184" height="12" rx="6" fill="#B6D2BF"/>
+  <rect x="168" y="356" width="148" height="12" rx="6" fill="#D5E3F0"/>
+  <g opacity="0.94">
+    <circle cx="390" cy="296" r="28" fill="#C68B65"/>
+    <path d="M390 260V332" stroke="#9B6846" stroke-width="10" stroke-linecap="round"/>
+    <path d="M358 296H422" stroke="#9B6846" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <rect x="1160" y="188" width="286" height="182" rx="24" fill="#FFF2E9" stroke="#E9D2C4"/>
+  <text x="1192" y="244" fill="#A95D32" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="700">Barcelona</text>
+  <text x="1192" y="286" fill="#516069" font-family="Arial, sans-serif" font-size="21">Energy + waterfront</text>
+  <rect x="1192" y="314" width="94" height="12" rx="6" fill="#E1884F"/>
+  <rect x="1192" y="342" width="164" height="12" rx="6" fill="#F0B27C"/>
+  <g opacity="0.9">
+    <path d="M1384 310C1397 286 1432 288 1443 312C1452 332 1443 359 1419 366C1397 372 1375 357 1374 334C1373 325 1377 316 1384 310Z" fill="#D96F3B"/>
+    <path d="M1415 290V368" stroke="#A8552D" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <rect x="1118" y="530" width="334" height="198" rx="24" fill="#F6F7FB" stroke="#D9DFEC"/>
+  <text x="1152" y="588" fill="#667893" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="700">Edinburgh</text>
+  <text x="1152" y="630" fill="#516069" font-family="Arial, sans-serif" font-size="21">Atmosphere + walkability</text>
+  <rect x="1152" y="658" width="102" height="12" rx="6" fill="#8CA4C1"/>
+  <rect x="1152" y="686" width="172" height="12" rx="6" fill="#BACAE2"/>
+  <g opacity="0.92">
+    <path d="M1366 632L1396 598L1426 632V692H1366V632Z" fill="#7288A6"/>
+    <path d="M1380 642H1412V692H1380V642Z" fill="#D9E1ED"/>
+    <path d="M1390 660H1402V692H1390V660Z" fill="#7288A6"/>
+  </g>
+  <rect x="220" y="566" width="244" height="144" rx="24" fill="#FBF5EE" stroke="#E3D6C8"/>
+  <text x="254" y="624" fill="#8C6A50" font-family="Arial, sans-serif" font-size="24" font-weight="700">Hotel pressure</text>
+  <text x="254" y="663" fill="#44515A" font-family="Arial, sans-serif" font-size="20">First night matters more than the cheapest fare</text>
+  <defs>
+    <linearGradient id="bg" x1="120" y1="86" x2="1478" y2="858" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4E8DB"/>
+      <stop offset="0.48" stop-color="#FBF8F3"/>
+      <stop offset="1" stop-color="#E8EEE9"/>
+    </linearGradient>
+  </defs>
+</svg>
