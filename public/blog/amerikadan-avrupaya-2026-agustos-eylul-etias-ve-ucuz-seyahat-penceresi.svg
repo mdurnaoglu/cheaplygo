@@ -1,0 +1,54 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#F3EFE7"/>
+  <rect x="50" y="50" width="1500" height="800" rx="36" fill="url(#bg)"/>
+  <circle cx="1320" cy="160" r="96" fill="#F2C66D" fill-opacity="0.28"/>
+  <circle cx="1440" cy="250" r="42" fill="#C9D8C5"/>
+  <circle cx="190" cy="170" r="74" fill="#D77A61" fill-opacity="0.16"/>
+  <rect x="108" y="110" width="540" height="680" rx="32" fill="#FFF9F1"/>
+  <rect x="148" y="152" width="180" height="26" rx="13" fill="#D77A61" fill-opacity="0.16"/>
+  <rect x="148" y="210" width="400" height="66" rx="18" fill="#214E5C"/>
+  <rect x="148" y="298" width="448" height="18" rx="9" fill="#7D8E95" fill-opacity="0.36"/>
+  <rect x="148" y="330" width="386" height="18" rx="9" fill="#7D8E95" fill-opacity="0.24"/>
+  <rect x="148" y="392" width="460" height="150" rx="24" fill="#F5E8D0"/>
+  <rect x="178" y="426" width="118" height="82" rx="18" fill="#D77A61"/>
+  <path d="M222 450C235.255 450 246 439.255 246 426H198C198 439.255 208.745 450 222 450Z" fill="#FFF9F1"/>
+  <path d="M204 488H240" stroke="#FFF9F1" stroke-width="10" stroke-linecap="round"/>
+  <path d="M326 430H566" stroke="#214E5C" stroke-width="18" stroke-linecap="round"/>
+  <path d="M326 472H520" stroke="#214E5C" stroke-width="14" stroke-linecap="round" opacity="0.72"/>
+  <path d="M326 506H476" stroke="#214E5C" stroke-width="14" stroke-linecap="round" opacity="0.56"/>
+  <rect x="148" y="572" width="214" height="164" rx="24" fill="#C9D8C5"/>
+  <rect x="394" y="572" width="214" height="164" rx="24" fill="#E5D4BC"/>
+  <path d="M200 620H310" stroke="#214E5C" stroke-width="16" stroke-linecap="round"/>
+  <path d="M200 654H282" stroke="#214E5C" stroke-width="12" stroke-linecap="round" opacity="0.62"/>
+  <path d="M446 620H556" stroke="#214E5C" stroke-width="16" stroke-linecap="round"/>
+  <path d="M446 654H528" stroke="#214E5C" stroke-width="12" stroke-linecap="round" opacity="0.62"/>
+  <rect x="720" y="138" width="772" height="238" rx="32" fill="#214E5C"/>
+  <rect x="760" y="182" width="182" height="132" rx="24" fill="#FFF9F1"/>
+  <rect x="972" y="182" width="216" height="132" rx="24" fill="#2C6A7B"/>
+  <rect x="1218" y="182" width="234" height="132" rx="24" fill="#D77A61"/>
+  <path d="M806 228H896" stroke="#214E5C" stroke-width="16" stroke-linecap="round"/>
+  <path d="M806 262H870" stroke="#214E5C" stroke-width="12" stroke-linecap="round" opacity="0.56"/>
+  <path d="M1014 226H1148" stroke="#FFF9F1" stroke-width="16" stroke-linecap="round"/>
+  <path d="M1014 260H1106" stroke="#FFF9F1" stroke-width="12" stroke-linecap="round" opacity="0.72"/>
+  <path d="M1262 226H1408" stroke="#FFF9F1" stroke-width="16" stroke-linecap="round"/>
+  <path d="M1262 260H1370" stroke="#FFF9F1" stroke-width="12" stroke-linecap="round" opacity="0.72"/>
+  <rect x="720" y="414" width="368" height="330" rx="32" fill="#FFF9F1"/>
+  <rect x="1124" y="414" width="368" height="330" rx="32" fill="#FFF9F1"/>
+  <rect x="760" y="456" width="288" height="36" rx="18" fill="#D77A61" fill-opacity="0.18"/>
+  <rect x="1164" y="456" width="288" height="36" rx="18" fill="#C9D8C5"/>
+  <path d="M780 546C780 519.49 801.49 498 828 498H980C1006.51 498 1028 519.49 1028 546V612C1028 638.51 1006.51 660 980 660H828C801.49 660 780 638.51 780 612V546Z" fill="#F5E8D0"/>
+  <path d="M1184 546C1184 519.49 1205.49 498 1232 498H1384C1410.51 498 1432 519.49 1432 546V612C1432 638.51 1410.51 660 1384 660H1232C1205.49 660 1184 638.51 1184 612V546Z" fill="#E6EEF0"/>
+  <path d="M824 550H984" stroke="#214E5C" stroke-width="18" stroke-linecap="round"/>
+  <path d="M824 590H954" stroke="#214E5C" stroke-width="12" stroke-linecap="round" opacity="0.62"/>
+  <path d="M1228 550H1388" stroke="#214E5C" stroke-width="18" stroke-linecap="round"/>
+  <path d="M1228 590H1358" stroke="#214E5C" stroke-width="12" stroke-linecap="round" opacity="0.62"/>
+  <path d="M790 704H1018" stroke="#214E5C" stroke-width="14" stroke-linecap="round"/>
+  <path d="M1194 704H1422" stroke="#214E5C" stroke-width="14" stroke-linecap="round"/>
+  <defs>
+    <linearGradient id="bg" x1="88" y1="86" x2="1498" y2="840" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F9F4EA"/>
+      <stop offset="0.55" stop-color="#EEE5D7"/>
+      <stop offset="1" stop-color="#E8E0D1"/>
+    </linearGradient>
+  </defs>
+</svg>
