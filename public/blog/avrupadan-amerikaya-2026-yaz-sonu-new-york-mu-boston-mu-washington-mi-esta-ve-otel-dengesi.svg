@@ -1,0 +1,91 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="138" y1="72" x2="1450" y2="834" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F7F1E8"/>
+      <stop offset="0.44" stop-color="#EEF7FA"/>
+      <stop offset="1" stop-color="#E6EEF9"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F4F7FB"/>
+    </linearGradient>
+    <linearGradient id="route" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0F766E"/>
+      <stop offset="0.5" stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#DC2626"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="20" stdDeviation="22" flood-color="#0F172A" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="280" cy="188" r="174" fill="#E0F2FE" opacity="0.75"/>
+  <circle cx="1328" cy="180" r="158" fill="#FEF3C7" opacity="0.72"/>
+  <circle cx="1296" cy="744" r="192" fill="#DBEAFE" opacity="0.7"/>
+
+  <g opacity="0.16">
+    <path d="M258 338C388 266 530 252 674 286C820 320 934 404 1066 418C1182 430 1280 394 1384 326" stroke="#334155" stroke-width="10" stroke-linecap="round"/>
+    <path d="M246 414C380 378 520 380 640 420C758 458 858 520 982 548C1112 576 1254 568 1380 520" stroke="#334155" stroke-width="10" stroke-linecap="round"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="120" y="96" width="680" height="250" rx="38" fill="url(#panel)"/>
+  </g>
+  <text x="170" y="178" fill="#0F172A" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700">
+    Late Summer 2026
+  </text>
+  <text x="170" y="242" fill="#0F172A" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700">
+    East Coast City Balance
+  </text>
+  <text x="170" y="294" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="28">
+    New York, Boston and Washington for a cleaner first US trip
+  </text>
+
+  <g>
+    <path d="M286 504C428 454 560 432 694 452C820 470 920 524 1036 544C1160 566 1278 548 1360 500" stroke="url(#route)" stroke-width="12" stroke-linecap="round" stroke-dasharray="14 18"/>
+    <circle cx="286" cy="504" r="14" fill="#0F766E"/>
+    <circle cx="1360" cy="500" r="14" fill="#DC2626"/>
+    <path d="M802 456L830 468L818 488L836 510L812 516L798 498L774 504L784 484L758 470L784 462L782 436L800 450L826 438L822 458L850 460L802 456Z" fill="#0F172A"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="150" y="580" width="286" height="184" rx="30" fill="url(#panel)"/>
+    <rect x="496" y="440" width="286" height="184" rx="30" fill="url(#panel)"/>
+    <rect x="842" y="580" width="286" height="184" rx="30" fill="url(#panel)"/>
+    <rect x="1148" y="346" width="300" height="204" rx="30" fill="url(#panel)"/>
+  </g>
+
+  <g>
+    <text x="184" y="638" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700">New York</text>
+    <text x="184" y="684" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">Iconic density, higher pressure</text>
+    <rect x="184" y="710" width="206" height="14" rx="7" fill="#DC2626"/>
+    <rect x="184" y="736" width="154" height="12" rx="6" fill="#CBD5E1"/>
+  </g>
+
+  <g>
+    <text x="530" y="498" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700">Boston</text>
+    <text x="530" y="544" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">Compact, readable first trip</text>
+    <rect x="530" y="570" width="194" height="14" rx="7" fill="#2563EB"/>
+    <rect x="530" y="596" width="146" height="12" rx="6" fill="#CBD5E1"/>
+  </g>
+
+  <g>
+    <text x="876" y="638" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700">Washington</text>
+    <text x="876" y="684" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">Structured culture-heavy days</text>
+    <rect x="876" y="710" width="214" height="14" rx="7" fill="#0F766E"/>
+    <rect x="876" y="736" width="160" height="12" rx="6" fill="#CBD5E1"/>
+  </g>
+
+  <g opacity="0.96">
+    <rect x="1168" y="126" width="224" height="110" rx="24" fill="#0F172A"/>
+    <text x="1204" y="172" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Europe to USA</text>
+    <text x="1204" y="208" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="22">Short trip decision stage</text>
+  </g>
+
+  <g>
+    <text x="1180" y="418" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Entry signal</text>
+    <text x="1180" y="462" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="24">ESTA applies for eligible VWP stays</text>
+    <text x="1180" y="500" fill="#2563EB" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">One good hotel usually beats two rushed stops</text>
+  </g>
+</svg>
